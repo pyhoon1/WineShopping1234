@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="payment.dao.PaymentMapper">
+	<select id="getPaymentList">
+		select * from payment where userId = #{userId} order
+		by paymentId desc limit #{startRow}, #{size}
+	</select>
+	<select id="getPaymentCount">
+		select * from payment where userId = #{userId}
+	</select>
+	<insert id="Payment" parameterType="Payment">
+		insert into payment(userId,)
+	</insert>
+</mapper>
