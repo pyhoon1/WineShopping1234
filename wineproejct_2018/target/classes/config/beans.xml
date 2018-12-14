@@ -12,7 +12,7 @@
 	<context:component-scan base-package="product.*" />
 	<context:component-scan base-package="basket.*" />
 	<context:component-scan base-package="user.*" />
-	<context:component-scan base-package="review.*"/>
+	<context:component-scan base-package="review.*" />
 	<context:component-scan base-package="payment.*" />
 	<context:component-scan base-package="matchfood.*" />
 
@@ -87,6 +87,10 @@
 		<property name="basePackage" value="payment.dao" />
 		<property name="annotationClass" value="payment.dao.PaymentAnnotMapper" />
 	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="review.dao" />
+		<property name="annotationClass" value="review.dao.ReviewAnnotMapper" />
+	</bean>
 
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -94,18 +98,19 @@
 		<property name="configLocation" value="classpath:config/SqlMapConfig.xml" />
 		<property name="typeAliasesPackage" value="*.vo" />
 		<property name="mapperLocations">
-			<list> 
+			<list>
 				<value>classpath:config/adminMapper.xml</value>
 				<value>classpath:config/userMapper.xml</value>
 				<value>classpath:config/productMapper.xml</value>
 				<value>classpath:config/matchFoodMapper.xml</value>
 				<value>classpath:config/basketMapper.xml</value>
 				<value>classpath:config/paymentMapper.xml</value>
+				<value>classpath:config/reviewMapper.xml</value>
 			</list>
 		</property>
 	</bean>
 	<bean id="multipartResolver"
-class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="100000000" />
 		<property name="maxInMemorySize" value="100000000" />
 	</bean>
