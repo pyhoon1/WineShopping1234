@@ -10,6 +10,50 @@
         crossorigin="anonymous">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(function() {
+	var matchFood = "";
+	var count = "";
+	$('input:checkbox[name="matchFood"]').click(function() {
+		if (this.checked) {
+			matchFood += $(this).val() + ",";
+			count += $('#count' + $(this).val()).val() + ",";
+		} else {
+			var matchFoodL = matchFood.split(',');
+			var matchFoodId = matchFood.split(',', matchFoodL.length - 1);
+			var matchFoodCount = count.split(',');
+			for ( var i in matchFoodId) {
+				if (matchFoodId[i] == $(this).val()) {
+					matchFoodId.splice(i, 1);
+					matchFoodCount.splice(i, 1);
+				}
+			}
+			matchFood = "";
+			count = "";
+			for ( var i in matchFoodId) {
+				matchFood += matchFoodId[i] + ",";
+				count += matchFoodCount[i] + ",";
+			}
+		}
+	})
+	$('#basket').click(function() {
+		var text = confirm("장바구니에 추가하시겠습니까?");
+		if (text) {
+			var productCount = $('#productCount').val();
+			var total = ${product.price} * productCount;
+			if(matchFood == ""){
+				location.href = "insertProduct.do?userId=${user.userId}&productId=${product.productId}&productName=${product.productName}&productPrice=${product.price}&productCount="+productCount+"&productImg=${product.img}&total="+total;	
+			}else{
+				location.href = "insertProductMatchFood.do?userId=${user.userId}&productId=${product.productId}&productName=${product.productName}&productPrice=${product.price}&productCount="+productCount+"&productImg=${product.img}&matchFoodIdList="+matchFood+"&matchFoodCount="+count+"&total="+total;
+			}
+		}
+	})
+
+	$('#payment').click(function() {
+		
+	})
+})
+</script>
 <script src="${pageContext.request.contextPath }/javascript/productDetail.js"></script>
 <title>Insert title here</title>
 </head>
