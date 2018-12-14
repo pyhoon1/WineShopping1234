@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="css/main.css" type="text/css">
-<script src="/javascript/main.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/main.css" type="text/css">
+<script src="${pageContext.request.contextPath }/javascript/main.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Cardo"
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR"
@@ -48,250 +49,22 @@
 					<i class="fas fa-wine-glass-alt"></i> 인기 있는 와인
 				</h4>
 				<ul class="wineList">
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
+				<c:forEach items="${products }" var="products" >
+					<li>
+						<a href='wineDetail.html'><div class="wineImg">
+								<img src="${products.img }">
 							</div>
 							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
+								<span class="wineName">${products.productName }</span> <span class="winePrice">${products.price }</span>
 							</div>
 							<div class="right">
-								<span class="wineType"><img src="/resources/img/miniWineImg/redWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="whiteWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="roseWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="sparkleWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="redWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-				</ul>
-			</div>
-
-			<div class="mainList">
-				<h4>
-					<i class="fas fa-wine-glass-alt"></i> 인기 있는 와인
-				</h4>
-				<ul class="wineList">
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="redWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="redWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="redWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="redWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="redWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-				</ul>
-			</div>
-
-			<div class="mainList">
-				<h4>
-					<i class="fas fa-wine-glass-alt"></i> 인기 있는 와인
-				</h4>
-				<ul class="wineList">
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="redWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="redWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="redWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="redWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="redWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-				</ul>
-			</div>
-
-			<div class="mainList">
-				<h4>
-					<i class="fas fa-wine-glass-alt"></i> 인기 있는 와인
-				</h4>
-				<ul class="wineList">
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="redWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="redWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="redWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="redWine.png"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
-					<li><a href='wineDetail.html'><div class="wineImg">
-								<img src="wine.jpg">
-							</div>
-							<div class="left">
-								<span class="wineName">어어어어어머ㅓ</span> <span class="winePrice">100000</span>
-							</div>
-							<div class="right">
-								<span class="wineType"><img src="redWine.png" alt="레드와인"
-									title="레드와인"></span> <span class="wineNation"><img
-									src="france.jpeg"></span>
-							</div> </a></li>
+								<span class="wineType"><img src="${products.wineKinds}"
+									></span> <span class="wineNation"><img
+									src="${products.nationImg}"></span>
+							</div> 
+						</a>
+					</li>
+				</c:forEach>
 				</ul>
 			</div>
 		</div>

@@ -52,9 +52,7 @@ public class ProductController {
 	@RequestMapping("/main.do")
 	public String goMain(Model model) {
 		List<Product> products = productService.manySaleProduct();
-		ProductPage products1 = productService.getProductList(1);
 		model.addAttribute("products", products);
-		model.addAttribute("products1", products1);
 
 		return "main";
 	}

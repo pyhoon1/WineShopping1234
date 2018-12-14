@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="header.css" rel="stylesheet" type="text/css">
-<script src="./header.js"></script>
+<link href="${pageContext.request.contextPath }/css/main.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath }/javascript/main.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 	<div class="header">
             <div class="logo">
-                <a href="main.jsp"><img src="Logo.png"></a>
+                <a href="main.jsp"><img src="${pageContext.request.contextPath }/resources/img/Logo.png"></a>
             </div>
             <div class="nav">
                 <ul>
