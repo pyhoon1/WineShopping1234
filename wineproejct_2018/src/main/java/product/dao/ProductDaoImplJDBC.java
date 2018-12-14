@@ -37,4 +37,24 @@ public class ProductDaoImplJDBC implements ProductDao {
 		return productList;
 	}
 
+	public List<Product> searchNation(String nation) {
+		// TODO Auto-generated method stub
+		return null;  
+	}
+
+	public List<Product> searchWineKinds(String wine) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Product> searchMoney(int min, int max) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Product> searchProduct(String product) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
