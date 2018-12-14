@@ -25,7 +25,7 @@
                 <div class="container">
                     <div class="info">
                         <table>
-                            <thead><strong>와인 제목</strong></thead>
+                            <thead><strong>${product.productName }</strong></thead>
                             <tbody>
                                 <tr>
                                     <td>생산자</td>
