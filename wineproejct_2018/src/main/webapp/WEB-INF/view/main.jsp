@@ -15,6 +15,7 @@
 	href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
 	integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
 	crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -58,9 +59,9 @@
 								<span class="wineName">${products.productName }</span> <span class="winePrice">${products.price }</span>
 							</div>
 							<div class="right">
-								<span class="wineType"><img src="${products.wineKinds}"
-									></span> <span class="wineNation"><img
-									src="${products.nationImg}"></span>
+								<span class="wineType"><img src="${pageContext.request.contextPath}/resources/img/miniWineImg/${products.wineKinds}.png"></span> 
+								<span class="wineNation">
+								<img src="${products.nationImg}"></span>
 							</div> 
 						</a>
 					</li>

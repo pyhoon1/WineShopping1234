@@ -5,13 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="${pageContext.request.contextPath }/css/main.css" rel="stylesheet" type="text/css">
-<script src="${pageContext.request.contextPath }/javascript/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath }/javascript/header.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 	<div class="header">
             <div class="logo">
-                <a href="main.jsp"><img src="${pageContext.request.contextPath }/resources/img/Logo.png"></a>
+                <a href="main.do"><img src="${pageContext.request.contextPath }/resources/img/Logo.png"></a>
             </div>
             <div class="nav">
                 <ul>
