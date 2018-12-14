@@ -46,7 +46,7 @@ public class ProductController {
 			model.addAttribute("matchFoodList", matchFoodList);
 		}
 		model.addAttribute("product", product);
-		return "productView";
+		return "productDetail";
 	}
 
 	@RequestMapping("/main.do")

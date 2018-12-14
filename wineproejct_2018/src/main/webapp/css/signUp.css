@@ -1,0 +1,99 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: #c92a2a;
+    font-family: 'Cardo', serif;
+    font-family: 'Noto Serif KR', sans-serif;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.wrapper{
+    flex: 1;
+    width: 80%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.main{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.main h1 {
+    text-align: center;
+}
+
+table{
+    margin: 0 auto;
+}
+
+button, #submit{
+    font-family: 'Noto Serif KR', sans-serif;
+    background: none;
+    border: 1px solid #e03131;
+}
+
+table button {
+    background-color: #ff8787;
+    padding: 3px;
+}
+
+table{
+    width: 800px;
+    border-top: 1px solid rgb(0,0,0,0.5);
+    border-bottom: 1px solid rgb(0,0,0,0.5);
+}
+
+table td {
+    padding: 15px 0;
+}
+
+.input {
+    width: 400px;
+}
+
+.input input {
+    outline: none;
+    border: 1px solid rgb(0,0,0,0.5);
+    padding: 5px;
+}
+
+#title {
+    width: 50px;
+}
+
+#post {
+    width: 80px;
+}
+
+#post, #addr1, #addr2 {
+    margin: 3px;
+}
+
+.submit-box {
+    width: 800px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.submit-box input, button {
+    padding: 20px 50px;
+    margin: 30px;
+}
+
+input[type="submit"], button {
+    cursor: pointer;
+}
+
+*:focus {
+    outline: none;
+}
