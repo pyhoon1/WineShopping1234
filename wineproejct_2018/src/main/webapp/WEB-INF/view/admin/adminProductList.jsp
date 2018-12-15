@@ -70,6 +70,12 @@
 		<button onclick="Product();">상품 관리</button>
 		<button onclick="Review();">리뷰 목록</button>
 		<button onclick="Payment();">결제 목록</button>
+		<form action="adminProductList.do" method="post">
+			<input type="hidden" name="matchfoodorigin" value="${matchfoodorigin}">
+			<input type="hidden" name="type" value="product">
+			<input type="text" name="condition">
+		<input type="submit" value="와인 검색">
+		</form>
 		<table>
 			<caption>와인 목록</caption>
 			<tr>
@@ -102,9 +108,15 @@
 					<td>${product.temperature}</td>
 					<td><input type="button" onclick="deleteWine('${product.productId}','${product.productName}','${product.img}')" value="제품 삭제"></td>
 			</tr>
-							</c:forEach>
+		</c:forEach>
 		</table>	
 		<input type="button" value="와인 등록" onclick="MakeWine()">
+		<form action="adminProductList.do" method="post">
+			<input type="hidden" name="productorigin" value="${productorigin}">
+			<input type="hidden" name="type" value="matchFood">
+			<input type="text" name="condition">
+		<input type="submit" value="부가 상품 검색">
+		</form>
 		<table>
 			<caption>부가 상품 목록</caption>
 			<tr>

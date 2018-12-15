@@ -42,29 +42,59 @@ public class AdminController {
 		model.addAttribute("matchFood", matchfood);
 		return new ModelAndView("/admin/adminMakeWineForm");
 	}
+	@RequestMapping("/adminReviewList.do")
+	public String adminReviewList(Model model) {
+		List<Review> review = adminService.getReviewList();
+		model.addAttribute("reviewList",review);
+		return "/admin/adminReviewList";
+	}
+	
+	@RequestMapping("/adminPaymentList.do")
+	public String adminPaymentList(Model model) {
+		List<Payment> payment = adminService.getPaymentList();
+		model.addAttribute("paymentList", payment);
+		return "/admin/adminPaymentList";
+	}
+	
+	@RequestMapping("/admin.do")
+		public String admin(Model model) {
+			List<User> user = adminService.getUserList();
+			List<Product> product = adminService.getProductList();
+			List<MatchFood> matchfood = adminService.getMatchFoodList();
+			List<Review> review = adminService.getReviewList();
+			List<Payment> payment = adminService.getPaymentList();
+			
+			model.addAttribute("userList", user);
+			model.addAttribute("productList", product);
+			model.addAttribute("matchfoodList",matchfood);
+			model.addAttribute("reviewList", review);
+			model.addAttribute("paymentList", payment);
+			
+			return "/admin/admin";
+		}
+	
 
 	@RequestMapping("/adminProductList.do")
 	public String getAdminProductList(@RequestParam(value = "condition", required = false) String condition,
-			@RequestParam(value = "type", required = false) String type, Model model) {
-
-		System.out.println("condition === pro " + condition);
-		if (type != null && condition != null) {
-			if (type.equals("product") && condition != null) {
-				System.out.println("product on ");
+			@RequestParam(value = "type", required = false) String type, @RequestParam(value="productorigin",required=false) String sproduct,
+			@RequestParam(value="matchfoodorigin", required=false) String smatchfood, Model model) {
+		if (type != null && condition != null ) {
+			if (type.equals("product") && condition != null && smatchfood != null) {
 				List<Product> product = adminService.getSearchProductList(condition);
-				List<MatchFood> matchfood = adminService.getMatchFoodList();
+				List<MatchFood> matchfood = adminService.getSearchMatchFoodList(smatchfood);
 				model.addAttribute("productList", product);
 				model.addAttribute("matchfood", matchfood);
+				model.addAttribute("productorigin",condition);
 
-			} else if (type.equals("matchFood") && condition != null) {
+			} else if (type.equals("matchFood") && condition != null && sproduct != null) {
 				System.out.println("matchFood on ");
-				List<Product> product = adminService.getProductList();
+				List<Product> product = adminService.getSearchProductList(sproduct);
 				List<MatchFood> matchfood = adminService.getSearchMatchFoodList(condition);
 				model.addAttribute("productList", product);
 				model.addAttribute("matchfood", matchfood);
+				model.addAttribute("matchfoodorigin",condition);
 			}
 		} else {
-			System.out.println("else on ");
 			List<Product> product = adminService.getProductList();
 			List<MatchFood> matchfood = adminService.getMatchFoodList();
 			model.addAttribute("productList", product);

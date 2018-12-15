@@ -3,18 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
 </script>
 <head>
 <script>
-	/* function User() {
-		location.href="adminUserList.do";
-	}
-	function Product(){
-		location.href="adminProductList.do";
-	} */
-	
 	function deleteUser(userId,loginId){
 	
 		if(confirm(loginId+"님을 삭제하시겠습니까?")){
@@ -55,8 +47,8 @@
 <form action="adminUserList.do" method="post">
 <table>
 <tr>
-	<td><input type="text" name="condition"></td>
-	<td><input type="submit" value="유저 검색"></td>
+	<td><input type="text" name="condition">
+	<td><input type="submit" value="유저 검색">
 	</tr>
 	</table>
 </form>

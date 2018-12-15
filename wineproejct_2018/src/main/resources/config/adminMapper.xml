@@ -35,10 +35,10 @@
 		select count(*) from product where productName=#{productName}
 	</select>
 	<select id="getProductList" resultType="Product">
-		select * from product
+		select * from product order by productId desc
 	</select>
 	<select id="getMatchFoodList" resultType="MatchFood">
-		select * from matchFood
+		select * from matchFood order by matchFoodId desc
 	</select>
 	<select id="getMatchFoodView" resultType="MatchFood" parameterType="int">
 		select * from matchFood where matchFoodId = #{matchFoodId}
@@ -93,6 +93,14 @@
 	</select>
 	<select id="getPaymentUser" parameterType="int" resultType="Payment">
 		select * from payment where userId = #{userId}
+	</select>
+	<select id="getSearchProductList" parameterType="String" resultType="Product">
+		select * from product where producer LIKE CONCAT('%',#{condition},'%') or variety LIKE  CONCAT('%',#{condition},'%') or wineKinds LIKE CONCAT('%',#{condition},'%') or productName LIKE CONCAT('%',#{condition},'%')
+		or wineEx LIKE CONCAT('%',#{condition},'%') or brandEx LIKE CONCAT('%',#{condition},'%') or nation LIKE CONCAT('%',#{condition},'%') or year LIKE CONCAT('%',#{condition},'%') or alcohol LIKE CONCAT('%',#{condition},'%') or weight LIKE CONCAT('%',#{condition},'%')
+		or temperature LIKE CONCAT('%',#{condition},'%')
+	</select>
+	<select id="getSearchMatchFoodList" parameterType="String" resultType="MatchFood">
+		select * from matchfood where matchFoodName LIKE CONCAT('%',#{condition},'%') or nation LIKE CONCAT('%',#{condition},'%') or wine LIKE CONCAT('%',#{condition},'%') or weight LIKE CONCAT('%',#{condition},'%') or ex LIKE CONCAT('%',#{condition},'%')
 	</select>
 
 </mapper>
