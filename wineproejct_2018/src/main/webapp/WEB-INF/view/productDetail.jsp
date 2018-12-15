@@ -165,6 +165,9 @@ $(function() {
                 </div>
             </div>
         </div>
+        <c:forEach var="review" items="${reviewPage.reviewList }">
+        	<div>${review.productName }</div>
+        </c:forEach>
         <jsp:include page="../footer/footer.jsp" />
     </div>
 </body>
