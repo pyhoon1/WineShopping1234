@@ -125,6 +125,10 @@ function insertWine(){
 				alert('온도를 입력해주세요 ');
 				$('#temperature').focus();
 				return false;
+			}else if(document.getElementById("uploadFile").files.length == 0){
+				alert("사진을 넣어주세요");
+				$('uploadFile').focus();
+				return false;
 			}
 			else if(document.getElementById('NoHave').innerHTML == '상품 중복 검사를 해주세요'){
 				alert('중복 검사를 해주세요!');
@@ -157,8 +161,8 @@ function insertWine(){
 	}
 	}
 	
-function findNation() {
-	$('.nation option[value=' + $('#search').val() + ']').attr('selected',
+function findYear() {
+	$('.year option[value=' + $('#search').val() + ']').attr('selected',
 			'selected');
 };
 </script>
@@ -198,8 +202,6 @@ function findNation() {
 						<option value="프랑스">프랑스</option>
 						<option value="호주">호주</option>
 				</select></td>
-					<td><input type="text" id="search" name="search"></td>
-				<td><input type="button" onclick="findNation()" value="검색"></td>
 	<tr>
 		<td>와인 설명</td>
 		<td>브랜드 설명</td>
@@ -210,7 +212,14 @@ function findNation() {
 		<td><textarea rows="" cols="" name="wineEx" id="wineEx"></textarea></td>
 		<td><textarea rows="" cols="" name="brandEx" id="brandEx"></textarea></td>
 		<td><input type="number" name="price"></td>
-		<td><input type="text" name="year" id="year"></td>
+		<td><select id="year" name="year" class="year">	
+		<c:forEach begin="1" end="2500"	varStatus="status">
+					<option value="${status.getEnd()+1 - status.count}">${status.getEnd()+1 - status.count}</option>
+		</c:forEach>
+		</select></td>
+		<td><input type="text" id="search" name="search" maxlength="4"></td>
+		<td><input type="button" onclick="findYear()" value="검색"></td>
+	</tr>
 	</tr>
 	<tr>
 		<td>궁합 좋은 음식</td>
@@ -227,7 +236,7 @@ function findNation() {
 		<td><input type="text" name="alcohol" id="alcohol"></td>
 		<td><input type="text" name="weight" id="weight"></td>
 		<td><input type="text" name="temperature" id="temperature"></td>
-		<td><input type="file" name="uploadFile"></td>
+		<td><input type="file" name="uploadFile" id="uploadFile"></td>
 	</tr>
 	
 </table>

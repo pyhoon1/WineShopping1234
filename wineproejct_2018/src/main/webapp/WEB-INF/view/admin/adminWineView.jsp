@@ -14,6 +14,8 @@ $(function(){
 	
 	$("#wineKinds").val($('#compareWine').val()).prop("selected", true);
 })
+
+
 function hasWine() {
 	if($('#productName').val() == ""){
 		alert("중복을 검사할 음식명을 입력해주세요");
@@ -43,37 +45,45 @@ function hasWine() {
 };
 
 }
+
+
+
 $(function() {
+
+	$('.year option[value='+$('#years').val()+']').attr('selected','selected');
+	
 	var matchproductN = $("#matchFoodName").val();
 	var matchproductI = $("#matchFoodId").val();
 	
 	var matchproductNs = matchproductN.split(",");
 	
-	for(var i in matchproductNs){
-		$('.'+matchproductNs[i]).attr('checked', true);
+	if(matchproductN != ""){
+		for(var i in matchproductNs){
+			$('.'+matchproductNs[i]).attr('checked', true);
+		}
 	}
-	matchproductN = matchproductN+",";
-	matchproductI = matchproductI+",";
-	$("#matchFoodName").val(matchproductN);
-	$("#matchFoodId").val(matchproductI);
+	
+	
+	
+	if(matchproductN != ""){
+		matchproductN = matchproductN+",";
+		matchproductI = matchproductI+",";
+		$("#matchFoodName").val(matchproductN);
+		$("#matchFoodId").val(matchproductI);	
+	} 
+	
 	
 	var product = "";
 	var products = "";
 	$('input:checkbox[id="matchfood"]').click(function() {
 		if (this.checked) {
-			if(document.getElementById('matchFoodName').value != ""){
-				document.getElementById('matchFoodName').value += "," + $(this).val();
-				document.getElementById('matchFoodId').value += "," + document.getElementById($(this).val()).value;
-			}else{
+
 				document.getElementById('matchFoodName').value +=  $(this).val() + "," ;
 				document.getElementById('matchFoodId').value += document.getElementById($(this).val()).value + ",";
-			}
 			
 		
 		} else {
-			var productL = document.getElementById('matchFoodName').value.split(',');
-			alert(productL);
-			
+			var productL = document.getElementById('matchFoodName').value.split(',');	
 			var productLs = document.getElementById('matchFoodId').value.split(',');
 			var productId = document.getElementById('matchFoodName').value.split(',', productL.length - 1);
 			var productIds = document.getElementById('matchFoodId').value.split(',', productLs.length -1);
@@ -103,7 +113,7 @@ $(function() {
 	})
 
 
-function insertWine(){
+function updateWine(){
 		if(confirm("상품을 등록하시겠습니까?")){
 			if($('#producer').val() == ""){
 				alert('생산자를 입력해주세요!');
@@ -152,18 +162,19 @@ function insertWine(){
 				alert('온도를 입력해주세요 ');
 				$('#temperature').focus();
 				return false;
-			}
-			else if(document.getElementById('NoHave').innerHTML == '상품 중복 검사를 해주세요'){
-				alert('중복 검사를 해주세요!');
-				return false;
-			}else if(document.getElementById('NoHave').innerHTML == '등록된 상품이 있습니다'){
-				alert('상품이 중복됩니다.');
-				return false;
+			}else if($('#comparewineName').val() != $('#productName').val()){
+				 if(document.getElementById('NoHave').innerHTML == '상품 중복 검사를 해주세요'){
+						alert('중복 검사를 해주세요!');
+						return false;
+					}else if(document.getElementById('NoHave').innerHTML == '등록된 상품이 있습니다'){
+						alert('상품이 중복됩니다.');
+						return false;
+					}		
 			}else{
 				var form = $('#frm')[0];
 				var formData = new FormData(form);
 				$.ajax({
-					url : 'adminInsertWine.do',
+					url : 'adminUpdateWine.do',
 					type : 'post',
 					data : formData,
 				    enctype:'multipart/form-data',
@@ -174,10 +185,10 @@ function insertWine(){
 					},
 					success : function(result) {			
 						if(result == "Y"){
-							alert("상품 등록에 성공했습니다. 메인으로 돌아갑니다.");
+							alert("상품 수정에 성공했습니다. 메인으로 돌아갑니다.");
 							location.href="adminProductList.do";							
 						}else{
-							alert("제품 등록에 실패했습니다.");
+							alert("제품 수정에 실패했습니다.");
 						}
 
 					}
@@ -189,8 +200,8 @@ function insertWine(){
 	}
 	}
 	
-function findNation() {
-	$('.nation option[value=' + $('#search').val() + ']').attr('selected',
+function findYear() {
+	$('.year option[value=' + $('#search').val() + ']').attr('selected',
 			'selected');
 };
 </script>
@@ -200,8 +211,12 @@ function findNation() {
 <form id="frm" enctype="multipart/form-data">
 <input type="hidden" id="matchFoodName" name="matchFoodName" value="${product.matchFoodName}">
 <input type="hidden" id="matchFoodId" name="matchFoodId" value="${product.matchFoodId }">
+<input type="hidden" id="comparewineName" value="${product.productName }">
 <input type="hidden" id="compareNation" value="${product.nation }">
 <input type="hidden" id="compareWine" value="${product.wineKinds }">
+<input type="hidden" name="originalImg" value="${product.img }">
+<input type="hidden" id="productId" name="productId" value="${product.productId }">
+<input type="hidden" id="years" value="${product.year }">
 <table>
 	<tr>
 		<td>생산자</td>
@@ -231,9 +246,7 @@ function findNation() {
 						<option value="포루투갈">포루투갈</option>
 						<option value="프랑스">프랑스</option>
 						<option value="호주">호주</option>
-				</select></td>
-					<td><input type="text" id="search" name="search"></td>
-				<td><input type="button" onclick="findNation()" value="검색"></td>
+				</select></td>		
 	<tr>
 		<td>와인 설명</td>
 		<td>브랜드 설명</td>
@@ -243,8 +256,14 @@ function findNation() {
 	<tr>
 		<td><textarea rows="" cols="" name="wineEx" id="wineEx">${product.wineEx}</textarea></td>
 		<td><textarea rows="" cols="" name="brandEx" id="brandEx">${product.brandEx}</textarea></td>
-		<td><input type="number" name="price" value="${product.price}"></td>
-		<td><input type="text" name="year" id="year" value="${product.year}"></td>
+		<td><input type="number" name="price" min="0" value="${product.price}"></td>
+		<td>		<select id="year" name="year" class="year">
+		<c:forEach begin="1" end="2500"	varStatus="status">
+					<option value="${status.getEnd()+1 - status.count}">${status.getEnd()+1 - status.count}</option>
+		</c:forEach>
+		</select></td>
+			<td><input type="text" id="search" name="search" maxlength="4"></td>
+				<td><input type="button" onclick="findYear()" value="검색"></td>
 	</tr>
 	<tr>
 		<td>궁합 좋은 음식</td>
@@ -265,7 +284,7 @@ function findNation() {
 	</tr>
 	
 </table>
-<input type="button" onclick="insertWine()" value="와인 등록">
+<input type="button" onclick="updateWine()" value="와인 수정">
 </form>
 </body>
 </html>

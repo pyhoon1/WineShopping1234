@@ -58,7 +58,7 @@ public interface AdminDao {
 	public MatchFood readMatchFood(int matchFoodId);
 	
 	// 상품 하나를 수정함
-	public void updateProduct(Product product);
+	public int updateProduct(Product product);
 			
 	// 상품을 삭제함
 	public void deleteProduct(int productId);		

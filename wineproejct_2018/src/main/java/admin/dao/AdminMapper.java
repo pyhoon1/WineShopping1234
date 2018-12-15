@@ -23,7 +23,7 @@ public interface AdminMapper {
 	List<Product> getProductList();
 	List<Product> getSearchProductList(String condition);
 	void insertProduct(Product product);
-	void updateProduct(Product product);
+	int updateProduct(Product product);
 	void deleteProduct(int productId);
 	Product getProductView(int productId);
 	List<MatchFood> getMatchFoodList(); 

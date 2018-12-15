@@ -17,12 +17,12 @@ public class ReviewServiceImplJDBC implements ReviewService {
 	private int blockSize = 5;
 
 	public void reviewWrite(Review review) {
-		// TODO Auto-generated method stub
+		reviewDao.reviewWrite(review);
 
 	}
 
 	public void reviewDelete(int userId, int reviewId) {
-		// TODO Auto-generated method stub
+		reviewDao.reviewDelete(userId, reviewId);
 
 	}
 
