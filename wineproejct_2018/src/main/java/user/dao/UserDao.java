@@ -4,7 +4,7 @@ import user.vo.User;
 
 public interface UserDao {
 	// 유저를 DB에 추가하는 메소드
- 
+
 	// 유저정보를 가져오는 메소드
 	public User selectByUserId(int userId);
 
@@ -15,7 +15,7 @@ public interface UserDao {
 	public User userLoginIdFind(User User);
 
 	public User userPasswordFind(User user);
- 
+
 	public User loginUser(User user);
 
 	public void insertUser(User user);
@@ -35,7 +35,5 @@ public interface UserDao {
 	// 이메일로 아이디를 찾음
 
 	public void userStateUpdate(String email);
-
-	public void createAuthKey(User user, String emailAuthCode);
 
 }

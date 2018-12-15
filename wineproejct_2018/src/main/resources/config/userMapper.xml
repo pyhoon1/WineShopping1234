@@ -55,11 +55,7 @@
 		update User set
 		totalAmount = #{totalAmount} where userId = #{userId}
 	</update>
-	<update id="createAuthKey" parameterType="User">
-		update User set
-		emailAuthCode = #{emailAuthCode} where email =
-		#{email}
-	</update>
+
 	<update id="userStateUpdate" parameterType="String">
 		update User set
 		userState = true where email = #{email}
