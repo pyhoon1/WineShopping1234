@@ -1,7 +1,9 @@
 
 package product.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,22 +38,26 @@ public class ProductServiceImplJDBC implements ProductService {
 
 	public List<Product> searchNation(String nation) {
 		// TODO Auto-generated method stub
-		return null;
+		List<Product> productList = productDao.searchNation(nation);
+		return productList;
 	}
 
 	public List<Product> searchWineKinds(String wine) {
 		// TODO Auto-generated method stub
-		return null;
-	} 
+		List<Product> productList = productDao.searchWineKinds(wine);
+		return productList;
+	}
 
 	public List<Product> searchMoney(int min, int max) {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<Product> productList = productDao.searchMoney(min, max);
+		return productList;
 	}
 
 	public List<Product> searchProduct(String product) {
 		// TODO Auto-generated method stub
-		return null;
+		List<Product> productList = productDao.searchProduct(product);
+		return productList;
 	}
 
 }

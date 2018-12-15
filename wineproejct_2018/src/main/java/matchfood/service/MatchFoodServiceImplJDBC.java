@@ -17,21 +17,38 @@ public class MatchFoodServiceImplJDBC implements MatchFoodService {
 	@Autowired
 	private MatchFoodDao matchFoodDao;
 
-	
-	
 	public MatchFood getMatchFood(String matchFoodId) {
 		// TODO Auto-generated method stub
 		return matchFoodDao.getMatchFood(matchFoodId);
 	}
- 
-	
-	
+
 	public MatchFoodPage getMatchFoodList(int pageNum) {
 		List<MatchFood> matchFoodList = matchFoodDao.getMatchFoodList((pageNum - 1) * size, size);
 
 		int count = matchFoodDao.getMatchFoodCount();
 		MatchFoodPage matchFoodPage = new MatchFoodPage(matchFoodList, pageNum, count, size, blockSize);
 		return matchFoodPage;
+	}
+
+	public List<MatchFood> searchNation(String nation) {
+		List<MatchFood> matchFoodList = matchFoodDao.searchNation(nation);
+		return matchFoodList;
+	}
+
+	public List<MatchFood> searchWineKinds(String wine) {
+		List<MatchFood> matchFoodList = matchFoodDao.searchWineKinds(wine);
+		return matchFoodList;
+	}
+
+	public List<MatchFood> searchMoney(int min, int max) {
+		List<MatchFood> matchFoodList = matchFoodDao.searchMoney(min, max);
+		return matchFoodList;
+	}
+
+	public List<MatchFood> searchProduct(String product) {
+		// TODO Auto-generated method stub
+		List<MatchFood> matchFoodList = matchFoodDao.searchProduct(product);
+		return matchFoodList;
 	}
 
 }
