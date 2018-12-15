@@ -140,6 +140,17 @@ $(function() {
                         <textarea rows="4" cols="60" placeholder="50자 이하의 리뷰를 남겨주세요!" id="review-input"></textarea>
                         <button type="submit" id="review-submit">작성</button>
                     </div>
+                    <div class="review-list">
+                        <div class="review-header">
+                            <span><strong>이름</strong></span>
+                            <a href="#"><i class="fas fa-trash-alt"></i></i></a>
+                            <a href="#"><i class="fas fa-edit"></i></a>
+                        </div>
+                        <textarea cols="55" rows="3" id="review-content" readonly></textarea>
+                        <span class="write-date">
+                            2018/02/23
+                        </span>
+                    </div>
                     <div class="paging">
                             <i class="fas fa-caret-left"></i>
                             <span>

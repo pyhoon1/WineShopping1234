@@ -84,7 +84,7 @@ public class UserController {
 			return "user/signUp";
 		}
 		userService.inserUser(new User(loginId, password, userName, email, address, phone, birth));
-		return "user/test";
+		return "user/checkMail";
 	}
 
 	@RequestMapping(value = "/updateForm.do", method = RequestMethod.POST)
