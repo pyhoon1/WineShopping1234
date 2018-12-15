@@ -65,7 +65,7 @@ $(function() {
 </head>
 <body>
 	<div class="main">
-	<jsp:include page="../header/header.jsp" />
+	<jsp:include page="../../header/header.jsp" />
 	
 	<div class="content">
             <div class="wrapper">
@@ -165,7 +165,7 @@ $(function() {
                 </div>
             </div>
         </div>
-        <jsp:include page="../footer/footer.jsp" />
+        <jsp:include page="../../footer/footer.jsp" />
     </div>
 </body>
 </html>

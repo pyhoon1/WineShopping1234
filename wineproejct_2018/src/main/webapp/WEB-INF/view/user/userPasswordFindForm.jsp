@@ -5,31 +5,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="https://fonts.googleapis.com/css?family=Cardo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/findPassword.css">
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="userPasswordFind.do" method="post">
-		<table>
-			<tr>
-				<td>아이디</td>
-				<td><input type="text" name="loginId" value="${param.loginId }"></td>
-			</tr>
-			<tr>
-				<td>이름</td>
-				<td><input type="text" name="userName"
-					value="${param.userName }"></td>
-			</tr>
-			<tr>
-				<td>이메일</td>
-				<td><input type="text" name="email" value="${param.email }"></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="비밀번호찾기"></td>
-			</tr>
-		</table>
-		<c:if test="${errors.noUserInformation }">없는 정보</c:if>
-		<c:if test="${errors.noEmail }">없는 이메일</c:if>
-
+	<form action="userPasswordFind.do" method="post" autocomplete=off>
+		<div class="wrapper">
+			<table>
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" name="loginId"
+						value="${param.loginId }"></td>
+				</tr>
+				<tr>
+					<td>이름</td>
+					<td><input type="text" name="userName"
+						value="${param.userName }"></td>
+				</tr>
+				<tr>
+					<td>이메일</td>
+					<td><input type="text" name="email" value="${param.email }"></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="비밀번호찾기" id="submit"></td>
+				</tr>
+			</table>
+		</div>
 	</form>
 </body>
 </html>

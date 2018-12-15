@@ -30,9 +30,9 @@
 	<select id="searchWineKinds" parameterType="String">
 		select * from product where wineKinds = #{wine}
 	</select>
-	<select id="searchMoney" parameterType="java.util.Map">
-		select * from product where price >= #{min} AND price <= #{max}
-	</select>
+	<!-- <select id="searchMoney" parameterType="java.util.Map">
+		select * from product where price >= #{min} AND price = #{max}
+	</select> -->
 	<select id="searchProduct" parameterType="String"></select>
 
 </mapper>

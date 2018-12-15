@@ -22,9 +22,9 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/loginForm.do")
-	public String loginForm() {
-		return "user/loginForm";
+	@RequestMapping("/loginErrorPage.do")
+	public String loginErroPage() {
+		return "redirect:/main.do";
 	} 
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
@@ -36,19 +36,20 @@ public class UserController {
 		User user = userService.selectByLoginId(loginId);
 		if (user == null) {
 			errors.put("noLoginId", true);
-			return "redirect:/main.do";
+			return "error/loginErrorPage";
 		}
 		User user1 = userService.loginUser(new User(loginId, password));
 		if (user1 == null) {
 			errors.put("wrongPassword", true);
-			return "redirect:/main.do";
+			return "error/loginErrorPage";
 		}
 		if (user.getUserState() == false) {
 			errors.put("noConfirm", true);
-			return "redirect:/main.do";
+			return "error/loginErrorPage";
 		}
 		if (!errors.isEmpty()) {
-			return "redirect:/main.do";
+			errors.put("badError", true);
+			return "error/loginErrorPage";
 		}
 		req.getSession().setAttribute("user", user);
 		return "redirect:/main.do";
@@ -60,28 +61,32 @@ public class UserController {
 	}
 
 
-
+	@RequestMapping("/signUpErrorPage.do")
+	public String signErrorPage() {
+		return "user/signUpForm";
+	}
+	
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
 	public String insertUser(Model model, @RequestParam("loginId") String loginId,
 			@RequestParam("password") String password, @RequestParam("userName") String userName,
 			@RequestParam("email") String email, @RequestParam("address") String address,
 			@RequestParam("phone") String phone, @RequestParam("birth") String birth) throws Exception {
-		System.out.println("signUp");
+		
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 		model.addAttribute("errors", errors);
-		User user = userService.selectByLoginId(loginId);
-		if (user != null) {
+		User userId = userService.selectByLoginId(loginId);
+		if (userId != null) {
 			errors.put("duplicateLoginId", true);
-			return "user/signUp";
+			return "error/signUpErrorPage";
 		}
-		user = userService.selectByEmail(email);
-		if (user != null) {
+		User userEmail = userService.selectByEmail(email);
+		if (userEmail != null) {
 			errors.put("duplicateEmail", true);
-
-			return "user/signUp";
+			return "error/signUpErrorPage";
 		}
 		if (!errors.isEmpty()) {
-			return "user/signUp";
+			errors.put("badError", true);
+			return "error/signUpErrorPage";
 		}
 		userService.inserUser(new User(loginId, password, userName, email, address, phone, birth));
 		return "user/checkMail";
@@ -126,7 +131,12 @@ public class UserController {
 
 	@RequestMapping("/userLoginIdFindForm.do")
 	public String userLoginIdFindForm() {
-		return "userLoginIdFindForm";
+		return "user/userLoginIdFindForm";
+	}
+	
+	@RequestMapping("/userLoginIdFindErrorPage.do")
+	public void userLoginIdFindErrorPage() {
+		
 	}
 
 	@RequestMapping("/userLoginIdFind.do")
@@ -141,14 +151,15 @@ public class UserController {
 		model.addAttribute("errors", errors);
 		if (user1 == null) {
 			errors.put("noUserInformation", true);
-			return "userLoginIdFindForm";
+			return "error/userLoginIdFindErrorPage";
 		}
 		if (user2 == null) {
 			errors.put("noEmail", true);
-			return "userLoginIdFindForm";
+			return "error/userLoginIdFindErrorPage";
 		}
 		if (!errors.isEmpty()) {
-			return "userLoginIdFindForm";
+			errors.put("badError", true);
+			return "error/userLoginIdFindErrorPage";
 		}
 		userService.sendLoginId(user1);
 		return "loginForm";
@@ -157,9 +168,11 @@ public class UserController {
 
 	@RequestMapping("/userPasswordFindForm.do")
 	public String userPasswordFindForm() {
-
-		return "userPasswordFindForm";
+		return "user/userPasswordFindForm";
 	}
+	
+	@RequestMapping("/userPasswordFindErrorPage.do")
+	public void userPasswordFindErrorPage() {}
 
 	@RequestMapping("userPasswordFind.do")
 	public String userPasswordFind(Model model, @RequestParam("loginId") String loginId,
@@ -170,16 +183,17 @@ public class UserController {
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 		model.addAttribute("errors", errors);
 
-		if (user1 == null) {
-			errors.put("noEmail", true);
-			return "userPasswordFindForm";
-		}
 		if (user == null) {
 			errors.put("noUserInformation", true);
-			return "userPasswordFindForm";
+			return "error/userPasswordFindErrorPage";
+		}
+		if (user1 == null) {
+			errors.put("noEmail", true);
+			return "error/userPasswordFindErrorPage";
 		}
 		if (!errors.isEmpty()) {
-			return "userPasswordFindForm";
+			errors.put("badError", true);
+			return "error/userPasswordFindErrorPage";
 		}
 		userService.sendPassword(user);
 		return "loginForm";

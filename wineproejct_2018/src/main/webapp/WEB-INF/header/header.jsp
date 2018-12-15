@@ -91,11 +91,15 @@
                     </a>
                         <span class="login-box">
                             <h3>로그인</h3>
-                            <form action="login.do" method="post">
+                            <form action="login.do" method="post" autocomplete=off>
                                 <div class="input-box"><input type="text" name="loginId"></div>
                                 <div class="input-box"><input type="password" name="password"></div>
                                 <input class="submit" type="submit" value="Login">
                             </form>
+                                <div class="findBox">
+                                    <button id="findId">아이디찾기</button>
+                                    <button id="findPassword">비밀번호찾기</button>
+                                </div>
                         </span>
                     </li>
                     <li><a href="signUpForm.do" class="border-right">Sign up</a> </li>

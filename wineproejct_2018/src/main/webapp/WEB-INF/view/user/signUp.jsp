@@ -15,7 +15,7 @@
  <div class="wrapper">
         <div class="main">
             <h1>회원가입</h1>
-            <form id="myForm" action="signUp.do" method="post">
+            <form id="myForm" action="signUp.do" method="post"  autocomplete=off>
                 <table>
                     <tr>
                         <td class="title">이름</td>
@@ -35,7 +35,6 @@
                     <tr>
                         <td class="title">비밀번호 확인</td>
                         <td class="input"><input type="password" name="passwordConfirm" placeholder="비밀번호 확인"></td>
-
                     </tr>
                     <tr>
                         <td class="title">이메일</td>
@@ -61,7 +60,7 @@
                 </table>
                 <div class="submit-box">
                     <input type="submit" value="회원가입" id="submit">
-                    <button type="button" id="back">가입 취소</button>
+                    <button type="button" id="back">홈으로</button>
                 </div>
             </form>
         </div>

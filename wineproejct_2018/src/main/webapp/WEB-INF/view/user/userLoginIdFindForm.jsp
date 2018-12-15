@@ -5,28 +5,29 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="https://fonts.googleapis.com/css?family=Cardo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/findId.css">
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="userLoginIdFind.do" method="post">
-		<table>
-			<tr>
-				<td>이름</td>
-				<td><input type="text" name="userName"
-					value="${param.userName}"></td>
-			</tr>
-			<tr>
-				<td>이메일</td>
-				<td><input type="text" name="email" value="${param.email }"></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="아이디찾기"></td>
-
-			</tr>
-		</table>
-		<c:if test="${errors.noUserInformation }">이런 유저 정보가 없다</c:if>
-		<c:if test="${errors.noEmail }">이런 이메일이 없다</c:if>
-
-	</form>
+	<form action="userLoginIdFind.do" method="post" autocomplete=off>
+        <div class="wrapper">
+            <table>
+                <tr>
+                    <td>이름</td>
+                    <td><input type="text" name="userName" value="${param.userName}"></td>
+                </tr>
+                <tr>
+                    <td>이메일</td>
+                    <td><input type="text" name="email" value="${param.email }"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="아이디찾기" id="submit"></td>
+                </tr>
+            </table>
+        </div>
+    </form>
 </body>
 </html>
