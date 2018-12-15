@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import product.vo.Product;
+import product.vo.ProductSearch;
 
 @Repository("productDao")
 public class ProductDaoImplJDBC implements ProductDao {
@@ -37,31 +38,11 @@ public class ProductDaoImplJDBC implements ProductDao {
 		return productList;
 	}
 
-	public List<Product> searchNation(String nation) {
-		// TODO Auto-generated method stub
-		List<Product> productList = productMapper.searchNation(nation);
-		return productList;
+	public List<Product> searchWine(ProductSearch search) {
+		List<Product> product = productMapper.searchWine(search);
+		return product;
 	}
 
-	public List<Product> searchWineKinds(String wine) {
-		// TODO Auto-generated method stub
-		List<Product> productList = productMapper.searchWineKinds(wine);
-		return productList;
-	}
 
-	public List<Product> searchMoney(int min, int max) {
-		// TODO Auto-generated method stub
-		Map<String, Integer> price = new HashMap<String, Integer>();
-		price.put("min", min);
-		price.put("max", max);
-		List<Product> productList = productMapper.searchMoney(price);
-		return productList;
-	}
-
-	public List<Product> searchProduct(String product) {
-		// TODO Auto-generated method stub
-		List<Product> productList = productMapper.searchProduct(product);
-		return productList;
-	}
 
 }

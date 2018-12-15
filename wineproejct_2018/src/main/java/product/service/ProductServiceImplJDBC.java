@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import product.dao.ProductDao;
 import product.vo.Product;
 import product.vo.ProductPage;
+import product.vo.ProductSearch;
 
 @Service("productService")
 public class ProductServiceImplJDBC implements ProductService {
@@ -36,27 +37,9 @@ public class ProductServiceImplJDBC implements ProductService {
 		return productList;
 	}
 
-	public List<Product> searchNation(String nation) {
+	public List<Product> searchWine(ProductSearch search) {
 		// TODO Auto-generated method stub
-		List<Product> productList = productDao.searchNation(nation);
-		return productList;
-	}
-
-	public List<Product> searchWineKinds(String wine) {
-		// TODO Auto-generated method stub
-		List<Product> productList = productDao.searchWineKinds(wine);
-		return productList;
-	}
-
-	public List<Product> searchMoney(int min, int max) {
-
-		List<Product> productList = productDao.searchMoney(min, max);
-		return productList;
-	}
-
-	public List<Product> searchProduct(String product) {
-		// TODO Auto-generated method stub
-		List<Product> productList = productDao.searchProduct(product);
+		List<Product> productList = productDao.searchWine(search);
 		return productList;
 	}
 

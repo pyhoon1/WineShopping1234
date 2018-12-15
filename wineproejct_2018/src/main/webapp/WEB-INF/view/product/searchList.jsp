@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body ondragstart="return false">
+<input type="hidden" name="condition" value="${search.condition}">
+<input type="hidden" name="conditionType" value="${search.conditionType}">
+<input type="hidden" name="condition" value="${search.condition}">
+<input type="hidden" name="condition" value="${search.condition}">
+<input type="hidden" name="condition" value="${search.condition}">
     <div class="main">
         <div class="header">
             <div class="logo">
@@ -119,381 +125,23 @@
                 </div>
                 <div class="search-List">
                     <ul>
-                        <li>
+                    	<c:forEach items="${productList}" var="product">
+                        <li>                   
                             <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
+                                <a href="#"><img src="${product.img}"></a>
                             </div>
                             <div class="search-info">
                                 <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
+                                    <span><a href="#">${product.productName}</a></span>
+                                    <span><a href="#">${product.price}</a></span>
                                 </div>
                                 <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
+                                    <span><a href="#">${product.nation }</a></span>
+                                    <span><a href="#">${product.wineKinds }</a></span>
                                 </div>
                             </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                               <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="search-img">
-                                <a href="#"><img src="wine2.jpg"></a>
-                            </div>
-                            <div class="search-info">
-                                <div class="left">
-                                    <span><a href="#">이름</a></span>
-                                    <span><a href="#">가격</a></span>
-                                </div>
-                                <div class="right">
-                                    <span><a href="#">나라</a></span>
-                                    <span><a href="#">와인 종류</a></span>
-                                </div>
-                            </div>
-                        </li>
+                        </li>  
+                                                    </c:forEach>          
                 </div>
                 <div class="paging">
                     <i class="fas fa-caret-left"></i>

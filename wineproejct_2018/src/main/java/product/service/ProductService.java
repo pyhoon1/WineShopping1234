@@ -4,6 +4,7 @@ import java.util.List;
 
 import product.vo.Product;
 import product.vo.ProductPage;
+import product.vo.ProductSearch;
 
 public interface ProductService {
 
@@ -13,12 +14,7 @@ public interface ProductService {
 
 	public List<Product> manySaleProduct();
 
-	public List<Product> searchNation(String nation);
+	public List<Product> searchWine(ProductSearch search);
 
-	public List<Product> searchWineKinds(String wine);
-
-	public List<Product> searchMoney(int min, int max);
-
-	public List<Product> searchProduct(String product);
 
 } 

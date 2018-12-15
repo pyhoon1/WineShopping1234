@@ -1,6 +1,7 @@
 package product.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import matchfood.vo.MatchFood;
 import product.service.ProductService;
 import product.vo.Product;
 import product.vo.ProductPage;
+import product.vo.ProductSearch;
 import review.service.ReviewService;
 import review.vo.ReviewtPage;
 
@@ -63,5 +65,24 @@ public class ProductController {
 		model.addAttribute("products", products);
 
 		return "main";
+	}
+	
+	@RequestMapping("/searchList.do")
+	public String searchList(Model model, 
+			@RequestParam(value="condition" , required=false) String condition ,
+			@RequestParam(value="conditionType" , required=false) String conditionType ,
+			@RequestParam(value="startPrice" , required=false) String startPrice ,
+			@RequestParam(value="endPrice" , required=false) String endPrice, 
+			@RequestParam(value="arrangement", required=false) String arrangement) {
+		
+		List<Product> productlist = productService.searchWine(new ProductSearch(condition,conditionType,startPrice, endPrice,arrangement));
+
+		
+		ProductSearch search = new ProductSearch(condition, conditionType, startPrice, endPrice,arrangement);
+		
+		model.addAttribute("productList", productlist);
+		model.addAttribute("search", search);
+		
+		return "/product/searchList";
 	}
 }

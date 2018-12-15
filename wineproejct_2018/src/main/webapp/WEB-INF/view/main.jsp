@@ -25,22 +25,22 @@
 		<div class="content">
 			<table class="content-category">
 				<tr class="nation">
-					<td id="italy"><a href>이탈리아</a></td>
-					<td id="germany"><a href>독일</a></td>
-					<td id="france"><a href>프랑스</a></td>
-					<td id="chile"><a href>스페인</a></td>
+					<td id="italy"><a href="searchList.do?condition=이탈리아&conditionType=nation">이탈리아</a></td>
+					<td id="germany"><a href="searchList.do?condition=독일&conditionType=nation">독일</a></td>
+					<td id="france"><a href="searchList.do?condition=프랑스&conditionType=nation">프랑스</a></td>
+					<td id="chile"><a href="searchList.do?condition=스페인&conditionType=nation">스페인</a></td>
 				</tr>
 				<tr class="wineType">
-					<td id="white"><a href>화이트 와인</a></td>
-					<td id="red"><a href>레드 와인</a></td>
-					<td id="rose"><a href>로제 와인</a></td>
-					<td id="sparkle"><a href>스파클링 와인</a></td>
+					<td id="white"><a href="searchList.do?condition=화이트&conditionType=wineKinds">화이트 와인</a></td>
+					<td id="red"><a href="searchList.do?condition=레드&conditionType=wineKinds">레드 와인</a></td>
+					<td id="rose"><a href="searchList.do?condition=로제&conditionType=wineKinds">로제 와인</a></td>
+					<td id="sparkle"><a href="searchList.do?condition=스파클링&conditionType=wineKinds">스파클링 와인</a></td>
 				</tr>
 				<tr class="price">
-					<td id="price1"><a href>1만 ~ 3만</a></td>
-					<td id="price2"><a href>3만 ~ 5만</a></td>
-					<td id="price3"><a href>5만 ~ 10만</a></td>
-					<td id="price4"><a href>10만 ~ 20만</a></td>
+					<td id="price1"><a href="searchList.do?&conditionType=price&startPrice=0&endPrice=50000">~ 5만</a></td>
+					<td id="price2"><a href="searchList.do?&conditionType=price&startPrice=50000&endPrice=200000">5만 ~ 20만</a></td>
+					<td id="price3"><a href="searchList.do?&conditionType=price&startPrice=200000&endPrice=500000">20만 ~ 50만</a></td>
+					<td id="price4"><a href="searchList.do?&conditionType=price&startPrice=500000&endPrice=99999999999999999999">50만 ~</a></td>
 				</tr>
 			</table>
 

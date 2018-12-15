@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import product.vo.Product;
+import product.vo.ProductSearch;
 
 @ProductAnnotMapper
 public interface ProductMapper {
@@ -16,11 +17,7 @@ public interface ProductMapper {
 
 	public List<Product> manySaleProduct();
 
-	public List<Product> searchNation(String nation);
+	public List<Product> searchWine(ProductSearch search);
 
-	public List<Product> searchWineKinds(String wine);
 
-	public List<Product> searchMoney(Map<String, Integer> price);
-
-	public List<Product> searchProduct(String product);
 }

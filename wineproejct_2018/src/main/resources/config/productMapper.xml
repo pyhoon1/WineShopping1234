@@ -24,15 +24,23 @@
 		select * from product
 		order by count desc limit 0, 5
 	</select>
-	<select id="searchNation" parameterType="String">
-		select * from product where nation = #{nation}
+	<select id="searchWine" parameterType="Search" resultType="Product">
+			select * from product 
+				<if test="condition != null and conditionType == 'nation' and startPrice == null and endPrice == null">
+				where nation LIKE CONCAT('%',#{condition},'%')
+				</if>
+				<if test="condition != null and conditionType == 'wineKinds' and startPrice == null and endPrice == null">
+				where wineKinds LIKE CONCAT('%',#{condition},'%')
+				</if>
+				<if test="condition == null and conditionType == 'price' and startPrice != null and endPrice != null">
+				where price between #{startPrice} and #{endPrice}
+				</if>
+				<if test="condition != null and conditionType == 'search' and startPrice == null and endPrice == null">
+				where wineKinds LIKE CONCAT('%',#{condition},'%') or producer LIKE CONCAT('%',#{condition},'%') or variety LIKE CONCAT('%',#{condition},'%')
+				or wineKinds LIKE CONCAT('%',#{condition},'%') or  productName LIKE CONCAT('%',#{condition},'%') or wineEx LIKE CONCAT('%',#{condition},'%')
+				or brandEx LIKE CONCAT('%',#{condition},'%') or nation LIKE CONCAT('%',#{condition},'%') or year LIKE CONCAT('%',#{condition},'%') or 
+				alcohol LIKE CONCAT('%',#{condition},'%') or weight LIKE CONCAT('%',#{condition},'%') or temperature LIKE CONCAT('%',#{condition},'%')
+				</if>
 	</select>
-	<select id="searchWineKinds" parameterType="String">
-		select * from product where wineKinds = #{wine}
-	</select>
-	<!-- <select id="searchMoney" parameterType="java.util.Map">
-		select * from product where price >= #{min} AND price = #{max}
-	</select> -->
-	<select id="searchProduct" parameterType="String"></select>
 
 </mapper>
