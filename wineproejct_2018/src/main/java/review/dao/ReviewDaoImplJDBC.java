@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import review.vo.Review;
+import review.vo.ReviewtPage;
 
 @Repository("reviewDao")
 public class ReviewDaoImplJDBC implements ReviewDao {
@@ -28,9 +29,9 @@ public class ReviewDaoImplJDBC implements ReviewDao {
 
 	}
 
-	public List<Review> reviewList(int userId, int startRow, int size) {
+	public List<Review> reviewList(int productId, int startRow, int size) {
 		Map<String, Integer> reviewPage = new HashMap<String, Integer>();
-		reviewPage.put("userId", userId);
+		reviewPage.put("productId", productId);
 		reviewPage.put("startRow", startRow);
 		reviewPage.put("size", size);
 		List<Review> reviewList = reviewMapper.reviewList(reviewPage);
@@ -38,8 +39,28 @@ public class ReviewDaoImplJDBC implements ReviewDao {
 	}
 
 	public int reviewSize(int userId) {
-		int count = reviewMapper.reviewSize(userId);
+		int count = reviewMapper.userReviewSize(userId);
 		return count;
+	}
+
+	public List<Review> userReviewList(int userId, int startRow, int size) {
+		Map<String, Integer> reviewPage = new HashMap<String, Integer>();
+		reviewPage.put("userId", userId);
+		reviewPage.put("startRow", startRow);
+		reviewPage.put("size", size);
+		List<Review> reviewList = reviewMapper.userReviewList(reviewPage);
+		return reviewList;
+	}
+
+	public int userReviewSize(int userId) {
+		int count = reviewMapper.userReviewSize(userId);
+		return count;
+	}
+
+	public int productReviewSize(int productId) {
+		int count = reviewMapper.productReviewSize(productId);
+		return count;
+
 	}
 
 }

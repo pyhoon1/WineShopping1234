@@ -15,6 +15,8 @@ import matchfood.vo.MatchFood;
 import product.service.ProductService;
 import product.vo.Product;
 import product.vo.ProductPage;
+import review.service.ReviewService;
+import review.vo.ReviewtPage;
 
 @Controller
 public class ProductController {
@@ -23,6 +25,8 @@ public class ProductController {
 
 	@Autowired
 	private MatchFoodService matchFoodservice;
+	@Autowired
+	private ReviewService reviewService;
 
 	@RequestMapping(value = "/productList.do", method = RequestMethod.GET)
 	public String getProductList(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
@@ -32,8 +36,10 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/productView.do", method = RequestMethod.GET)
-	public String getProduct(Model model, @RequestParam("productId") int productId) {
+	public String getProduct(Model model, @RequestParam("productId") int productId,
+			@RequestParam("pageNum") int pageNum) {
 		Product product = productService.getProduct(productId);
+		ReviewtPage reviewtPage = reviewService.reviewList(productId, pageNum);
 		String[] matchFoodId = product.getMatchFoodId().split(",");
 		for (String string : matchFoodId) {
 			System.out.println(string);
@@ -43,8 +49,10 @@ public class ProductController {
 			for (int i = 0; i < matchFoodId.length; i++) {
 				matchFoodList.add(matchFoodservice.getMatchFood(matchFoodId[i]));
 			}
+
 			model.addAttribute("matchFoodList", matchFoodList);
 		}
+		model.addAttribute("reviewPage", reviewtPage);
 		model.addAttribute("product", product);
 		return "productDetail";
 	}
