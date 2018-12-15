@@ -65,7 +65,7 @@
 			<td>총 구입액</td>
 			<td>가입일</td>
 		</tr>
-		<c:forEach items="${userList}" var="user">
+		<c:forEach items="${userList.userList}" var="user">
 			<tr>
 			<td><a href="adminUserView.do?userId=${user.userId}">${user.loginId}</a></td>
 			<td>${user.password}</td>
@@ -82,7 +82,29 @@
 			</c:if>
 			</tr>
 		</c:forEach>
+	<c:if test="${userList.hasProduct()}">
+		<div>
+			<a href="adminUserList.do?pageNum=1" class="pageNum">처음</a>
 
+			<c:if test="${userList.startPage > 5 }">
+				<a href="adminUserList.do?pageNum=${userList.startPage - 5  }"
+					class="pageNum">이전</a>
+			</c:if>
+
+			<c:forEach var="pageNum" begin="${userList.startPage}"
+				end="${userList.endPage }">
+				<a href="adminUserList.do?pageNum=${pageNum}" class="pageNum">${pageNum}</a>
+			</c:forEach>
+
+			<c:if test="${userList.endPage < userList.totalPages }">
+				<a href="adminUserList.do?pageNum=${userList.startPage + 5 }"
+					class="pageNum">다음</a>
+			</c:if>
+
+			<a href="adminUserList.do?pageNum=${userList.totalPages }"
+				class="pageNum">마지막</a>
+		</div>
+	</c:if>
 
 	</table>
 

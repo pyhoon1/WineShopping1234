@@ -9,11 +9,11 @@
 		select * from review where userId = #{userId} order by reviewId desc
 		limit #{startRow}, #{size}
 	</select>
-	<select id="userReviewSize" parameterType="int">
+	<select id="userReviewSize" parameterType="int" resultType="int">
 		select count(*) from
 		review where userId = #{userId}
 	</select>
-	<select id="productReviewSize" parameterType="int">
+	<select id="productReviewSize" parameterType="int" resultType="int">
 		select count(*) from
 		review where productId = #{productId}
 	</select>
@@ -24,11 +24,11 @@
 		userId = #{userId}
 	</delete>
 
-	<insert id="reviewWrite" parameterType="Review">
+	<insert id="reviewWrite" parameterType="Review" >
 		insert into
 		review(productId, userId, loginId,
 		productName, content)
-		values(#{productId},#{userId},#{zloginId},#{productName},#{content})
+		values(#{productId},#{userId},#{loginId},#{productName},#{content})
 	</insert>
 	<select id="reviewList" parameterType="int" resultType="Review">
 		select * from review where productId = #{productId} order by reviewId

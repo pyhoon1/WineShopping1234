@@ -66,7 +66,7 @@ function deleteReview(reviewId,userId){
 	<td>차단 여부</td>
 </tr>
 <c:set value="Y" var="state"/>
-<c:forEach items="${reviewList}" var="review">
+<c:forEach items="${reviewList.reviewList}" var="review">
 	<tr>
 		<td>${review.productName}</td>
 		<td>${review.content }</td>

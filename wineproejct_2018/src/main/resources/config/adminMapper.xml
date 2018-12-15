@@ -4,22 +4,30 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="admin.dao.AdminMapper">
 	<!-- 유저 -->
-	<select id="getUserList" resultType="User">
-		select * from User order by rating desc
+	<select id="getUserList" resultType="User" parameterType="java.util.Map">
+		select
+		* from User order by
+		rating desc limit #{startRow}, #{size}
 	</select>
 	<delete id="deleteUser" parameterType="int">
 		delete from user where
 		userId=#{userId}
 	</delete>
-	<select id="getSearchUserList" resultType="User" parameterType="String">
-		select * from user where loginId LIKE CONCAT('%',#{condition},'%') or userName LIKE  CONCAT('%',#{condition},'%') or address LIKE CONCAT('%',#{condition},'%') or email LIKE  CONCAT('%',#{condition},'%')
+	<select id="getSearchUserList" resultType="User" parameterType="java.util.Map">
+		select * from user where loginId LIKE CONCAT('%',#{condition},'%') or
+		userName LIKE CONCAT('%',#{condition},'%') or address LIKE
+		CONCAT('%',#{condition},'%') or email LIKE
+		CONCAT('%',#{condition},'%') limit #{startRow}, #{size}
 	</select>
 	<update id="updateUser" parameterType="User">
-		update user set loginId=#{loginId} , password=#{password}, userName=#{userName}, email=#{email}, address=#{address}, phone=#{phone}, birth=#{birth} where
+		update user set
+		loginId=#{loginId} , password=#{password}, userName=#{userName},
+		email=#{email}, address=#{address}, phone=#{phone}, birth=#{birth}
+		where
 		userId=#{userId}
 	</update>
 	<select id="getUserView" resultType="User" parameterType="int">
-		select 
+		select
 		* from User where userId = #{userId}
 	</select>
 	<select id="hasUserId" resultType="int" parameterType="String">
@@ -32,19 +40,26 @@
 		count(*) from matchFood where matchFoodName=#{matchFoodName}
 	</select>
 	<select id="hasWine" resultType="int" parameterType="String">
-		select count(*) from product where productName=#{productName}
+		select
+		count(*) from product where productName=#{productName}
 	</select>
-	<select id="getProductList" resultType="Product">
-		select * from product order by productId desc
+	<select id="getProductList" resultType="Product" parameterType="java.util.Map">
+		select * from product
+		order by productId desc limit #{startRow}, #{size}
 	</select>
-	<select id="getMatchFoodList" resultType="MatchFood">
-		select * from matchFood order by matchFoodId desc
+	<select id="getMatchFoodList" resultType="MatchFood"
+		parameterType="java.util.Map">
+		select * from matchFood
+		order by matchFoodId desc limit #{startRow}, #{size}
 	</select>
-	<select id="getMatchFoodView" resultType="MatchFood" parameterType="int">
-		select * from matchFood where matchFoodId = #{matchFoodId}
+	<select id="getMatchFoodView" resultType="MatchFood"
+		parameterType="int">
+		select * from matchFood where matchFoodId =
+		#{matchFoodId}
 	</select>
 	<delete id="deleteMatchFood" parameterType="int">
-		delete from matchFood where matchFoodId = #{matchFoodId}
+		delete from matchFood
+		where matchFoodId = #{matchFoodId}
 	</delete>
 	<insert id="insertProduct" parameterType="Product">
 		insert into
@@ -52,12 +67,14 @@
 		values(#{producer},#{variety},#{wineKinds},#{productName},#{wineEx},#{brandEx},#{price},#{nation},#{nationImg},#{year},#{matchFoodId},#{matchFoodName},#{alcohol},#{weight},#{temperature},#{img})
 	</insert>
 	<insert id="insertMatchFood" parameterType="MatchFood">
-		insert into matchFood(matchFoodName,price,nation,nationImg,img,wine,wineImg,weight,ex)
+		insert into
+		matchFood(matchFoodName,price,nation,nationImg,img,wine,wineImg,weight,ex)
 		values(#{matchFoodName},#{price},#{nation},#{nationImg},#{img},#{wine},#{wineImg},#{weight},#{ex})
 	</insert>
 	<update id="updateProduct" parameterType="Product">
 		update product set
-		producer=#{producer} , variety=#{variety},wineKinds=#{wineKinds},productName=#{productName},wineEx=#{wineEx},brandEx=#{brandEx},nation=#{nation}
+		producer=#{producer} ,
+		variety=#{variety},wineKinds=#{wineKinds},productName=#{productName},wineEx=#{wineEx},brandEx=#{brandEx},nation=#{nation}
 		,nationImg=#{nationImg},year=#{year},matchFoodId=#{matchFoodId},matchFoodName=#{matchFoodName},alcohol=#{alcohol},weight=#{weight},temperature=#{temperature},img=#{img}
 		where productId=#{productId}
 	</update>
@@ -68,13 +85,20 @@
 	<select id="getProductView" parameterType="int" resultType="Product">
 		select * from product where productId = #{productId}
 	</select>
-	<update id="updateMatchFood" parameterType="MatchFood" >
-		update matchFood set matchFoodName = #{matchFoodName} , price = #{price} , nation = #{nation},nationImg=#{nationImg}
-		,img = #{img} , wine = #{wine} , wineImg = #{wineImg} , weight = #{weight} , ex = #{ex} where matchFoodId = #{matchFoodId}
+	<update id="updateMatchFood" parameterType="MatchFood">
+		update
+		matchFood set
+		matchFoodName = #{matchFoodName} , price = #{price} ,
+		nation =
+		#{nation},nationImg=#{nationImg}
+		,img = #{img} , wine =
+		#{wine} ,
+		wineImg = #{wineImg} , weight = #{weight} , ex = #{ex} where
+		matchFoodId = #{matchFoodId}
 	</update>
 	<!-- 리뷰 -->
-	<select id="getReviewList" resultType="Review"> 
-		select * from review
+	<select id="getReviewList" resultType="Review" parameterType="java.util.Map">
+		select * from review limit #{startRow}, #{size}
 	</select>
 	<update id="updateReviewWarning" parameterType="Review">
 		update review set
@@ -84,23 +108,88 @@
 		delete from review where
 		reviewId = #{reviewId}
 	</delete>
-	<select id="getReviewUser" resultType="Review" parameterType="int">
+	<select id="getReviewUser" resultType="Review" parameterType="java.util.Map">
 		select * from review where userId=#{userId}
 	</select>
 	<!-- 결제 -->
-	<select id="getPaymentList" resultType="Payment">
-		select * from payment
+	<select id="getPaymentList" parameterType="java.util.Map"
+		resultType="Payment">
+		select * from payment order by paymentId desc limit
+		#{startRow}, #{size}
 	</select>
-	<select id="getPaymentUser" parameterType="int" resultType="Payment">
-		select * from payment where userId = #{userId}
+	<select id="getPaymentUser" parameterType="java.util.Map"
+		resultType="Payment">
+		select * from payment where userId = #{userId} limit #{startRow}, #{size}
 	</select>
-	<select id="getSearchProductList" parameterType="String" resultType="Product">
-		select * from product where producer LIKE CONCAT('%',#{condition},'%') or variety LIKE  CONCAT('%',#{condition},'%') or wineKinds LIKE CONCAT('%',#{condition},'%') or productName LIKE CONCAT('%',#{condition},'%')
-		or wineEx LIKE CONCAT('%',#{condition},'%') or brandEx LIKE CONCAT('%',#{condition},'%') or nation LIKE CONCAT('%',#{condition},'%') or year LIKE CONCAT('%',#{condition},'%') or alcohol LIKE CONCAT('%',#{condition},'%') or weight LIKE CONCAT('%',#{condition},'%')
-		or temperature LIKE CONCAT('%',#{condition},'%')
+	<select id="getSearchProductList" parameterType="java.util.Map"
+		resultType="Product">
+		select * from product where producer LIKE
+		CONCAT('%',#{condition},'%') or variety LIKE
+		CONCAT('%',#{condition},'%') or wineKinds LIKE
+		CONCAT('%',#{condition},'%') or productName LIKE
+		CONCAT('%',#{condition},'%')
+		or wineEx LIKE
+		CONCAT('%',#{condition},'%') or brandEx LIKE
+		CONCAT('%',#{condition},'%') or nation LIKE
+		CONCAT('%',#{condition},'%') or year LIKE CONCAT('%',#{condition},'%')
+		or alcohol LIKE CONCAT('%',#{condition},'%') or weight LIKE
+		CONCAT('%',#{condition},'%')
+		or temperature LIKE
+		CONCAT('%',#{condition},'%')
 	</select>
-	<select id="getSearchMatchFoodList" parameterType="String" resultType="MatchFood">
-		select * from matchfood where matchFoodName LIKE CONCAT('%',#{condition},'%') or nation LIKE CONCAT('%',#{condition},'%') or wine LIKE CONCAT('%',#{condition},'%') or weight LIKE CONCAT('%',#{condition},'%') or ex LIKE CONCAT('%',#{condition},'%')
+	<select id="getSearchMatchFoodList" parameterType="java.util.Map"
+		resultType="MatchFood">
+		select * from matchfood where matchFoodName LIKE
+		CONCAT('%',#{condition},'%') or nation LIKE
+		CONCAT('%',#{condition},'%') or wine LIKE CONCAT('%',#{condition},'%')
+		or weight LIKE CONCAT('%',#{condition},'%') or ex LIKE
+		CONCAT('%',#{condition},'%')
+	</select>
+	<select id="paymentCount" resultType="int">
+		select count(*) from
+		payment
+	</select>
+	<select id="matchFoodCount" resultType="int">
+		select count(*) from
+		matchFood
+	</select>
+	<select id="productCount" resultType="int">
+		select count(*) from
+		product
+	</select>
+	<select id="reviewCount" resultType="int">
+		select count(*) from review
+	</select>
+	<select id="userCount" resultType="int">
+		select count(*) from user
+	</select>
+	<select id="productSearch" resultType="int" parameterType="String">
+		select count(*) from product where producer LIKE
+		CONCAT('%',#{condition},'%') or variety LIKE
+		CONCAT('%',#{condition},'%') or wineKinds LIKE
+		CONCAT('%',#{condition},'%') or productName LIKE
+		CONCAT('%',#{condition},'%')
+		or wineEx LIKE
+		CONCAT('%',#{condition},'%') or brandEx LIKE
+		CONCAT('%',#{condition},'%') or nation LIKE
+		CONCAT('%',#{condition},'%') or year LIKE CONCAT('%',#{condition},'%')
+		or alcohol LIKE CONCAT('%',#{condition},'%') or weight LIKE
+		CONCAT('%',#{condition},'%')
+		or temperature LIKE
+		CONCAT('%',#{condition},'%')
+	</select>
+	<select id="matchFoodSearch" resultType="int" parameterType="String">
+		select count(*) from matchfood where matchFoodName LIKE
+		CONCAT('%',#{condition},'%') or nation LIKE
+		CONCAT('%',#{condition},'%') or wine LIKE CONCAT('%',#{condition},'%')
+		or weight LIKE CONCAT('%',#{condition},'%') or ex LIKE
+		CONCAT('%',#{condition},'%')
+	</select>
+	<select id="userSearch" parameterType="String" resultType="int">
+		select count(*) from user where loginId LIKE CONCAT('%',#{condition},'%') or
+		userName LIKE CONCAT('%',#{condition},'%') or address LIKE
+		CONCAT('%',#{condition},'%') or email LIKE
+		CONCAT('%',#{condition},'%')
 	</select>
 
 </mapper>
