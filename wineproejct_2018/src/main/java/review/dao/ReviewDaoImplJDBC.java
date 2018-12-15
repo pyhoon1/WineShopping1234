@@ -16,7 +16,7 @@ public class ReviewDaoImplJDBC implements ReviewDao {
 	private ReviewMapper reviewMapper;
 
 	public void reviewWrite(Review review) {
-		// TODO Auto-generated method stub
+		reviewMapper.reviewWrite(review);
 
 	}
 
