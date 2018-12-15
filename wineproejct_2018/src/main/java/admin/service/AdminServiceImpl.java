@@ -54,8 +54,9 @@ public class AdminServiceImpl implements AdminService{
 
 	
 	
-	public void updateProduct(Product product) {
-		admin.updateProduct(product);
+	public int updateProduct(Product product) {
+		int check = admin.updateProduct(product);
+		return check;
 	}
 
 	

@@ -53,8 +53,9 @@ public class AdminDaoImplJDBC implements AdminDao {
 
 	
 	
-	public void updateProduct(Product product) {
-		adminMapper.updateProduct(product);
+	public int updateProduct(Product product) {
+		int check = adminMapper.updateProduct(product);
+		return check;
 	}
 
 	

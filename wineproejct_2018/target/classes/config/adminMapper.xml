@@ -57,11 +57,9 @@
 	</insert>
 	<update id="updateProduct" parameterType="Product">
 		update product set
-		productName = #{productName}, ex = #{ex}, price = #{price}
-		, nation =
-		#{nation}, year = #{year}, matchFoodId = #{matchFoodId}, stock =
-		#{stock}
-		img = #{img} where productId = #{productId}
+		producer=#{producer} , variety=#{variety},wineKinds=#{wineKinds},productName=#{productName},wineEx=#{wineEx},brandEx=#{brandEx},nation=#{nation}
+		,nationImg=#{nationImg},year=#{year},matchFoodId=#{matchFoodId},matchFoodName=#{matchFoodName},alcohol=#{alcohol},weight=#{weight},temperature=#{temperature},img=#{img}
+		where productId=#{productId}
 	</update>
 	<delete id="deleteProduct" parameterType="int">
 		delete from product

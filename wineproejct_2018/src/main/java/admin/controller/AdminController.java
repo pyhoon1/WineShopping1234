@@ -30,20 +30,18 @@ public class AdminController {
 
 	@Autowired
 	private AdminService adminService;
-	
 
 	@RequestMapping("/adminMakeMatchFoodForm.do")
 	public ModelAndView getMakeMatchFoodForm() {
 		return new ModelAndView("/admin/adminMakeMatchFoodForm");
 	}
-	
+
 	@RequestMapping("/adminMakeWineForm.do")
 	public ModelAndView getMakeWineForm(Model model) {
 		List<MatchFood> matchfood = adminService.getMatchFoodList();
-		model.addAttribute("matchFood",matchfood);
+		model.addAttribute("matchFood", matchfood);
 		return new ModelAndView("/admin/adminMakeWineForm");
 	}
-	
 
 	@RequestMapping("/adminProductList.do")
 	public String getAdminProductList(@RequestParam(value = "condition", required = false) String condition,
@@ -130,10 +128,10 @@ public class AdminController {
 			return result;
 		}
 	}
-	
+
 	@RequestMapping("/hasWine.do")
 	@ResponseBody
-	public String hasWine(@RequestParam (name ="productName", required=false) String productName) {
+	public String hasWine(@RequestParam(name = "productName", required = false) String productName) {
 		int hasWine = adminService.hasWine(productName);
 		String result = "";
 		if (hasWine > 0) {
@@ -233,24 +231,22 @@ public class AdminController {
 			@RequestParam(value = "uploadFile", required = false) MultipartFile file,
 			@RequestParam HashMap<String, String> prm) {
 		AdminUpload upload = new AdminUpload();
-		
-		String nationpath ="resources/img/nationImg/";
-		
-		String minipath ="resources/img/miniWineImg/";
-		
+
+		String nationpath = "resources/img/nationImg/";
+
+		String minipath = "resources/img/miniWineImg/";
+
 		String png = ".png";
 		if (!file.isEmpty()) {
-			
-			
-			int price = Integer.parseInt(prm.get("price"));		
-			
+
+			int price = Integer.parseInt(prm.get("price"));
+
 			int matchFoodId = Integer.parseInt(prm.get("matchFoodId"));
-			
+
 			String rname = upload.Update(hsr, file, prm, "matchFood");
-		
-		
-			int check = adminService.updateMatchFood(new MatchFood(matchFoodId,prm.get("matchFoodName"), price, prm.get("nation"),
-					nationpath + prm.get("nation") + png, rname , prm.get("wineImg"),
+
+			int check = adminService.updateMatchFood(new MatchFood(matchFoodId, prm.get("matchFoodName"), price,
+					prm.get("nation"), nationpath + prm.get("nation") + png, rname, prm.get("wineImg"),
 					minipath + prm.get("wineImg") + png, prm.get("weight"), prm.get("ex")));
 
 			if (check > 0) {
@@ -261,11 +257,11 @@ public class AdminController {
 				return result;
 			}
 
-		} else {	
+		} else {
 			int matchFoodId = Integer.parseInt(prm.get("matchFoodId"));
 			int price = Integer.parseInt(prm.get("price"));
-			int check = adminService.updateMatchFood(new MatchFood(matchFoodId,prm.get("matchFoodName"), price, prm.get("nation"),
-					nationpath + prm.get("nation") + png, prm.get("originalImg"), prm.get("wineImg"),
+			int check = adminService.updateMatchFood(new MatchFood(matchFoodId, prm.get("matchFoodName"), price,
+					prm.get("nation"), nationpath + prm.get("nation") + png, prm.get("originalImg"), prm.get("wineImg"),
 					minipath + prm.get("wineImg") + png, prm.get("weight"), prm.get("ex")));
 			if (check > 0) {
 				String result = "Y";
@@ -276,67 +272,140 @@ public class AdminController {
 			}
 		}
 
-	} 
+	}
 
-	@RequestMapping(value = "/adminInsertWine.do") 
+	@RequestMapping(value = "/adminUpdateWine.do")
+	@ResponseBody
+	public String updateWine(HttpServletRequest hsr,
+			@RequestParam(value = "uploadFile", required = false) MultipartFile file,
+			@RequestParam HashMap<String, String> prm) {
+
+		AdminUpload upload = new AdminUpload();
+
+		String nationpath = "resources/img/nationImg/";
+
+		String png = ".png";
+
+		String matchFoodName = prm.get("matchFoodName");
+
+		String matchFoodId = "";
+
+		System.out.println(matchFoodName);
+		System.out.println(matchFoodName.equals(""));
+		System.out.println(matchFoodName == " ");
+		System.out.println(matchFoodName == null);
+		if (!matchFoodName.equals("")) {
+			matchFoodName = prm.get("matchFoodName").substring(0, prm.get("matchFoodName").length() - 1);
+			matchFoodId = prm.get("matchFoodId").substring(0, prm.get("matchFoodId").length() - 1);
+		}else {
+			matchFoodName = prm.get("matchFoodName");
+			matchFoodId = prm.get("matchFoodId");
+		}
+
+		if (!file.isEmpty()) {
+
+			int price = Integer.parseInt(prm.get("price"));
+
+			int productId = Integer.parseInt(prm.get("productId"));
+
+			String rname = upload.Update(hsr, file, prm, "wine");
+
+			int check = adminService.updateProduct(new Product(productId, prm.get("producer"), prm.get("variety"),
+					prm.get("wineKinds"), prm.get("productName"), prm.get("wineEx"), prm.get("brandEx"), price,
+					prm.get("nation"), nationpath + prm.get("nation") + png, prm.get("year"), matchFoodId,
+					matchFoodName, prm.get("alcohol"), prm.get("weight"), prm.get("temperature"), rname));
+
+			if (check > 0) {
+				String result = "Y";
+				return result;
+			} else {
+				String result = "N";
+				return result;
+			}
+
+		} else {
+			int productId = Integer.parseInt(prm.get("productId"));
+			int price = Integer.parseInt(prm.get("price"));
+
+			if (!prm.get("matchFoodName").equals("")) {
+				matchFoodName = prm.get("matchFoodName").substring(0, prm.get("matchFoodName").length() - 1);
+				matchFoodId = prm.get("matchFoodId").substring(0, prm.get("matchFoodId").length() - 1);
+			} else {
+				matchFoodName = prm.get("matchFoodName");
+				matchFoodId = prm.get("matchFoodId");
+			}
+
+			int check = adminService
+					.updateProduct(new Product(productId, prm.get("producer"), prm.get("variety"), prm.get("wineKinds"),
+							prm.get("productName"), prm.get("wineEx"), prm.get("brandEx"), price, prm.get("nation"),
+							nationpath + prm.get("nation") + png, prm.get("year"), matchFoodId, matchFoodName,
+							prm.get("alcohol"), prm.get("weight"), prm.get("temperature"), prm.get("originalImg")));
+			
+			if (check > 0) {
+				String result = "Y";
+				return result;
+			} else {
+				String result = "N";
+				return result;
+			}
+			
+		}
+
+	}
+
+	@RequestMapping(value = "/adminInsertWine.do")
 	@ResponseBody
 	public String insertWine(HttpServletRequest hsr, @RequestParam("uploadFile") MultipartFile file,
-			@RequestParam HashMap<String, String> prm) {		
-			AdminUpload upload = new AdminUpload();
-			
-			String rname = (String) upload.Upload(hsr, prm, file, "wine");	
-			
-			String nationpath = "resources/img/nationImg/";
-			
-			String matchFoodName = "";
-			
-			String matchFoodId = "";
-						
-			int price = Integer.parseInt(prm.get("price"));
-		
-			if(prm.get("matchFoodName").equals("")) {
-				prm.remove("matchFoodName");
-				prm.put("matchFoodName", "");
-				prm.remove("matchFoodId");
-				prm.put("matchFoodId","" );
-			}		
-			if(prm.get("matchFoodName").equals("") == false || prm.get("matchFoodName")!="") {
-				 matchFoodName = prm.get("matchFoodName").substring(0, prm.get("matchFoodName").length()-1);
-				 matchFoodId = prm.get("matchFoodId").substring(0, prm.get("matchFoodId").length()-1);
-				
-			}else {
-				 matchFoodName = prm.get("matchFoodName");
-			     matchFoodId = prm.get("matchFoodI.d");
-			}
-			
-			adminService.insertProduct(new Product(prm.get("producer"), prm.get("variety"), prm.get("wineKinds"), prm.get("productName"), prm.get("wineEx"), prm.get("brandEx"),
-					price, prm.get("nation"), nationpath + prm.get("nation") + ".png", prm.get("year"), matchFoodId, matchFoodName,prm.get("alcohol"), prm.get("weight"),prm.get("temperature"), rname));
-			
-			String result = "Y";
-			return result;	
-			
+			@RequestParam HashMap<String, String> prm) {
+		AdminUpload upload = new AdminUpload();
+
+		String rname = (String) upload.Upload(hsr, prm, file, "wine");
+
+		String nationpath = "resources/img/nationImg/";
+
+		String matchFoodName = "";
+
+		String matchFoodId = "";
+
+		int price = Integer.parseInt(prm.get("price"));
+
+		if (prm.get("matchFoodName").equals("") == false || prm.get("matchFoodName") != "") {
+			matchFoodName = prm.get("matchFoodName").substring(0, prm.get("matchFoodName").length() - 1);
+			matchFoodId = prm.get("matchFoodId").substring(0, prm.get("matchFoodId").length() - 1);
+
+		} else {
+			matchFoodName = prm.get("matchFoodName");
+			matchFoodId = prm.get("matchFoodId");
 		}
-	
-	
-	@RequestMapping(value="/adminInsertMatchFood.do")
+
+		adminService.insertProduct(new Product(prm.get("producer"), prm.get("variety"), prm.get("wineKinds"),
+				prm.get("productName"), prm.get("wineEx"), prm.get("brandEx"), price, prm.get("nation"),
+				nationpath + prm.get("nation") + ".png", prm.get("year"), matchFoodId, matchFoodName,
+				prm.get("alcohol"), prm.get("weight"), prm.get("temperature"), rname));
+
+		String result = "Y";
+		return result;
+
+	}
+
+	@RequestMapping(value = "/adminInsertMatchFood.do")
 	@ResponseBody
 	public String insertMatchFood(HttpServletRequest hsr, @RequestParam("uploadFile") MultipartFile file,
-			@RequestParam HashMap<String, String> prm) {	
+			@RequestParam HashMap<String, String> prm) {
 		AdminUpload upload = new AdminUpload();
-		
+
 		String rname = upload.Upload(hsr, prm, file, "matchFood");
-		
+
 		String nationpath = "resources/img/nationImg/";
-		
+
 		String miniwinepath = "resources/img/miniWineImg/";
-		
+
 		int price = Integer.parseInt(prm.get("price"));
 
 		adminService.insertMatchFood(new MatchFood(prm.get("matchFoodName"), price, prm.get("nation"),
-				nationpath + prm.get("nation") + ".png",  rname,
-				prm.get("wineImg"), miniwinepath + prm.get("wineImg") + ".png", prm.get("weight"),
-				prm.get("ex")));
-		
+				nationpath + prm.get("nation") + ".png", rname, prm.get("wineImg"),
+				miniwinepath + prm.get("wineImg") + ".png", prm.get("weight"), prm.get("ex")));
+
 		return "/admin/adminProductList";
 	}
 
@@ -344,23 +413,23 @@ public class AdminController {
 	public String deleteMatchFood(@RequestParam("matchFoodId") int matchFoodId, @RequestParam("img") String img,
 			HttpServletRequest hsr) {
 		AdminUpload upload = new AdminUpload();
-		
+
 		upload.Delete(hsr, matchFoodId, img);
 
 		adminService.deleteMatchFood(matchFoodId);
 		return "/admin/adminProductList";
 	}
-	
+
 	@RequestMapping("/deleteWine.do")
-	public String deleteWine(@RequestParam("productId") int productId,
-			@RequestParam("img") String img, HttpServletRequest hsr) {
+	public String deleteWine(@RequestParam("productId") int productId, @RequestParam("img") String img,
+			HttpServletRequest hsr) {
 		AdminUpload upload = new AdminUpload();
-		
+
 		upload.Delete(hsr, productId, img);
 
 		adminService.deleteProduct(productId);
 		return "/admin/adminProductList";
-		}
+	}
 
 	@RequestMapping("/adminmatchFoodView.do")
 	public String matchFoodView(@RequestParam("matchFoodId") int matchFoodId, Model model) {
@@ -368,17 +437,14 @@ public class AdminController {
 		model.addAttribute("matchFood", matchfood);
 		return "/admin/adminMatchFoodView";
 	}
-	
+
 	@RequestMapping("/adminWineView.do")
 	public String wineView(@RequestParam("productId") int productId, Model model) {
 		Product product = adminService.getProductView(productId);
 		List<MatchFood> matchfood = adminService.getMatchFoodList();
-		model.addAttribute("matchFood",matchfood);
+		model.addAttribute("matchFood", matchfood);
 		model.addAttribute("product", product);
 		return "/admin/adminWineView";
 	}
-	
-	
-	
 
 }
