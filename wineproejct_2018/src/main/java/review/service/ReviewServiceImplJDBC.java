@@ -26,9 +26,16 @@ public class ReviewServiceImplJDBC implements ReviewService {
 
 	}
 
-	public ReviewtPage reviewList(int userId, int pageNum) {
-		List<Review> reviewList = reviewDao.reviewList(userId, (pageNum - 1) * size, size);
-		int count = reviewDao.reviewSize(userId);
+	public ReviewtPage userReviewList(int userId, int pageNum) {
+		List<Review> reviewList = reviewDao.userReviewList(userId, (pageNum - 1) * size, size);
+		int count = reviewDao.userReviewSize(userId);
+		ReviewtPage reviewtPage = new ReviewtPage(reviewList, pageNum, count, size, blockSize);
+		return reviewtPage;
+	}
+
+	public ReviewtPage reviewList(int productId, int pageNum) {
+		List<Review> reviewList = reviewDao.reviewList(productId, (pageNum - 1) * size, size);
+		int count = reviewDao.productReviewSize(productId);
 		ReviewtPage reviewtPage = new ReviewtPage(reviewList, pageNum, count, size, blockSize);
 		return reviewtPage;
 	}

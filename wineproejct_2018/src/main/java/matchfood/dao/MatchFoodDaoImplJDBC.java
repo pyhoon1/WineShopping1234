@@ -15,15 +15,11 @@ public class MatchFoodDaoImplJDBC implements MatchFoodDao {
 	@Autowired
 	private MatchFoodMapper matchFoodMapper;
 
-	
-	
 	public MatchFood getMatchFood(String matchFoodId) {
 		MatchFood matchFood = matchFoodMapper.getMatchFood(matchFoodId);
 		return matchFood;
 	}
 
-	
-	
 	public List<MatchFood> getMatchFoodList(int startRow, int size) {
 		Map<String, Integer> page = new HashMap<String, Integer>();
 		page.put("startRow", startRow);
@@ -32,11 +28,35 @@ public class MatchFoodDaoImplJDBC implements MatchFoodDao {
 		return matchFoodList;
 	}
 
-	
-	
 	public int getMatchFoodCount() {
 		int count = matchFoodMapper.getMatchFoodCount();
 		return count;
-	} 
+	}
+
+	public List<MatchFood> searchNation(String nation) {
+		List<MatchFood> matchFoodList = matchFoodMapper.searchNation(nation);
+		return matchFoodList;
+	}
+
+	public List<MatchFood> searchWineKinds(String wine) {
+		// TODO Auto-generated method stub
+		List<MatchFood> matchFoodList = matchFoodMapper.searchWineKinds(wine);
+		return matchFoodList;
+	}
+
+	public List<MatchFood> searchMoney(int min, int max) {
+		// TODO Auto-generated method stub
+		Map<String, Integer> price = new HashMap<String, Integer>();
+		price.put("min", min);
+		price.put("max", max);
+		List<MatchFood> matchFoodList = matchFoodMapper.searchMoney(price);
+		return matchFoodList;
+	}
+
+	public List<MatchFood> searchProduct(String product) {
+		// TODO Auto-generated method stub
+		List<MatchFood> matchFoodList = matchFoodMapper.searchProduct(product);
+		return matchFoodList;
+	}
 
 }

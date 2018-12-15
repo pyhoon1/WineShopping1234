@@ -15,15 +15,12 @@ public interface ProductMapper {
 	public int getProductCount();
 
 	public List<Product> manySaleProduct();
-	
-	public List<Product> searchNation(String nation);
-	
-	public List<Product> searchWineKinds(String wine);
-	
-	public List<Product> searchMoney(Map<String, Integer> price);
-	
-	public List<Product> searchProduct(String product);
-	  
-	
 
+	public List<Product> searchNation(String nation);
+
+	public List<Product> searchWineKinds(String wine);
+
+	public List<Product> searchMoney(Map<String, Integer> price);
+
+	public List<Product> searchProduct(String product);
 }

@@ -5,20 +5,34 @@
 
 <mapper namespace="review.dao.ReviewMapper">
 
-	<select id="reviewList" parameterType="int" resultType="Review">
-		select * from review where userId = #{userId} order by reviewId desc limit #{startRow}, #{size}
+	<select id="userReviewList" parameterType="int" resultType="Review">
+		select * from review where userId = #{userId} order by reviewId desc
+		limit #{startRow}, #{size}
 	</select>
-	<select id="reviewSize" parameterType="int">
-		select count(*) from review where userId = #{userId} 
+	<select id="userReviewSize" parameterType="int">
+		select count(*) from
+		review where userId = #{userId}
+	</select>
+	<select id="productReviewSize" parameterType="int">
+		select count(*) from
+		review where productId = #{productId}
 	</select>
 
+
 	<delete id="reviewDelete" parameterType="int">
-		delete from review where userId = #{userId}
+		delete from review where
+		userId = #{userId}
 	</delete>
 
 	<insert id="reviewWrite" parameterType="Review">
-		insert into review(productId, userId, loginId,
+		insert into
+		review(productId, userId, loginId,
 		productName, content)
-		values(#{productId},#{userId},#{loginId},#{productName},#{content})
+		values(#{productId},#{userId},#{zloginId},#{productName},#{content})
 	</insert>
+	<select id="reviewList" parameterType="int" resultType="Review">
+		select * from review where productId = #{productId} order by reviewId
+		desc limit #{startRow}, #{size}
+	</select>
+
 </mapper>

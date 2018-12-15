@@ -13,9 +13,11 @@
 		select * from matchFood where matchFoodId = #{matchFoodId}
 	</select>
 	<select id="getMatchFoodCount" resultType="int">
-		select count(*) from
-		matchFood
+		select count(*) from matchFood
 	</select>
-	
+	<select id="searchNation" parameterType="String"></select>
+	<select id="searchWineKinds" parameterType="String"></select>
+	<select id="searchMoney" parameterType="java.util.Map"></select>
+	<select id="searchProduct" parameterType="String"></select>
 
 </mapper>

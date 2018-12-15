@@ -3,13 +3,18 @@ package review.dao;
 import java.util.List;
 
 import review.vo.Review;
+import review.vo.ReviewtPage;
 
 public interface ReviewDao {
-	public List<Review> reviewList(int userId, int startRow, int size);
+	public List<Review> userReviewList(int userId, int startRow, int size);
 
 	public void reviewDelete(int userId, int reviewId);
 
 	public void reviewWrite(Review review);
 
-	public int reviewSize(int userId);
+	public int userReviewSize(int userId);
+
+	public int productReviewSize(int productId);
+
+	public List<Review> reviewList(int productId, int startRow, int size);
 }
