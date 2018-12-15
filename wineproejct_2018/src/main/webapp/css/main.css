@@ -73,7 +73,7 @@ body{
 
 .category-dropdown { 
     position: fixed;
-    top: 85px;
+    top: 190px;
     width: 160px;
     height: 168px;
     background-color: #f1f3f5;
@@ -182,7 +182,7 @@ body{
 .login-box{
     display: none;
     position: fixed;
-    top: 85px;
+    top: 190px;
     right: 45%;
     width: 300px;
     background-color: #f1f3f5;

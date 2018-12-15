@@ -14,6 +14,7 @@
 <body>
 	<form action="userLoginIdFind.do" method="post" autocomplete=off>
         <div class="wrapper">
+        	<a href="main.do"><img src="${pageContext.request.contextPath }/resources/img/Logo.png"></a>
             <table>
                 <tr>
                     <td>이름</td>

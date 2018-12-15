@@ -12,8 +12,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="userPasswordFind.do" method="post" autocomplete=off>
+	<form action="userPasswordFind.do" method="post">
 		<div class="wrapper">
+			<a href="main.do"><img src="${pageContext.request.contextPath }/resources/img/Logo.png"></a>
 			<table>
 				<tr>
 					<td>아이디</td>
