@@ -284,38 +284,44 @@ body{
 .payment-submit button {
     display: block;
     background-color: white;
-    padding: 15px;
-    margin-bottom: 100px;
+    padding: 30px 0;
     font-size: 25px;
     cursor: pointer;
     transition: 0.6s;
 }
 
 .payment-submit button:first-child{
-    width: 50%; 
+    width: 50%;
+    color: #f2534b;
     float:left;
 }
 
 .payment-submit button:last-child{
     width: 50%;
+    color: white;
     float:right;
+}
+
+#basket:hover {
+    color: #f2534b;
+}
+
+#buy:hover {
+    color: white;
+}
+
+.payment-submit {
+    display: flex;
+    margin-bottom: 100px;
 }
 
 .payment-submit #basket {
     border: 1px solid #f2534b;
 }
 
-#basket {
-    color: #f2534b;
-}
-
 .payment-submit #buy {
     border: 1px solid #f2534b;
     background-color: #f2534b;
-}
-
-#buy {
-    color: white;
 }
 
 .price {
@@ -388,7 +394,7 @@ body{
     height: 450px;
 }
 
-.review .write-review form{
+.review .write-review{
     display: flex;
     margin: 0 auto;
     border: 1px solid rgb(0,0,0,0.2);
@@ -397,12 +403,13 @@ body{
 .write-review textarea {
     border: 0;
     resize: none;
+    width: 400px;
     padding: 5px;
 }
 
 .write-review button {
     border: 0;
-    width: 120px;
+    width: 100px;
     border-left: 1px solid #daddd4;
     background-color: white;
     cursor: pointer;

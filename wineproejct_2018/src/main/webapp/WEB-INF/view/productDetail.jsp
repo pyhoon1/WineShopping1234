@@ -12,7 +12,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(function() {
-	var matchFood = "";
+/* 	var matchFood = "";
 	var count = "";
 	$('input:checkbox[name="matchFood"]').click(function() {
 		if (this.checked) {
@@ -35,7 +35,8 @@ $(function() {
 				count += matchFoodCount[i] + ",";
 			}
 		}
-	})
+	}) */
+
 	$('#basket').click(function() {
 		var text = confirm("장바구니에 추가하시겠습니까?");
 		if (text) {
@@ -51,6 +52,11 @@ $(function() {
 
 	$('#payment').click(function() {
 		
+	})
+	
+	$('#review-submit').click(function(){
+		var content = $('#review-input').val();
+		location.href="reviewWrite.do?productId=${product.productId}&userId=${user.userId}&loginId=${user.loginId}&productName=${product.productName}&content="+content;
 	})
 })
 </script>
@@ -121,7 +127,7 @@ $(function() {
                             </div>
                         </div>
                         <div class="price">
-                            <span>총 상품 금액 : 69,000</span>
+                            <span>총 상품 금액 : ${product.price }</span>
                         </div>
                         <div class="payment-submit">
                             <button id="basket">장바구니에 추가</button>
@@ -131,10 +137,8 @@ $(function() {
                 </div>
                 <div class="review">
                     <div class="write-review">
-                        <form actino="wineDetail.html" method="post">
-                            <textarea rows="4" cols="60" placeholder="50자 이하의 리뷰를 남겨주세요!" id="review-input"></textarea>
-                            <button type="submit" id="review-input">작성</button>
-                        </form>
+                        <textarea rows="4" cols="60" placeholder="50자 이하의 리뷰를 남겨주세요!" id="review-input"></textarea>
+                        <button type="submit" id="review-submit">작성</button>
                     </div>
                     <div class="paging">
                             <i class="fas fa-caret-left"></i>

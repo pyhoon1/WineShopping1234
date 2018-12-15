@@ -1,4 +1,4 @@
-$(function() {
+$(function() {	
 		 // 수량 늘리기/줄이기
 	$('.items .plus').click(function(){
         var amount = parseInt($(this).prevAll('input').val());

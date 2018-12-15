@@ -9,17 +9,17 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath }/javascript/signUp.js"></script>
-<title>Insert title here</title>
+<title>회원가입 페이지</title>
 </head>
 <body>
  <div class="wrapper">
         <div class="main">
             <h1>회원가입</h1>
-            <form id="myForm" action="login.jsp" method="post">
+            <form id="myForm" action="signUp.do" method="post">
                 <table>
                     <tr>
                         <td class="title">이름</td>
-                        <td class="input"><input type="text" name="name" placeholder="이름"></td>
+                        <td class="input"><input type="text" name="userName" placeholder="이름"></td>
                         <td></td>
                     </tr>
                     <tr>
@@ -55,9 +55,7 @@
                     <tr>
                         <td class="title">주소</td>
                         <td class="input">
-                            <input type="text" id="post"><br>
-                            <input type="text" id='addr1'><br>
-                            <input type="text" id='addr2'>
+                            <input type="text" name="address" placeholder="주소를 입력해주세요">
                         </td>
                     </tr>
                 </table>

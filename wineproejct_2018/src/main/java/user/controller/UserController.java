@@ -54,19 +54,19 @@ public class UserController {
 		return "main";
 	}
 
-	@RequestMapping("/joinForm.do")
+	@RequestMapping("/signUpForm.do")
 	public String joinForm() {
-		return "joinForm";
+		return "user/signUp";
 	}
 
 
 
-	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
 	public String insertUser(Model model, @RequestParam("loginId") String loginId,
 			@RequestParam("password") String password, @RequestParam("userName") String userName,
 			@RequestParam("email") String email, @RequestParam("address") String address,
 			@RequestParam("phone") String phone, @RequestParam("birth") String birth) throws Exception {
-
+		System.out.println("signUp");
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 		model.addAttribute("errors", errors);
 		User user = userService.selectByLoginId(loginId);
@@ -78,10 +78,10 @@ public class UserController {
 		if (user != null) {
 			errors.put("duplicateEmail", true);
 
-			return "joinForm";
+			return "user/signUp";
 		}
 		if (!errors.isEmpty()) {
-			return "joinForm";
+			return "user/signUp";
 		}
 		userService.inserUser(new User(loginId, password, userName, email, address, phone, birth));
 		return "redirect:/main.do";
