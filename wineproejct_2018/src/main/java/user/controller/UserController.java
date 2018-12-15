@@ -36,22 +36,22 @@ public class UserController {
 		User user = userService.selectByLoginId(loginId);
 		if (user == null) {
 			errors.put("noLoginId", true);
-			return "loginForm";
+			return "redirect:/main.do";
 		}
 		User user1 = userService.loginUser(new User(loginId, password));
 		if (user1 == null) {
 			errors.put("wrongPassword", true);
-			return "loginForm";
+			return "redirect:/main.do";
 		}
 		if (user.getUserState() == false) {
 			errors.put("noConfirm", true);
-			return "loginForm";
+			return "redirect:/main.do";
 		}
 		if (!errors.isEmpty()) {
-			return "loginForm";
+			return "redirect:/main.do";
 		}
 		req.getSession().setAttribute("user", user);
-		return "main";
+		return "redirect:/main.do";
 	}
 
 	@RequestMapping("/signUpForm.do")
@@ -72,7 +72,7 @@ public class UserController {
 		User user = userService.selectByLoginId(loginId);
 		if (user != null) {
 			errors.put("duplicateLoginId", true);
-			return "joinForm";
+			return "user/signUp";
 		}
 		user = userService.selectByEmail(email);
 		if (user != null) {
@@ -84,7 +84,7 @@ public class UserController {
 			return "user/signUp";
 		}
 		userService.inserUser(new User(loginId, password, userName, email, address, phone, birth));
-		return "redirect:/main.do";
+		return "user/test";
 	}
 
 	@RequestMapping(value = "/updateForm.do", method = RequestMethod.POST)
@@ -191,7 +191,7 @@ public class UserController {
 		userService.userStateUpdate(email);
 		model.addAttribute("userEmail", email);
 
-		return "emailConfirm";
+		return "redirect:/main.do";
 	}
 
 }

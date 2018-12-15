@@ -33,7 +33,7 @@ public class UserServiceImplJDBC implements UserService {
 		 */ MailHandler sendMail = new MailHandler(mailSender);
 		sendMail.setSubject("[ALMOM 서비스 이메일 인증]");
 		sendMail.setText(new StringBuffer().append("<h1>메일인증</h1>")
-				.append("<a href='http://localhost:8080/WineProject/emailConfirm.do?email=").append(user.getEmail())
+				.append("<a href='http://localhost:8080/wineproejct_2018/emailConfirm.do?email=").append(user.getEmail())
 				.append("' target='_blank'>이메일 인증 확인</a>").toString());
 		sendMail.setFrom("rldh111122223333@gmail.com", "권기오");
 		sendMail.setTo(user.getEmail());

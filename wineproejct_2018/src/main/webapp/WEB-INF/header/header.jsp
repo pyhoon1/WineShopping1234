@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -84,17 +85,20 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="#" id="login" class="border-right">Login</a>
+                    <li><a href="#" id="login" class="border-right">
+                    	<c:if test="${user.userId != null }">Logout</c:if>
+                    	<c:if test="${user.userId == null }">Login</c:if>
+                    </a>
                         <span class="login-box">
                             <h3>로그인</h3>
-                            <form action="login.jsp" method="post">
-                                <div class="input-box"><input type="text"></div>
-                                <div class="input-box"><input type="passward"></div>
+                            <form action="login.do" method="post">
+                                <div class="input-box"><input type="text" name="loginId"></div>
+                                <div class="input-box"><input type="password" name="password"></div>
                                 <input class="submit" type="submit" value="Login">
                             </form>
                         </span>
                     </li>
-                    <li><a href="./signUp.html" class="border-right">Sign up</a> </li>
+                    <li><a href="signUpForm.do" class="border-right">Sign up</a> </li>
                     <li><a href="#">MyPage</a></li>
                     <li>
                         <div class="search-box">

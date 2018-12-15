@@ -18,12 +18,16 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 
+	@RequestMapping("/form.do")
+	public String form(@RequestParam("productId") int productId) {
+		return "redirect:/productView.do?productId="+productId;
+	}
 	@RequestMapping("/reviewWrite.do")
 	public String reviewWrite(@RequestParam("productId") int productId, @RequestParam("userId") int userId,
 			@RequestParam("loginId") String loginId, @RequestParam("productName") String productName,
 			@RequestParam("content") String content) {
 		reviewService.reviewWrite(new Review(productId, userId, loginId, productName, content));
-		return null;
+		return "redirect:/form.do?productId="+productId;
 	}
 
 	@RequestMapping("/reviewDelete.do")
