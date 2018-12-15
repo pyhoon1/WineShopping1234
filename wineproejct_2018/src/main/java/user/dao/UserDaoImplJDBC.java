@@ -15,7 +15,7 @@ public class UserDaoImplJDBC implements UserDao {
 
 	public User selectByLoginId(String loginId) {
 		return userMapper.selectByLoginId(loginId);
-	}
+	} 
  
 	 
 	public User userPasswordFind(User user) {
