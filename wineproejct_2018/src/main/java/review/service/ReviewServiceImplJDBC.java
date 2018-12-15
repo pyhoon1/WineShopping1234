@@ -13,7 +13,7 @@ import review.vo.ReviewtPage;
 public class ReviewServiceImplJDBC implements ReviewService {
 	@Autowired
 	private ReviewDao reviewDao;
-	private int size = 10;
+	private int size = 4;
 	private int blockSize = 5;
 
 	public void reviewWrite(Review review) {
