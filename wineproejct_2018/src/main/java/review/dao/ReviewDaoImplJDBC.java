@@ -21,7 +21,10 @@ public class ReviewDaoImplJDBC implements ReviewDao {
 	}
 
 	public void reviewDelete(int userId, int reviewId) {
-		// TODO Auto-generated method stub
+		Map<String, Integer> review = new HashMap<String, Integer>();
+		review.put("userId", userId);
+		review.put("reviewId", reviewId);
+		reviewMapper.reviewDelete(review);
 
 	}
 

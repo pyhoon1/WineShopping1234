@@ -10,7 +10,7 @@ public interface ReviewMapper {
 
 	public List<Review> reviewList(Map<String, Integer> reviewPage);
 
-	public void reviewDelete(Map<String, Integer> reivew);
+	public void reviewDelete(Map<String, Integer> review);
 
 	public void reviewWrite(Review review);
 	
