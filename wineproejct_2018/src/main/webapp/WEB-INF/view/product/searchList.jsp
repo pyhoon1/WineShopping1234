@@ -77,11 +77,11 @@
                                     <li id="nation"><a href="#">나라 별</a></li>
                                     <ul class="nation-ul">
                                         <div>
-                                            <li><a href="searchList.do?condition=이탈리아&conditionType=nation">이탈리아</a></li>
+                                            <li><a href="#">이탈리아</a></li>
 
                                         </div>
                                         <div><a href="#">
-                                                <li><a href="searchList.do?condition=독일&conditionType=nation">독일</a></li>
+                                                <li><a href="#">독일</a></li>
                                             </a>
                                         </div>
                                         <div>
