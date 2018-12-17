@@ -1,3 +1,3 @@
-<% response.sendRedirect("adminUserList.do"); %>
+<% response.sendRedirect("main.do"); %>
 	
 	
