@@ -7,7 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath }/javascript/header.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/header.css">
+<script>
+function SearchWine(){
+	var conditionType = $('#conditionType').val();
+	var condition = $('#condition').val();
+	location.href="searchList.do?conditionType="+conditionType+"&condition="+condition;	
+}
+</script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -24,19 +31,19 @@
                                     <li id="nation"><a href="#">나라 별</a></li>
                                     <ul class="nation-ul">
                                         <div>
-                                            <li><a href="#">이탈리아</a></li>
-
-                                        </div>
-                                        <div><a href="#">
-                                                <li><a href="#">독일</a></li>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <li><a href="#">프랑스</a></li>
+                                            <li><a href="searchList.do?condition=이탈리아&conditionType=nation">이탈리아</a></li>
 
                                         </div>
                                         <div>
-                                            <li><a href="#">스페인</a></li>
+                                             <li><a href="searchList.do?condition=독일&conditionType=nation">독일</a></li>
+
+                                        </div>
+                                        <div>
+                                            <li><a href="searchList.do?condition=프랑스&conditionType=nation">프랑스</a></li>
+
+                                        </div>
+                                        <div>
+                                            <li><a href="searchList.do?condition=스페인&conditionType=nation">스페인</a></li>
 
                                         </div>
                                     </ul>
@@ -45,19 +52,19 @@
                                     <li id="type"><a href="#">종류별</a></li>
                                     <ul class="type-ul">
                                         <div>
-                                            <li><a href="#">화이트 와인</a></li>
+                                            <li><a href="searchList.do?condition=화이트&conditionType=wineKinds">화이트 와인</a></li>
 
                                         </div>
                                         <div>
-                                            <li><a href="#">레드 와인</a></li>
+                                            <li><a href="searchList.do?condition=레드&conditionType=wineKinds">레드 와인</a></li>
 
                                         </div>
                                         <div>
-                                            <li><a href="#">로제 와인</a></li>
+                                            <li><a href="searchList.do?condition=로제&conditionType=wineKinds">로제 와인</a></li>
 
                                         </div>
                                         <div>
-                                            <li><a href="#">스파클링 와인</a></li>
+                                            <li><a href="searchList.do?condition=스파클링&conditionType=wineKinds">스파클링 와인</a></li>
 
                                         </div>
                                     </ul>
@@ -65,21 +72,19 @@
                                 <div>
                                     <li id="price"><a href="#">가격 별</a></li>
                                     <ul class="price-ul">
-                                        <div><a href="#">
-                                                <li><a href="#">1만 ~ 3만</a></li>
-                                            </a>
+                                        <div>
+                                            <li><a href="searchList.do?&conditionType=price&startPrice=0&endPrice=50000">~ 5만</a></li>
                                         </div>
                                         <div>
-                                            <li><a href="#">3만 ~ 5만</a></li>
+                                            <li><a href="searchList.do?&conditionType=price&startPrice=50000&endPrice=200000">5만 ~ 20만</a></li>
 
                                         </div>
                                         <div>
-                                            <li><a href="#">5만 ~ 10만</a></li>
+                                            <li><a href="searchList.do?&conditionType=price&startPrice=200000&endPrice=500000">20만 ~ 50만</a></li>
 
                                         </div>
                                         <div>
-                                            <li><a href="#">10만 ~ 30만</a></li>
-
+                                            <li><a href="searchList.do?&conditionType=price&startPrice=500000&endPrice=99999999999999999999">50만 ~ </a></li>
                                         </div>
                                     </ul>
                                 </div>
@@ -107,11 +112,9 @@
                     <li><a href="#">MyPage</a></li>
                     <li>
                         <div class="search-box">
-                        <form action="searchList.do" method="post">
-                        	<input type="hidden" name="conditionType" value="search">
-                            <input class="search-txt" type="text" name="search" >
-                            <button class="search-btn"><i class="fas fa-search"></i></button>
-                        </form>
+                        	<input type="hidden" id="conditionType" name="conditionType" value="search">
+                            <input class="search-txt" id="condition" type="text" name="search" placeholder="Search">
+                            <a onclick="SearchWine()" class="search-btn"><i class="fas fa-search"></i></a>
                         </div>
                     </li>
                 </ul>

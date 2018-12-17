@@ -46,8 +46,8 @@ public class AdminController {
 	}
 
 	@RequestMapping("/adminMakeWineForm.do")
-	public ModelAndView getMakeWineForm(Model model, @RequestParam("pageNum") int pageNum) {
-		MatchFoodPage matchfood = adminService.getMatchFoodList(pageNum);
+	public ModelAndView getMakeWineForm(Model model) {
+		List<MatchFood> matchfood = adminService.getMatchFoodList();
 		model.addAttribute("matchFood", matchfood);
 		return new ModelAndView("/admin/adminMakeWineForm");
 	}
@@ -90,7 +90,7 @@ public class AdminController {
 	
 	@RequestMapping("/adminMatchFood.do")
 	public String adminMatchFood(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
-		MatchFoodPage matchfood = adminService.getMatchFoodList(pageNum);
+		MatchFoodPage matchfood = adminService.getMatchFoodPList(pageNum);
 		model.addAttribute("matchFoodPage", matchfood);
 		
 		return "/admin/adminMatchFood";
@@ -453,7 +453,7 @@ public class AdminController {
 	public String wineView(@RequestParam("productId") int productId, Model model,
 			@RequestParam("pageNum") int pageNum) {
 		Product product = adminService.getProductView(productId);
-		MatchFoodPage matchfood = adminService.getMatchFoodList(pageNum);
+		MatchFoodPage matchfood = adminService.getMatchFoodPList(pageNum);
 		model.addAttribute("matchFood", matchfood);
 		model.addAttribute("product", product);
 		return "/admin/adminWineView";

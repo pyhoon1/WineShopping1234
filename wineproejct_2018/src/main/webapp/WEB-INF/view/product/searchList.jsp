@@ -11,46 +11,46 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/searchList.css">
 <script>
 		function SearchFame(){
-			$('#arrangement').val('fame');
+			$('#arrangement').val('fame');	
 			
-			if($('#startPrice').val() == undefined || $("#startPrice") != '0' || $('#endPrice').val() == ""){
+			if($('#startPrice').val() == "" || $('#endPrice').val() == ""){
 				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
 				"&arrangement="+ $('#arrangement').val();		
 			}else{
-				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
-				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPRice').val() +"&arrangement="+ $('#arrangement').val();	
+				location.href="searchList.do?conditionType="+$('#conditionType').val()+
+				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val();	
 			}
 		
 		}
 		function SearchNewProduct(){
 			$('#arrangement').val('newProduct');		
-			if($('#startPrice').val() == undefined || $("#startPrice") != '0' || $('#endPrice').val() == ""){			
+			if($('#startPrice').val() == "" || $('#endPrice').val() == ""){
 				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
 				"&arrangement="+ $('#arrangement').val();		
 			}else{
-				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
-				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPRice').val() +"&arrangement="+ $('#arrangement').val();	
+				location.href="searchList.do?conditionType="+$('#conditionType').val()+
+				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val();	
 			}
 		}
 		
 		function SearchCheap(){
 			$('#arrangement').val('cheap');		
-			if($('#startPrice').val() == undefined || $("#startPrice") != '0' || $('#endPrice').val() == ""){
+			if($('#startPrice').val() == "" || $('#endPrice').val() == ""){
 				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
 				"&arrangement="+ $('#arrangement').val();		
 			}else{
-				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
-				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPRice').val() +"&arrangement="+ $('#arrangement').val();	
+				location.href="searchList.do?conditionType="+$('#conditionType').val()+
+				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val();	
 			}
 		}
 		function SearchExpenssive(){
 			$('#arrangement').val('expenssive');		
-			if($('#startPrice').val() == undefined || $("#startPrice") != '0' || $('#endPrice').val() == ""){
+			if($('#startPrice').val() == "" || $('#endPrice').val() == ""){
 				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
 				"&arrangement="+ $('#arrangement').val();		
 			}else{
-				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
-				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPRice').val() +"&arrangement="+ $('#arrangement').val();	
+				location.href="searchList.do?conditionType="+$('#conditionType').val()+
+				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val();	
 			}
 		}
 		
@@ -77,11 +77,11 @@
                                     <li id="nation"><a href="#">나라 별</a></li>
                                     <ul class="nation-ul">
                                         <div>
-                                            <li><a href="#">이탈리아</a></li>
+                                            <li><a href="searchList.do?condition=이탈리아&conditionType=nation">이탈리아</a></li>
 
                                         </div>
                                         <div><a href="#">
-                                                <li><a href="#">독일</a></li>
+                                                <li><a href="searchList.do?condition=독일&conditionType=nation">독일</a></li>
                                             </a>
                                         </div>
                                         <div>
