@@ -15,6 +15,6 @@
 	<a href="adminUserView.do"></a>
 	<a href="userPaymentView.do"></a>
 	<a href="adminmatchFoodView.do"></a>
-	<a href="adminWineView.do?"></a>
+	<a href="adminWineView.do?"></a> 
 </body>
 </html>
