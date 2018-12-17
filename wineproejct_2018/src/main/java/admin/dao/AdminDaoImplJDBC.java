@@ -126,11 +126,11 @@ public class AdminDaoImplJDBC implements AdminDao {
 		return hasUser;
 	}
 
-	public List<MatchFood> readMatchFoodAll(int startRow, int size) {
+	public List<MatchFood> readMatchFoodPAll(int startRow, int size) {
 		Map<String, Object> page = new HashMap<String, Object>();
 		page.put("startRow", startRow);
 		page.put("size", size);
-		List<MatchFood> matchfood = adminMapper.getMatchFoodList(page);
+		List<MatchFood> matchfood = adminMapper.getMatchFoodPList(page);
 		return matchfood;
 	}
 
@@ -221,6 +221,11 @@ public class AdminDaoImplJDBC implements AdminDao {
 	public int userSearch(String condition) {
 
 		return adminMapper.userSearch(condition);
+	}
+
+	public List<MatchFood> readMatchFoodAll() {
+		List<MatchFood> matchfood = adminMapper.getMatchFoodList();
+		return matchfood;
 	}
 
 }

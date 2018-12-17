@@ -41,8 +41,8 @@ public class AdminController {
 	}
 
 	@RequestMapping("/adminMakeWineForm.do")
-	public ModelAndView getMakeWineForm(Model model, @RequestParam("pageNum") int pageNum) {
-		MatchFoodPage matchfood = adminService.getMatchFoodList(pageNum);
+	public ModelAndView getMakeWineForm(Model model) {
+		List<MatchFood> matchfood = adminService.getMatchFoodList();	
 		model.addAttribute("matchFood", matchfood);
 		return new ModelAndView("/admin/adminMakeWineForm");
 	}
@@ -65,7 +65,7 @@ public class AdminController {
 	public String admin(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
 		UsertPage user = adminService.getUserList(pageNum);
 		ProductPage product = adminService.getProductList(pageNum);
-		MatchFoodPage matchfood = adminService.getMatchFoodList(pageNum);
+		MatchFoodPage matchfood = adminService.getMatchFoodPList(pageNum);
 		ReviewtPage review = adminService.getReviewList(pageNum);
 		PaymentPage payment = adminService.getPaymentList(pageNum);
 
@@ -102,7 +102,7 @@ public class AdminController {
 			}
 		} else {
 			ProductPage product = adminService.getProductList(pageNum);
-			MatchFoodPage matchfood = adminService.getMatchFoodList(pageNum);
+			MatchFoodPage matchfood = adminService.getMatchFoodPList(pageNum);
 			model.addAttribute("productList", product);
 			model.addAttribute("matchfood", matchfood);
 		}
@@ -406,13 +406,14 @@ public class AdminController {
 
 		int price = Integer.parseInt(prm.get("price"));
 
-		if (prm.get("matchFoodName").equals("") == false || prm.get("matchFoodName") != "") {
-			matchFoodName = prm.get("matchFoodName").substring(0, prm.get("matchFoodName").length() - 1);
-			matchFoodId = prm.get("matchFoodId").substring(0, prm.get("matchFoodId").length() - 1);
-
-		} else {
+		if (prm.get("matchFoodName").equals("") || prm.get("matchFoodName") == "") {
+			
 			matchFoodName = prm.get("matchFoodName");
 			matchFoodId = prm.get("matchFoodId");
+
+		} else {
+			matchFoodName = prm.get("matchFoodName").substring(0, prm.get("matchFoodName").length() - 1);
+			matchFoodId = prm.get("matchFoodId").substring(0, prm.get("matchFoodId").length() - 1);
 		}
 
 		adminService.insertProduct(new Product(prm.get("producer"), prm.get("variety"), prm.get("wineKinds"),
@@ -479,7 +480,7 @@ public class AdminController {
 	public String wineView(@RequestParam("productId") int productId, Model model,
 			@RequestParam("pageNum") int pageNum) {
 		Product product = adminService.getProductView(productId);
-		MatchFoodPage matchfood = adminService.getMatchFoodList(pageNum);
+		MatchFoodPage matchfood = adminService.getMatchFoodPList(pageNum);
 		model.addAttribute("matchFood", matchfood);
 		model.addAttribute("product", product);
 		return "/admin/adminWineView";

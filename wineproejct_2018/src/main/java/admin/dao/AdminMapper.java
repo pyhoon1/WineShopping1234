@@ -27,7 +27,8 @@ public interface AdminMapper {
 	int updateProduct(Product product);
 	void deleteProduct(int productId);
 	Product getProductView(int productId);
-	List<MatchFood> getMatchFoodList(Map<String, Object> page); 
+	List<MatchFood> getMatchFoodPList(Map<String, Object> page); 
+	List<MatchFood> getMatchFoodList();
 	List<MatchFood> getSearchMatchFoodList(Map<String, Object> page);/*String condition*/
 	int hasMatchFood(String matchFoodName);
 	void insertMatchFood(MatchFood matchFood);

@@ -74,4 +74,5 @@ $(function(){
     $('#findPassword').click(function(){
     	location.href="userPasswordFindForm.do";
     })
+   
 });

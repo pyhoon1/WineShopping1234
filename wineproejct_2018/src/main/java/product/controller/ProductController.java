@@ -75,6 +75,8 @@ public class ProductController {
 			@RequestParam(value="endPrice" , required=false) String endPrice, 
 			@RequestParam(value="arrangement", required=false) String arrangement) {
 		
+		System.out.println("arrangement "+arrangement);
+		
 		List<Product> productlist = productService.searchWine(new ProductSearch(condition,conditionType,startPrice, endPrice,arrangement));
 
 		
