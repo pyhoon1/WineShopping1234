@@ -20,7 +20,7 @@
 <script src="${pageContext.request.contextPath }/javascript/admin.js"></script>
 <title>Insert title here</title>
 </head>
-<body oncontextmenu="return false">
+<body>
 	<div class="wrapper">
 		<h1>Welcome to admin page!</h1>
 		<div class="nav">
@@ -62,20 +62,6 @@
 								<td>${user1.wdate }</td>
 							</tr>
 						</c:forEach>
-
-
-						<%--                         <tr>
-                            <td>1</td>
-                            <td><a onclick="window.open('userPop.html?userid=${userid}','유저 팝업', 'width=600, height=750, toolvar=no, location=no, resizable=no')">id</a></td>
-                            <td>email</td>
-                            <td>address</td>
-                            <td>phone</td>
-                            <td>birth</td>
-                            <td>ration</td>
-                            <td>totalAmount</td>
-                            <td>wdate</td>
-                        </tr> --%>
-
 					</tbody>
 				</table>
 				<div class="paging">

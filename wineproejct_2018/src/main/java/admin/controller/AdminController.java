@@ -55,21 +55,58 @@ public class AdminController {
 
 	@RequestMapping("/admin.do")
 	public String admin(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
-		UsertPage user = adminService.getUserList(pageNum);
-		ProductPage product = adminService.getProductList(pageNum);
-		MatchFoodPage matchfood = adminService.getMatchFoodList(pageNum);
-		ReviewtPage review = adminService.getReviewList(pageNum);
+
+
+	
 		PaymentPage payment = adminService.getPaymentList(pageNum);
 
-		model.addAttribute("usertPage", user);
-		model.addAttribute("productPage", product);
-		model.addAttribute("matchFoodPage", matchfood);
-		model.addAttribute("reviewtPage", review);
+	
+
+
 		model.addAttribute("paymentPage", payment);
 
 		return "/admin/admin";
 	}
 
+	@RequestMapping("/adminUser.do")
+	public String adminUser(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
+		UsertPage user = adminService.getUserList(pageNum);
+		model.addAttribute("usertPage", user);
+		
+		return "/admin/adminUser";
+	}
+	
+	@RequestMapping("/adminProduct.do")
+	public String adminProduct(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
+		ProductPage product = adminService.getProductList(pageNum);
+		model.addAttribute("productPage", product);
+		
+		return "/admin/adminProduct";
+	}
+	
+	@RequestMapping("/adminMatchFood.do")
+	public String adminMatchFood(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
+		MatchFoodPage matchfood = adminService.getMatchFoodList(pageNum);
+		model.addAttribute("matchFoodPage", matchfood);
+		
+		return "/admin/adminMatchFood";
+	}
+	
+	@RequestMapping("/adminReview.do")
+	public String adminReview(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
+		ReviewtPage review = adminService.getReviewList(pageNum);
+		model.addAttribute("reviewtPage", review);
+		
+		return "/admin/adminReview";
+	}
+	
+	@RequestMapping("/adminPayment.do")
+	public String adminPayment(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
+		PaymentPage payment = adminService.getPaymentList(pageNum);
+		model.addAttribute("paymentPage", payment);
+		
+		return "/admin/adminPayment";
+	}
 
 	@RequestMapping("/hasUser.do")
 	@ResponseBody
@@ -429,6 +466,7 @@ public class AdminController {
 		adminService.deleteUser(userId);
 		return "/admin/adminUserList";
 	}
+	
 	/*	@RequestMapping("/adminProductList.do")
 	public String getAdminProductList(@RequestParam(value = "condition", required = false) String condition,
 			@RequestParam(value = "type", required = false) String type,
