@@ -27,8 +27,11 @@ public interface AdminDao {
 	// 로그인 아이디가 중복되는지 화인
 	public int hasUserId(String loginId);
 
+	// 궁합 좋은 음식 상품을 불러옴 번호로
+	public List<MatchFood> readMatchFoodPAll(int startRow, int size);
+	
 	// 궁합 좋은 음식 상품을 불러옴
-	public List<MatchFood> readMatchFoodAll(int startRow, int size);
+	public List<MatchFood> readMatchFoodAll();
 
 	// 궁합에 좋은 음식이 이미 있는지 검사
 	public int hasMatchFood(String matchFoodName);

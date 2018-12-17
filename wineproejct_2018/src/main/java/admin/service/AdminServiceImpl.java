@@ -71,8 +71,8 @@ public class AdminServiceImpl implements AdminService {
 
 	}
 
-	public MatchFoodPage getMatchFoodList(int pageNum) {
-		List<MatchFood> matchFoods = admin.readMatchFoodAll((pageNum - 1) * size, size);
+	public MatchFoodPage getMatchFoodPList(int pageNum) {
+		List<MatchFood> matchFoods = admin.readMatchFoodPAll((pageNum - 1) * size, size);
 		int count = admin.matchFoodCount();
 		MatchFoodPage matchFoodPage = new MatchFoodPage(matchFoods, pageNum, count, size, blockSize);
 		return matchFoodPage;
@@ -180,6 +180,11 @@ public class AdminServiceImpl implements AdminService {
 	public int hasWine(String productName) {
 		int check = admin.hasWine(productName);
 		return check;
+	}
+
+	public List<MatchFood> getMatchFoodList() {
+		List<MatchFood> matchfood = admin.readMatchFoodAll();
+		return matchfood;
 	}
 
 }

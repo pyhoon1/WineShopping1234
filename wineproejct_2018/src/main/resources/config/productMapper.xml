@@ -25,22 +25,99 @@
 		order by count desc limit 0, 5
 	</select>
 	<select id="searchWine" parameterType="Search" resultType="Product">
-			select * from product 
-				<if test="condition != null and conditionType == 'nation' and startPrice == null and endPrice == null">
-				where nation LIKE CONCAT('%',#{condition},'%')
-				</if>
-				<if test="condition != null and conditionType == 'wineKinds' and startPrice == null and endPrice == null">
-				where wineKinds LIKE CONCAT('%',#{condition},'%')
-				</if>
-				<if test="condition == null and conditionType == 'price' and startPrice != null and endPrice != null">
-				where price between #{startPrice} and #{endPrice}
-				</if>
-				<if test="condition != null and conditionType == 'search' and startPrice == null and endPrice == null">
-				where wineKinds LIKE CONCAT('%',#{condition},'%') or producer LIKE CONCAT('%',#{condition},'%') or variety LIKE CONCAT('%',#{condition},'%')
-				or wineKinds LIKE CONCAT('%',#{condition},'%') or  productName LIKE CONCAT('%',#{condition},'%') or wineEx LIKE CONCAT('%',#{condition},'%')
-				or brandEx LIKE CONCAT('%',#{condition},'%') or nation LIKE CONCAT('%',#{condition},'%') or year LIKE CONCAT('%',#{condition},'%') or 
-				alcohol LIKE CONCAT('%',#{condition},'%') or weight LIKE CONCAT('%',#{condition},'%') or temperature LIKE CONCAT('%',#{condition},'%')
-				</if>
+		select * from product
+		<if	test="condition != null and conditionType == 'nation' and startPrice == null and endPrice == null">
+			where nation LIKE CONCAT('%',#{condition},'%')
+			<choose>
+				<when test="arrangement == 'frame'">
+					order by count
+				</when>	
+				<when test="arrangement == 'newProduct'">
+					order by productId desc
+				</when>
+				<when test="arrangement == 'cheap'">
+					order by price
+				</when>
+				<when test="arrangement == 'expenssive'">
+					order by price desc
+				</when>
+				<otherwise>
+				
+				</otherwise>				
+			</choose>
+		</if>
+		<if test="condition != null and conditionType == 'wineKinds' and startPrice == null and endPrice == null">
+			where wineKinds LIKE CONCAT('%',#{condition},'%')
+			<choose>
+				<when test="arrangement == 'frame'">
+					order by count
+				</when>	
+				<when test="arrangement == 'newProduct'">
+					order by productId desc
+				</when>
+				<when test="arrangement == 'cheap'">
+					order by price
+				</when>
+				<when test="arrangement == 'expenssive'">
+					order by price desc
+				</when>
+				<otherwise>
+				
+				</otherwise>				
+			</choose>
+		</if>
+		<if test="condition == null and conditionType == 'price' and startPrice != null and endPrice != null">
+			where price between #{startPrice} and #{endPrice}
+			<choose>
+				<when test="arrangement == 'frame'">
+					 order by count
+				</when>	
+				<when test="arrangement == 'newProduct'">
+					 order by productId desc
+				</when>
+				<when test="arrangement == 'cheap'">
+					 order by price
+				</when>
+				<when test="arrangement == 'expenssive'">
+					order by price desc
+				</when>
+				<otherwise>
+				
+				</otherwise>				
+			</choose>
+		</if>
+		<if
+			test="condition != null and conditionType == 'search' and startPrice == null and endPrice == null">
+			where wineKinds LIKE CONCAT('%',#{condition},'%') or producer LIKE
+			CONCAT('%',#{condition},'%') or variety LIKE
+			CONCAT('%',#{condition},'%')
+			or wineKinds LIKE CONCAT('%',#{condition},'%') or productName LIKE
+			CONCAT('%',#{condition},'%') or wineEx LIKE
+			CONCAT('%',#{condition},'%')
+			or brandEx LIKE CONCAT('%',#{condition},'%') or nation LIKE
+			CONCAT('%',#{condition},'%') or year LIKE
+			CONCAT('%',#{condition},'%') or
+			alcohol LIKE CONCAT('%',#{condition},'%') or weight LIKE
+			CONCAT('%',#{condition},'%') or temperature LIKE
+			CONCAT('%',#{condition},'%')
+			<choose>
+				<when test="arrangement == 'frame'">
+					order by count
+				</when>	
+				<when test="arrangement == 'newProduct'">
+					order by productId desc
+				</when>
+				<when test="arrangement == 'cheap'">
+					order by price
+				</when>
+				<when test="arrangement == 'expenssive'">
+					order by price desc
+				</when>
+				<otherwise>
+				
+				</otherwise>				
+			</choose>
+		</if>
 	</select>
 
 </mapper>

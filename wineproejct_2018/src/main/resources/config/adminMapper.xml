@@ -47,10 +47,13 @@
 		select * from product
 		order by productId desc limit #{startRow}, #{size}
 	</select>
-	<select id="getMatchFoodList" resultType="MatchFood"
+	<select id="getMatchFoodPList" resultType="MatchFood"
 		parameterType="java.util.Map">
 		select * from matchFood
 		order by matchFoodId desc limit #{startRow}, #{size}
+	</select>
+	<select id="getMatchFoodList" resultType="MatchFood">
+		select * from matchFood
 	</select>
 	<select id="getMatchFoodView" resultType="MatchFood"
 		parameterType="int">

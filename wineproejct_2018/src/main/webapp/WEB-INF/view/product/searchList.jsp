@@ -4,16 +4,65 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/searchList.css">
+<script>
+		function SearchFame(){
+			$('#arrangement').val('fame');
+			
+			if($('#startPrice').val() == undefined || $("#startPrice") != '0' || $('#endPrice').val() == ""){
+				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
+				"&arrangement="+ $('#arrangement').val();		
+			}else{
+				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
+				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPRice').val() +"&arrangement="+ $('#arrangement').val();	
+			}
+		
+		}
+		function SearchNewProduct(){
+			$('#arrangement').val('newProduct');		
+			if($('#startPrice').val() == undefined || $("#startPrice") != '0' || $('#endPrice').val() == ""){			
+				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
+				"&arrangement="+ $('#arrangement').val();		
+			}else{
+				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
+				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPRice').val() +"&arrangement="+ $('#arrangement').val();	
+			}
+		}
+		
+		function SearchCheap(){
+			$('#arrangement').val('cheap');		
+			if($('#startPrice').val() == undefined || $("#startPrice") != '0' || $('#endPrice').val() == ""){
+				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
+				"&arrangement="+ $('#arrangement').val();		
+			}else{
+				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
+				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPRice').val() +"&arrangement="+ $('#arrangement').val();	
+			}
+		}
+		function SearchExpenssive(){
+			$('#arrangement').val('expenssive');		
+			if($('#startPrice').val() == undefined || $("#startPrice") != '0' || $('#endPrice').val() == ""){
+				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
+				"&arrangement="+ $('#arrangement').val();		
+			}else{
+				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
+				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPRice').val() +"&arrangement="+ $('#arrangement').val();	
+			}
+		}
+		
+</script>
 <title>Insert title here</title>
 </head>
 <body ondragstart="return false">
-<input type="hidden" name="condition" value="${search.condition}">
-<input type="hidden" name="conditionType" value="${search.conditionType}">
-<input type="hidden" name="condition" value="${search.condition}">
-<input type="hidden" name="condition" value="${search.condition}">
-<input type="hidden" name="condition" value="${search.condition}">
+<input type="hidden" id="condition" name="condition" value="${search.condition}">
+<input type="hidden" id="conditionType" name="conditionType" value="${search.conditionType}">
+<input type="hidden" id="startPrice" name="startPrice" value="${search.startPrice}">
+<input type="hidden" id="endPrice" name="endPrice" value="${search.endPrice}">
+<input type="hidden" id="arrangement" name="arrangement" value="${search.arrangement}">
     <div class="main">
         <div class="header">
             <div class="logo">
@@ -116,11 +165,10 @@
             <div class="wrapper">
                 <div class="sort">
                     <ul>
-                        <li><a href="#">인기 순</a></li>
-                        <li><a href="#">신상품 순</a></li>
-                        <li><a href="#">낮은 가격 순</a></li>
-                        <li><a href="#">높은 가격 순</a></li>
-                        <li><a href="#">상품평 순</a></li>
+                        <li><a onclick="SearchFame()">인기 순</a></li>
+                        <li><a onclick="SearchNewProduct()">신상품 순</a></li>
+                        <li><a onclick="SearchCheap()">낮은 가격 순</a></li>
+                        <li><a onclick="SearchExpenssive()">높은 가격 순</a></li>
                     </ul>
                 </div>
                 <div class="search-List">

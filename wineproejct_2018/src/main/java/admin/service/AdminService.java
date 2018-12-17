@@ -1,5 +1,7 @@
 package admin.service;
 
+import java.util.List;
+
 import matchfood.vo.MatchFood;
 import matchfood.vo.MatchFoodPage;
 import payment.vo.PaymentPage;
@@ -32,8 +34,11 @@ public interface AdminService {
 
 	// 상품 목록을 출력
 
+	// 잘 맞는 음식 목록 출력 페이지로
+	public MatchFoodPage getMatchFoodPList(int page);
+	
 	// 잘 맞는 음식 목록 출력
-	public MatchFoodPage getMatchFoodList(int page);
+	public List<MatchFood> getMatchFoodList();
 
 	// 잘 맞는 음식이 이미 등록 됬었는지 출력
 	public int hasMatchFood(String matchFoodName);

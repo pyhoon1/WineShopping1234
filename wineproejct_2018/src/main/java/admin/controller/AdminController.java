@@ -58,6 +58,10 @@ public class AdminController {
 
 
 	
+		UsertPage user = adminService.getUserList(pageNum);
+		ProductPage product = adminService.getProductList(pageNum);
+		MatchFoodPage matchfood = adminService.getMatchFoodPList(pageNum);
+		ReviewtPage review = adminService.getReviewList(pageNum);
 		PaymentPage payment = adminService.getPaymentList(pageNum);
 
 	

@@ -79,7 +79,7 @@
 		<h1>Welcome to admin page!</h1>
 		<div class="nav">
 			<ul>
-					<li id="user"><a href="adminUser.do">유저 관리</a></li>
+				<li id="user"><a href="adminUser.do">유저 관리</a></li>
 				<li id="product"><a href="adminProduct.do">상품 관리</a></li>
 				<li id="product"><a href="adminMatchFood.do">잘 맞는 음식 관리</a></li>
 				<li id="review"><a href="adminReview.do">리뷰 관리</a></li>
