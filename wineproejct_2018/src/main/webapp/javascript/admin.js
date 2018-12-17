@@ -166,32 +166,36 @@ function hasMatchFoodName() {
 	;
 }
 
-$(function() {
-	$('#user').click(function() {
-		$('.user-list').css('display', 'block')
-		$('.product-list').css('display', 'none')
-		$('.review-list').css('display', 'none')
-		$('.payment-list').css('display', 'none')
-	})
-	$('#product').click(function() {
-		$('.user-list').css('display', 'none')
-		$('.product-list').css('display', 'block')
-		$('.review-list').css('display', 'none')
-		$('.payment-list').css('display', 'none')
-	})
-	$('#review').click(function() {
-		$('.user-list').css('display', 'none')
-		$('.product-list').css('display', 'none')
-		$('.review-list').css('display', 'block')
-		$('.payment-list').css('display', 'none')
-	})
-	$('#payment').click(function() {
-		$('.user-list').css('display', 'none')
-		$('.product-list').css('display', 'none')
-		$('.review-list').css('display', 'none')
-		$('.payment-list').css('display', 'block')
-	})
+$(function(){
+    $('#user').click(function(){
+        $('.user-list').css('display', 'block')
+        $('.product-list').css('display', 'none')
+        $('.review-list').css('display', 'none')
+        $('.payment-list').css('display', 'none')
+    })    
+    $('#product').click(function(){
+        $('.user-list').css('display', 'none')
+        $('.product-list').css('display', 'block')
+        $('.review-list').css('display', 'none')
+        $('.payment-list').css('display', 'none')
+    })    
+    $('#review').click(function(){
+        $('.user-list').css('display', 'none')
+        $('.product-list').css('display', 'none')
+        $('.review-list').css('display', 'block')
+        $('.payment-list').css('display', 'none')
+    })    
+    $('#payment').click(function(){
+        $('.user-list').css('display', 'none')
+        $('.product-list').css('display', 'none')
+        $('.review-list').css('display', 'none')
+        $('.payment-list').css('display', 'block')
+    })    
+//    $('.pageNum').click(function(e){
+//    	e.preventDefault();
+//    })
 })
+
 
 function findNation() {
 	$('.nation option[value=' + $('#search').val() + ']').attr('selected',

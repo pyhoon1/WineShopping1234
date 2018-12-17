@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="css/admin/admin.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/admin.css">
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
 	integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
@@ -16,16 +17,17 @@
 	rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="./view/admin/admin.js"></script>
+<script src="${pageContext.request.contextPath }/javascript/admin.js"></script>
 <title>Insert title here</title>
 </head>
-<body>
+<body oncontextmenu="return false">
 	<div class="wrapper">
 		<h1>Welcome to admin page!</h1>
 		<div class="nav">
 			<ul>
 				<li id="user">유저 관리</li>
 				<li id="product">상품 관리</li>
+				<li id="product">잘 맞는 음식 관리</li>
 				<li id="review">리뷰 관리</li>
 				<li id="payment">구매 내역 관리</li>
 			</ul>
@@ -77,7 +79,6 @@
 					</tbody>
 				</table>
 				<div class="paging">
-					<i class="fas fa-caret-left"></i>
 					<c:if test="${usertPage.hasProduct()}">
 						<div>
 							<a href="admin.do?pageNum=1" class="pageNum">처음</a>
@@ -101,7 +102,6 @@
 								class="pageNum">마지막</a>
 						</div>
 					</c:if>
-					<i class="fas fa-caret-right"></i>
 				</div>
 			</div>
 
@@ -138,6 +138,7 @@
 								<td>${product.brandEx }</td>
 								<td>${product.price }</td>
 								<td>${product.nation }</td>
+								<td>${product.year }</td>
 								<td>${product.matchFoodName }</td>
 								<td>${product.temperature }</td>
 								<td>${product.alcohol }</td>
@@ -150,7 +151,7 @@
 					</tbody>
 				</table>
 				<div class="paging">
-					<i class="fas fa-caret-left"></i>
+
 					<c:if test="${productPage.hasProduct()}">
 						<div>
 							<a href="admin.do?pageNum=1" class="pageNum">처음</a>
@@ -174,7 +175,7 @@
 								class="pageNum">마지막</a>
 						</div>
 					</c:if>
-					<i class="fas fa-caret-right"></i>
+
 				</div>
 			</div>
 
@@ -209,7 +210,7 @@
 					</tbody>
 				</table>
 				<div class="paging">
-					<i class="fas fa-caret-left"></i>
+
 					<c:if test="${reviewPage.hasProduct()}">
 						<div>
 							<a href="admin.do?pageNum=1" class="pageNum">처음</a>
@@ -233,7 +234,7 @@
 								class="pageNum">마지막</a>
 						</div>
 					</c:if>
-					<i class="fas fa-caret-right"></i>
+
 				</div>
 			</div>
 
@@ -284,7 +285,7 @@
 					</tbody>
 				</table>
 				<div class="paging">
-					<i class="fas fa-caret-left"></i>
+
 					<c:if test="${paymentPage.hasProduct()}">
 						<div>
 							<a href="admin.do?pageNum=1" class="pageNum">처음</a>
@@ -308,7 +309,7 @@
 								class="pageNum">마지막</a>
 						</div>
 					</c:if>
-					<i class="fas fa-caret-right"></i>
+
 				</div>
 			</div>
 		</div>

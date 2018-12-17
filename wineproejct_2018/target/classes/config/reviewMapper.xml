@@ -19,10 +19,10 @@
 	</select>
 
 
-	<delete id="reviewDelete" parameterType="int">
-		delete from review where
-		userId = #{userId}
-	</delete>
+	<update id="reviewDelete" parameterType="int">
+		update from review set state = 'N' where
+		reviewId = #{reviewId} and userId = #{userId}
+	</update>
 
 	<insert id="reviewWrite" parameterType="Review" >
 		insert into

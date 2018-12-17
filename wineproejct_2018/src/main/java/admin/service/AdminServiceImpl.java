@@ -24,7 +24,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private AdminDao admin;
-	private int size = 10;
+	private int size = 5;
 	private int blockSize = 5;
 
 	public UsertPage getUserList(int pageNum) {

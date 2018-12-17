@@ -21,11 +21,11 @@ public class ReviewDaoImplJDBC implements ReviewDao {
 
 	}
 
-	public void reviewDelete(int userId, int reviewId) {
+	public void reviewUpdate(int userId, int reviewId) {
 		Map<String, Integer> review = new HashMap<String, Integer>();
 		review.put("userId", userId);
 		review.put("reviewId", reviewId);
-		reviewMapper.reviewDelete(review);
+		reviewMapper.reviewUpdate(review);
 
 	}
 

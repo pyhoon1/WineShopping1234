@@ -35,6 +35,11 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 
+	@RequestMapping("/adminHome.do")
+	public String adminHome() {
+		return "admin";
+	}
+	
 	@RequestMapping("/adminMakeMatchFoodForm.do")
 	public ModelAndView getMakeMatchFoodForm() {
 		return new ModelAndView("/admin/adminMakeMatchFoodForm");

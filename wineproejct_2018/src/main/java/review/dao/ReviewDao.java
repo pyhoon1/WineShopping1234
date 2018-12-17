@@ -8,7 +8,7 @@ import review.vo.ReviewtPage;
 public interface ReviewDao {
 	public List<Review> userReviewList(int userId, int startRow, int size);
 
-	public void reviewDelete(int userId, int reviewId);
+	public void reviewUpdate(int userId, int reviewId);
 
 	public void reviewWrite(Review review);
 
