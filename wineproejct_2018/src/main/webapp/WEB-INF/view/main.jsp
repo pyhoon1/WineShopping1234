@@ -52,7 +52,7 @@
 				<ul class="wineList">
 				<c:forEach items="${products }" var="products" >
 					<li>
-						<a href="productView.do?productId=${products.productId}"><div class="wineImg">
+						<a href="productView.do?productId=${products.productId}&pageNum=1"><div class="wineImg">
 								<img src="${products.img }">
 							</div>
 							<div class="left">
