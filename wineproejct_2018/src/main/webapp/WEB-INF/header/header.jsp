@@ -108,7 +108,7 @@
                         <div class="search-box">
                         <form action="searchList.do" method="post">
                         	<input type="hidden" name="conditionType" value="search">
-                            <input class="search-txt" type="text" name="search" placeholder="Search">
+                            <input class="search-txt" type="text" name="search" >
                             <button class="search-btn"><i class="fas fa-search"></i></button>
                         </form>
                         </div>

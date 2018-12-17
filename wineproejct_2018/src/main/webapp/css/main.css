@@ -351,4 +351,14 @@ body{
     height: 20px;
 }
 
+.wineList > li {
+	padding: 5px;
+	border: 1px solid rgba(0,0,0,0.15);
+	transition: 0.3s;
+}
+
+.wineList > li:hover{
+	border: 1px solid rgba(0,0,0,0.55);
+}
+
 /* 컨텐츠 끝 */
