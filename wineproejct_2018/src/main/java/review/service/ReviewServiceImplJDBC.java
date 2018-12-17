@@ -21,8 +21,8 @@ public class ReviewServiceImplJDBC implements ReviewService {
 
 	}
 
-	public void reviewDelete(int userId, int reviewId) {
-		reviewDao.reviewDelete(userId, reviewId);
+	public void reviewUpdate(int userId, int reviewId) {
+		reviewDao.reviewUpdate(userId, reviewId);
 
 	}
 

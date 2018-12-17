@@ -6,7 +6,7 @@ import review.vo.ReviewtPage;
 public interface ReviewService {
 	public ReviewtPage userReviewList(int userId, int pageNum);
 
-	public void reviewDelete(int userId, int reviewId);
+	public void reviewUpdate(int userId, int reviewId);
 
 	public void reviewWrite(Review review);
 	

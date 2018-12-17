@@ -21,17 +21,17 @@ public class ReviewController {
 		return "redirect:/productView.do?productId="+productId;
 	}
 	@RequestMapping("/reviewWrite.do")
-	public String reviewWrite(@RequestParam("productId") int productId, @RequestParam("userId") int userId,
+	public String reviewWrite(@RequestParam("productId") int productId, @RequestParam("userId") int userId, @RequestParam("pageNum") int pageNum,
 			@RequestParam("loginId") String loginId, @RequestParam("productName") String productName,
 			@RequestParam("content") String content) {
 		reviewService.reviewWrite(new Review(productId, userId, loginId, productName, content));
-		return "redirect:/form.do?productId="+productId;
+		return "redirect:/form.do?productId="+productId+"&pageNum="+pageNum;
 	}
 
 	@RequestMapping("/reviewDelete.do")
-	public String reviewDelete(@RequestParam("userId") int userId, @RequestParam("reviewId") int reviewId) {
-		reviewService.reviewDelete(userId, reviewId);
-		return null;
+	public String reviewDelete(@RequestParam("userId") int userId, @RequestParam("reviewId") int reviewId, @RequestParam("productId") int productId, @RequestParam("pageNum") int pageNum) {
+		reviewService.reviewUpdate(userId, reviewId);
+		return "redirect:/form.do?productId="+productId+"&pageNum="+pageNum;
 	}
 
 	@RequestMapping("/reviewList.do")
