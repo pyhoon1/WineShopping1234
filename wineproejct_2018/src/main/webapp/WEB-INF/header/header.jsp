@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath }/javascript/header.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/header.css">
 <title>Insert title here</title>
 </head>
 <body>

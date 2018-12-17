@@ -56,7 +56,7 @@ public class ProductController {
 		}
 		model.addAttribute("reviewPage", reviewtPage);
 		model.addAttribute("product", product);
-		return "productDetail";
+		return "product/productDetail";
 	}
 
 	@RequestMapping("/main.do")
