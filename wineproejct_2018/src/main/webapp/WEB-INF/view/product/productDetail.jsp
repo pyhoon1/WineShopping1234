@@ -71,6 +71,7 @@ $(function() {
 </head>
 <body>
 	<div class="main">
+	
 		<jsp:include page="../../header/header.jsp" />
 
 		<div class="content">
