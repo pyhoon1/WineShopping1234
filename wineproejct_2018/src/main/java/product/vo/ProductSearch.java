@@ -2,7 +2,7 @@ package product.vo;
 
 import org.apache.ibatis.type.Alias;
 
-@Alias("Search")
+@Alias("ProductSearch")
 public class ProductSearch {
 	private String condition;
 	private String conditionType;
