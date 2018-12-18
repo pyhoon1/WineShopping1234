@@ -13,49 +13,49 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/searchList.css">
 <script>
-		function SearchFame(){
-			$('#arrangement').val('fame');	
-			
-			if($('#startPrice').val() == "" || $('#endPrice').val() == ""){
-				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
-				"&arrangement="+ $('#arrangement').val();		
-			}else{
-				location.href="searchList.do?conditionType="+$('#conditionType').val()+
-				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val();	
-			}
-		
-		}
-		function SearchNewProduct(){
-			$('#arrangement').val('newProduct');		
-			if($('#startPrice').val() == "" || $('#endPrice').val() == ""){
-				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
-				"&arrangement="+ $('#arrangement').val();		
-			}else{
-				location.href="searchList.do?conditionType="+$('#conditionType').val()+
-				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val();	
-			}
-		}
-		
-		function SearchCheap(){
-			$('#arrangement').val('cheap');		
-			if($('#startPrice').val() == "" || $('#endPrice').val() == ""){
-				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
-				"&arrangement="+ $('#arrangement').val();		
-			}else{
-				location.href="searchList.do?conditionType="+$('#conditionType').val()+
-				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val();	
-			}
-		}
-		function SearchExpenssive(){
-			$('#arrangement').val('expenssive');		
-			if($('#startPrice').val() == "" || $('#endPrice').val() == ""){
-				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
-				"&arrangement="+ $('#arrangement').val();		
-			}else{
-				location.href="searchList.do?conditionType="+$('#conditionType').val()+
-				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val();	
-			}
-		}
+function SearchFame(){
+	$('#arrangement').val('fame');	
+	
+	if($('#startPrice').val() == "" || $('#endPrice').val() == ""){
+		location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
+		"&arrangement="+ $('#arrangement').val();		
+	}else{
+		location.href="searchList.do?conditionType="+$('#conditionType').val()+
+		"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val();	
+	}
+
+}
+function SearchNewProduct(){
+	$('#arrangement').val('newProduct');		
+	if($('#startPrice').val() == "" || $('#endPrice').val() == ""){
+		location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
+		"&arrangement="+ $('#arrangement').val();		
+	}else{
+		location.href="searchList.do?conditionType="+$('#conditionType').val()+
+		"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val();	
+	}
+}
+
+function SearchCheap(){
+	$('#arrangement').val('cheap');		
+	if($('#startPrice').val() == "" || $('#endPrice').val() == ""){
+		location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
+		"&arrangement="+ $('#arrangement').val();		
+	}else{
+		location.href="searchList.do?conditionType="+$('#conditionType').val()+
+		"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val();	
+	}
+}
+function SearchExpenssive(){
+	$('#arrangement').val('expenssive');		
+	if($('#startPrice').val() == "" || $('#endPrice').val() == ""){
+		location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
+		"&arrangement="+ $('#arrangement').val();		
+	}else{
+		location.href="searchList.do?conditionType="+$('#conditionType').val()+
+		"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val();	
+	}
+}
 		
 </script>
 <title>Insert title here</title>
@@ -79,7 +79,7 @@
                         <li><a onclick="SearchExpenssive()">높은 가격 순</a></li>
                     </ul>
                 </div>
-                <div class="search-List">
+                 <div class="search-List">
                     <ul>
                     	<c:forEach items="${productList}" var="product">
                         <li>                   
@@ -92,7 +92,7 @@
                                     <span><a href="#">${product.price}</a></span>
                                 </div>
                                 <div class="right">
-                                    <span><a href="#">${product.nation }</a></span>
+                                    <span><a href="#"><img src="${product.nationImg}"></a></span>
                                     <span><a href="#">${product.wineKinds }</a></span>
                                 </div>
                             </div>
