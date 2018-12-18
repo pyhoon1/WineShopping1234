@@ -11,7 +11,7 @@ $(function() {
         if(amount == 0){
             amount = 0
         }else{
-            amount -= 1
+            amount -= 1 
         }
         $(this).prevAll('input').val(amount)
         console.log(amount)
