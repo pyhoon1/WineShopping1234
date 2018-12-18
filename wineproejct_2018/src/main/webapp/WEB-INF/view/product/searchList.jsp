@@ -15,10 +15,10 @@
 			
 			if($('#startPrice').val() == "" || $('#endPrice').val() == ""){
 				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
-				"&arrangement="+ $('#arrangement').val();		
+				"&arrangement="+ $('#arrangement').val()+"&pageNum="+$('#pageNum').val();		
 			}else{
 				location.href="searchList.do?conditionType="+$('#conditionType').val()+
-				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val();	
+				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val()+"&pageNum="+$('#pageNum').val();	
 			}
 		
 		}
@@ -26,10 +26,10 @@
 			$('#arrangement').val('newProduct');		
 			if($('#startPrice').val() == "" || $('#endPrice').val() == ""){
 				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
-				"&arrangement="+ $('#arrangement').val();		
+				"&arrangement="+ $('#arrangement').val()+"&pageNum="+$('#pageNum').val();		
 			}else{
 				location.href="searchList.do?conditionType="+$('#conditionType').val()+
-				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val();	
+				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val()+"&pageNum="+$('#pageNum').val();	
 			}
 		}
 		
@@ -37,20 +37,20 @@
 			$('#arrangement').val('cheap');		
 			if($('#startPrice').val() == "" || $('#endPrice').val() == ""){
 				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
-				"&arrangement="+ $('#arrangement').val();		
+				"&arrangement="+ $('#arrangement').val()+"&pageNum="+$('#pageNum').val();		
 			}else{
 				location.href="searchList.do?conditionType="+$('#conditionType').val()+
-				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val();	
+				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val()+"&pageNum="+$('#pageNum').val();	
 			}
 		}
 		function SearchExpenssive(){
 			$('#arrangement').val('expenssive');		
 			if($('#startPrice').val() == "" || $('#endPrice').val() == ""){
 				location.href="searchList.do?condition="+$('#condition').val()+"&conditionType="+$('#conditionType').val()+
-				"&arrangement="+ $('#arrangement').val();		
+				"&arrangement="+ $('#arrangement').val()+"&pageNum="+$('#pageNum').val();		
 			}else{
 				location.href="searchList.do?conditionType="+$('#conditionType').val()+
-				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val();	
+				"&startPrice="+$('#startPrice').val()+"&endPrice="+$('#endPrice').val() +"&arrangement="+ $('#arrangement').val()+"&pageNum="+$('#pageNum').val();	
 			}
 		}
 		
@@ -63,6 +63,8 @@
 <input type="hidden" id="startPrice" name="startPrice" value="${search.startPrice}">
 <input type="hidden" id="endPrice" name="endPrice" value="${search.endPrice}">
 <input type="hidden" id="arrangement" name="arrangement" value="${search.arrangement}">
+<input type="hidden" id="pageNum" name="pageNum" value="${param.pageNum }">
+
     <div class="main">
         <div class="header">
             <div class="logo">
@@ -173,7 +175,7 @@
                 </div>
                 <div class="search-List">
                     <ul>
-                    	<c:forEach items="${productList}" var="product">
+                    	<c:forEach items="${productPage.productList}" var="product">
                         <li>                   
                             <div class="search-img">
                                 <a href="#"><img src="${product.img}"></a>
@@ -191,17 +193,29 @@
                         </li>  
                                                     </c:forEach>          
                 </div>
-                <div class="paging">
-                    <i class="fas fa-caret-left"></i>
-                    <span>
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                    </span>
-                    <i class="fas fa-caret-right"></i>
-                </div>
+                <c:if test="${productPage.hasProduct()}">
+		<div class="paging">
+			<a href="searchList.do?pageNum=1" class="pageNum">처음</a>
+
+			<c:if test="${productPage.startPage > 5 }">
+				<a href="searchList.do?pageNum=${productPage.startPage - 5  }"
+					class="pageNum">이전</a>
+			</c:if>
+
+			<c:forEach var="pageNum" begin="${productPage.startPage}"
+				end="${productPage.endPage }">
+				<a href="searchList.do?pageNum=${pageNum}" class="pageNum">${pageNum}</a>
+			</c:forEach>
+
+			<c:if test="${productPage.endPage < productPage.totalPages }">		
+				<a href="searchList.do?pageNum=${productPage.startPage + 5 }"
+					class="pageNum">다음</a>
+			</c:if>
+
+			<a href="searchList.do?pageNum=${productPage.totalPages }"
+				class="pageNum">마지막</a>
+		</div>
+	</c:if>
             </div>
         </div>
 
