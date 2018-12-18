@@ -19,6 +19,8 @@ public class ProductServiceImplJDBC implements ProductService {
 	int size = 10;
 	int blockSize = 5;
 
+	int searchSize = 10;
+
 	public ProductPage getProductList(int pageNum) {
 		List<Product> productList = productDao.getProductList((pageNum - 1) * size, size);
 		int count = productDao.getProductCount();
@@ -35,12 +37,11 @@ public class ProductServiceImplJDBC implements ProductService {
 		return productList;
 	}
 
-	public List<Product> searchWine(ProductSearch search) {
-		// TODO Auto-generated method stub
-		List<Product> productList = productDao.searchWine(search);
-		return productList;
+	public ProductPage searchWine(int pageNum, ProductSearch search) {
+		List<Product> productList = productDao.searchWine((pageNum - 1) * searchSize, searchSize, search);
+		int count = productDao.searchWineCount();
+		ProductPage productPage = new ProductPage(productList, pageNum, count, searchSize, blockSize);
+		return productPage;
 	}
-
-
 
 }

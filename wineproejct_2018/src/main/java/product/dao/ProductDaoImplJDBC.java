@@ -38,9 +38,22 @@ public class ProductDaoImplJDBC implements ProductDao {
 		return productList;
 	}
 
-	public List<Product> searchWine(ProductSearch search) {
-		List<Product> product = productMapper.searchWine(search);
+	public List<Product> searchWine(int startRow, int size ,ProductSearch search) {
+		Map<String, Object> page = new HashMap<String, Object>();
+		page.put("startRow", startRow);
+		page.put("size", size);
+		page.put("condition", search.getCondition());
+		page.put("conditionType", search.getConditionType());
+		page.put("startPrice", search.getStartPrice());
+		page.put("endPrice", search.getEndPrice());
+		page.put("arrangement", search.getArrangement());
+		List<Product> product = productMapper.searchWine(page);
 		return product;
+	}
+
+	public int searchWineCount() {
+		int count = productMapper.searchWineCount();
+		return count;
 	}
 
 

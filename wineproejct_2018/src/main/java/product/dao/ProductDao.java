@@ -14,7 +14,9 @@ public interface ProductDao {
 
 	public List<Product> manySaleProduct();
 
-	public List<Product> searchWine(ProductSearch search);
+	public List<Product> searchWine(int startRow, int size , ProductSearch search);
+	
+	public int searchWineCount();
 
 
 

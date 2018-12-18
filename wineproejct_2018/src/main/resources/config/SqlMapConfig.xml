@@ -8,6 +8,7 @@
 	<typeAliases>
 		<typeAlias type="product.vo.Product" alias="Search" />
 		<typeAlias type="product.vo.Product" alias="Product" />
+		<typeAlias type="product.vo.Product" alias="SearchProduct"/>
 		<typeAlias type="user.vo.User" alias="User" />
 		<typeAlias type="review.vo.Review" alias="Review" />
 		<typeAlias type="payment.vo.Payment" alias="Payment" />
@@ -17,6 +18,5 @@
 		<typeAlias type="payment.vo.FoodRequest" alias="PaymentFoodRequest" />
 		<typeAlias type="payment.vo.ProductRequest" alias="PaymentProductRequest" />
 		<typeAlias type="basket.vo.Basket" alias="Basket" />
-
 	</typeAliases>
 </configuration>

@@ -72,16 +72,15 @@ public class ProductController {
 			@RequestParam(value = "conditionType", required = false) String conditionType,
 			@RequestParam(value = "startPrice", required = false) String startPrice,
 			@RequestParam(value = "endPrice", required = false) String endPrice,
-			@RequestParam(value = "arrangement", required = false) String arrangement) {
-
-		System.out.println("arrangement " + arrangement);
-
-		List<Product> productlist = productService
-				.searchWine(new ProductSearch(condition, conditionType, startPrice, endPrice, arrangement));
-
+			@RequestParam(value = "arrangement", required = false) String arrangement,
+			@RequestParam(value = "pageNum", required = false) int pageNum) {
+		
+		
+		ProductPage productpage= productService.searchWine(pageNum, new ProductSearch(condition, conditionType, startPrice, endPrice, arrangement));
+		
 		ProductSearch search = new ProductSearch(condition, conditionType, startPrice, endPrice, arrangement);
 
-		model.addAttribute("productList", productlist);
+		model.addAttribute("productList", productpage);
 		model.addAttribute("search", search);
 
 		return "/product/searchList";

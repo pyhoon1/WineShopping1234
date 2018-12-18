@@ -17,7 +17,9 @@ public interface ProductMapper {
 
 	public List<Product> manySaleProduct();
 
-	public List<Product> searchWine(ProductSearch search);
+	public List<Product> searchWine(Map<String, Object> page);
+	
+	public int searchWineCount();
 
 	
 	
