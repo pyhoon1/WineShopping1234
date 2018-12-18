@@ -17,7 +17,7 @@ import user.service.UserService;
 import user.vo.User;
 
 @Controller
-public class UserController { 
+public class UserController {
 
 	@Autowired
 	private UserService userService;
@@ -25,7 +25,7 @@ public class UserController {
 	@RequestMapping("/loginErrorPage.do")
 	public String loginErroPage() {
 		return "redirect:/main.do";
-	} 
+	}
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String loginUser(HttpServletRequest req, Model model, @RequestParam("loginId") String loginId,
@@ -60,18 +60,17 @@ public class UserController {
 		return "user/signUp";
 	}
 
-
 	@RequestMapping("/signUpErrorPage.do")
 	public String signErrorPage() {
 		return "user/signUpForm";
 	}
-	
+
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
 	public String insertUser(Model model, @RequestParam("loginId") String loginId,
 			@RequestParam("password") String password, @RequestParam("userName") String userName,
 			@RequestParam("email") String email, @RequestParam("address") String address,
 			@RequestParam("phone") String phone, @RequestParam("birth") String birth) throws Exception {
-		
+
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 		model.addAttribute("errors", errors);
 		User userId = userService.selectByLoginId(loginId);
@@ -104,16 +103,6 @@ public class UserController {
 
 	}
 
-	@RequestMapping(value = "/RatingUpdate.do", method = RequestMethod.POST)
-	public void RatingUpdate(@RequestParam("userId") int userId, @RequestParam("rating") String rating) {
-		userService.RatingUpdate(new User(userId, rating));
-	}
-
-	@RequestMapping(value = "/totalAmountUpdate.do", method = RequestMethod.POST)
-	public void totalAmountUpdate(@RequestParam("userId") int userId, @RequestParam("totalAmount") int totalAmount) {
-		userService.totalAmountUpdate(new User(userId, totalAmount));
-	}
-
 	// 회원 탈퇴 수정해야됨!!!!!
 	@RequestMapping(value = "/deleteUser.do", method = RequestMethod.POST)
 	public String deleteUser(int userId) {
@@ -133,10 +122,10 @@ public class UserController {
 	public String userLoginIdFindForm() {
 		return "user/userLoginIdFindForm";
 	}
-	
+
 	@RequestMapping("/userLoginIdFindErrorPage.do")
 	public void userLoginIdFindErrorPage() {
-		
+
 	}
 
 	@RequestMapping("/userLoginIdFind.do")
@@ -170,9 +159,10 @@ public class UserController {
 	public String userPasswordFindForm() {
 		return "user/userPasswordFindForm";
 	}
-	
+
 	@RequestMapping("/userPasswordFindErrorPage.do")
-	public void userPasswordFindErrorPage() {}
+	public void userPasswordFindErrorPage() {
+	}
 
 	@RequestMapping("userPasswordFind.do")
 	public String userPasswordFind(Model model, @RequestParam("loginId") String loginId,

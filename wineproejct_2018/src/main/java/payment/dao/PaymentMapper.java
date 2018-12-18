@@ -20,5 +20,7 @@ public interface PaymentMapper {
 	public void productPayment(ProductRequest payment);
 
 	public void foodPayment(FoodRequest payment);
-
+	
+	public int getUserTotal(int userId);
+	
 }

@@ -27,10 +27,8 @@ public interface UserDao {
 	public void updateUser(User user);
 
 	// 유저 등급을 수정하는 메소드
-	public void RatingUpdate(User user);
 
-	// 유저가 구매한 상품들의 총액
-	public void totalAmountUpdate(User user);
+	public void RatingUpdate(int userId, String rating);
 
 	// 이메일로 아이디를 찾음
 

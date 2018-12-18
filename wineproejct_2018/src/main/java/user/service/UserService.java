@@ -3,7 +3,7 @@ package user.service;
 import user.vo.User;
 
 public interface UserService {
-	// 회원가입 
+	// 회원가입
 	public User selectByUserId(int userId);
 
 	public User selectByLoginId(String loginId);
@@ -13,7 +13,7 @@ public interface UserService {
 	public User userLoginIdFind(User User);
 
 	public User userPasswordFind(User user);
- 
+
 	public User loginUser(User user);
 
 	// 유저정보를 삭제하는 메소드
@@ -23,10 +23,7 @@ public interface UserService {
 	public void updateUser(User user);
 
 	// 유저 등급을 수정하는 메소드
-	public void RatingUpdate(User user);
-
-	// 유저가 구매한 상품들의 총액
-	public void totalAmountUpdate(User user);
+	public void RatingUpdate(int userId, String rating);
 
 	// 이메일로 아이디를 찾음
 

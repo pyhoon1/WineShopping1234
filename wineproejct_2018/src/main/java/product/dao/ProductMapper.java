@@ -19,5 +19,8 @@ public interface ProductMapper {
 
 	public List<Product> searchWine(ProductSearch search);
 
+	
+	
+
 
 }

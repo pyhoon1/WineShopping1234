@@ -2,7 +2,6 @@ package product.dao;
 
 import java.util.List;
 
-
 import product.vo.Product;
 import product.vo.ProductSearch;
 
@@ -16,6 +15,7 @@ public interface ProductDao {
 	public List<Product> manySaleProduct();
 
 	public List<Product> searchWine(ProductSearch search);
-	
-	
+
+
+
 }

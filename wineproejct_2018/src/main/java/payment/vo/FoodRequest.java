@@ -1,5 +1,8 @@
 package payment.vo;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("PaymentFoodRequest")
 public class FoodRequest {
 	private int userId;
 	private int matchFoodId;
@@ -8,9 +11,10 @@ public class FoodRequest {
 	private int productCount;
 	private String productImg;
 	private String method;
+	private int total;
 
 	public FoodRequest(int userId, int matchFoodId, String productName, int productPrice, int productCount,
-			String productImg, String method) {
+			String productImg, String method, int total) {
 		super();
 		this.userId = userId;
 		this.matchFoodId = matchFoodId;
@@ -19,6 +23,7 @@ public class FoodRequest {
 		this.productCount = productCount;
 		this.productImg = productImg;
 		this.method = method;
+		this.total = total;
 	}
 
 	public int getUserId() {
@@ -47,6 +52,10 @@ public class FoodRequest {
 
 	public String getMethod() {
 		return method;
+	}
+
+	public int getTotal() {
+		return total;
 	}
 
 }
