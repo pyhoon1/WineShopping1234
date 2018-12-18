@@ -45,14 +45,6 @@ public class UserServiceImplJDBC implements UserService {
 
 	}
 
-	public void RatingUpdate(User user) {
-		userDao.RatingUpdate(user);
-	}
-
-	public void totalAmountUpdate(User user) {
-		userDao.totalAmountUpdate(user);
-
-	}
 
 	public void deleteUser(int userId) {
 		userDao.deleteUser(userId);
@@ -122,6 +114,11 @@ public class UserServiceImplJDBC implements UserService {
 		sendMail.setFrom("rldh111122223333@gmail.com", "권기오");
 		sendMail.setTo(user.getEmail());
 		sendMail.send();
+	}
+
+	public void RatingUpdate(int userId, String rating) {
+		userDao.RatingUpdate(userId, rating);
+		
 	}
 
 }

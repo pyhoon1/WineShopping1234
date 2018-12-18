@@ -18,9 +18,11 @@ public class Payment {
 	private String matchFoodCount;
 	private String method;
 	private LocalDateTime pDay;
+	private int total;
+
 	public Payment(int paymentId, int userId, int productId, int matchFoodId, String productName, int productPrice,
 			int productCount, String productImg, String matchFoodIdList, String matchFoodCount, String method,
-			LocalDateTime pDay) {
+			LocalDateTime pDay, int total) {
 		super();
 		this.paymentId = paymentId;
 		this.userId = userId;
@@ -34,8 +36,111 @@ public class Payment {
 		this.matchFoodCount = matchFoodCount;
 		this.method = method;
 		this.pDay = pDay;
+		this.total = total;
 	}
 
-	
-	
+	public int getPaymentId() {
+		return paymentId;
+	}
+
+	public void setPaymentId(int paymentId) {
+		this.paymentId = paymentId;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+	public int getMatchFoodId() {
+		return matchFoodId;
+	}
+
+	public void setMatchFoodId(int matchFoodId) {
+		this.matchFoodId = matchFoodId;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public int getProductPrice() {
+		return productPrice;
+	}
+
+	public void setProductPrice(int productPrice) {
+		this.productPrice = productPrice;
+	}
+
+	public int getProductCount() {
+		return productCount;
+	}
+
+	public void setProductCount(int productCount) {
+		this.productCount = productCount;
+	}
+
+	public String getProductImg() {
+		return productImg;
+	}
+
+	public void setProductImg(String productImg) {
+		this.productImg = productImg;
+	}
+
+	public String getMatchFoodIdList() {
+		return matchFoodIdList;
+	}
+
+	public void setMatchFoodIdList(String matchFoodIdList) {
+		this.matchFoodIdList = matchFoodIdList;
+	}
+
+	public String getMatchFoodCount() {
+		return matchFoodCount;
+	}
+
+	public void setMatchFoodCount(String matchFoodCount) {
+		this.matchFoodCount = matchFoodCount;
+	}
+
+	public String getMethod() {
+		return method;
+	}
+
+	public void setMethod(String method) {
+		this.method = method;
+	}
+
+	public LocalDateTime getpDay() {
+		return pDay;
+	}
+
+	public void setpDay(LocalDateTime pDay) {
+		this.pDay = pDay;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
 }

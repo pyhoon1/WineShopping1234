@@ -1,8 +1,9 @@
 package product.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,7 +39,7 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/productView.do", method = RequestMethod.GET)
-	public String getProduct(Model model, @RequestParam("productId") int productId,
+	public String getProduct(Model model, HttpServletRequest req, @RequestParam("productId") int productId,
 			@RequestParam("pageNum") int pageNum) {
 		Product product = productService.getProduct(productId);
 		ReviewtPage reviewtPage = reviewService.reviewList(productId, pageNum);
@@ -52,7 +53,7 @@ public class ProductController {
 				matchFoodList.add(matchFoodservice.getMatchFood(matchFoodId[i]));
 			}
 
-			model.addAttribute("matchFoodList", matchFoodList);
+			req.getSession().setAttribute("matchFoodList", matchFoodList);
 		}
 		model.addAttribute("reviewPage", reviewtPage);
 		model.addAttribute("product", product);
@@ -63,28 +64,26 @@ public class ProductController {
 	public String goMain(Model model) {
 		List<Product> products = productService.manySaleProduct();
 		model.addAttribute("products", products);
-
 		return "main";
 	}
-	
-	@RequestMapping("/searchList.do")
-	public String searchList(Model model, 
-			@RequestParam(value="condition" , required=false) String condition ,
-			@RequestParam(value="conditionType" , required=false) String conditionType ,
-			@RequestParam(value="startPrice" , required=false) String startPrice ,
-			@RequestParam(value="endPrice" , required=false) String endPrice, 
-			@RequestParam(value="arrangement", required=false) String arrangement) {
-		
-		System.out.println("arrangement "+arrangement);
-		
-		List<Product> productlist = productService.searchWine(new ProductSearch(condition,conditionType,startPrice, endPrice,arrangement));
 
-		
-		ProductSearch search = new ProductSearch(condition, conditionType, startPrice, endPrice,arrangement);
-		
+	@RequestMapping("/searchList.do")
+	public String searchList(Model model, @RequestParam(value = "condition", required = false) String condition,
+			@RequestParam(value = "conditionType", required = false) String conditionType,
+			@RequestParam(value = "startPrice", required = false) String startPrice,
+			@RequestParam(value = "endPrice", required = false) String endPrice,
+			@RequestParam(value = "arrangement", required = false) String arrangement) {
+
+		System.out.println("arrangement " + arrangement);
+
+		List<Product> productlist = productService
+				.searchWine(new ProductSearch(condition, conditionType, startPrice, endPrice, arrangement));
+
+		ProductSearch search = new ProductSearch(condition, conditionType, startPrice, endPrice, arrangement);
+
 		model.addAttribute("productList", productlist);
 		model.addAttribute("search", search);
-		
+
 		return "/product/searchList";
 	}
 }

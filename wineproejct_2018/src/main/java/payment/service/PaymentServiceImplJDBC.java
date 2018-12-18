@@ -46,4 +46,9 @@ public class PaymentServiceImplJDBC implements PaymentService {
 
 	}
 
+	public int getUserTotal(int userId) {
+		
+		return paymentDao.getUserTotal(userId);
+	}
+
 }
