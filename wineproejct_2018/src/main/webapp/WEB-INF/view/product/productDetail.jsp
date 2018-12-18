@@ -135,7 +135,13 @@ $(function() {
 							</button>
 						</div>
 						<div class="match-food-container">
-							<div class="match-food-list"></div>
+							<div class="match-food-list">
+								<c:forEach var="matchFood" items="${matchFoodList }">
+									<div>${matchFood.matchFoodId }</div>
+									<div>${matchFood.matchFoodName }</div>
+									
+								</c:forEach>
+							</div>
 						</div>
 						<div class="price">
 							<span>총 상품 금액 : ${product.price }</span>
