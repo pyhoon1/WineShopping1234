@@ -136,6 +136,7 @@ $(function() {
 						</div>
 						<div class="match-food-container">
 							<div class="match-food-list">
+							
 								<c:forEach var="matchFood" items="${matchFoodList }">
 									<div class="items">
                                     <img src="${match.img }">

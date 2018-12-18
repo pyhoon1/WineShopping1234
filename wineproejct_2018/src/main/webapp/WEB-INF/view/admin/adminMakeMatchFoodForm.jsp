@@ -159,7 +159,7 @@
 			<div class=buttons>
 				<input type="button" onclick="insertMatchFood()" value="기타 제품 등록">
 				<button>
-					<a href="">리스트 돌아가기</a>
+					<a href="adminMatchFood.do?pageNum=1">리스트 돌아가기</a>
 				</button>
 			</div>
 		</div>
