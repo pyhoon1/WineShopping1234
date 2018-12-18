@@ -1,148 +1,196 @@
 body {
-    background: rgb(241, 243, 245);
-    margin: 0px;
-    font-family: 'Cardo', serif;
-    font-family: 'Noto Serif KR', sans-serif;
-    user-select: none;
+	background: rgb(241, 243, 245);
+	margin: 0px;
+	font-family: 'Cardo', serif;
+	font-family: 'Noto Serif KR', sans-serif;
+	user-select: none;
 }
 
 .wrapper {
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-    height: 90vh;
-    background: white;
-    box-shadow: 0 3px 6px rgb(0,0,0,0.16), 0 3px 6px rgb(0,0,0,0.23);
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	height: 90vh;
+	background: white;
+	box-shadow: 0 3px 6px rgb(0, 0, 0, 0.16), 0 3px 6px rgb(0, 0, 0, 0.23);
 }
 
 h1 {
-    text-align: center;
-    font-size: 3rem;
+	text-align: center;
+	font-size: 3rem;
 }
 
-.nav ul {
-    margin: 0px;
-    padding: 0px;
-    text-align: center;
+.buttons {
+    position: absolute;
+    right: 15%;
+    top: 7%;
 }
 
-.nav li {
-    cursor: pointer;
-    list-style: none;
-    display: inline-block;
+.buttons > button {
+    padding: 0;
+    background: white;
+    border: none;
     border: 1px solid black;
-    margin: 0 20px;
-    padding: 20px 60px;
-    transition: 0.5s ease-in-out;
 }
 
-.nav li:hover {
+.buttons a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 20px 30px;
+    font-size: 17px;
+    transition: 0.6s;
+}
+
+.buttons a:hover {
     background: black;
     color: white;
 }
 
-.content {
-    width: 95%;
-    height: 75%;
-    margin: 10px auto;
-    background: rgb(241, 243, 245);
+.nav ul {
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
 }
 
-table{
-    border-collapse: collapse;
-    margin: 0 auto;
-    width: 90%;
-    text-align: center;
-    font-size: 17px;
+.nav li {
+	cursor: pointer;
+	list-style: none;
+	display: inline-block;
+	border: 1px solid black;
+	margin: 0 20px;
+}
+
+.nav a {
+	color: black;
+	text-decoration: none;
+	display: block;
+	padding: 20px 60px;
+	transition: 0.5s ease-in-out;
+}
+
+.nav a:hover {
+	background: black;
+	color: white;
+}
+
+.content {
+	width: 95%;
+	height: 75%;
+	margin: 10px auto;
+	background: rgb(241, 243, 245);
+}
+
+table {
+	border-collapse: collapse;
+	margin: 0 auto;
+	width: 90%;
+	text-align: center;
+	font-size: 17px;
 }
 
 table td {
-    white-space: nowrap; 
-    overflow: hidden;
-    border-bottom: 1px solid black;
-    padding: 2rem;
+	white-space: nowrap;
+	overflow: hidden;
+	border-bottom: 1px solid black;
+	padding: 2rem;
 }
 
 table a {
-    text-decoration: none;
-    color: black;
-    cursor: pointer;
+	text-decoration: none;
+	color: black;
+	cursor: pointer;
 }
 
-table a:hover{
-    text-decoration: underline;
+table a:hover {
+	text-decoration: underline;
+}
+
+table button {
+    background: white;
+    border: 1px solid black;
+    padding: 0;
+}
+
+table button > a {
+    display: block;
+    padding: 7px 15px;
+    transition: 0.6s;
+}
+
+table button > a:hover {
+    text-decoration: none;
+    background: black;
+    color: white;
 }
 
 .paging {
-    margin: 20px auto;
-    width: 90%;
-    text-align: center;
-    font-size: 22px;
+	margin: 20px auto;
+	width: 90%;
+	text-align: center;
+	font-size: 22px;
 }
 
 .paging a {
-    text-decoration: none;
-    color: black;
-    padding: 10px 20px;
-    transition: 0.5s;
+	text-decoration: none;
+	color: black;
+	padding: 10px 20px;
+	transition: 0.5s;
 }
 
 .paging i {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .paging a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 .user-list {
-    position: relative;
-    top: 15px;
-    width: 95%;
-    height: 95%;
-    margin: 0px auto;
-    background: white;
-    box-shadow: 0 1px 3px rgb(0,0,0,0.16), 0 3px 6px rgb(0,0,0,0.23);
-    overflow: hidden;
-    overflow-x: scroll;
+	position: relative;
+	top: 15px;
+	width: 95%;
+	height: 95%;
+	margin: 0px auto;
+	background: white;
+	box-shadow: 0 1px 3px rgb(0, 0, 0, 0.16), 0 3px 6px rgb(0, 0, 0, 0.23);
+	overflow: hidden;
+	overflow-x: scroll;
 }
 
 .product-list {
-    position: relative;
-    top: 15px;
-    width: 95%;
-    height: 95%;
-    margin: 0px auto;
-    background: white;
-    box-shadow: 0 1px 3px rgb(0,0,0,0.16), 0 3px 6px rgb(0,0,0,0.23);
-    overflow: hidden;
-    overflow-x: scroll;
-    display: none;
+	position: relative;
+	top: 15px;
+	width: 95%;
+	height: 95%;
+	margin: 0px auto;
+	background: white;
+	box-shadow: 0 1px 3px rgb(0, 0, 0, 0.16), 0 3px 6px rgb(0, 0, 0, 0.23);
+	overflow: hidden;
+	overflow-x: scroll;
 }
 
 .review-list {
-    position: relative;
-    top: 15px;
-    width: 95%;
-    height: 95%;
-    margin: 0px auto;
-    background: white;
-    box-shadow: 0 1px 3px rgb(0,0,0,0.16), 0 3px 6px rgb(0,0,0,0.23);
-    overflow: hidden;
-    overflow-x: scroll;
-    display: none;
+	position: relative;
+	top: 15px;
+	width: 95%;
+	height: 95%;
+	margin: 0px auto;
+	background: white;
+	box-shadow: 0 1px 3px rgb(0, 0, 0, 0.16), 0 3px 6px rgb(0, 0, 0, 0.23);
+	overflow: hidden;
+	overflow-x: scroll;
 }
 
 .payment-list {
-    position: relative;
-    top: 15px;
-    width: 95%;
-    height: 95%;
-    margin: 0px auto;
-    background: white;
-    box-shadow: 0 1px 3px rgb(0,0,0,0.16), 0 3px 6px rgb(0,0,0,0.23);
-    overflow: hidden;
-    overflow-x: scroll;
-    display:none;    
+	position: relative;
+	top: 15px;
+	width: 95%;
+	height: 95%;
+	margin: 0px auto;
+	background: white;
+	box-shadow: 0 1px 3px rgb(0, 0, 0, 0.16), 0 3px 6px rgb(0, 0, 0, 0.23);
+	overflow: hidden;
+	overflow-x: scroll;
 }

@@ -24,11 +24,11 @@
 		<h1>Welcome to admin page!</h1>
 		<div class="nav">
 			<ul>
-				<li id="user"><a href="adminUser.do">유저 관리</a></li>
-				<li id="product"><a href="adminProduct.do">상품 관리</a></li>
-				<li id="product"><a href="adminMatchFood.do">잘 맞는 음식 관리</a></li>
-				<li id="review"><a href="adminReview.do">리뷰 관리</a></li>
-				<li id="payment"><a href="adminPayment.do">구매 내역 관리</a></li>
+		<li id="user"><a href="adminUser.do?pageNum=1">유저 관리</a></li>
+				<li id="product"><a href="adminProduct.do?pageNum=1">상품 관리</a></li>
+				<li id="product"><a href="adminMatchFood.do?pageNum=1">잘 맞는 음식 관리</a></li>
+				<li id="review"><a href="adminReview.do?pageNum=1">리뷰 관리</a></li>
+				<li id="payment"><a href="adminPayment.do?pageNum=1">구매 내역 관리</a></li>
 			</ul>
 		</div>
 		<div class="content">
@@ -82,24 +82,24 @@
 
 					<c:if test="${paymentPage.hasProduct()}">
 						<div>
-							<a href="admin.do?pageNum=1" class="pageNum">처음</a>
+							<a href="adminPayment.do?pageNum=1" class="pageNum">처음</a>
 
 							<c:if test="${paymentPage.startPage > 5 }">
-								<a href="admin.do?pageNum=${paymentPage.startPage - 5  }"
+								<a href="adminPayment.do?pageNum=${paymentPage.startPage - 5  }"
 									class="pageNum">이전</a>
 							</c:if>
 
 							<c:forEach var="pageNum" begin="${paymentPage.startPage}"
 								end="${paymentPage.endPage }">
-								<a href="admin.do?pageNum=${pageNum}" class="pageNum">${pageNum}</a>
+								<a href="adminPayment.do?pageNum=${pageNum}" class="pageNum">${pageNum}</a>
 							</c:forEach>
 
 							<c:if test="${paymentPage.endPage < paymentPage.totalPages }">
-								<a href="admin.do?pageNum=${paymentPage.startPage + 5 }"
+								<a href="adminPayment.do?pageNum=${paymentPage.startPage + 5 }"
 									class="pageNum">다음</a>
 							</c:if>
 
-							<a href="admin.do?pageNum=${paymentPage.totalPages }"
+							<a href="adminPayment.do?pageNum=${paymentPage.totalPages }"
 								class="pageNum">마지막</a>
 						</div>
 					</c:if>

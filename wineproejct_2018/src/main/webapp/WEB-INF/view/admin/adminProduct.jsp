@@ -77,13 +77,17 @@
 <body>
 	<div class="wrapper">
 		<h1>Welcome to admin page!</h1>
+		<div class="buttons">
+            <button><a href="adminMakeWineForm.do">와인 추가</a></button>
+            <button><a href="adminWineView.do">와인 수정</a></button>
+        </div>
 		<div class="nav">
 			<ul>
-				<li id="user"><a href="adminUser.do">유저 관리</a></li>
-				<li id="product"><a href="adminProduct.do">상품 관리</a></li>
-				<li id="product"><a href="adminMatchFood.do">잘 맞는 음식 관리</a></li>
-				<li id="review"><a href="adminReview.do">리뷰 관리</a></li>
-				<li id="payment"><a href="adminPayment.do">구매 내역 관리</a></li>
+		<li id="user"><a href="adminUser.do?pageNum=1">유저 관리</a></li>
+				<li id="product"><a href="adminProduct.do?pageNum=1">상품 관리</a></li>
+				<li id="product"><a href="adminMatchFood.do?pageNum=1">잘 맞는 음식 관리</a></li>
+				<li id="review"><a href="adminReview.do?pageNum=1">리뷰 관리</a></li>
+				<li id="payment"><a href="adminPayment.do?pageNum=1">구매 내역 관리</a></li>
 			</ul>
 		</div>
 		<div class="content">
@@ -106,6 +110,7 @@
 							<td>도수</td>
 							<td>용량</td>
 							<td>팔린 갯수</td>
+							<td></td>
 						</tr>
 					</thead>
 					<tbody>
@@ -126,6 +131,7 @@
 								<td>${product.alcohol }</td>
 								<td>${product.weight }</td>
 								<td>${product.count }</td>
+								<td><td><button><a href="">삭제</a></button></td></td>
 							</tr>
 						</c:forEach>
 
@@ -136,28 +142,27 @@
 
 					<c:if test="${productPage.hasProduct()}">
 						<div>
-							<a href="admin.do?pageNum=1" class="pageNum">처음</a>
+							<a href="adminProduct.do?pageNum=1" class="pageNum">처음</a>
 
 							<c:if test="${productPage.startPage > 5 }">
-								<a href="admin.do?pageNum=${productPage.startPage - 5  }"
+								<a href="adminProduct.do?pageNum=${productPage.startPage - 5  }"
 									class="pageNum">이전</a>
 							</c:if>
 
 							<c:forEach var="pageNum" begin="${productPage.startPage}"
 								end="${productPage.endPage }">
-								<a href="admin.do?pageNum=${pageNum}" class="pageNum">${pageNum}</a>
+								<a href="adminProduct.do?pageNum=${pageNum}" class="pageNum">${pageNum}</a>
 							</c:forEach>
 
 							<c:if test="${productPage.endPage < productPage.totalPages }">
-								<a href="admin.do?pageNum=${productPage.startPage + 5 }"
+								<a href="adminProduct.do?pageNum=${productPage.startPage + 5 }"
 									class="pageNum">다음</a>
 							</c:if>
 
-							<a href="admin.do?pageNum=${productPage.totalPages }"
+							<a href="adminProduct.do?pageNum=${productPage.totalPages }"
 								class="pageNum">마지막</a>
 						</div>
 					</c:if>
-
 				</div>
 			</div>
 		</div>
