@@ -145,7 +145,7 @@ $(function() {
                                     </div>
                                     <div class="match-food-amount">
                                         <span id="item-amount">
-                                            <span>수량 : </span><input type="text" value=0 class="amount">
+                                            <span>수량 : </span><input type="text" value=0 id="count" class="amount">
                                             <button class="plus"><i class="far fa-plus-square"></i></button>
                                             <button class="minus"><i class="far fa-minus-square"></i></button>
                                         </span>
