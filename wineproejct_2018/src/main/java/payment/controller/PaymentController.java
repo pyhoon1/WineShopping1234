@@ -17,7 +17,6 @@ import matchfood.service.MatchFoodService;
 import matchfood.vo.MatchFood;
 import payment.service.PaymentService;
 import payment.vo.FoodRequest;
-import payment.vo.Payment;
 import payment.vo.PaymentPage;
 import payment.vo.ProductRequest;
 import user.service.UserService;
