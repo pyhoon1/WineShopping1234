@@ -1,3 +1,15 @@
+* {
+	  font-family: 'Cardo', serif;
+    font-family: 'Noto Serif KR', sans-serif;
+}
+
+.header{
+    margin: 0 auto;
+    width: 95%;
+    height: 200px;
+    border-bottom: 1px solid black;
+}
+
 .header > div{
     display: inline-block;
 }

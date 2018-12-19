@@ -122,12 +122,29 @@ public class UserController {
 	}
 
 	@RequestMapping("/myPage.do")
-	public User selectByUserId(@RequestParam("userId") int userId) {
-		User user = userService.selectByUserId(userId);
-		return user;
-
+	public String selectByUserId(Model model, @RequestParam("loginId") String loginId) {
+		User user = userService.selectByLoginId(loginId);
+		
+		Map<String, Boolean> errors = new HashMap<String, Boolean>();
+		model.addAttribute("errors", errors);
+		
+		
+		if(user == null ) {
+			errors.put("NotFoundUser", true);
+			return "error/myPageErrorPage";
+		}
+		if (!errors.isEmpty()) {
+			errors.put("badError", true);
+			return "error/myPageErrorPage";
+		}
+		
+		model.addAttribute("user", user);
+		
+		return "user/myPage";
 	}
 
+	
+	
 	@RequestMapping("/userLoginIdFindForm.do")
 	public String userLoginIdFindForm() {
 		return "user/userLoginIdFindForm";
