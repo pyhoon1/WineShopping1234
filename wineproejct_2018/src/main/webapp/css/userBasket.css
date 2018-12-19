@@ -1,0 +1,223 @@
+
+
+/* 테이블 헤드의 간격을 조정하는 속성  */
+.basketT thead td{ padding: 5px;  }
+  
+  /* 테이블 내 상품정보를 조정하는 속성 */
+  .basketT tbody span,strong{
+    text-align: left;
+    margin-top: 0;
+    font-size: small;
+    display: block;
+  }
+  
+  /* 테이블 내 이미지를 조정하는 속성 */
+  .basketT tbody>tr img{
+    margin: 0;
+    padding: 0 0 0 10px;
+    width: 150px;
+    line-height: 150px;
+    float: left;
+  }
+  
+
+  .basketT tbody>tr>td:nth-child(2){
+    width: 400px;
+    height: 150px;
+  }
+  
+
+  /* 오더테이블 내 p태그를 조정하는 속성(테이블내 p태그 중 하나는 버튼) */
+  .basketT tbody>tr>td>p{ padding: 0; margin: 0; }
+
+  /* 오더테이블 내 버튼을 꾸미는 속성  */
+  .basketT tbody>tr>td>p{
+    padding: 0;
+    margin: 0 auto;
+    color: rgb(181, 23, 0);
+    font-weight: bold;
+    border: 1px solid rgb(181, 23, 0);
+    font-size: small;
+    width: 55px;
+    height: 12.5px;
+    line-height: 12.5px;
+    padding: 8px 0px;
+  }
+  
+  /* 주문(오더) table의 속성을 조정 */
+  .basketT>table {
+    text-align: center;
+    width: calc(80%);
+    border: 1px solid rgb(181, 23, 0);
+    margin: 0px auto;
+    border-width: 1px 0;
+    border-collapse: collapse;
+   
+  }
+  .basketT thead:nth-child(1){
+    font-weight: bold;   
+  }
+  
+
+  .basketT td{
+    border: 1px solid rgb(181, 23, 0);
+    border-width: 1px 0px;
+    padding: 5px 0;
+  }
+
+
+
+
+/* 결제안내 버튼이 전체 영역에서 차지하는 영역을 정하고 위치를 조정하는 속성 */
+.payGuide{ width: 700px; margin: 30px auto; text-align: center; }
+
+/* 결제안내 버튼을의 위치와 크기를 잡는 속성 */
+.payGuide>div{
+    display: inline-block;
+    border: 1px solid rgb(181, 23, 0);
+    vertical-align: middle;
+    height: 90px;
+    line-height: 40px;
+    width: 90px;
+    padding: 20px;
+}
+
+/* 결제안내버튼 글자의 색상을 넣는 속성 */
+.payGuide>div>span{
+    display: block;
+    font-weight: bold;
+    color: rgb(181, 23, 0);
+}
+
+/* 결제안내 버튼의 숫자 크기를 늘리는 속성 */
+.payGuide>div>span:nth-child(2){
+    font-size: x-large;
+}
+.operator{
+    padding: 0 20px;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+/* 결제안내 버튼의 4번째 버튼을 조정하는 속성(버튼 빨간색으로, 글씨 흰색으로 변경) */
+.payGuide>div:nth-of-type(4){
+    background-color: rgb(181, 23, 0);
+    color: white;
+    font-weight: bold;
+    line-height: 90px;
+    cursor: pointer;
+
+}
+
+
+
+
+/*  ((이 아래 위치한 코드는 겹치는 부분에 대한 공통적인 css 속성))  */
+body {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  
+  
+  /* 마이페이지의 li, a, ul 속성의 속성값을 설정하지 않는 코드 */
+  li, a, ul{ all: unset; }
+  /* 마이페이지의 a, p ,ul 속성을 block, 커서 포인터로 */
+  a,p,li{ display: block; cursor: pointer;}
+  
+  /* myPage와 헤더를 감싸는 상단의 고객 정보에 대한 css속성 */
+  .myP-header{
+    text-align: center;
+    overflow: hidden;
+    border: 1px solid rgb(181, 23, 0);
+    margin: 0px calc(10%);
+  }
+  /* 마이페이지 상단에 위치한 header 텍스트의 속성 */
+  #myP-title{ margin-left: 30px; text-align: left; color: rgb(181, 23, 0);}
+  
+  /* 마이페이지 헤드 영역 이름의 속성 */
+  #myP-name{ float: left; font-size: 2.5em; font-weight: bold; line-height: 80px; margin-left: 10px; }
+  
+  /* 마이페이지 헤드 영역 회원 정보변경 속성 */
+  .myP-info{ 
+    float: left; font-weight: bold;
+    padding-top: 12px; color: rgb(181, 23, 0);
+    line-height: 80px; margin-left: 10px;
+  }
+  /* 마이페이지 헤드 영역 회원등급 속성 */
+  #myP-grade{ float: right; font-size: 5em; font-weight: bold; margin-right: 15px; height: 70px; }
+  
+  /* 마이페이지 헤드 영역에서 다음 등급까지 남은 금액을 알리는 텍스트의 속성 */
+  .myP-guide{ float: right; font-size: 12px;margin-top: 40px;text-align: right; }
+  
+  /* 하단부 페이징의 속성 */
+  .compass{ 
+    float: right;
+    display: block;
+    margin-right: calc(10%);
+    text-align: right;
+    font-size: small;
+    margin-top: 20px;
+  }
+  /* 하단부 페이징의 속성 */
+  .pageNum>a{
+    display: inline-block;
+    border: 1.5px solid rgb(181, 23, 0, 0.8);
+    color: rgba(140, 140, 140);
+    width: 27px;
+    font-weight: 600;
+    height: 27px;
+    line-height: 27px;
+    text-align: center;
+  }
+  
+  /* 마이페이지 하단부 페이징하는 목록의 보더를 조정하는 속성 */
+  .pageNum>a:nth-of-type(n){ border-width: 1px 1px; }
+  .pageNum>a:nth-of-type(2n){ border-width: 1px 0px;}
+  
+  /* 마이페이지 네비 버튼의 속성 */
+  .myP-btn{
+    text-align: center;
+    font-size: small;
+    height: 40px;
+    line-height: 40px;
+    width: 100px;
+    background-color: white;
+    color: rgb(181, 23, 0);
+    border: 1px solid rgb(181, 23, 0);
+    display: inline-block;
+  }
+  /* 마이페이지 가운데 네비 버튼의 테두리 속성을 조정 */
+  .middleBtn{  border-width: 1px 0px; }
+  
+  /* 버튼이 클릭되었을 떄 버튼의 바꾸게 될 속성 */
+  .btnR{
+    background-color: rgb(181, 23, 0);
+    color: white;
+    font-weight: bold;
+  }
+  
+  
+  /* 메인 버튼의 속성을 조정 */
+  .myP-mainBtn{text-align: center; clear: both; }
+  .myP-mainBtn>p{ 
+    border: rgb(181, 23, 0);
+    background-color: rgb(181, 23, 0);
+    display: inline-block;
+    padding: 15px; margin: 15px; color: white;
+    font-size: small;
+  }
+  
+  
+  
+  
+  
+  /* 버튼을 감싸는 div태그의 폭을 지정해야 가운데 정렬을 할 수 있다, 버튼 3개의 넓이는 총 304px  */
+  .btnWrap {
+    margin: 30px auto; width: 305px; }
+  
+  
+  /* 속성을 숨기는 태그 */
+  .hidden{
+    display: none;
+  }
