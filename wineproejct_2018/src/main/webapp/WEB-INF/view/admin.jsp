@@ -10,6 +10,6 @@
 <h1>어드민</h1>
 	<a href="adminMakeMatchFoodForm.do">매치푸트 만드는 폼</a>
 	<a href="adminMakeWineForm.do">와인 만드는 폼</a>
-	<a href="adminUser.do?pageNum=1">어드민 화면</a>
+	<a href="admin.do?pageNum=1">어드민 화면</a>
 </body>
 </html>

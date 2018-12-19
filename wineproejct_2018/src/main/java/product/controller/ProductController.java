@@ -80,7 +80,7 @@ public class ProductController {
 		
 		ProductSearch search = new ProductSearch(condition, conditionType, startPrice, endPrice, arrangement);
 
-		model.addAttribute("productList", productpage);
+		model.addAttribute("productPage", productpage);
 		model.addAttribute("search", search);
 
 		return "/product/searchList";

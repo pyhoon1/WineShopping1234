@@ -1,7 +1,5 @@
 package admin.controller;
 
-import static org.junit.Assert.fail;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,7 +18,6 @@ import admin.service.AdminService;
 import admin.upload.AdminUpload;
 import matchfood.vo.MatchFood;
 import matchfood.vo.MatchFoodPage;
-import payment.vo.Payment;
 import payment.vo.PaymentPage;
 import product.vo.Product;
 import product.vo.ProductPage;
@@ -370,7 +367,7 @@ public class AdminController {
 			@RequestParam HashMap<String, String> prm) {
 		AdminUpload upload = new AdminUpload();
 
-		String rname = (String) upload.Upload(hsr, prm, file, "wine");
+		String rname = upload.Upload(hsr, prm, file, "wine");
 
 		String nationpath = "resources/img/nationImg/";
 

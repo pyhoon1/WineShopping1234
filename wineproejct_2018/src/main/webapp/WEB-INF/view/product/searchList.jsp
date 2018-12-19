@@ -64,6 +64,13 @@
 <input type="hidden" id="endPrice" name="endPrice" value="${search.endPrice}">
 <input type="hidden" id="arrangement" name="arrangement" value="${search.arrangement}">
 <input type="hidden" id="pageNum" name="pageNum" value="${param.pageNum }">
+<c:set value="${search.condition}" var="condition"/>
+<c:set value="${search.conditionType}" var="conditionType"/>
+<c:set value="${search.startPrice}" var="startPrice"/>
+<c:set value="${search.endPrice}" var="endPrice"/>
+<c:set value="${search.arrangement}" var="arrangement"/>
+<c:set value="${param.pageNum}" var="pageNum"/>
+
 
     <div class="main">
         <div class="header">
@@ -195,25 +202,199 @@
                 </div>
                 <c:if test="${productPage.hasProduct()}">
 		<div class="paging">
-			<a href="searchList.do?pageNum=1" class="pageNum">처음</a>
-
-			<c:if test="${productPage.startPage > 5 }">
-				<a href="searchList.do?pageNum=${productPage.startPage - 5  }"
-					class="pageNum">이전</a>
-			</c:if>
-
-			<c:forEach var="pageNum" begin="${productPage.startPage}"
-				end="${productPage.endPage }">
-				<a href="searchList.do?pageNum=${pageNum}" class="pageNum">${pageNum}</a>
-			</c:forEach>
-
-			<c:if test="${productPage.endPage < productPage.totalPages }">		
-				<a href="searchList.do?pageNum=${productPage.startPage + 5 }"
-					class="pageNum">다음</a>
-			</c:if>
-
-			<a href="searchList.do?pageNum=${productPage.totalPages }"
-				class="pageNum">마지막</a>
+		
+		<!-- 처음 (분기 처리)-->
+			<c:choose>
+			<c:when test="${conditionType == 'price'}">
+						<c:choose>
+						<c:when test="${!empty arrangement}">
+							<a href="searchList.do?conditionType=${conditionType}&startPrice=${startPrice}&endPrice=${endPrice}&arrangement=${arrangement}&pageNum=1" class="pageNum">처음</a>
+						</c:when>
+						<c:otherwise>
+							<a href="searchList.do?conditionType=${conditionType}&startPrice=${startPrice}&endPrice=${endPrice}&pageNum=1" class="pageNum">처음</a>
+						</c:otherwise>	
+				</c:choose>	
+			</c:when>
+			<c:when test="${conditionType == 'wineKinds'}">
+				<c:choose>
+						<c:when test="${!empty arrangement}">
+							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=1" class="pageNum">처음</a>
+						</c:when>
+						<c:otherwise>
+							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=1" class="pageNum">처음</a>
+						</c:otherwise>	
+				</c:choose>	
+			</c:when>	
+			<c:when test="${conditionType == 'nation'}">
+				<c:choose>
+						<c:when test="${!empty arrangement}">
+							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=1" class="pageNum">처음</a>
+						</c:when>
+						<c:otherwise>
+							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=1" class="pageNum">처음</a>
+						</c:otherwise>	
+				</c:choose>	
+			</c:when>	
+			<c:when test="${conditionType == 'search'}">
+				<c:choose>
+						<c:when test="${!empty arrangement}">
+							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=1" class="pageNum">처음</a>
+						</c:when>
+						<c:otherwise>
+							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=1" class="pageNum">처음</a>
+						</c:otherwise>	
+				</c:choose>	
+			</c:when>
+			</c:choose>							
+			<!-- 이전 현재 지금 분기처리 -->
+			<c:choose>
+			<c:when test="${conditionType == 'price'}">
+						<c:choose>
+						<c:when test="${!empty arrangement}">
+								<c:if test="${productPage.startPage > 5 }">
+									<a href="searchList.do?conditionType=${conditionType}&startPrice=${startPrice}&endPrice=${endPrice}&arrangement=${arrangement}&pageNum=${productPage.startPage - 5  }" class="pageNum">이전</a>
+								</c:if>
+								<c:forEach var="pageNum" begin="${productPage.startPage}" end="${productPage.endPage }">
+									<a href="searchList.do?conditionType=${conditionType}&startPrice=${startPrice}&endPrice=${endPrice}&arrangement=${arrangement}&pageNum=${pageNum}" class="pageNum">${pageNum}</a>
+								</c:forEach>
+								<c:if test="${productPage.endPage < productPage.totalPages }">		
+									<a href="searchList.do?conditionType=${conditionType}&startPrice=${startPrice}&endPrice=${endPrice}&arrangement=${arrangement}&pageNum=${productPage.startPage + 5 }" class="pageNum">다음</a>
+								</c:if>
+						</c:when>
+						<c:otherwise>
+							<c:if test="${productPage.startPage > 5 }">
+									<a href="searchList.do?conditionType=${conditionType}&startPrice=${startPrice}&endPrice=${endPrice}&pageNum=${productPage.startPage - 5  }" class="pageNum">이전</a>
+								</c:if>
+								<c:forEach var="pageNum" begin="${productPage.startPage}" end="${productPage.endPage }">
+									<a href="searchList.do?conditionType=${conditionType}&startPrice=${startPrice}&endPrice=${endPrice}&pageNum=${pageNum}" class="pageNum">${pageNum}</a>
+								</c:forEach>
+								<c:if test="${productPage.endPage < productPage.totalPages }">		
+									<a href="searchList.do?conditionType=${conditionType}&startPrice=${startPrice}&endPrice=${endPrice}&pageNum=${productPage.startPage + 5 }" class="pageNum">다음</a>
+								</c:if>
+						</c:otherwise>	
+				</c:choose>	
+			</c:when>
+			<c:when test="${conditionType == 'wineKinds'}">
+				<c:choose>
+						<c:when test="${!empty arrangement}">
+							<c:if test="${productPage.startPage > 5 }">
+								</c:if>
+								<c:forEach var="pageNum" begin="${productPage.startPage}" end="${productPage.endPage }">
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=${pageNum}" class="pageNum">${pageNum}</a>
+								</c:forEach>
+								<c:if test="${productPage.endPage < productPage.totalPages }">		
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=${productPage.startPage + 5 }" class="pageNum">다음</a>
+								</c:if>
+						</c:when>
+						<c:otherwise>
+								<c:if test="${productPage.startPage > 5 }">
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=${productPage.startPage - 5  }" class="pageNum">이전</a>
+								</c:if>
+								<c:forEach var="pageNum" begin="${productPage.startPage}" end="${productPage.endPage }">
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=${pageNum}" class="pageNum">${pageNum}</a>
+								</c:forEach>
+								<c:if test="${productPage.endPage < productPage.totalPages }">		
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=${productPage.startPage + 5 }" class="pageNum">다음</a>
+								</c:if>
+						</c:otherwise>	
+				</c:choose>	
+			</c:when>	
+			<c:when test="${conditionType == 'nation'}">
+				<c:choose>
+						<c:when test="${!empty arrangement}">
+							<c:if test="${productPage.startPage > 5 }">
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=${productPage.startPage - 5  }" class="pageNum">이전</a>
+								</c:if>
+								<c:forEach var="pageNum" begin="${productPage.startPage}" end="${productPage.endPage }">
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=${pageNum}" class="pageNum">${pageNum}</a>
+								</c:forEach>
+								<c:if test="${productPage.endPage < productPage.totalPages }">		
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=${productPage.startPage + 5 }" class="pageNum">다음</a>
+								</c:if>
+						</c:when>
+						<c:otherwise>		
+							<c:if test="${productPage.startPage > 5 }">
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=${productPage.startPage - 5  }" class="pageNum">이전</a>
+								</c:if>
+								<c:forEach var="pageNum" begin="${productPage.startPage}" end="${productPage.endPage }">
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=${pageNum}" class="pageNum">${pageNum}</a>
+								</c:forEach>
+								<c:if test="${productPage.endPage < productPage.totalPages }">		
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=${productPage.startPage + 5 }" class="pageNum">다음</a>
+								</c:if>
+						</c:otherwise>	
+				</c:choose>	
+			</c:when>	
+			<c:when test="${conditionType == 'search'}">
+				<c:choose>
+						<c:when test="${!empty arrangement}">			
+								<c:if test="${productPage.startPage > 5 }">
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=${productPage.startPage - 5  }" class="pageNum">이전</a>
+								</c:if>
+								<c:forEach var="pageNum" begin="${productPage.startPage}" end="${productPage.endPage }">
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=${pageNum}" class="pageNum">${pageNum}</a>
+								</c:forEach>
+								<c:if test="${productPage.endPage < productPage.totalPages }">		
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=${productPage.startPage + 5 }" class="pageNum">다음</a>
+								</c:if>
+						</c:when>
+						<c:otherwise>
+								<c:if test="${productPage.startPage > 5 }">
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=${productPage.startPage - 5  }" class="pageNum">이전</a>
+								</c:if>
+								<c:forEach var="pageNum" begin="${productPage.startPage}" end="${productPage.endPage }">
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=${pageNum}" class="pageNum">${pageNum}</a>
+								</c:forEach>
+								<c:if test="${productPage.endPage < productPage.totalPages }">		
+									<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=${productPage.startPage + 5 }" class="pageNum">다음</a>
+								</c:if>
+						</c:otherwise>	
+				</c:choose>	
+			</c:when>
+			</c:choose>		
+			<!-- 마지막 분기처리 -->
+			<c:choose>
+			<c:when test="${conditionType == 'price'}">
+						<c:choose>
+						<c:when test="${!empty arrangement}">
+							<a href="searchList.do?conditionType=${conditionType}&startPrice=${startPrice}&endPrice=${endPrice}&arrangement=${arrangement}&pageNum=${productPage.totalPages }" class="pageNum">마지막</a>
+						</c:when>
+						<c:otherwise>
+							<a href="searchList.do?conditionType=${conditionType}&startPrice=${startPrice}&endPrice=${endPrice}&pageNum=${productPage.totalPages }" class="pageNum">마지막</a>
+						</c:otherwise>	
+				</c:choose>	
+			</c:when>
+			<c:when test="${conditionType == 'wineKinds'}">
+				<c:choose>
+						<c:when test="${!empty arrangement}">
+							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=${productPage.totalPages }" class="pageNum">마지막</a>
+						</c:when>
+						<c:otherwise>
+							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=${productPage.totalPages }" class="pageNum">마지막</a>
+						</c:otherwise>	
+				</c:choose>	
+			</c:when>	
+			<c:when test="${conditionType == 'nation'}">
+				<c:choose>
+						<c:when test="${!empty arrangement}">
+							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=${productPage.totalPages }" class="pageNum">마지막</a>
+						</c:when>
+						<c:otherwise>
+							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=${productPage.totalPages }" class="pageNum">마지막</a>
+						</c:otherwise>	
+				</c:choose>	
+			</c:when>	
+			<c:when test="${conditionType == 'search'}">
+				<c:choose>
+						<c:when test="${!empty arrangement}">
+							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=${productPage.totalPages }" class="pageNum">마지막</a>
+						</c:when>
+						<c:otherwise>
+							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=${productPage.totalPages }" class="pageNum">마지막</a>
+						</c:otherwise>	
+				</c:choose>	
+			</c:when>
+			</c:choose>	
 		</div>
 	</c:if>
             </div>
