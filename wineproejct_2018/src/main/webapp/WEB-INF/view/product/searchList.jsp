@@ -273,7 +273,7 @@
 								</c:if>
 						</c:otherwise>	
 				</c:choose>	
-			</c:when>
+			</c:when> 
 			<c:when test="${conditionType == 'wineKinds'}">
 				<c:choose>
 						<c:when test="${!empty arrangement}">
