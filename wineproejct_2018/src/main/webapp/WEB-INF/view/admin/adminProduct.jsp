@@ -79,6 +79,7 @@
 		<h1>Welcome to admin page!</h1>
 		<div class="buttons">
             <button><a href="adminMakeWineForm.do">와인 추가</a></button>
+            <button><a href="adminWineView.do">와인 수정</a></button>
         </div>
 		<div class="nav">
 			<ul>
@@ -110,7 +111,6 @@
 							<td>용량</td>
 							<td>팔린 갯수</td>
 							<td></td>
-							<td></td>
 						</tr>
 					</thead>
 					<tbody>
@@ -131,8 +131,7 @@
 								<td>${product.alcohol }</td>
 								<td>${product.weight }</td>
 								<td>${product.count }</td>
-								<td><button><a href="">삭제</a></button></td>
-								<td><button><a href="">수정</a></button></td>
+								<td><td><button><a href="">삭제</a></button></td></td>
 							</tr>
 						</c:forEach>
 

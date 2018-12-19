@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import matchfood.vo.MatchFood;
-import product.vo.Product;
 
 @MatchFoodAnnotMapper
 public interface MatchFoodMapper {

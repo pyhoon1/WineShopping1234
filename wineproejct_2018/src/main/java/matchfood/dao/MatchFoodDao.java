@@ -3,7 +3,6 @@ package matchfood.dao;
 import java.util.List;
 
 import matchfood.vo.MatchFood;
-import product.vo.Product;
 
 public interface MatchFoodDao {
 	public MatchFood getMatchFood(String matchFoodId);

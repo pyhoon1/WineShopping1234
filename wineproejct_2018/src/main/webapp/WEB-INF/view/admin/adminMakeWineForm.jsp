@@ -185,7 +185,6 @@
         <input type="hidden" id="matchFoodId" name="matchFoodId" value="">
         <div class="wrapper">
             <table>
-            	<caption>와인 상품 추가</caption>
                 <tr>
                     <td>생산자</td>
                     <td>포도 품종</td>
@@ -255,7 +254,7 @@
             </table>
             <div class=buttons>
                 <input type="button" onclick="insertWine()" value="와인 등록" id="submit">
-                <button><a href="adminProduct.do?pageNum=1">리스트 돌아가기</a></button>
+                <button><a href="">리스트 돌아가기</a></button>
             </div>
         </div>
     </form>

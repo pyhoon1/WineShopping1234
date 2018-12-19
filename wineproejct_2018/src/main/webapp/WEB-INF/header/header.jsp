@@ -11,7 +11,7 @@
 function SearchWine(){
 	var conditionType = $('#conditionType').val();
 	var condition = $('#condition').val();
-	location.href="searchList.do?conditionType="+conditionType+"&condition="+condition;	
+	location.href="searchList.do?conditionType="+conditionType+"&condition="+condition+"&pageNum=1";	
 }
 </script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">

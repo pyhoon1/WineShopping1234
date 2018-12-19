@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import review.vo.Review;
-import review.vo.ReviewtPage;
 
 @Repository("reviewDao")
 public class ReviewDaoImplJDBC implements ReviewDao {

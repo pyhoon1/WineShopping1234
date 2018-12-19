@@ -19,7 +19,7 @@ public class ProductServiceImplJDBC implements ProductService {
 	int size = 10;
 	int blockSize = 5;
 
-	int searchSize = 10;
+	int searchSize = 25;
 
 	public ProductPage getProductList(int pageNum) {
 		List<Product> productList = productDao.getProductList((pageNum - 1) * size, size);

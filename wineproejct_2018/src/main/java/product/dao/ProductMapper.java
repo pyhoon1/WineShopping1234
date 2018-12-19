@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import product.vo.Product;
-import product.vo.ProductSearch;
 
 @ProductAnnotMapper
 public interface ProductMapper {

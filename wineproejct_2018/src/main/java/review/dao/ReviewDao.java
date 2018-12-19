@@ -3,7 +3,6 @@ package review.dao;
 import java.util.List;
 
 import review.vo.Review;
-import review.vo.ReviewtPage;
 
 public interface ReviewDao {
 	public List<Review> userReviewList(int userId, int startRow, int size);

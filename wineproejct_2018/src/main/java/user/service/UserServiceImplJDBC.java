@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import user.dao.UserDao;
 import user.mail.MailHandler;
-import user.mail.TempKey;
 import user.vo.User;
 
 @Service("userService")
