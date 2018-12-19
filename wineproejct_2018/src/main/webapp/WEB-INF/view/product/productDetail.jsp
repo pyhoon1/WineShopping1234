@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -16,54 +15,82 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-$(function() {
-/* 	var matchFood = "";
-	var count = "";
-	$('input:checkbox[name="matchFood"]').click(function() {
-		if (this.checked) {
-			matchFood += $(this).val() + ",";
-			count += $('#count' + $(this).val()).val() + ",";
-		} else {
-			var matchFoodL = matchFood.split(',');
-			var matchFoodId = matchFood.split(',', matchFoodL.length - 1);
-			var matchFoodCount = count.split(',');
-			for ( var i in matchFoodId) {
-				if (matchFoodId[i] == $(this).val()) {
-					matchFoodId.splice(i, 1);
-					matchFoodCount.splice(i, 1);
-				}
-			}
-			matchFood = "";
-			count = "";
-			for ( var i in matchFoodId) {
-				matchFood += matchFoodId[i] + ",";
-				count += matchFoodCount[i] + ",";
-			}
-		}
-	}) */
+	$(function() {
+		var total = parseInt($('#totalPrice').text());
 
-	$('#basket').click(function() {
-		var text = confirm("장바구니에 추가하시겠습니까?");
-		if (text) {
-			var productCount = $('#productCount').val();
-			var total = ${product.price} * productCount;
-			if(matchFood == ""){
-				location.href = "insertProduct.do?userId=${user.userId}&productId=${product.productId}&productName=${product.productName}&productPrice=${product.price}&productCount="+productCount+"&productImg=${product.img}&total="+total;	
-			}else{
-				location.href = "insertProductMatchFood.do?userId=${user.userId}&productId=${product.productId}&productName=${product.productName}&productPrice=${product.price}&productCount="+productCount+"&productImg=${product.img}&matchFoodIdList="+matchFood+"&matchFoodCount="+count+"&total="+total;
-			}
-		}
-	})
+			
+		$('.items .plus').click(function(){
+	        var amount = parseInt($(this).prevAll('input').val());
+	        amount += 1;
+	        total +=  parseInt($('#matchFoodPrice').text())
+	        $('#totalPrice').text(total);
+	        $(this).prevAll('input').val(amount)
+	     
 
-	$('#payment').click(function() {
-		
-	})
 	
-	$('#review-submit').click(function(){
-		var content = $('#review-input').val();
-		location.href="reviewWrite.do?productId=${product.productId}&userId=${user.userId}&loginId=${user.loginId}&productName=${product.productName}&content="+content;
+	    })
+	    $('.items .minus').click(function(){
+	        var amount = parseInt($(this).prevAll('input').val());
+	        if(amount == 0){
+	            amount = 0
+	        }else{
+	            amount -= 1 
+	            total -=  parseInt($('#matchFoodPrice').text())
+		        $('#totalPrice').text(total);
+	        }
+	        $(this).prevAll('input').val(amount)
+	          console.log(total);
+	
+	    })
+
+	    // 와인 수량 늘리기/줄이기
+	    $('.product-amount .plus').click(function(){
+	        var amount = parseInt($(this).prevAll('input').val());
+	        amount += 1
+            total += parseInt(${product.price})
+            $('#totalPrice').text(total);
+	        $(this).prevAll('input').val(amount)
+	          console.log(total);
+	        console.log(amount)
+	    })
+	    $('.product-amount .minus').click(function(){
+	        var amount = parseInt($(this).prevAll('input').val());
+	        if(amount == 1){
+	            amount = 1
+	        }else{
+	            amount -= 1
+	            total -= ${product.price}
+	            $('#totalPrice').text(total);
+	        }
+	        $(this).prevAll('input').val(amount)
+	         console.log(total);
+	        console.log(amount)
+	    })
+
+		$('#basket').click(function() {
+			 var text = confirm("장바구니에 추가하시겠습니까?");
+		 	if (text) {
+		 		var productCount = $('#productCount').val();
+				
+		 		var matchFoodCount = "";
+				for(var i in matchFoodIdList){
+					matchFoodCount += $('#matchFoodId'+matchFoodIdList[i]).val()+",";
+					console.log(matchFoodCount)
+				}
+		 		location.href = "insertProductMatchFood.do?userId=${user.userId}&productId=${product.productId}&productName=${product.productName}&productPrice=${product.price}&productCount="+productCount+"&productImg=${product.img}&matchFoodIdList="+matchFoodIdList+"&matchFoodCount="+matchFoodCount+"&total="+total;
+		 	}
+		 	}
+		 }) 
+
+		$('#payment').click(function() {
+
+		})
+
+		$('#review-submit').click(function() {
+			var content = $('#review-input').val();
+			location.href = "reviewWrite.do?productId=${product.productId}&userId=${user.userId}&loginId=${user.loginId}&productName=${product.productName}&content="+ content;
+		})
 	})
-})
 </script>
 <script
 	src="${pageContext.request.contextPath }/javascript/productDetail.js"></script>
@@ -71,7 +98,7 @@ $(function() {
 </head>
 <body>
 	<div class="main">
-	
+
 		<jsp:include page="../../header/header.jsp" />
 
 		<div class="content">
@@ -127,7 +154,8 @@ $(function() {
 					</div>
 					<div class="payment">
 						<div class="product-amount">
-							<span>수량 : </span><input type="text" value=1 class="amount">
+							<span>수량 : </span><input type="text" value=1 class="amount"
+								id="productCount">
 							<button class="plus">
 								<i class="far fa-plus-square"></i>
 							</button>
@@ -137,26 +165,37 @@ $(function() {
 						</div>
 						<div class="match-food-container">
 							<div class="match-food-list">
+								<script>
+									var matchFoodIdList = new Array();
+								</script>
 								<c:forEach var="matchFood" items="${matchFoodList }">
+									<script>
+										matchFoodIdList.push (${matchFood.matchFoodId});
+										console.log(matchFoodIdList)
+									</script>
 									<div class="items">
-                                    <img src="${match.img }">
-                                    <div class="item-info">
-                                        <span>${matchFood.name}</span>
-                                        <span>${matchFood.price }</span>
-                                    </div>
-                                    <div class="match-food-amount">
-                                        <span id="item-amount">
-                                            <span>수량 : </span><input type="text" value=0 id="count" class="amount">
-                                            <button class="plus"><i class="far fa-plus-square"></i></button>
-                                            <button class="minus"><i class="far fa-minus-square"></i></button>
-                                        </span>
-                                    </div>
-                                </div>
+										<img src="${match.img }">
+										<div class="item-info">
+											<span>${matchFood.matchFoodName}</span> <span
+												id="matchFoodPrice">${matchFood.price }</span>
+										</div>
+										<div class="match-food-amount">
+											<span id="item-amount"> <span>수량 : </span>
+											<input type="text" value=0 id="matchFoodId${matchFood.matchFoodId}"class="amount">
+												<button class="plus">
+													<i class="far fa-plus-square"></i>
+												</button>
+												<button class="minus">
+													<i class="far fa-minus-square"></i>
+												</button>
+											</span>
+										</div>
+									</div>
 								</c:forEach>
 							</div>
 						</div>
 						<div class="price">
-							<span>총 상품 금액 : ${product.price }</span>
+							총 상품 금액 : <span id="totalPrice">${product.price }</span>
 						</div>
 						<div class="payment-submit">
 							<button id="basket">장바구니에 추가</button>

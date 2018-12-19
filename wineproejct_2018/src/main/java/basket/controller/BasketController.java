@@ -31,34 +31,24 @@ public class BasketController {
 	@RequestMapping("/getBasketList.do")
 	public String getBasketList(Model model, @RequestParam("pageNum") int pageNum, @RequestParam("userId") int userId) {
 		BasketPage basketPage = basketService.getBasketList(pageNum, userId);
-		int total = basketService.productTotal(userId);
 		for (int i = 0; i < basketPage.getBasketList().size(); i++) {
 			if (basketPage.getBasketList().get(i).getMatchFoodIdList() != null) {
 				String[] matchFoodId = basketPage.getBasketList().get(i).getMatchFoodIdList().split(",");
 				String[] matchFoodCount = basketPage.getBasketList().get(i).getMatchFoodCount().split(",");
 				List<MatchFood> matchFoodList = new ArrayList<MatchFood>();
 				for (int j = 0; j < matchFoodId.length; j++) {
-					MatchFood matchFood = matchFoodService.getMatchFood(matchFoodId[j]);
-					matchFood.setCount(matchFoodCount[j]);
-					matchFoodList.add(matchFood);
-					total += basketService.matchFoodTotal(matchFoodId[j]) * Integer.parseInt(matchFoodCount[j]);
+					if (!matchFoodId.equals("0")) {
+						MatchFood matchFood = matchFoodService.getMatchFood(matchFoodId[j]);
+						matchFood.setCount(matchFoodCount[j]);
+						matchFoodList.add(matchFood);
+					}
+					model.addAttribute("matchFoodList" + basketPage.getBasketList().get(i).getBasketId(),
+							matchFoodList);
 				}
-				model.addAttribute("matchFoodList" + basketPage.getBasketList().get(i).getBasketId(), matchFoodList);
 			}
 		}
 		model.addAttribute("basketPage", basketPage);
-		model.addAttribute("total", total);
 		return "userBasket";
-	}
-
-	@RequestMapping("/insertProduct.do")
-	public String insertProduct(@RequestParam("userId") int userId, @RequestParam("productId") int productId,
-			@RequestParam("productName") String productName, @RequestParam("productPrice") int productPrice,
-			@RequestParam("productCount") int productCount, @RequestParam("productImg") String productImg,
-			@RequestParam("total") int total) {
-		basketService.insertProduct(
-				new ProductRequest(userId, productId, productName, productPrice, productCount, productImg, total));
-		return "main";
 	}
 
 	@RequestMapping("/insertMatchFood.do")
@@ -69,7 +59,7 @@ public class BasketController {
 		basketService.insertMatchFood(
 				new FoodRequest(userId, matchFoodId, productName, productPrice, productCount, productImg, total));
 
-		return "main";
+		return "redirect:/main.do";
 	}
 
 	@RequestMapping("/insertProductMatchFood.do")
@@ -80,7 +70,7 @@ public class BasketController {
 			@RequestParam("matchFoodCount") String matchFoodCount, @RequestParam("total") int total) {
 		basketService.insertProductMatchFood(new Basket(userId, productId, productName, productPrice, productCount,
 				productImg, matchFoodIdList, matchFoodCount, total));
-		return "main";
+		return "redirect:/main.do";
 	}
 
 	@RequestMapping("/deleteAll.do")
