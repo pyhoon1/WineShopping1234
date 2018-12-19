@@ -53,7 +53,7 @@
 					},
 					success : function() {
 						alert("상품 등록에 성공했습니다. 메인으로 돌아갑니다.");
-						location.href = "adminProductList.do"
+						location.href = "adminMatchFood.do?pageNum=1"
 					}
 
 				})
