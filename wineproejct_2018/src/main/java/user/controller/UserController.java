@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,15 @@ public class UserController {
 
 	@RequestMapping("/loginErrorPage.do")
 	public String loginErroPage() {
+		return "redirect:/main.do";
+	}
+
+	@RequestMapping("/logout.do")
+	public String logout(HttpServletRequest req) {
+		HttpSession session = req.getSession(false);
+		if (session != null) {
+			session.invalidate();
+		}
 		return "redirect:/main.do";
 	}
 

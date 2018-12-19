@@ -91,10 +91,12 @@ function SearchWine(){
                             </ul>
                         </div>
                     </li>
-                    <li><a href="#" id="login" class="border-right">
-                    	<c:if test="${user.userId != null }">Logout</c:if>
-                    	<c:if test="${user.userId == null }">Login</c:if>
-                    </a>
+                    <li><c:if test="${user.userId == null }">
+                    		<a href="#" id="login" class="border-right">Login</a>
+                    	</c:if>
+                    <c:if test="${user.userId != null }">
+                    
+                    	<a href="logout.do" id="login" class="border-right">Logout</a></c:if>
                         <span class="login-box">
                             <h3>로그인</h3>
                             <form action="login.do" method="post" autocomplete=off>
