@@ -121,8 +121,8 @@
 								<td>${product.variety }</td>
 								<td>${product.wineKinds}</td>
 								<td>${product.productName }</td>
-								<td title="${product.wineEx}"><div style="width: 500px; text-overflow:ellipsis;">${product.wineEx}</div></td>
-								<td title="${product.brandEx }"><div style="width: 500px; text-overflow:ellipsis;">${product.brandEx}</div></td>
+								<td title="${product.wineEx}"><div style="width: 500px; text-overflow:ellipsis; overflow:hidden;">${product.wineEx}</div></td>
+								<td title="${product.brandEx }"><div style="width: 500px; text-overflow:ellipsis; overflow:hidden;">${product.brandEx}</div></td>
 								<td>${product.price }</td>
 								<td>${product.nation }</td>
 								<td>${product.year }</td>

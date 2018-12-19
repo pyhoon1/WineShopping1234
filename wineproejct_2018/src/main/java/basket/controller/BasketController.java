@@ -25,7 +25,7 @@ public class BasketController {
 
 	@RequestMapping("/userBasket.do")
 	public String goUserbasket() {
-		return "userBasket";
+		return "user/userBasket";
 	}
 	
 	@RequestMapping("/getBasketList.do")

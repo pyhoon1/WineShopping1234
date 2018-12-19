@@ -25,20 +25,6 @@ body{
     flex: 1;
 }
 
-.footer{
-    margin: 0 auto;
-    width: 95%;
-    height: 100px;
-    border-top: 1px solid black;
-}
-
-.header{
-    margin: 0 auto;
-    width: 95%;
-    height: 200px;
-    border-bottom: 1px solid black;
-}
-
 /* 디폴트 */
 
 /* 컨텐츠 시작 */
@@ -128,6 +114,11 @@ body{
 .wineType, .wineNation {
     width: 25px;
     height: 25px;
+}
+
+.wineImg img{
+	width: 194px;
+	height: 259px;
 }
 
 .left span, .right span {

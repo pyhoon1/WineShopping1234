@@ -56,7 +56,7 @@
 								<img src="${products.img }">
 							</div>
 							<div class="left">
-								<span class="wineName">${products.productName }</span> <span class="winePrice">${products.price }</span>
+								<span class="wineName">${products.productName }</span> <span class="winePrice">${products.price } 원</span>
 							</div>
 							<div class="right">
 								<span class="wineType"><img src="${pageContext.request.contextPath}/resources/img/miniWineImg/${products.wineKinds}.png"></span> 
