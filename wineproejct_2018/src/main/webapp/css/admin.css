@@ -91,8 +91,9 @@ table {
 }
 
 table td {
-	white-space: nowrap;
+	text-overflow: ellipsis;
 	overflow: hidden;
+	white-space: nowrap;
 	border-bottom: 1px solid black;
 	padding: 2rem;
 }
@@ -169,6 +170,18 @@ table button > a:hover {
 	box-shadow: 0 1px 3px rgb(0, 0, 0, 0.16), 0 3px 6px rgb(0, 0, 0, 0.23);
 	overflow: hidden;
 	overflow-x: scroll;
+}
+
+.product-list talbe td:nth-child(6) {
+	width: 500px;
+	text-overflow: ellipsis;
+	background: black;
+}
+
+.product-list talbe td:nth-child(7) {
+	width: 500px;
+	text-overflow: ellipsis;
+	background: black;
 }
 
 .review-list {
