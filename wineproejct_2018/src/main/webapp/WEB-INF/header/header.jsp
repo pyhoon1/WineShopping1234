@@ -111,7 +111,7 @@ function SearchWine(){
                         </span>
                     </li>
                     <li><a href="signUpForm.do" class="border-right">Sign up</a> </li>
-                    <li><a href="#">MyPage</a></li>
+                    <li><a href="myPage.do?loginId=${user.loginId }">MyPage</a></li>
                     <li>
                         <div class="search-box">
                         	<input type="hidden" id="conditionType" name="conditionType" value="search">
