@@ -22,7 +22,6 @@
 						등급:<br> 다음 등급업까지 남은 구매금액은 ${200000 - user.totalAmount } 원입니다.
 					</span>
 				</div>
-
 				<div class="btnWrap">
 					<ul class="js-nav">
 						<li class="myP-btn order">주문조회</li>

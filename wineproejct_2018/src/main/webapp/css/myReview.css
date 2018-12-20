@@ -170,8 +170,6 @@ a,p,li{ display: block; cursor: pointer;}
 
 
 
-
-
 /* 버튼을 감싸는 div태그의 폭을 지정해야 가운데 정렬을 할 수 있다, 버튼 3개의 넓이는 총 304px  */
 .btnWrap {
   margin: 30px auto; width: 320px; }
