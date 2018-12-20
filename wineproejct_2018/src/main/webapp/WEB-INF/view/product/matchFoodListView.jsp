@@ -23,7 +23,7 @@
 		<c:forEach var="matchFood" items="${matchFoodPage.matchFoodList }">
 			<tr>
 				<td><a
-					href="getMatchFood.do?matchFoodId=${matchFood.matchFoodId }">${matchFood.matchFoodId }</a></td>
+					href="getMatchFood.do?matchFoodId=${matchFood.matchFoodId }">${matchFood.matchFoodId}</a></td>
 				<td>${matchFood.matchFoodName }</td>
 				<td>${matchFood.price }</td>
 				<td>${matchFood.nation }</td>

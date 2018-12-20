@@ -18,7 +18,7 @@ public interface AdminService {
 	public UsertPage getUserList(int page);
 
 	// 관리자 계정만 수정
-	public int updateUser(User user);
+	/* public int updateUser(User user); */
 
 	// 유저 검색 기능
 	public UsertPage getSearchUserList(String condition, int page);

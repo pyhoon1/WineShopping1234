@@ -10,6 +10,31 @@
 </script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/adminMakeMatchFoodForm.css">
 <script>
+
+$(function(){
+	function readURL(input) {
+		 
+	    if (input.files && input.files[0]) {
+	        var reader = new FileReader();
+	 
+	        reader.onload = function (e) {
+	            $('#img').attr('src', e.target.result);
+	        }
+	 
+	        reader.readAsDataURL(input.files[0]);
+	    }
+	}
+	 
+	$("#uploadFile").change(function(){
+		if(document.getElementById("uploadFile").files.length == 0){
+			
+			$('#img').removeAttr("src");
+				
+		}else{
+			 readURL(this);	
+		}
+	});	
+})
 	function insertMatchFood() {
 		if (confirm("상품을 등록하시겠습니까?")) {
 			if ($('#matchFoodName').val() == "") {
@@ -137,6 +162,7 @@
 					<td>상품 사진</td>
 					<td colspan="2"><input type="file" id="uploadFile"
 						name="uploadFile" accept="image/*"></td>
+						<td><img src="" id="img"></td>
 				</tr>
 				<tr>
 					<td>잘맞는 와인 타입</td>

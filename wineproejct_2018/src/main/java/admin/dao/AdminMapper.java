@@ -15,7 +15,7 @@ public interface AdminMapper {
 	//유저 맵퍼 
 	List<User> getUserList(Map<String, Object> page); 
 	void deleteUser(int userId);
-	int updateUser(User user);
+	// int updateUser(User user);
 	User getUserView(int userId);
 	int hasUserId(String loginId);
 	List<User> getSearchUserList(Map<String, Object> page);/*String condition*/
