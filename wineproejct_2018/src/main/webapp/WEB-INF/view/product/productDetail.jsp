@@ -69,7 +69,7 @@
 
 		$('#basket').click(function() {
 			 var text = confirm("장바구니에 추가하시겠습니까?");
-			 if($('#userId').val() != null){		
+			 if($('#userId').val() != ""){		
 			 	if (text) {
 			 		var productCount = $('#productCount').val();
 					
@@ -102,7 +102,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<input type="hidden" value="${user.userId }" id="userId">
+<input type="hidden" value="${user.userId}" id="userId">
 	<div class="main">
 
 		<jsp:include page="../../header/header.jsp" />
