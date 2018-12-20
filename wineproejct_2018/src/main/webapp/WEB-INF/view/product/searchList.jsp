@@ -106,51 +106,7 @@
                                                     </c:forEach>          
                 </div>
                 <c:if test="${productPage.hasProduct()}">
-		<div class="paging">
-		
-		<!-- 처음 (분기 처리)-->
-			<c:choose>
-			<c:when test="${conditionType == 'price'}">
-						<c:choose>
-						<c:when test="${!empty arrangement}">
-							<a href="searchList.do?conditionType=${conditionType}&startPrice=${startPrice}&endPrice=${endPrice}&arrangement=${arrangement}&pageNum=1" class="pageNum">처음</a>
-						</c:when>
-						<c:otherwise>
-							<a href="searchList.do?conditionType=${conditionType}&startPrice=${startPrice}&endPrice=${endPrice}&pageNum=1" class="pageNum">처음</a>
-						</c:otherwise>	
-				</c:choose>	
-			</c:when>
-			<c:when test="${conditionType == 'wineKinds'}">
-				<c:choose>
-						<c:when test="${!empty arrangement}">
-							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=1" class="pageNum">처음</a>
-						</c:when>
-						<c:otherwise>
-							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=1" class="pageNum">처음</a>
-						</c:otherwise>	
-				</c:choose>	
-			</c:when>	
-			<c:when test="${conditionType == 'nation'}">
-				<c:choose>
-						<c:when test="${!empty arrangement}">
-							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=1" class="pageNum">처음</a>
-						</c:when>
-						<c:otherwise>
-							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=1" class="pageNum">처음</a>
-						</c:otherwise>	
-				</c:choose>	
-			</c:when>	
-			<c:when test="${conditionType == 'search'}">
-				<c:choose>
-						<c:when test="${!empty arrangement}">
-							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=1" class="pageNum">처음</a>
-						</c:when>
-						<c:otherwise>
-							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=1" class="pageNum">처음</a>
-						</c:otherwise>	
-				</c:choose>	
-			</c:when>
-			</c:choose>							
+		<div class="paging">					
 			<!-- 이전 현재 지금 분기처리 -->
 			<c:choose>
 			<c:when test="${conditionType == 'price'}">
@@ -258,48 +214,6 @@
 			</c:when>
 			</c:choose>		
 			<!-- 마지막 분기처리 -->
-			<c:choose>
-			<c:when test="${conditionType == 'price'}">
-						<c:choose>
-						<c:when test="${!empty arrangement}">
-							<a href="searchList.do?conditionType=${conditionType}&startPrice=${startPrice}&endPrice=${endPrice}&arrangement=${arrangement}&pageNum=${productPage.totalPages }" class="pageNum">마지막</a>
-						</c:when>
-						<c:otherwise>
-							<a href="searchList.do?conditionType=${conditionType}&startPrice=${startPrice}&endPrice=${endPrice}&pageNum=${productPage.totalPages }" class="pageNum">마지막</a>
-						</c:otherwise>	
-				</c:choose>	
-			</c:when>
-			<c:when test="${conditionType == 'wineKinds'}">
-				<c:choose>
-						<c:when test="${!empty arrangement}">
-							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=${productPage.totalPages }" class="pageNum">마지막</a>
-						</c:when>
-						<c:otherwise>
-							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=${productPage.totalPages }" class="pageNum">마지막</a>
-						</c:otherwise>	
-				</c:choose>	
-			</c:when>	
-			<c:when test="${conditionType == 'nation'}">
-				<c:choose>
-						<c:when test="${!empty arrangement}">
-							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=${productPage.totalPages }" class="pageNum">마지막</a>
-						</c:when>
-						<c:otherwise>
-							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=${productPage.totalPages }" class="pageNum">마지막</a>
-						</c:otherwise>	
-				</c:choose>	
-			</c:when>	
-			<c:when test="${conditionType == 'search'}">
-				<c:choose>
-						<c:when test="${!empty arrangement}">
-							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&arrangement=${arrangement}&pageNum=${productPage.totalPages }" class="pageNum">마지막</a>
-						</c:when>
-						<c:otherwise>
-							<a href="searchList.do?condition=${condition}&conditionType=${conditionType}&pageNum=${productPage.totalPages }" class="pageNum">마지막</a>
-						</c:otherwise>	
-				</c:choose>	
-			</c:when>
-			</c:choose>	
 		</div>
 	</c:if>
             </div>
