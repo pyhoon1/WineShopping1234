@@ -304,7 +304,6 @@
 	</c:if>
             </div>
         </div>
-
         <jsp:include page="../../footer/footer.jsp" />
     </div>
 </body>
