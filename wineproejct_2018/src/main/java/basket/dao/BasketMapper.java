@@ -25,10 +25,7 @@ public interface BasketMapper {
 	public Basket getBasket(Basket basket);
 	
 	public List<Basket> selectByUserId(int userId);
-	
-	public int productTotal(int userId);
-	
-	public int matchFoodTotal(String matchFoodId);
+
 	
 	public int basketTotal(int userId);
 	
