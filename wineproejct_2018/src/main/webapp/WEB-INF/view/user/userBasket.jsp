@@ -26,9 +26,12 @@
 
 			<div class="btnWrap">
 				<ul class="js-nav">
-					<li class="myP-btn order">주문조회</li>
-					<li class="myP-btn middleBtn" id="basket">장바구니</li>
-					<li class="myP-btn" id="review">리뷰</li>
+					<li class="myP-btn order"><a
+						href="myPage.do?loginId=${user.loginId }">주문조회</a></li>
+					<li class="myP-btn middleBtn" id="basket"><a
+						href="getBasketList.do?userId=${user.userId}">장바구니</a></li>
+					<li class="myP-btn" id="review"><a
+						href="myReview.do?userId=${user.userId }&pageNum=1">리뷰</a></li>
 				</ul>
 			</div>
 
@@ -70,7 +73,10 @@
 								<td>${basket.productCount }</td>
 								<td>${basket.total }</td>
 								<td>
-									<p><a href="deleteOne.do?userId=${user.userId }&basketId=${basket.basketId}">삭제</a></p>
+									<p>
+										<a
+											href="deleteOne.do?userId=${user.userId }&basketId=${basket.basketId}">삭제</a>
+									</p>
 								</td>
 							</tr>
 

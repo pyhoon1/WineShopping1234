@@ -21,14 +21,8 @@
 		select * from basket where userId = #{userId} order by
 		basketId desc
 	</select>
-	<select id="productTotal" parameterType="int">
-		select sum(productPrice)
-		from basket where userId = #{userId}
-	</select>
-	<select id="matchFoodTotal" parameterType="String" resultType="int">
-		select price from matchFood where matchFoodId = #{matchFoodId}
-	</select>
-	<select id="basketTotal" parameterType="int">
+
+	<select id="basketTotal" parameterType="int" resultType="int">
 		select sum(total) from basket
 	</select>
 	<delete id="deleteOne" parameterType="int">

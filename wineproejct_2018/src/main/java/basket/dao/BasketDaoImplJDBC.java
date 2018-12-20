@@ -49,17 +49,7 @@ public class BasketDaoImplJDBC implements BasketDao {
 		return basketList;
 	}
 
-	public int productTotal(int userId) {
 
-		return basketMapper.productTotal(userId);
-
-	}
-
-	public int matchFoodTotal(String matchFoodId) {
-
-		return basketMapper.matchFoodTotal(matchFoodId);
-
-	}
 
 	public int basketTotal(int userId) {
 		return basketMapper.basketTotal(userId);
