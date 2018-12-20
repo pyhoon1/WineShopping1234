@@ -18,14 +18,14 @@ public class ReviewController {
 
 	@RequestMapping("/form.do")
 	public String form(@RequestParam("productId") int productId) {
-		return "redirect:/productView.do?productId="+productId;
+		return "redirect:/productView.do?productId="+productId+"&pageNum=1";
 	}
 	@RequestMapping("/reviewWrite.do")
 	public String reviewWrite(@RequestParam("productId") int productId, @RequestParam("userId") int userId, @RequestParam("pageNum") int pageNum,
 			@RequestParam("loginId") String loginId, @RequestParam("productName") String productName,
 			@RequestParam("content") String content) {
 		reviewService.reviewWrite(new Review(productId, userId, loginId, productName, content));
-		return "redirect:/form.do?productId="+productId+"&pageNum="+pageNum;
+		return "redirect:/form.do?productId="+productId+"&pageNum=1";
 	}
 
 	@RequestMapping("/reviewDelete.do")
@@ -40,4 +40,5 @@ public class ReviewController {
 		model.addAttribute("reviewtPage", reviewtPage);
 		return "user/myReview";
 	}
+	
 }

@@ -92,9 +92,17 @@
 
 		$('#review-submit').click(function() {
 			var content = $('#review-input').val();
-			location.href = "reviewWrite.do?productId=${product.productId}&userId=${user.userId}&loginId=${user.loginId}&productName=${product.productName}&content="+ content;
+			if($('#userId').val() != ""){
+				if(content === ""){
+					alert('리뷰를 작성해주세요.')
+				}else{
+					location.href = "reviewWrite.do?productId=${product.productId}&userId=${user.userId}&loginId=${user.loginId}&productName=${product.productName}&pageNum=1&content="+ content;										
+				}
+			} else {
+				alert('리뷰를 작성하시려면 로그인해주세요.')
+				return false;
+			}
 		})
-	
 	})
 </script>
 <script
@@ -212,7 +220,7 @@
 				</div>
 				<div class="review">
 					<div class="write-review">
-						<textarea rows="4" cols="60" placeholder="50자 이하의 리뷰를 남겨주세요!"
+						<textarea rows="2" cols="60" placeholder="50자 이하의 리뷰를 남겨주세요!"
 							id="review-input"></textarea>
 						<button type="submit" id="review-submit">작성</button>
 					</div>
@@ -221,8 +229,12 @@
 						<c:if test="${review.state == 'Y' }">
 							<div class="review-list">
 								<div class="review-header">
-									<span><strong>${review.loginId }</strong></span> <a href="#"><i
-										class="fas fa-edit"></i></a>
+									<span><strong>${review.loginId }</strong></span>
+									<c:if test="${user.loginId == review.loginId }">
+										<a href="reviewDelete.do?userId=${user.userId }&reviewId=${review.reviewId }">
+											<i class="fas fa-edit"></i>
+										</a>
+									</c:if>
 								</div>
 								<textarea cols="55" rows="3" id="review-content" readonly>${review.content }</textarea>
 								<span class="write-date"> ${fn:substring(wdate,0,10) } </span>
