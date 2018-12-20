@@ -12,6 +12,30 @@ $(function(){
 	$("#nation").val($('#compareNation').val()).prop("selected", true);
 	
 	$("#wineImg").val($('#compareWine').val()).prop("selected", true);
+	
+	function readURL(input) {
+		 
+	    if (input.files && input.files[0]) {
+	        var reader = new FileReader();
+	 
+	        reader.onload = function (e) {
+	            $('#img').attr('src', e.target.result);
+	        }
+	 
+	        reader.readAsDataURL(input.files[0]);
+	    }
+	}
+	 
+	$("#uploadFile").change(function(){
+		if(document.getElementById("uploadFile").files.length == 0){
+			
+			$('#img').removeAttr("src");
+			
+			$('#img').attr('src', $("#originalImg").val());		
+		}else{
+			 readURL(this);	
+		}
+	});
 })
 function updateMatchFood(){
 		if(confirm("상품을 등록하시겠습니까?")){
@@ -139,7 +163,7 @@ function hasMatchFoodName() {
 <input type="hidden" id="compareWine" value="${matchFood.wine }">
 <input type="hidden" id="matchfoodId" value="${matchFood.matchFoodId }">
 <form id="frm" method="post" enctype="multipart/form-data">
-<input type="hidden" name="originalImg" value="${matchFood.img }">
+<input type="hidden" id="originalImg" name="originalImg" value="${matchFood.img }">
 <input type="hidden" id="matchFoodId" name="matchFoodId" value="${matchFood.matchFoodId }">
 <table> 
 			<caption>부가 상품 등록</caption>
@@ -170,10 +194,11 @@ function hasMatchFoodName() {
 				</select></td>
 				<td><input type="text" id="search" name="search"></td>
 				<td><input type="button" onclick="findNation()" value="검색"></td>
+				<td><img src="${matchFood.img}" id="img"></td>
 			</tr>
 			<tr>
 				<td>상품 사진</td>
-				<td><input type="file" id="uploadFile" name="uploadFile" accept="image/*"></td>
+				<td><input type="file" id="uploadFile" id="uploadFile" name="uploadFile" accept="image/*"></td>
 			</tr>
 			<tr>
 				<td>잘맞는 와인 타입</td>

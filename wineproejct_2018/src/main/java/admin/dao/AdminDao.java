@@ -13,7 +13,7 @@ public interface AdminDao {
 	public List<User> readUserAll(int startRow, int size);
 
 	// 관리자 아이디만 수정 가능함
-	public int updateUser(User user);
+	// public int updateUser(User user);
 
 	// 유저를 삭제함
 	public void deleteUser(int userId);

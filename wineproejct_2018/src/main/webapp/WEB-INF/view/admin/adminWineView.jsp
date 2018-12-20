@@ -13,6 +13,31 @@ $(function(){
 	$("#nation").val($('#compareNation').val()).prop("selected", true);
 	
 	$("#wineKinds").val($('#compareWine').val()).prop("selected", true);
+	
+	
+	function readURL(input) {
+		 
+	    if (input.files && input.files[0]) {
+	        var reader = new FileReader();
+	 
+	        reader.onload = function (e) {
+	            $('#img').attr('src', e.target.result);
+	        }
+	 
+	        reader.readAsDataURL(input.files[0]);
+	    }
+	}
+	 
+	$("#uploadFile").change(function(){
+		if(document.getElementById("uploadFile").files.length == 0){
+			
+			$('#img').removeAttr("src");
+			
+			$('#img').attr('src', $("#originalImg").val());		
+		}else{
+			 readURL(this);	
+		}
+	});
 })
 
 
@@ -214,7 +239,7 @@ function findYear() {
 <input type="hidden" id="comparewineName" value="${product.productName }">
 <input type="hidden" id="compareNation" value="${product.nation }">
 <input type="hidden" id="compareWine" value="${product.wineKinds }">
-<input type="hidden" name="originalImg" value="${product.img }">
+<input type="hidden" id="originalImg" name="originalImg" value="${product.img }">
 <input type="hidden" id="productId" name="productId" value="${product.productId }">
 <input type="hidden" id="years" value="${product.year }">
 <table>
@@ -280,7 +305,8 @@ function findYear() {
 		<td><input type="text" name="alcohol" id="alcohol" value="${product.alcohol }"></td>
 		<td><input type="text" name="weight" id="weight" value="${product.weight}"></td>
 		<td><input type="text" name="temperature" id="temperature" value="${product.temperature }"></td>
-		<td><input type="file" name="uploadFile"></td>
+		<td><input type="file" id="uploadFile" name="uploadFile" accept="image/*"></td>
+		<td><img src="${product.img}" id="img"></td>
 	</tr>
 	
 </table>
