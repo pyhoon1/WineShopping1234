@@ -52,55 +52,33 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td></td>
-							<td><img src="img/wineImage/pink-wine-1964457_640.jpg"
-								alt="">
-								<div>
-									<strong>[론 Rhone]</strong> <strong>베르나르 마그레즈 Bernard
-										Magrez</strong> <span>수량:1</span> <span>어울리는 음식:</span> <span>그라나
-										파다노 치즈 1</span> <span>한우채끝 1+ 스테이크 1</span>
-								</div></td>
-							<td>2018.10.23</td>
-							<td>69,000</td>
-							<td>
-								<p>삭제하기</p>
-							</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td><img src="img/wineImage/pink-wine-1964457_640.jpg"
-								alt="">
-								<div>
-									<strong>[론 Rhone]</strong> <strong>베르나르 마그레즈 Bernard
-										Magrez</strong> <span>수량:1</span> <span>어울리는 음식:</span> <span>그라나
-										파다노 치즈 1</span> <span>한우채끝 1+ 스테이크 1</span>
-								</div></td>
-							<td>2018.10.23</td>
-							<td>69,000</td>
-							<td>
-								<p>삭제하기</p>
-							</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td><img src="img/wineImage/pink-wine-1964457_640.jpg"
-								alt="">
-								<div>
-									<strong>[론 Rhone]</strong> <strong>베르나르 마그레즈 Bernard
-										Magrez</strong> <span>수량:1</span> <span>어울리는 음식:</span> <span>그라나
-										파다노 치즈 1</span> <span>한우채끝 1+ 스테이크 1</span>
-								</div></td>
-							<td>2018.10.23</td>
-							<td>69,000</td>
-							<td>
-								<p>삭제하기</p>
-							</td>
-						</tr>
+						<c:forEach items="${basketList }" var="basket">
+							<tr>
+								<td></td>
+								<td><img src="img/wineImage/pink-wine-1964457_640.jpg"
+									alt="">
+									<div>
+										<strong>${basket.productName } </strong> <span>어울리는 음식:</span>
+										<c:set value="matchFoodList${basket.basketId}"
+											var="matchFoodList" />
+										<c:forEach var="matchFood"
+											items="${requestScope[matchFoodList]}">
+											<span>${matchFood.matchFoodName }</span>
+											<span>${matchFood.ex }</span>
+										</c:forEach>
+									</div></td>
+								<td>${basket.productCount }</td>
+								<td>${basket.total }</td>
+								<td>
+									<p><a href="deleteOne.do?userId=${user.userId }&basketId=${basket.basketId}">삭제</a></p>
+								</td>
+							</tr>
+
+						</c:forEach>
 
 
 
-						</tr>
+
 					</tbody>
 				</table>
 			</div>
