@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import payment.dao.PaymentDao;
-import payment.vo.FoodRequest;
 import payment.vo.Payment;
 import payment.vo.PaymentPage;
-import payment.vo.ProductRequest;
 
 @Service("paymentService")
 public class PaymentServiceImplJDBC implements PaymentService {
@@ -36,19 +34,15 @@ public class PaymentServiceImplJDBC implements PaymentService {
 		return paymentPage;
 	}
 
-	public void productPayment(ProductRequest payment) {
-		paymentDao.productPayment(payment);
-
-	}
-
-	public void foodPayment(FoodRequest payment) {
-		paymentDao.foodPayment(payment);
-
-	}
 
 	public int getUserTotal(int userId) {
 		
 		return paymentDao.getUserTotal(userId);
+	}
+
+	public void payment(Payment payment) {
+		paymentDao.payment(payment);
+		
 	}
 
 }

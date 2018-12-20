@@ -99,11 +99,11 @@ public class AdminServiceImpl implements AdminService {
 		return paymentPage;
 	}
 
-	public int updateUser(User user) {
+	/* public int updateUser(User user) {
 		int update = admin.updateUser(user);
 		return update;
 
-	}
+	} */
 
 	public User getUserView(int userId) {
 		User user = admin.readUser(userId);

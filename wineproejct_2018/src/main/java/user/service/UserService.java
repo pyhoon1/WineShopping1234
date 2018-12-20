@@ -35,4 +35,5 @@ public interface UserService {
 
 	public void sendPassword(User user) throws Exception;
 
+	public void totalAmountUpdate(int userId, int total);
 }

@@ -90,7 +90,7 @@
 
 			<div class="payGuide">
 				<div>
-					<span>상품금액</span> <span>69,000</span>
+					<span>상품금액</span> <span>${total }</span>
 				</div>
 				<span class="operator">+</span>
 				<div>
@@ -98,7 +98,7 @@
 				</div>
 				<span class="operator">=</span>
 				<div>
-					<span>결제예정금액</span> <span>72,000</span>
+					<span>결제예정금액</span> <span>${total + 3000 }</span>
 				</div>
 				<div>주문하기</div>
 			</div>

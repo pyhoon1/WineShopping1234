@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import basket.service.BasketService;
 import basket.vo.Basket;
-import basket.vo.FoodRequest;
 import matchfood.service.MatchFoodService;
 import matchfood.vo.MatchFood;
 import product.service.ProductService;
@@ -57,16 +56,7 @@ public class BasketController {
 		return "user/userBasket";
 	}
 
-	@RequestMapping("/insertMatchFood.do")
-	public String insertMatchFood(@RequestParam("userId") int userId, @RequestParam("matchFoodId") int matchFoodId,
-			@RequestParam("productName") String productName, @RequestParam("productPrice") int productPrice,
-			@RequestParam("productCount") int productCount, @RequestParam("productImg") String productImg,
-			@RequestParam("total") int total) {
-		basketService.insertMatchFood(
-				new FoodRequest(userId, matchFoodId, productName, productPrice, productCount, productImg, total));
 
-		return "redirect:/main.do";
-	}
 
 	@RequestMapping("/insertProductMatchFood.do")
 	public String insertProductMatchFood(@RequestParam("userId") int userId, @RequestParam("productId") int productId,

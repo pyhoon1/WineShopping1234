@@ -16,9 +16,8 @@ import basket.vo.Basket;
 import matchfood.service.MatchFoodService;
 import matchfood.vo.MatchFood;
 import payment.service.PaymentService;
-import payment.vo.FoodRequest;
+import payment.vo.Payment;
 import payment.vo.PaymentPage;
-import payment.vo.ProductRequest;
 import user.service.UserService;
 
 @Controller
@@ -35,28 +34,18 @@ public class PaymentController {
 	// 이름 결제시간 수단 금액
 	@RequestMapping("/payment.do")
 	public String payment(Model model, @RequestParam("name") String name, @RequestParam("method") String method,
-			@RequestParam("total") String total, @RequestParam("userId") int userId) {
-		Map<String, String> receipt = new HashMap<String, String>();
+			@RequestParam("total") int total, @RequestParam("userId") int userId) {
+		Map<String, Object> receipt = new HashMap<String, Object>();
 
 		model.addAttribute("receipt", receipt);
 		List<Basket> basketList = basketService.selectByUserId(userId);
 		for (int i = 0; i < basketList.size(); i++) {
-			String id = basketList.get(i).getProductId() + "";
-			if (id != "") {
-				total += basketList.get(i).getProductPrice() * basketList.get(i).getProductCount();
-				paymentService.productPayment(
-						new ProductRequest(userId, basketList.get(i).getProductId(), basketList.get(i).getProductName(),
-								basketList.get(i).getProductPrice(), basketList.get(i).getProductCount(),
-								basketList.get(i).getProductImg(), basketList.get(i).getMatchFoodIdList(),
-								basketList.get(i).getMatchFoodCount(), method, basketList.get(i).getTotal()));
-
-			} else {
-				paymentService.foodPayment(
-						new FoodRequest(userId, basketList.get(i).getMatchFoodId(), basketList.get(i).getProductName(),
-								basketList.get(i).getProductPrice(), basketList.get(i).getProductCount(),
-								basketList.get(i).getProductImg(), method, basketList.get(i).getTotal()));
-			}
+			paymentService.payment(new Payment(userId, basketList.get(i).getProductId(),
+					basketList.get(i).getProductName(), basketList.get(i).getProductPrice(),
+					basketList.get(i).getProductCount(), basketList.get(i).getProductImg(),
+					basketList.get(i).getMatchFoodIdList(), basketList.get(i).getMatchFoodCount(), method));
 		}
+		userService.totalAmountUpdate(userId, total);
 		int userTotal = paymentService.getUserTotal(userId);
 
 		if (userTotal > 600000) {
@@ -73,7 +62,6 @@ public class PaymentController {
 		receipt.put("total", total);
 		model.addAttribute("receipt", receipt);
 		basketService.deleteAll(userId);
-
 		return null;
 	}
 

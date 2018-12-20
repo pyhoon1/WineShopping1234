@@ -14,7 +14,7 @@
 	function Product() {
 		location.href = "productList.do";
 	}
-	function updateManager() {
+	/* function updateManager() {
 		if (confirm("관리자 계정을 수정하겠습니까?")) {
 			if (document.getElementById('NoHave').innerHTML == "중복을 검사해주세요") {
 				alert("중복 검사를 해주세요!");
@@ -69,7 +69,7 @@
 
 				})
 	}
-	
+	*/
 	function viewReview(){		
 		var userId = {
 				'userId' : $('#userId').val()
@@ -242,15 +242,12 @@
 							value="${user.birth}"></td>
 						<td><input type="text" id="rating" name="rating"
 							value="${user.rating}" readonly></td>
-						<td><input type="button" id="update"
-							onclick="updateManager()" value="수정"></td>
 					</tr>
 		</table>
 		</c:when>
 		<c:otherwise>
 			<tr>
-				<input type="hidden" Id="userId" name="userId"
-					value="${user.userId}">
+				<input type="hidden" Id="userId" name="userId" value="${user.userId}">
 				<td>${user.loginId}</td>
 				<td>${user.password}</td>
 				<td>${user.userName}</td>

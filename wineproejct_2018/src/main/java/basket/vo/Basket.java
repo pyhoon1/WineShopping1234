@@ -7,26 +7,24 @@ public class Basket {
 	private int basketId;
 	private int userId;
 	private int productId;
-	private int matchFoodId;
 	private String productName;
 	private int productPrice;
-	private int productCount; 
+	private int productCount;
 	private String productImg;
 	private String matchFoodIdList;
 	private String matchFoodCount;
 	private int total;
 
 	public Basket() {
- 
+
 	}
 
-	public Basket(int basketId, int userId, int productId, int matchFoodId, String productName, int productPrice,
-			int productCount, String productImg, String matchFoodIdList, String matchFoodCount, int total) {
+	public Basket(int basketId, int userId, int productId, String productName, int productPrice, int productCount,
+			String productImg, String matchFoodIdList, String matchFoodCount, int total) {
 		super();
 		this.basketId = basketId;
 		this.userId = userId;
 		this.productId = productId;
-		this.matchFoodId = matchFoodId;
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.productCount = productCount;
@@ -72,14 +70,6 @@ public class Basket {
 
 	public void setProductId(int productId) {
 		this.productId = productId;
-	}
-
-	public int getMatchFoodId() {
-		return matchFoodId;
-	}
-
-	public void setMatchFoodId(int matchFoodId) {
-		this.matchFoodId = matchFoodId;
 	}
 
 	public String getProductName() {
@@ -137,5 +127,5 @@ public class Basket {
 	public void setTotal(int total) {
 		this.total = total;
 	}
-
+		
 }

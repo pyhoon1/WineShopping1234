@@ -7,9 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import payment.vo.FoodRequest;
 import payment.vo.Payment;
-import payment.vo.ProductRequest;
 
 @Repository("paymentDao")
 public class PaymentDaoImplJDBC implements PaymentDao {
@@ -37,19 +35,14 @@ public class PaymentDaoImplJDBC implements PaymentDao {
 		return paymentList;
 	}
 
-	public void productPayment(ProductRequest payment) {
-		paymentMapper.productPayment(payment);
-
-	}
-
-	public void foodPayment(FoodRequest payment) {
-		paymentMapper.foodPayment(payment);
-
-	}
-
 	public int getUserTotal(int userId) {
-		
+
 		return paymentMapper.getUserTotal(userId);
+	}
+
+	public void payment(Payment payment) {
+		paymentMapper.payment(payment);
+
 	}
 
 }

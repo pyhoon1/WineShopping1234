@@ -52,7 +52,7 @@
 		update User set rating =
 		${rating} where userId = #{userId}
 	</update>
-	<update id="totalAmountUpdate" parameterType="User">
+	<update id="totalAmountUpdate" parameterType="java.util.Map">
 		update User set
 		totalAmount = #{totalAmount} where userId = #{userId}
 	</update>

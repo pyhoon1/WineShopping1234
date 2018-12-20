@@ -92,11 +92,11 @@ public class AdminDaoImplJDBC implements AdminDao {
 		return payment;
 	}
 
-	public int updateUser(User user) {
+	/* public int updateUser(User user) {
 		int update = adminMapper.updateUser(user);
 		return update;
 
-	}
+	} */
 
 	public List<Review> readReviewUser(int userId, int startRow, int size) {
 		Map<String, Object> page = new HashMap<String, Object>();

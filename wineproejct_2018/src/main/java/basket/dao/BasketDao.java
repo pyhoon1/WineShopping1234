@@ -3,16 +3,9 @@ package basket.dao;
 import java.util.List;
 
 import basket.vo.Basket;
-import basket.vo.FoodRequest;
-import basket.vo.ProductRequest;
 
 public interface BasketDao {
 
-	// 장바구니 추가
-	public void insertProduct(ProductRequest productRequest);
-
-	// 음식만 추가하기
-	public void insertMatchFood(FoodRequest foodRequest);
 
 	// 잘 맞는 음식 같이 추가
 	public void insertProductMatchFood(Basket basket);

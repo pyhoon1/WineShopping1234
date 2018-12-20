@@ -34,4 +34,6 @@ public interface UserDao {
 
 	public void userStateUpdate(String email);
 
+	public void totalAmountUpdate(int userId, int total);
+
 }

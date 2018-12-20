@@ -204,27 +204,6 @@ public class AdminController {
 		return new ModelAndView("/admin/adminUserReviewView");
 	}
 
-	@RequestMapping("/updateAdmin.do")
-	@ResponseBody
-	public String updateAdmin(@RequestParam("userId") String Id, @RequestParam("loginId") String loginId,
-			@RequestParam("password") String password, @RequestParam("userName") String userName,
-			@RequestParam("email") String email, @RequestParam("address") String address,
-			@RequestParam("phone") String phone, @RequestParam("birth") String birth) {
-
-		int userId = Integer.parseInt(Id);
-		int check = adminService
-				.updateUser(new User(userId, loginId, password, userName, email, address, phone, birth));
-		System.out.println("check" + check);
-		if (check > 0) {
-			String result = "Y";
-			return result;
-		} else {
-			String result = "N";
-			return result;
-		}
-
-	}
-
 	@RequestMapping(value = "/updateMatchFood.do")
 	@ResponseBody
 	public String updateMatchFood(HttpServletRequest hsr,
@@ -413,7 +392,7 @@ public class AdminController {
 	@ResponseBody
 	public String deleteMatchFood(@RequestParam("matchFoodId") int matchFoodId, @RequestParam("img") String img,
 			HttpServletRequest hsr) {
-		
+
 		AdminUpload upload = new AdminUpload();
 
 		upload.Delete(hsr, matchFoodId, img);
@@ -519,6 +498,27 @@ public class AdminController {
 	 * model, @RequestParam("pageNum") int pageNum) { PaymentPage payment =
 	 * adminService.getPaymentList(pageNum); model.addAttribute("paymentList",
 	 * payment); return "/admin/adminPaymentList"; }
+	 * 
+	 * 
+	 * @RequestMapping("/updateAdmin.do")
+	 * 
+	 * @ResponseBody public String updateAdmin(@RequestParam("userId") String
+	 * Id, @RequestParam("loginId") String loginId,
+	 * 
+	 * @RequestParam("password") String password, @RequestParam("userName") String
+	 * userName,
+	 * 
+	 * @RequestParam("email") String email, @RequestParam("address") String address,
+	 * 
+	 * @RequestParam("phone") String phone, @RequestParam("birth") String birth) {
+	 * 
+	 * int userId = Integer.parseInt(Id); int check = adminService .updateUser(new
+	 * User(userId, loginId, password, userName, email, address, phone, birth));
+	 * System.out.println("check" + check); if (check > 0) { String result = "Y";
+	 * return result; } else { String result = "N"; return result; }
+	 * 
+	 * }
+	 * 
 	 */
 
 }
