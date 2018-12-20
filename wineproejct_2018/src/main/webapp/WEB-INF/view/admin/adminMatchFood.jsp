@@ -17,6 +17,30 @@
 	rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+	function deleteMatchFood(matchFoodId,matchFoodName,img) {
+		if(confirm(matchFoodName+"을 삭제하시겠습니까?")){
+			var information = {
+					'matchFoodId' : matchFoodId,
+					'img' : img
+			}
+			$.ajax({
+				url : 'deleteMatchFood.do',
+				type : 'post',
+				data : information,
+				error : function(error) {
+					console.log(error);
+				},
+				success : function() {
+					alert('제품을 삭제하였습니다.')
+					location.href="adminProductList.do"
+				}
+			})
+		}else{
+			return false;
+		}
+	}
+	</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -60,8 +84,8 @@
 								<td>${matchFood.wine }</td>
 								<td>${matchFood.weight }</td>
 								<td title="${matchFood.ex }"><div style="width: 500px; text-overflow:ellipsis; overflow:hidden;">${matchFood.ex }</div></td>
-								<td><button><a href="">삭제</a></button></td>
-								<td><button><a href="">수정</a></button></td>
+								<td><button><a onclick="deleteMatchFood('${matchFood.matchFoodId}','${matchFood.matchFoodName}','${matchFood.img}')">삭제</a></button></td>
+								<td><button><a href="adminmatchFoodView.do?matchFoodId=${matchFood.matchFoodId}">수정</a></button></td>
 							</tr>
 						</c:forEach>
 					</tbody>

@@ -35,7 +35,7 @@ public class ProductServiceImplJDBC implements ProductService {
 	public List<Product> manySaleProduct() {
 		List<Product> productList = productDao.manySaleProduct();
 		return productList;
-	}
+	} 
 
 	public ProductPage searchWine(int pageNum, ProductSearch search) {
 		List<Product> productList = productDao.searchWine((pageNum - 1) * searchSize, searchSize, search);

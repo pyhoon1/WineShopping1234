@@ -163,7 +163,7 @@
 					},
 					success : function(result) {
 						alert("상품 등록에 성공했습니다. 메인으로 돌아갑니다.");
-						location.href = "adminProductList.do";
+						location.href = "adminProduct.do?pageNum=1";
 					}
 
 				})
@@ -248,7 +248,7 @@
                     <td><input type="text" name="alcohol" id="alcohol" placeholder="도수"></td>
                     <td><input type="text" name="weight" id="weight" placeholder="용량"></td>
                     <td><input type="text" name="temperature" id="temperature" placeholder="온도"></td>
-                    <td><input type="file" name="uploadFile" id="uploadFile"></td>
+                    <td><input type="file" name="uploadFile" id="uploadFile" accept="image/*"></td>
                 </tr>
 
             </table>

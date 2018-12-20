@@ -36,7 +36,7 @@ public class AdminController {
 	public String adminHome() {
 		return "admin";
 	}
-	
+
 	@RequestMapping("/adminMakeMatchFoodForm.do")
 	public ModelAndView getMakeMatchFoodForm() {
 		return new ModelAndView("/admin/adminMakeMatchFoodForm");
@@ -49,21 +49,13 @@ public class AdminController {
 		return new ModelAndView("/admin/adminMakeWineForm");
 	}
 
-
 	@RequestMapping("/admin.do")
 	public String admin(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
-
-
-	
 		UsertPage user = adminService.getUserList(pageNum);
 		ProductPage product = adminService.getProductList(pageNum);
 		MatchFoodPage matchfood = adminService.getMatchFoodPList(pageNum);
 		ReviewtPage review = adminService.getReviewList(pageNum);
 		PaymentPage payment = adminService.getPaymentList(pageNum);
-
-	
-
-
 		model.addAttribute("paymentPage", payment);
 
 		return "/admin/admin";
@@ -73,39 +65,39 @@ public class AdminController {
 	public String adminUser(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
 		UsertPage user = adminService.getUserList(pageNum);
 		model.addAttribute("usertPage", user);
-		
+
 		return "/admin/adminUser";
 	}
-	
+
 	@RequestMapping("/adminProduct.do")
 	public String adminProduct(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
 		ProductPage product = adminService.getProductList(pageNum);
 		model.addAttribute("productPage", product);
-		
+
 		return "/admin/adminProduct";
 	}
-	
+
 	@RequestMapping("/adminMatchFood.do")
 	public String adminMatchFood(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
 		MatchFoodPage matchfood = adminService.getMatchFoodPList(pageNum);
 		model.addAttribute("matchFoodPage", matchfood);
-		
+
 		return "/admin/adminMatchFood";
 	}
-	
+
 	@RequestMapping("/adminReview.do")
 	public String adminReview(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
 		ReviewtPage review = adminService.getReviewList(pageNum);
 		model.addAttribute("reviewtPage", review);
-		
+
 		return "/admin/adminReview";
 	}
-	
+
 	@RequestMapping("/adminPayment.do")
 	public String adminPayment(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
 		PaymentPage payment = adminService.getPaymentList(pageNum);
 		model.addAttribute("paymentPage", payment);
-		
+
 		return "/admin/adminPayment";
 	}
 
@@ -371,13 +363,13 @@ public class AdminController {
 
 		String nationpath = "resources/img/nationImg/";
 
-		String matchFoodName = "";
+		String matchFoodName = prm.get("matchFoodName");
 
 		String matchFoodId = "";
 
 		int price = Integer.parseInt(prm.get("price"));
 
-		if (prm.get("matchFoodName").equals("") == false || prm.get("matchFoodName") != "") {
+		if (!matchFoodName.equals("")) {
 			matchFoodName = prm.get("matchFoodName").substring(0, prm.get("matchFoodName").length() - 1);
 			matchFoodId = prm.get("matchFoodId").substring(0, prm.get("matchFoodId").length() - 1);
 
@@ -418,14 +410,16 @@ public class AdminController {
 	}
 
 	@RequestMapping("/deleteMatchFood.do")
+	@ResponseBody
 	public String deleteMatchFood(@RequestParam("matchFoodId") int matchFoodId, @RequestParam("img") String img,
 			HttpServletRequest hsr) {
+		
 		AdminUpload upload = new AdminUpload();
 
 		upload.Delete(hsr, matchFoodId, img);
 
 		adminService.deleteMatchFood(matchFoodId);
-		return "/admin/adminProductList";
+		return "admin/adminMatchFood";
 	}
 
 	@RequestMapping("/deleteWine.do")
@@ -436,7 +430,8 @@ public class AdminController {
 		upload.Delete(hsr, productId, img);
 
 		adminService.deleteProduct(productId);
-		return "/admin/adminProductList";
+
+		return "admin/adminProduct";
 	}
 
 	@RequestMapping("/adminmatchFoodView.do")
@@ -447,14 +442,14 @@ public class AdminController {
 	}
 
 	@RequestMapping("/adminWineView.do")
-	public String wineView(@RequestParam("productId") int productId, Model model,
-			@RequestParam("pageNum") int pageNum) {
+	public String wineView(@RequestParam("productId") int productId, Model model) {
 		Product product = adminService.getProductView(productId);
-		MatchFoodPage matchfood = adminService.getMatchFoodPList(pageNum);
+		List<MatchFood> matchfood = adminService.getMatchFoodList();
 		model.addAttribute("matchFood", matchfood);
 		model.addAttribute("product", product);
 		return "/admin/adminWineView";
 	}
+
 	@RequestMapping("/adminUserView.do")
 	public String getUser(Model model, @RequestParam("userId") int userId) {
 		User user = adminService.getUserView(userId);
@@ -467,68 +462,63 @@ public class AdminController {
 		adminService.deleteUser(userId);
 		return "/admin/adminUserList";
 	}
-	
-	/*	@RequestMapping("/adminProductList.do")
-	public String getAdminProductList(@RequestParam(value = "condition", required = false) String condition,
-			@RequestParam(value = "type", required = false) String type,
-			@RequestParam(value = "productorigin", required = false) String sproduct,
-			@RequestParam(value = "matchfoodorigin", required = false) String smatchfood, Model model,
-			@RequestParam("pageNum") int pageNum) {
-		if (type != null && condition != null) {
-			if (type.equals("product") && condition != null && smatchfood != null) {
-				ProductPage product = adminService.getSearchProductList(condition, pageNum);
-				MatchFoodPage matchfood = adminService.getSearchMatchFoodList(smatchfood, pageNum);
-				model.addAttribute("productList", product);
-				model.addAttribute("matchfood", matchfood);
-				model.addAttribute("productorigin", condition);
 
-			} else if (type.equals("matchFood") && condition != null && sproduct != null) {
-				System.out.println("matchFood on ");
-				ProductPage product = adminService.getSearchProductList(sproduct, pageNum);
-				MatchFoodPage matchfood = adminService.getSearchMatchFoodList(condition, pageNum);
-				model.addAttribute("productList", product);
-				model.addAttribute("matchfood", matchfood);
-				model.addAttribute("matchfoodorigin", condition);
-			}
-		} else {
-			ProductPage product = adminService.getProductList(pageNum);
-			MatchFoodPage matchfood = adminService.getMatchFoodList(pageNum);
-			model.addAttribute("productList", product);
-			model.addAttribute("matchfood", matchfood);
-		}
-
-		return "/admin/adminProductList";
-	}
-
-	@RequestMapping("/adminUserList.do")
-	public String getAdminUserList(@RequestParam(value = "condition", required = false) String condition, Model model,
-			@RequestParam("pageNum") int pageNum) {
-
-		System.out.println("condition === " + condition);
-		if (condition == null) {
-			UsertPage user = adminService.getUserList(pageNum);
-			model.addAttribute("userList", user);
-		} else {
-			UsertPage user = adminService.getSearchUserList(condition, pageNum);
-			model.addAttribute("userList", user);
-		}
-		return "/admin/adminUserList";
-	}
-
-
-
-	@RequestMapping("/adminReviewList.do")
-	public String adminReviewList(Model model, @RequestParam("pageNum") int pageNum) {
-		ReviewtPage review = adminService.getReviewList(pageNum);
-		model.addAttribute("reviewList", review);
-		return "/admin/adminReviewList";
-	}
-
-	@RequestMapping("/adminPaymentList.do")
-	public String adminPaymentList(Model model, @RequestParam("pageNum") int pageNum) {
-		PaymentPage payment = adminService.getPaymentList(pageNum);
-		model.addAttribute("paymentList", payment);
-		return "/admin/adminPaymentList";
-	}*/
+	/*
+	 * @RequestMapping("/adminProductList.do") public String
+	 * getAdminProductList(@RequestParam(value = "condition", required = false)
+	 * String condition,
+	 * 
+	 * @RequestParam(value = "type", required = false) String type,
+	 * 
+	 * @RequestParam(value = "productorigin", required = false) String sproduct,
+	 * 
+	 * @RequestParam(value = "matchfoodorigin", required = false) String smatchfood,
+	 * Model model,
+	 * 
+	 * @RequestParam("pageNum") int pageNum) { if (type != null && condition !=
+	 * null) { if (type.equals("product") && condition != null && smatchfood !=
+	 * null) { ProductPage product = adminService.getSearchProductList(condition,
+	 * pageNum); MatchFoodPage matchfood =
+	 * adminService.getSearchMatchFoodList(smatchfood, pageNum);
+	 * model.addAttribute("productList", product); model.addAttribute("matchfood",
+	 * matchfood); model.addAttribute("productorigin", condition);
+	 * 
+	 * } else if (type.equals("matchFood") && condition != null && sproduct != null)
+	 * { System.out.println("matchFood on "); ProductPage product =
+	 * adminService.getSearchProductList(sproduct, pageNum); MatchFoodPage matchfood
+	 * = adminService.getSearchMatchFoodList(condition, pageNum);
+	 * model.addAttribute("productList", product); model.addAttribute("matchfood",
+	 * matchfood); model.addAttribute("matchfoodorigin", condition); } } else {
+	 * ProductPage product = adminService.getProductList(pageNum); MatchFoodPage
+	 * matchfood = adminService.getMatchFoodList(pageNum);
+	 * model.addAttribute("productList", product); model.addAttribute("matchfood",
+	 * matchfood); }
+	 * 
+	 * return "/admin/adminProductList"; }
+	 * 
+	 * @RequestMapping("/adminUserList.do") public String
+	 * getAdminUserList(@RequestParam(value = "condition", required = false) String
+	 * condition, Model model,
+	 * 
+	 * @RequestParam("pageNum") int pageNum) {
+	 * 
+	 * System.out.println("condition === " + condition); if (condition == null) {
+	 * UsertPage user = adminService.getUserList(pageNum);
+	 * model.addAttribute("userList", user); } else { UsertPage user =
+	 * adminService.getSearchUserList(condition, pageNum);
+	 * model.addAttribute("userList", user); } return "/admin/adminUserList"; }
+	 * 
+	 * 
+	 * 
+	 * @RequestMapping("/adminReviewList.do") public String adminReviewList(Model
+	 * model, @RequestParam("pageNum") int pageNum) { ReviewtPage review =
+	 * adminService.getReviewList(pageNum); model.addAttribute("reviewList",
+	 * review); return "/admin/adminReviewList"; }
+	 * 
+	 * @RequestMapping("/adminPaymentList.do") public String adminPaymentList(Model
+	 * model, @RequestParam("pageNum") int pageNum) { PaymentPage payment =
+	 * adminService.getPaymentList(pageNum); model.addAttribute("paymentList",
+	 * payment); return "/admin/adminPaymentList"; }
+	 */
 
 }

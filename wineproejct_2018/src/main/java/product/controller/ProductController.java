@@ -64,7 +64,7 @@ public class ProductController {
 	public String goMain(Model model) {
 		List<Product> products = productService.manySaleProduct();
 		model.addAttribute("products", products);
-		return "main";
+		return "main"; 
 	}
 
 	@RequestMapping("/searchList.do")

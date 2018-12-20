@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -36,14 +35,14 @@
 			}
 			$.ajax({
 				url : 'deleteWine.do',
-				type : 'post',
+				type : 'GET',
 				data : information,
 				error : function(error) {
-					console.log(error);
+					alert('삭제에 실패했습니다.');
 				},
 				success : function() {
-					alert('제품을 삭제하였습니다.')
-					location.href = "adminProductList.do"
+					alert('제품을 삭제하였습니다.');
+					location.href = "adminProduct.do?pageNum=1";
 				}
 			})
 		} else {
@@ -66,7 +65,7 @@
 				},
 				success : function() {
 					alert('제품을 삭제하였습니다.')
-					location.href = "adminProductList.do"
+					location.href = "adminMatchFood.do?pageNum=1"
 				}
 			})
 		} else {
@@ -79,7 +78,6 @@
 		<h1>Welcome to admin page!</h1>
 		<div class="buttons">
             <button><a href="adminMakeWineForm.do">와인 추가</a></button>
-            <button><a href="adminWineView.do">와인 수정</a></button>
         </div>
 		<div class="nav">
 			<ul>
@@ -127,11 +125,12 @@
 								<td>${product.nation }</td>
 								<td>${product.year }</td>
 								<td>${product.matchFoodName }</td>
-								<td>${product.temperature }</td>
+								<td>${product.temperature }</td>	
 								<td>${product.alcohol }</td>
 								<td>${product.weight }</td>
 								<td>${product.count }</td>
-								<td><td><button><a href="">삭제</a></button></td></td>
+								<td><td><button><a onclick="deleteWine('${product.productId}', '${product.productName}','${product.img}')">삭제</a></button></td></td>
+								<td><button><a href="adminWineView.do?productId=${product.productId}">수정</a></button></td>
 							</tr>
 						</c:forEach>
 

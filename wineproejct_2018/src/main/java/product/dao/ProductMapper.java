@@ -20,7 +20,7 @@ public interface ProductMapper {
 	
 	public int searchWineCount();
 
-	
+	 
 	
 
 

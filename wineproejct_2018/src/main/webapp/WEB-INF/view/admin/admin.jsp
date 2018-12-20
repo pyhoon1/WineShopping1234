@@ -132,12 +132,9 @@
 								<td>${product.count }</td>
 							</tr>
 						</c:forEach>
-
-
 					</tbody>
 				</table>
 				<div class="paging">
-
 					<c:if test="${productPage.hasProduct()}">
 						<div>
 							<a href="admin.do?pageNum=1" class="pageNum">처음</a>
