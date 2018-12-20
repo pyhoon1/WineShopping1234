@@ -69,17 +69,23 @@
 
 		$('#basket').click(function() {
 			 var text = confirm("장바구니에 추가하시겠습니까?");
-		 	if (text) {
-		 		var productCount = $('#productCount').val();
+			 if($('#userId').val() != null){
+			 	if (text) {
+			 		var productCount = $('#productCount').val();
+					
+			 		var matchFoodCount = "";
+					for(var i in matchFoodIdList){
+						matchFoodCount += $('#matchFoodId'+matchFoodIdList[i]).val()+",";
+						console.log(matchFoodCount)
+					}
+			 		location.href = "insertProductMatchFood.do?userId=${user.userId}&productId=${product.productId}&productName=${product.productName}&productPrice=${product.price}&productCount="+productCount+"&productImg=${product.img}&matchFoodIdList="+matchFoodIdList+"&matchFoodCount="+matchFoodCount+"&total="+total;
+			 	}
+			}else{
+				alert("상품을 구매하려면 로그인을 해주세요.")
+				return false;
 				
-		 		var matchFoodCount = "";
-				for(var i in matchFoodIdList){
-					matchFoodCount += $('#matchFoodId'+matchFoodIdList[i]).val()+",";
-					console.log(matchFoodCount)
-				}
-		 		location.href = "insertProductMatchFood.do?userId=${user.userId}&productId=${product.productId}&productName=${product.productName}&productPrice=${product.price}&productCount="+productCount+"&productImg=${product.img}&matchFoodIdList="+matchFoodIdList+"&matchFoodCount="+matchFoodCount+"&total="+total;
-		 	}
-		 	}) 
+			}
+		 }) 
 
 		$('#payment').click(function() {
 
@@ -97,6 +103,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<input type="hidden" value="${user.userId }" id="userId">
 	<div class="main">
 
 		<jsp:include page="../../header/header.jsp" />
