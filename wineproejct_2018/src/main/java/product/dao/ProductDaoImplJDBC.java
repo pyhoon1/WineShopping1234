@@ -36,7 +36,7 @@ public class ProductDaoImplJDBC implements ProductDao {
 	public List<Product> manySaleProduct() {
 		List<Product> productList = productMapper.manySaleProduct();
 		return productList;
-	}
+	} 
 
 	public List<Product> searchWine(int startRow, int size ,ProductSearch search) {
 		Map<String, Object> page = new HashMap<String, Object>();

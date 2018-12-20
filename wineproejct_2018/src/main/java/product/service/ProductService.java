@@ -15,7 +15,7 @@ public interface ProductService {
 	public List<Product> manySaleProduct();
 
 	public ProductPage searchWine(int pageNum, ProductSearch search);
-	
+	 
 
 
 }
