@@ -28,7 +28,7 @@ public interface BasketMapper {
 	public int getBasketCount(int userId);
 
 	// 장바구니 리스트
-	public List<Basket> getBasketList(Map<String, Integer> page);
+	public List<Basket> getBasketList(int userId);
 
 	public Basket getBasket(Basket basket);
 	
@@ -37,5 +37,9 @@ public interface BasketMapper {
 	public int productTotal(int userId);
 	
 	public int matchFoodTotal(String matchFoodId);
+	
+	public int basketTotal(int userId);
+	
+	public void deleteOne(int basketId);
 
 }

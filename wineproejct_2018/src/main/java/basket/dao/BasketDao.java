@@ -24,7 +24,7 @@ public interface BasketDao {
 	public void deleteProduct(Basket basket);
 
 	// 장바구니 리스트 가져오기
-	public List<Basket> getBasketList(int startRow, int size, int userId);
+	public List<Basket> getBasketList(int userId);
 
 	// 장바구니 카운트
 	public int getBasketCount(int userId);
@@ -33,7 +33,6 @@ public interface BasketDao {
 
 	public List<Basket> selectByUserId(int userId);
 
-	public int productTotal(int userId);
-
-	public int matchFoodTotal(String matchFoodId);
+	public int basketTotal(int userId);
+	public void deleteOne(int basketId);
 }

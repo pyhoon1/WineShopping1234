@@ -46,11 +46,10 @@ public class BasketServiceImplJDBC implements BasketService {
 
 	}
 
-	public BasketPage getBasketList(int pageNum, int userId) {
-		List<Basket> basketList = basketDao.getBasketList((pageNum - 1) * size, size, userId);
-		int count = basketDao.getBasketCount(userId);
-		BasketPage basketPage = new BasketPage(basketList, pageNum, count, size, blockSize);
-		return basketPage;
+	public List<Basket> getBasketList(int userId) {
+		List<Basket> basketList = basketDao.getBasketList(userId);
+
+		return basketList;
 	}
 
 	public Basket getBasket(Basket basket) {
@@ -62,14 +61,12 @@ public class BasketServiceImplJDBC implements BasketService {
 		return basketList;
 	}
 
-	public int productTotal(int userId) {
-		return basketDao.productTotal(userId);
+	public int basketTotal(int userId) {
+		return basketDao.basketTotal(userId);
 	}
 
-	public int matchFoodTotal(String matchFoodId) {
-
-		return basketDao.matchFoodTotal(matchFoodId);
-
+	public void deleteOne(int basketId) {
+		basketDao.deleteOne(basketId);
 	}
 
 }

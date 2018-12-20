@@ -24,14 +24,14 @@ public interface BasketService {
 	public void deleteProduct(Basket basket);
 
 	// 장바구니 리스트 가져오기
-	public BasketPage getBasketList(int pageNum, int userId);
+	public List<Basket> getBasketList(int userId);
 
 	public Basket getBasket(Basket basket);
 
 	public List<Basket> selectByUserId(int userId);
 
-	public int productTotal(int userId);
+	public int basketTotal(int userId);
 
-	public int matchFoodTotal(String matchFoodId);
+	public void deleteOne(int basketId);
 
 }

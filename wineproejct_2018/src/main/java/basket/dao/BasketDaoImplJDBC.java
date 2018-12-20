@@ -41,12 +41,9 @@ public class BasketDaoImplJDBC implements BasketDao {
 
 	}
 
-	public List<Basket> getBasketList(int startRow, int size, int userId) {
-		Map<String, Integer> page = new HashMap<String, Integer>();
-		page.put("startRow", startRow);
-		page.put("size", size);
-		page.put("userId", userId);
-		List<Basket> basketList = basketMapper.getBasketList(page);
+	public List<Basket> getBasketList(int userId) {
+
+		List<Basket> basketList = basketMapper.getBasketList(userId);
 		return basketList;
 	}
 
@@ -74,6 +71,15 @@ public class BasketDaoImplJDBC implements BasketDao {
 
 		return basketMapper.matchFoodTotal(matchFoodId);
 
+	}
+
+	public int basketTotal(int userId) {
+		return basketMapper.basketTotal(userId);
+	}
+
+	public void deleteOne(int basketId) {
+		basketMapper.deleteOne(basketId);
+		
 	}
 
 }

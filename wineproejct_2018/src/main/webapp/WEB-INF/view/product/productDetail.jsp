@@ -79,8 +79,7 @@
 				}
 		 		location.href = "insertProductMatchFood.do?userId=${user.userId}&productId=${product.productId}&productName=${product.productName}&productPrice=${product.price}&productCount="+productCount+"&productImg=${product.img}&matchFoodIdList="+matchFoodIdList+"&matchFoodCount="+matchFoodCount+"&total="+total;
 		 	}
-		 	}
-		 }) 
+		 	}) 
 
 		$('#payment').click(function() {
 
@@ -90,6 +89,7 @@
 			var content = $('#review-input').val();
 			location.href = "reviewWrite.do?productId=${product.productId}&userId=${user.userId}&loginId=${user.loginId}&productName=${product.productName}&content="+ content;
 		})
+	
 	})
 </script>
 <script
@@ -180,8 +180,9 @@
 												id="matchFoodPrice">${matchFood.price }</span>
 										</div>
 										<div class="match-food-amount">
-											<span id="item-amount"> <span>수량 : </span>
-											<input type="text" value=0 id="matchFoodId${matchFood.matchFoodId}"class="amount">
+											<span id="item-amount"> <span>수량 : </span> <input
+												type="text" value=0 id="matchFoodId${matchFood.matchFoodId}"
+												class="amount">
 												<button class="plus">
 													<i class="far fa-plus-square"></i>
 												</button>
