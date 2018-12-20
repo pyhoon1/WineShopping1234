@@ -1,0 +1,48 @@
+
+.checkMailCon>h1{
+    color: rgb(234, 234, 234);
+    text-align: center;
+}
+
+.checkMailCon{
+    width: 600px;
+    height: 400px;
+    background-color: rgb(181, 23, 0);
+
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkMail>div>div{
+    border-bottom: 1px solid rgb(181, 23, 0, 0.7);
+    padding-bottom: 50px;
+}
+
+.checkMail{
+    position:absolute;
+    top:50%; left:50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 410px;
+    height: 260px;
+    
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+  }
+ 
+.checkMail>div{
+    background-color: rgb(240,240,240);
+    font-size: small;
+    display: inline-block;
+
+    text-align: left;
+
+
+    margin-top: 5px;
+    width: 400px;
+    height: 250px;
+
+}  

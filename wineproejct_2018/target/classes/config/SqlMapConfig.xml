@@ -8,7 +8,6 @@
 	<typeAliases>
 		<typeAlias type="product.vo.ProductSearch" alias="ProductSearch" />
 		<typeAlias type="product.vo.Product" alias="Product" />
-
 		<typeAlias type="user.vo.User" alias="User" />
 		<typeAlias type="review.vo.Review" alias="Review" />
 		<typeAlias type="payment.vo.Payment" alias="Payment" />
