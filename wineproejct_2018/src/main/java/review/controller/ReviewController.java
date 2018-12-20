@@ -34,10 +34,10 @@ public class ReviewController {
 		return "redirect:/form.do?productId="+productId+"&pageNum="+pageNum;
 	}
 
-	@RequestMapping("/reviewList.do")
+	@RequestMapping("/myReview.do")
 	public String reviewList(Model model, @RequestParam("userId") int userId, @RequestParam("pageNum") int pageNum) {
 		ReviewtPage reviewtPage = reviewService.reviewList(userId, pageNum);
 		model.addAttribute("reviewtPage", reviewtPage);
-		return null;
+		return "user/myReview";
 	}
 }

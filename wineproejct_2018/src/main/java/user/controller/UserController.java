@@ -122,12 +122,11 @@ public class UserController {
 	}
 
 	@RequestMapping("/myPage.do")
-	public String selectByUserId(Model model, @RequestParam("loginId") String loginId) {
-		User user = userService.selectByLoginId(loginId);
+	public String selectByUserId(Model model, @RequestParam("userId") int userId) {
+		User user = userService.selectByUserId(userId);
 		
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 		model.addAttribute("errors", errors);
-		
 		
 		if(user == null ) {
 			errors.put("NotFoundUser", true);

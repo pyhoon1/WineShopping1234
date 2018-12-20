@@ -26,7 +26,7 @@
 	</select>
 
 	<!-- 마이페이지에 씀 유저정보를 가져옴 -->
-	<select id="selectUserById" parameterType="int" resultType="User">
+	<select id="selectByUserId" parameterType="int" resultType="User">
 		select * from User where userId=#{userId}
 	</select>
 
