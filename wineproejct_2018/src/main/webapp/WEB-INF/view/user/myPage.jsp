@@ -32,9 +32,12 @@
 
 				<div class="btnWrap">
 					<ul class="js-nav">
-						<li class="myP-btn order"><a href="myPage.do?loginId=${user.loginId }">주문조회</a></li>
-						<li class="myP-btn middleBtn" id="basket"><a href="getBasketList.do?userId=${user.userId}">장바구니</a></li>
-						<li class="myP-btn" id="review"><a href="myReview.do?userId=${user.userId }&pageNum=1">리뷰</a></li>
+						<li class="myP-btn order"><a
+							href="myPage.do?loginId=${user.loginId }">주문조회</a></li>
+						<li class="myP-btn middleBtn" id="basket"><a
+							href="getBasketList.do?userId=${user.userId}">장바구니</a></li>
+						<li class="myP-btn" id="review"><a
+							href="myReview.do?userId=${user.userId }&pageNum=1">리뷰</a></li>
 					</ul>
 				</div>
 
