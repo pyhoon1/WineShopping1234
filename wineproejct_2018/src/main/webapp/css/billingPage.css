@@ -1,0 +1,162 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    background-image: linear-gradient(to bottom right, #ED213A, #93291E);
+    font-family: 'Cardo', serif;
+    font-family: 'Noto Serif KR', sans-serif;
+}
+
+.main{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 0 auto;
+}
+
+.content{
+    margin: 0 auto;
+    width: 95%;
+    min-height: 100vh;
+    flex: 1;
+}
+
+.wrapper {
+    width: 90%;
+    margin: 20px auto;
+}
+
+.billing-title {
+    text-align: center;
+}
+
+.billing-list, .client-info, .billing-submit, .billing-total, .billing-buttons {
+    margin: 20px auto;
+    width: 90%;
+    border-collapse: collapse;
+}
+
+table{
+    margin: 0px auto;
+    width: 90%;
+    padding: 10px 0px;
+}
+
+.billing-list { 
+    border-top:1px solid #fa5252;
+    border-bottom:1px solid #fa5252;
+}
+
+.billing-list table {
+    border-collapse: collapse;
+    text-align: center;
+    margin: 40px auto;
+    border-top: 1px solid rgb(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgb(0, 0, 0, 0.3);
+}
+
+.billing-list table thead td {
+    padding: 20px;
+    font-size: 25px;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.3);
+}
+
+.billing-list table thead td:first-child {
+    width: 600px;
+}
+
+.billing-list table tbody td {
+    padding: 12px 0px;
+}
+
+.client-info {
+    border-bottom:1px solid #fa5252;
+}
+
+.client-info thead td, .billing-submit thead td {
+    padding: 10px 20px;
+    font-size: 25px;
+    font-weight: 300;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.3);
+}
+
+.client-info tbody td:first-child, .billing-submit tbody td:first-child {
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+}
+
+.client-info tbody td:last-child, .billing-submit tbody td:last-child {
+    padding: 15px;
+}
+
+.billing-submit {
+    border-bottom: 1px solid #fa5252;
+}
+
+.billing-total {
+    text-align: center;
+    border-bottom: 1px solid #fa5252;
+}
+
+.billing-total td {
+    padding: 20px;
+    font-size: 18px;
+}
+
+.billing-total a {
+    display: block;
+}
+
+.billing-total table tr:nth-child(2) {
+    border-bottom: 1px solid #fa5252;
+}
+
+.billing-buttons button {
+    width: 200px;
+    height: 80px;
+    margin: 15px;
+    transition: 1s;
+    border: 0;
+    cursor: pointer;
+}
+
+.billing-buttons {
+    text-align: center;
+}
+
+.billing-buttons #first {
+    border: 1px solid #fa5252;
+    background: #fa5252;
+    color: white;
+    font-size: 24px;
+}
+
+.billing-buttons #last {
+    border: 1px solid #fa5252;
+    background: white;
+    color: #fa5252;
+    font-size: 24px;
+}
+
+.billing-buttons #first:hover {
+    background: white;
+    color: #fa5252;
+}
+
+.billing-buttons #last:hover {
+    background: #fa5252;
+    color: white;
+}
+
+*:focus {
+    outline: none;
+}
+
+#line {
+    position: relative;
+    top: 160px;
+    width: 600px;
+    border: 1px solid black;
+}
