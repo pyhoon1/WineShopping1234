@@ -35,19 +35,19 @@ function SearchWine(){
                                     <li id="nation"><a href="#">나라 별</a></li>
                                     <ul class="nation-ul">
                                         <div>
-                                            <li><a href="searchList.do?condition=이탈리아&conditionType=nation">이탈리아</a></li>
+                                            <li><a href="searchList.do?condition=이탈리아&conditionType=nation&pageNum=1">이탈리아</a></li>
 
                                         </div>
                                         <div>
-                                             <li><a href="searchList.do?condition=독일&conditionType=nation">독일</a></li>
+                                             <li><a href="searchList.do?condition=독일&conditionType=nation&pageNum=1">독일</a></li>
 
                                         </div>
                                         <div>
-                                            <li><a href="searchList.do?condition=프랑스&conditionType=nation">프랑스</a></li>
+                                            <li><a href="searchList.do?condition=프랑스&conditionType=nation&pageNum=1">프랑스</a></li>
 
                                         </div>
                                         <div>
-                                            <li><a href="searchList.do?condition=스페인&conditionType=nation">스페인</a></li>
+                                            <li><a href="searchList.do?condition=스페인&conditionType=nation&pageNum=1">스페인</a></li>
 
                                         </div>
                                     </ul>
@@ -56,19 +56,19 @@ function SearchWine(){
                                     <li id="type"><a href="#">종류별</a></li>
                                     <ul class="type-ul">
                                         <div>
-                                            <li><a href="searchList.do?condition=화이트&conditionType=wineKinds">화이트 와인</a></li>
+                                            <li><a href="searchList.do?condition=화이트&conditionType=wineKinds&pageNum=1">화이트 와인</a></li>
 
                                         </div>
                                         <div>
-                                            <li><a href="searchList.do?condition=레드&conditionType=wineKinds">레드 와인</a></li>
+                                            <li><a href="searchList.do?condition=레드&conditionType=wineKinds&pageNum=1">레드 와인</a></li>
 
                                         </div>
                                         <div>
-                                            <li><a href="searchList.do?condition=로제&conditionType=wineKinds">로제 와인</a></li>
+                                            <li><a href="searchList.do?condition=로제&conditionType=wineKinds&pageNum=1">로제 와인</a></li>
 
                                         </div>
                                         <div>
-                                            <li><a href="searchList.do?condition=스파클링&conditionType=wineKinds">스파클링 와인</a></li>
+                                            <li><a href="searchList.do?condition=스파클링&conditionType=wineKind&pageNum=1s">스파클링 와인</a></li>
 
                                         </div>
                                     </ul>
@@ -77,18 +77,18 @@ function SearchWine(){
                                     <li id="price"><a href="#">가격 별</a></li>
                                     <ul class="price-ul">
                                         <div>
-                                            <li><a href="searchList.do?&conditionType=price&startPrice=0&endPrice=50000">~ 5만</a></li>
+                                            <li><a href="searchList.do?&conditionType=price&startPrice=0&endPrice=50000&pageNum=1">~ 5만</a></li>
                                         </div>
                                         <div>
-                                            <li><a href="searchList.do?&conditionType=price&startPrice=50000&endPrice=200000">5만 ~ 20만</a></li>
+                                            <li><a href="searchList.do?&conditionType=price&startPrice=50000&endPrice=200000&pageNum=1">5만 ~ 20만</a></li>
 
                                         </div>
                                         <div>
-                                            <li><a href="searchList.do?&conditionType=price&startPrice=200000&endPrice=500000">20만 ~ 50만</a></li>
+                                            <li><a href="searchList.do?&conditionType=price&startPrice=200000&endPrice=500000&pageNum=1">20만 ~ 50만</a></li>
 
                                         </div>
                                         <div>
-                                            <li><a href="searchList.do?&conditionType=price&startPrice=500000&endPrice=99999999999999999999">50만 ~ </a></li>
+                                            <li><a href="searchList.do?&conditionType=price&startPrice=500000&endPrice=99999999999999999999&pageNum=1">50만 ~ </a></li>
                                         </div>
                                     </ul>
                                 </div>
