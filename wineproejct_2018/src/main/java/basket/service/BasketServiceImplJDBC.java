@@ -7,9 +7,6 @@ import org.springframework.stereotype.Service;
 
 import basket.dao.BasketDao;
 import basket.vo.Basket;
-import basket.vo.BasketPage;
-import basket.vo.FoodRequest;
-import basket.vo.ProductRequest;
 
 @Service("basketService")
 public class BasketServiceImplJDBC implements BasketService {
@@ -18,16 +15,7 @@ public class BasketServiceImplJDBC implements BasketService {
 	@Autowired
 	private BasketDao basketDao;
 
-	public void insertProduct(ProductRequest productRequest) {
-		// TODO Auto-generated method stub
-		basketDao.insertProduct(productRequest);
-	}
 
-	public void insertMatchFood(FoodRequest foodRequest) {
-		// TODO Auto-generated method stub
-		basketDao.insertMatchFood(foodRequest);
-
-	}
 
 	public void insertProductMatchFood(Basket basket) {
 		// TODO Auto-generated method stub

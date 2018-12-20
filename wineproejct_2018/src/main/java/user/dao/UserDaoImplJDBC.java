@@ -74,4 +74,12 @@ public class UserDaoImplJDBC implements UserDao {
 
 	}
 
+	public void totalAmountUpdate(int userId, int total) {
+		Map<String, Integer> userTotal = new HashMap<String, Integer>();
+		userTotal.put("userId", userId);
+		userTotal.put("total", total);
+		userMapper.totalAmountUpdate(userTotal);
+
+	}
+
 }

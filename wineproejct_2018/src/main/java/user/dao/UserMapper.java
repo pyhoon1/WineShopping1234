@@ -9,13 +9,13 @@ import user.vo.User;
 public interface UserMapper {
 
 	public User selectByUserId(int userId);
- 
+
 	public User selectByLoginId(String loginId);
 
 	public User selectByEmail(String email);
 
 	public User userLoginIdFind(User User);
-  
+
 	public User userPasswordFind(User user);
 
 	public User loginUser(User user);
@@ -36,5 +36,7 @@ public interface UserMapper {
 	public void userStateUpdate(String email);
 
 	public void createAuthKey(User user);
+	
+	public void totalAmountUpdate(Map<String, Integer> total);
 
 }

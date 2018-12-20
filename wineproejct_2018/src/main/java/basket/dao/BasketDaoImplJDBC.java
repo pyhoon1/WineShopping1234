@@ -1,30 +1,18 @@
 package basket.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import basket.vo.Basket;
-import basket.vo.FoodRequest;
-import basket.vo.ProductRequest;
 
 @Repository("basketDao")
 public class BasketDaoImplJDBC implements BasketDao {
 	@Autowired
 	private BasketMapper basketMapper;
 
-	public void insertProduct(ProductRequest productRequest) {
-		basketMapper.insertProduct(productRequest);
 
-	}
-
-	public void insertMatchFood(FoodRequest foodRequest) {
-		basketMapper.insertMatchFood(foodRequest);
-
-	}
 
 	public void insertProductMatchFood(Basket basket) {
 		basketMapper.insertProductMatchFood(basket);

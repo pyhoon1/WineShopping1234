@@ -120,4 +120,9 @@ public class UserServiceImplJDBC implements UserService {
 		
 	}
 
+	public void totalAmountUpdate(int userId, int total) {
+		userDao.totalAmountUpdate(userId, total);
+		
+	}
+
 }
