@@ -94,16 +94,16 @@
                     	<c:forEach items="${productPage.productList}" var="product">
                         <li>                   
                             <div class="search-img">
-                                <a href="#"><img src="${product.img}"></a>
+                                <a href="productView.do?productId=${product.productId}&pageNum=1"><img src="${product.img}"></a>
                             </div>
                             <div class="search-info">
                                 <div class="left">
-                                    <span><a href="#">${product.productName}</a></span>
-                                    <span><a href="#">${product.price}</a></span>
+                                    <span>${product.productName}</span>
+                                    <span>${product.price}</span>
                                 </div>
                                 <div class="right">
-                                    <span><a href="#">${product.nation }</a></span>
-                                    <span><a href="#">${product.wineKinds }</a></span>
+                                    <span><img src="${product.nationImg}"></span>
+                                    <span>${product.wineKinds }</span>
                                 </div>
                             </div>
                         </li>  
