@@ -247,20 +247,21 @@ body{
     border-right: 0;
 }
 
-.search-List {
-    border-style: solid;
-    border-width: 1px 0px;
-    border-color: black;
-}
-
 .search-List li {
-    /* border: 1px solid black; */
+    border: 1px solid rgba(0,0,0,0.3);
     float: left;
     width: 200px;
     height: 360px;
     display: flex;
     flex-direction: column;
     margin: 0 15px;
+    transition: 0.5s;
+    padding: 7px;
+    cursor: pointer;
+}
+
+.search-List li:hover {
+	border: 1px solid black;
 }
 
 .search-img {

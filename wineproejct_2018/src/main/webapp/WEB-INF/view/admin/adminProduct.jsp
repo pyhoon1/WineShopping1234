@@ -109,6 +109,8 @@
 							<td>용량</td>
 							<td>팔린 갯수</td>
 							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
 					</thead>
 					<tbody>
