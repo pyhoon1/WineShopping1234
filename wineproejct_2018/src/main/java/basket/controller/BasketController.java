@@ -1,7 +1,9 @@
 package basket.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ import matchfood.service.MatchFoodService;
 import matchfood.vo.MatchFood;
 import product.service.ProductService;
 import product.vo.Product;
+import user.service.UserService;
+import user.vo.User;
 
 @Controller
 public class BasketController {
@@ -24,7 +28,9 @@ public class BasketController {
 	private MatchFoodService matchFoodService;
 	@Autowired
 	private ProductService productService;
-
+	@Autowired
+	private UserService userService;
+	
 	@RequestMapping("/userBasket.do")
 	public String goUserbasket() {
 		return "user/userBasket";
@@ -51,6 +57,21 @@ public class BasketController {
 				}
 			}
 		}
+		
+		Map<String, Boolean> errors = new HashMap<String, Boolean>();
+		model.addAttribute("errors", errors);
+		
+		User userCheck = userService.selectByUserId(userId);
+		
+		if(userCheck == null) {
+			errors.put("NotFoundUser", true);
+			return "error/myPageErrorPage";
+		}
+		if(!errors.isEmpty()) {
+			errors.put("badError", true);
+			return "error/myPageErrorPage";
+		}
+		
 		model.addAttribute("total", total);
 		model.addAttribute("basketList", basketList);
 		return "user/userBasket";

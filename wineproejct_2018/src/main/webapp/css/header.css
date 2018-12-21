@@ -39,7 +39,7 @@
 
 .category-dropdown { 
     position: fixed;
-    top: 190px;
+    top: 187px;
     width: 160px;
     height: 168px;
     background-color: #f1f3f5;
@@ -148,7 +148,7 @@
 .login-box{
     display: none;
     position: fixed;
-    top: 190px;
+    top: 187px;
     right: 45%;
     width: 300px;
     background-color: #f1f3f5;
