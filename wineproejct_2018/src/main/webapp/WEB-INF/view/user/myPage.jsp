@@ -36,7 +36,7 @@
 						<li class="myP-btn" id="review"><a
 							href="myReview.do?userId=${user.userId }&pageNum=1">리뷰</a></li>
 					</ul>
-				</div>
+				</div> 
 
 
 				<div class="orTable">
