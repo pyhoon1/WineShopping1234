@@ -23,6 +23,7 @@ import product.vo.Product;
 import product.vo.ProductPage;
 import review.vo.Review;
 import review.vo.ReviewtPage;
+import user.service.UserService;
 import user.vo.User;
 import user.vo.UsertPage;
 
@@ -31,7 +32,9 @@ public class AdminController {
 
 	@Autowired
 	private AdminService adminService;
-
+	@Autowired
+	private UserService userService;
+	
 	@RequestMapping("/adminHome.do")
 	public String adminHome() {
 		return "admin";
@@ -413,20 +416,20 @@ public class AdminController {
 		return "admin/adminProduct";
 	}
 
-	@RequestMapping("/adminmatchFoodView.do")
+	@RequestMapping("/adminmatchFoodUpdateForm.do")
 	public String matchFoodView(@RequestParam("matchFoodId") int matchFoodId, Model model) {
 		MatchFood matchfood = adminService.getMatchFoodView(matchFoodId);
 		model.addAttribute("matchFood", matchfood);
-		return "/admin/adminMatchFoodView";
+		return "/admin/adminMatchFoodUpdateForm";
 	}
 
-	@RequestMapping("/adminWineView.do")
+	@RequestMapping("/adminWineUpdateForm.do")
 	public String wineView(@RequestParam("productId") int productId, Model model) {
 		Product product = adminService.getProductView(productId);
 		List<MatchFood> matchfood = adminService.getMatchFoodList();
 		model.addAttribute("matchFood", matchfood);
 		model.addAttribute("product", product);
-		return "/admin/adminWineView";
+		return "/admin/adminWineUpdateForm";
 	}
 
 	@RequestMapping("/adminUserView.do")
@@ -440,6 +443,22 @@ public class AdminController {
 	public String deleteUser(@RequestParam("userId") int userId) {
 		adminService.deleteUser(userId);
 		return "/admin/adminUserList";
+	}
+	
+	@RequestMapping("/userPaymentPopup.do")
+	public String adminPaymentPopup (Model model, @RequestParam("userId") int userId) {
+		
+		
+		
+		return "admin/userPaymentPopup";
+	}
+	
+	@RequestMapping("/userReviewPopup.do")
+	public String adminPaymentPopup (Model model, @RequestParam("userId") int userId) {
+		
+		
+		
+		return "admin/userReviewPopup";
 	}
 
 	/*

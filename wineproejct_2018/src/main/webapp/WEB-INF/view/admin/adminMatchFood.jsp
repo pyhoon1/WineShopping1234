@@ -33,7 +33,7 @@
 				},
 				success : function() {
 					alert('제품을 삭제하였습니다.')
-					location.href="adminProductList.do"
+					location.href="adminProduct.do?pageNum=1"
 				}
 			})
 		}else{
@@ -85,7 +85,7 @@
 								<td>${matchFood.weight }</td>
 								<td title="${matchFood.ex }"><div style="width: 500px; text-overflow:ellipsis; overflow:hidden;">${matchFood.ex }</div></td>
 								<td><button><a onclick="deleteMatchFood('${matchFood.matchFoodId}','${matchFood.matchFoodName}','${matchFood.img}')">삭제</a></button></td>
-								<td><button><a href="adminmatchFoodView.do?matchFoodId=${matchFood.matchFoodId}">수정</a></button></td>
+								<td><button><a href="adminmatchFoodUpdateForm.do?matchFoodId=${matchFood.matchFoodId}">수정</a></button></td>
 							</tr>
 						</c:forEach>
 					</tbody>

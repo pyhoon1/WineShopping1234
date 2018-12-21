@@ -41,6 +41,8 @@
 			return false;
 		}
 
+		
+		
 	}
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -78,7 +80,7 @@
 						<c:forEach var="user1" items="${usertPage.userList }">
 							<tr>
 								<td>${user1.userId}</td>
-								<td>${user1.loginId }</td>
+								<td><a onclick="window.open('userPaymentPopup.do?userId=${user1.userId}','유저 팝업', 'width=600, height=750, toolvar=no, location=no, resizable=no')">${user1.loginId }</a></td>
 								<td>${user1.email }</td>
 								<td>${user1.address }</td>
 								<td>${user1.phone}</td>

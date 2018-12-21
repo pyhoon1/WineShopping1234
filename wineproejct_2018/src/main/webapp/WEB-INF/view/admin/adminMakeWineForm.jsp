@@ -35,6 +35,8 @@ $(function(){
 			 readURL(this);	
 		}
 	});	
+	
+	
 })
 
 	function hasWine() {
@@ -201,6 +203,10 @@ $(function(){
 		$('.year option[value=' + $('#search').val() + ']').attr('selected',
 				'selected');
 	};
+	
+	function goBack () {
+		window.history.back();
+	}
 </script>
 <title>Insert title here</title>
 </head>
@@ -210,6 +216,7 @@ $(function(){
         <input type="hidden" id="matchFoodId" name="matchFoodId" value="">
         <div class="wrapper">
             <table>
+            	<caption>와인 추가 페이지</caption>
                 <tr>
                     <td>생산자</td>
                     <td>포도 품종</td>
@@ -280,7 +287,9 @@ $(function(){
             </table>
             <div class=buttons>
                 <input type="button" onclick="insertWine()" value="와인 등록" id="submit">
-                <button><a href="">리스트 돌아가기</a></button>
+                <button>
+				<a href="#" onclick="goBack();" >리스트로 돌아가기</a>
+			</button>
             </div>
         </div>
     </form>
