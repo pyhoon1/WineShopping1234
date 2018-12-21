@@ -121,26 +121,7 @@ public class UserController {
 		// 탈퇴하면 어디론가 감
 	}
 
-	@RequestMapping("/myPage.do")
-	public String selectByUserId(Model model, @RequestParam("userId") int userId) {
-		User user = userService.selectByUserId(userId);
-		
-		Map<String, Boolean> errors = new HashMap<String, Boolean>();
-		model.addAttribute("errors", errors);
-		
-		if(user == null ) {
-			errors.put("NotFoundUser", true);
-			return "error/myPageErrorPage";
-		}
-		if (!errors.isEmpty()) {
-			errors.put("badError", true);
-			return "error/myPageErrorPage";
-		}
-		
-		model.addAttribute("user", user);
-		
-		return "user/myPage";
-	}
+	
 
 	
 	

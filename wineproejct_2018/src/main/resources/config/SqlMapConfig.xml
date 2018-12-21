@@ -12,10 +12,6 @@
 		<typeAlias type="review.vo.Review" alias="Review" />
 		<typeAlias type="payment.vo.Payment" alias="Payment" />
 		<typeAlias type="matchfood.vo.MatchFood" alias="MatchFood" />
-		<typeAlias type="basket.vo.FoodRequest" alias="FoodRequest" />
-		<typeAlias type="basket.vo.ProductRequest" alias="ProductRequest" />
-		<typeAlias type="payment.vo.FoodRequest" alias="PaymentFoodRequest" />
-		<typeAlias type="payment.vo.ProductRequest" alias="PaymentProductRequest" />
 		<typeAlias type="basket.vo.Basket" alias="Basket" />
 	</typeAliases>
 </configuration>

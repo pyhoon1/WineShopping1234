@@ -12,10 +12,12 @@
 		#{productPrice}, #{productCount},
 		#{productImg}, #{matchFoodIdList}, #{matchFoodCount}, #{total})
 	</insert>
+	<select id="selectByUserId" parameterType="int" resultType="Basket">
+		select * from basket where userId = #{userId}
+	</select>
 	<select id="getBasketCount" parameterType="int" resultType="int">
 		select count(*) from basket where userId = #{userId}
 	</select>
-
 	<select id="getBasketList" parameterType="java.util.Map"
 		resultType="Basket">
 		select * from basket where userId = #{userId} order by
@@ -23,10 +25,15 @@
 	</select>
 
 	<select id="basketTotal" parameterType="int" resultType="int">
-		select sum(total) from basket
+		select sum(total) from basket where userId = #{userId}
 	</select>
 	<delete id="deleteOne" parameterType="int">
-		delete from basket where basketId = #{basketId}
+		delete from basket where
+		basketId = #{basketId}
+	</delete>
+	<delete id="deleteAll" parameterType="int">
+		delete from basket where
+		userId = #{userId}
 	</delete>
 
 </mapper>
