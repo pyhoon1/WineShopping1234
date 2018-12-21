@@ -3,6 +3,10 @@ $(function(){
         var phoneNumber = $('input[name="phone"]').val();
         var email = $('input[name="email"]').val();
         
+        var id=  $('input[name="loginId"]').val();
+        
+        var pw = $('input[name="password"]').val();
+        
         var dt = new Date();
         var year = dt.getFullYear();
         
@@ -13,7 +17,10 @@ $(function(){
         
         var phoneRegex = /^\d{3}-\d{3,4}-\d{4}$/;
         var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-
+        
+        var idRegex =  /((?=.*\d)(?=.*[a-z]).{7,12})/; // 소문자 하나 이상 숫자 하나 이상 6~11 자
+        var pwRegex =  /((?=.*\d)(?=.*[a-z])(?=.*[*\/+?!@#$%^&*()-_=|`~{},.]).{7,12})/; // 소문자 특수기호 , 숫자 하나이상 7~12자
+        
         if(!$('input[name="userName"]').val()){
             alert("이름을 입력해주세요.");
             $('input[name="userName"]').focus();
@@ -63,7 +70,19 @@ $(function(){
         	alert("미성년자는 가입하실 수 없습니다.");
         	location.reload();
         	return false;
+        }else if(!id || !idRegex.test(id)){
+        	alert("아이디를 다시 입력해주세요.");
+        	$('input[name="loginId"]').focus();
+        	return false;
+        }else if(!pw || !pwRegex.test(pw)){
+        	alert("비밀번호를 다시 입력해주세요.");
+        	$('input[name="password"]').focus();
+        	return false;
+        	
+        	
+        	
         }
+        
         else {
         	return true;
         }

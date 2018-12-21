@@ -34,6 +34,8 @@ $(function(){
 			 readURL(this);	
 		}
 	});	
+	
+	
 })
 	function insertMatchFood() {
 		if (confirm("상품을 등록하시겠습니까?")) {
@@ -123,6 +125,10 @@ $(function(){
 		$('.nation option[value=' + $('#search').val() + ']').attr('selected',
 				'selected');
 	};
+	
+	function goBack () {
+		window.history.back();
+	}
 </script>
 </head>
 <body>
@@ -147,15 +153,10 @@ $(function(){
 					<td>원산지</td>
 					<td colspan="2"><select class="nation" id="nation"
 						name="nation">
-							<option value="남아프리카공화국">남아프리카공화국</option>
-							<option value="대한민국">대한민국</option>
 							<option value="독일">독일</option>
 							<option value="스페인">스페인</option>
 							<option value="이탈리아">이탈리아</option>
-							<option value="칠레">칠레</option>
-							<option value="포루투갈">포루투갈</option>
 							<option value="프랑스">프랑스</option>
-							<option value="호주">호주</option>
 					</select></td>
 				</tr>
 				<tr>
@@ -185,7 +186,7 @@ $(function(){
 			<div class=buttons>
 				<input type="button" onclick="insertMatchFood()" value="기타 제품 등록">
 				<button>
-					<a href="">리스트 돌아가기</a>
+					<a href="#" onclick="goBack();">리스트로 돌아가기</a>
 				</button>
 			</div>
 		</div>

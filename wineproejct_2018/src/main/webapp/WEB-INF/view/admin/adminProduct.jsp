@@ -130,7 +130,7 @@
 								<td>${product.weight }</td>
 								<td>${product.count }</td>
 								<td><td><button><a onclick="deleteWine('${product.productId}', '${product.productName}','${product.img}')">삭제</a></button></td></td>
-								<td><button><a href="adminWineView.do?productId=${product.productId}">수정</a></button></td>
+								<td><button><a href="adminWineUpdateForm.do?productId=${product.productId}">수정</a></button></td>
 							</tr>
 						</c:forEach>
 
