@@ -12,6 +12,7 @@
 	href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
 	integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
 	crossorigin="anonymous">
+d
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -86,8 +87,25 @@
 			 }
 		 	}) 
 
-		$('#payment').click(function() {
-
+		$('#buy').click(function() {
+			 var text = confirm("구매하시겠습니까?");
+			 if($('#userId').val() != ""){		
+			 	if (text) {
+			 		var productCount = $('#productCount').val();
+					
+			 		var matchFoodCount = "";
+					for(var i in matchFoodIdList){
+						matchFoodCount += $('#matchFoodId'+matchFoodIdList[i]).val()+",";
+						console.log(matchFoodCount)
+					}
+					location.href="detailBillingPage.do?userId=${user.userId}&productId=${product.productId}&productName=${product.productName}&productPrice=${product.price}&productCount="+productCount+"&productImg=${product.img}&matchFoodIdList="+matchFoodIdList+"&matchFoodCount="+matchFoodCount+"&total="+total;
+			 	} 
+			 }else{
+				 alert("상품을 구매하려면 로그인을 해주세요.")
+				 return false;
+			 }
+		
+			
 		})
 
 		$('#review-submit').click(function() {
@@ -110,7 +128,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<input type="hidden" value="${user.userId}" id="userId">
+	<input type="hidden" value="${user.userId}" id="userId">
 	<div class="main">
 
 		<jsp:include page="../../header/header.jsp" />
@@ -215,6 +233,7 @@
 						<div class="payment-submit">
 							<button id="basket">장바구니에 추가</button>
 							<button id="buy">구매하기</button>
+
 						</div>
 					</div>
 				</div>
@@ -231,7 +250,8 @@
 								<div class="review-header">
 									<span><strong>${review.loginId }</strong></span>
 									<c:if test="${user.loginId == review.loginId }">
-										<a href="reviewDelete.do?userId=${user.userId }&productId=${product.productId}&reviewId=${review.reviewId }&pageNum=1">
+										<a
+											href="reviewDelete.do?userId=${user.userId }&productId=${product.productId}&reviewId=${review.reviewId }&pageNum=1">
 											<i class="fas fa-edit"></i>
 										</a>
 									</c:if>
@@ -243,14 +263,21 @@
 					</c:forEach>
 					<div class="paging">
 						<c:if test="${reviewPage.startPage > 5 }">
-								<a href="productView.do?productId=${product.productId}&pageNum=${reviewPage.startPage - 5  }" class="pageNum">이전</a>
-								</c:if>
-								<c:forEach var="pageNum" begin="${reviewPage.startPage}" end="${reviewPage.endPage}">
-									<a href="productView.do?productId=${product.productId}&pageNum=${pageNum}" class="pageNum">${pageNum}</a>
-								</c:forEach>
-								<c:if test="${productPage.endPage < productPage.totalPages }">		
-									<a href="productView.do?productId=${product.productId}&pageNum=${reviewPage.startPage + 5 }" class="pageNum">다음</a>
-								</c:if>
+							<a
+								href="productView.do?productId=${product.productId}&pageNum=${reviewPage.startPage - 5  }"
+								class="pageNum">이전</a>
+						</c:if>
+						<c:forEach var="pageNum" begin="${reviewPage.startPage}"
+							end="${reviewPage.endPage}">
+							<a
+								href="productView.do?productId=${product.productId}&pageNum=${pageNum}"
+								class="pageNum">${pageNum}</a>
+						</c:forEach>
+						<c:if test="${productPage.endPage < productPage.totalPages }">
+							<a
+								href="productView.do?productId=${product.productId}&pageNum=${reviewPage.startPage + 5 }"
+								class="pageNum">다음</a>
+						</c:if>
 					</div>
 				</div>
 			</div>

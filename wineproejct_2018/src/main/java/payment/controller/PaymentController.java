@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,7 +71,7 @@ public class PaymentController {
 		receipt.put("total", total);
 		model.addAttribute("receipt", receipt);
 		basketService.deleteAll(userId);
-		return "redirect:/mai	n.do";
+		return "redirect:/main.do";
 	}
 
 	@RequestMapping("/billingPage.do")
@@ -83,7 +86,7 @@ public class PaymentController {
 				String[] matchFoodCount = basketList.get(i).getMatchFoodCount().split(",");
 				List<MatchFood> matchFoodList = new ArrayList<MatchFood>();
 				for (int j = 0; j < matchFoodId.length; j++) {
-					if (!matchFoodId.equals("0")) {
+					if (!matchFoodCount[j].equals("0")) {
 						MatchFood matchFood = matchFoodService.getMatchFood(matchFoodId[j]);
 						matchFood.setCount(matchFoodCount[j]);
 						matchFoodList.add(matchFood);
@@ -95,6 +98,49 @@ public class PaymentController {
 		model.addAttribute("total", total);
 		model.addAttribute("basketList", basketList);
 		return "product/billingPage";
+	}
+
+	@RequestMapping("/detailBillingPage.do")
+	public String insertProductMatchFood(Model model, @RequestParam("userId") int userId,
+			@RequestParam("productId") int productId, @RequestParam("productName") String productName,
+			@RequestParam("productPrice") int productPrice, @RequestParam("productCount") int productCount,
+			@RequestParam("productImg") String productImg, @RequestParam("matchFoodIdList") String matchFoodIdList,
+			@RequestParam("matchFoodCount") String matchFoodCount, @RequestParam("total") int total) {
+
+		Basket basket = new Basket(userId, productId, productName, productPrice, productCount, productImg,
+				matchFoodIdList, matchFoodCount, total);
+		if (basket.getMatchFoodIdList() != null) {
+			String[] matchFoodId = basket.getMatchFoodIdList().split(",");
+			String[] matchFoodCountt = basket.getMatchFoodCount().split(",");
+			List<MatchFood> matchFoodList = new ArrayList<MatchFood>();
+			for (int j = 0; j < matchFoodId.length; j++) {
+				if (!matchFoodCountt[j].equals(0)) {
+					MatchFood matchFood = matchFoodService.getMatchFood(matchFoodId[j]);
+					matchFood.setCount(matchFoodCountt[j]);
+					matchFoodList.add(matchFood);
+				}
+			}
+			model.addAttribute("matchFoodList", matchFoodList);
+		}
+		model.addAttribute("total", total);
+		model.addAttribute("basket", basket);
+
+		return "product/billingPage2";
+	}
+
+	@RequestMapping("detailPayment.do")
+	public String detailPayment( @RequestParam("name") String name, @RequestParam("paymentType") String method, @RequestParam("userId") int userId,
+			@RequestParam("productId") int productId, @RequestParam("productName") String productName,
+			@RequestParam("productPrice") int productPrice, @RequestParam("productCount") int productCount,
+			@RequestParam("productImg") String productImg, @RequestParam("matchFoodIdList") String matchFoodIdList,
+			@RequestParam("matchFoodCount") String matchFoodCount, @RequestParam("total") int total) {
+		
+
+		paymentService.payment(new Payment(userId, productId,productName,
+				productPrice, productCount, productImg,matchFoodIdList,
+				matchFoodCount, method,total));
+		
+		return "redirect:/main.do";
 	}
 
 	@RequestMapping("/myPage.do")
@@ -128,7 +174,6 @@ public class PaymentController {
 				}
 				model.addAttribute("matchFoodList" + paymentPage.getPaymentList().get(i).getPaymentId(), matchFoodList);
 			}
-
 		}
 		model.addAttribute("paymentPage", paymentPage);
 		return "user/myPage";

@@ -127,5 +127,13 @@ public class Basket {
 	public void setTotal(int total) {
 		this.total = total;
 	}
+
+	@Override
+	public String toString() {
+		return "Basket [basketId=" + basketId + ", userId=" + userId + ", productId=" + productId + ", productName="
+				+ productName + ", productPrice=" + productPrice + ", productCount=" + productCount + ", productImg="
+				+ productImg + ", matchFoodIdList=" + matchFoodIdList + ", matchFoodCount=" + matchFoodCount
+				+ ", total=" + total + "]";
+	}
 		
 }

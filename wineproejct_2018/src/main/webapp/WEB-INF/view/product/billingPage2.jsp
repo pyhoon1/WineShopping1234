@@ -10,8 +10,17 @@
 <title>Insert title here</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-	
+<script>
+									$(function(){
+									
+									
+										var matchFoodList ='${basket.matchFoodIdList}'.replace("%2C",",");
+										var matchFoodCount ='${basket.matchFoodCount}'.replace("%2C",",");
+									
+										
+										$('#matchFoodId').val(matchFoodList)
+										$('#matchFoodCount').val(matchFoodCount)
+									})
 </script>
 </head>
 <body>
@@ -33,36 +42,35 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${basketList }" var="basket">
-								<tr>
-									<td><img src="img/wineImage/pink-wine-1964457_640.jpg"
-										alt="">
-										<div>
-											<strong>${basket.productName } </strong> <span>어울리는
-												음식:</span>
-											<c:set value="matchFoodList${basket.basketId}"
-												var="matchFoodList" />
-											<c:forEach var="matchFood"
-												items="${requestScope[matchFoodList]}">
-												<span>${matchFood.matchFoodName }</span>
-												<span>${matchFood.ex }</span>
-												<span>${matchFood.count }</span>
-											</c:forEach>
-										</div></td>
-									<td>${basket.productCount }</td>
-									<td>${basket.total }</td>
-									<td>
-										<p>
-											<a
-												href="deleteOne.do?userId=${user.userId }&basketId=${basket.basketId}">삭제</a>
-										</p>
-									</td>
-								</tr>
-							</c:forEach>
+							<tr>
+
+								<td><img src="img/wineImage/pink-wine-1964457_640.jpg"
+									alt="">
+									<div>
+										<strong>${basket.productName } </strong> <span>어울리는 음식:
+										</span>
+
+
+										<c:forEach var="matchFood" items="${matchFoodList}">
+											<span>${matchFood.matchFoodName }</span>
+											<span>${matchFood.ex }</span>
+											<span>${matchFood.count }</span>
+										</c:forEach>
+									</div></td>
+								<td>${basket.productCount }</td>
+								<td>${basket.total }</td>
+								<td>
+									<p>
+										<a
+											href="deleteOne.do?userId=${user.userId }&basketId=${basket.basketId}">삭제</a>
+									</p>
+								</td>
+							</tr>
+
 						</tbody>
 					</table>
 				</div>
-				<form action="payment.do">
+				<form action="detailPayment.do">
 					<div class="client-info">
 
 						<table>
@@ -73,10 +81,26 @@
 							</thead>
 							<tbody>
 
-								<input type="hidden" name="userId" value="${user.userId }">
+								<input type="hidden" name="userId" value="${user.userId}">
+								<input type="hidden" name="productId" value="${param.productId}">
+								<input type="hidden" name="productName"
+									value="${param.productName}">
+								<input type="hidden" name="productPrice"
+									value="${param.productPrice}">
+								<input type="hidden" name="productCount"
+									value="${param.getProductCount}">
+								<input type="hidden" name="productImg"
+									value="${param.productImg}">
+								<input type="hidden" name="matchFoodIdList" id="matchFoodId"
+									value="">
+
+								<input type="hidden" name="matchFoodCount" id="matchFoodCount"
+									value="">
+
 								<tr>
 									<td>수령인*</td>
-									<td><input type="text" name="name" value="${user.userName }"></td>
+									<td><input type="text" name="name"
+										value="${user.userName }"></td>
 								</tr>
 								<tr>
 									<td>휴대전화*</td>
@@ -140,7 +164,8 @@
 							<hr id="line">
 							<tr>
 								<td>상품 금액</td>
-								<td><input type="hidden" name="total" value="${total + 3000 }">${total + 3000 }</td>
+								<td><input type="hidden" name="total"
+									value="${total + 3000 }">${total + 3000 }</td>
 							</tr>
 						</table>
 					</div>
