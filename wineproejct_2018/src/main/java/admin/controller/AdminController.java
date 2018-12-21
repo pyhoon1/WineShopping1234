@@ -18,9 +18,13 @@ import admin.service.AdminService;
 import admin.upload.AdminUpload;
 import matchfood.vo.MatchFood;
 import matchfood.vo.MatchFoodPage;
+import payment.service.PaymentService;
+import payment.vo.Payment;
 import payment.vo.PaymentPage;
+import product.service.ProductService;
 import product.vo.Product;
 import product.vo.ProductPage;
+import review.service.ReviewService;
 import review.vo.Review;
 import review.vo.ReviewtPage;
 import user.service.UserService;
@@ -34,6 +38,10 @@ public class AdminController {
 	private AdminService adminService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private PaymentService paymentSevice;
+	@Autowired
+	private ReviewService reviewService;
 	
 	@RequestMapping("/adminHome.do")
 	public String adminHome() {
@@ -62,6 +70,32 @@ public class AdminController {
 		model.addAttribute("paymentPage", payment);
 
 		return "/admin/admin";
+	}
+	
+	@RequestMapping("/userPaymentPopup.do")
+	public String adminPaymentPopup (Model model, @RequestParam("userId") int userId,
+			@RequestParam("pageNum")int pageNum) {
+		
+		PaymentPage payment = paymentSevice.getPaymentList(pageNum, userId);
+		    
+	    model.addAttribute("paymentPage", payment);
+	    model.addAttribute("userId" , userId);
+		
+		
+		return "admin/userPopup";
+	}
+	
+	@RequestMapping("/userReviewPopup.do")
+	public String adminReviewPopup (Model model, @RequestParam("userId") int userId
+			,@RequestParam("pageNum")int pageNum) {
+		
+		ReviewtPage review = reviewService.userReviewList(userId, pageNum);
+		
+		
+		 model.addAttribute("reviewPage", review);
+		 model.addAttribute("userId" , userId);
+		
+		return "admin/userPopup";
 	}
 
 	@RequestMapping("/adminUser.do")
@@ -445,21 +479,6 @@ public class AdminController {
 		return "/admin/adminUserList";
 	}
 	
-	@RequestMapping("/userPaymentPopup.do")
-	public String adminPaymentPopup (Model model, @RequestParam("userId") int userId) {
-		
-		
-		
-		return "admin/userPaymentPopup";
-	}
-	
-	@RequestMapping("/userReviewPopup.do")
-	public String adminPaymentPopup (Model model, @RequestParam("userId") int userId) {
-		
-		
-		
-		return "admin/userReviewPopup";
-	}
 
 	/*
 	 * @RequestMapping("/adminProductList.do") public String

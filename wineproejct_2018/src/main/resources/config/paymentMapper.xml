@@ -12,11 +12,11 @@
 		paymentId desc limit #{startRow}, #{size}
 	</select>
 	<select id="getPaymentCount" resultType="int" parameterType="int">
-		select * from payment where userId = #{userId}
+		select count(userId) from payment where userId = #{userId}
 	</select>
 	<select id="paymentList" parameterType="int" resultType="Payment">
 		select *
-		from payment where userId = #{userId}
+from payment where userId = #{userId}
 	</select>
 	<select id="getUserTotal" resultType="int" parameterType="int">
 		select

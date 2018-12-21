@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,6 +20,7 @@
 <title>Insert title here</title>
 </head>
 <body> 
+<c:set value="${userId}" var="userId"/>
 	<div class="wrapper">
 		<div class="buttons">
 			<button id="receipt">구매 내역 보기</button>
@@ -39,72 +41,37 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-						<td>2016.2.3</td>
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-						<td>2016.2.3</td>
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-						<td>2016.2.3</td>
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-						<td>2016.2.3</td>
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-						<td>2016.2.3</td>
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-						<td>2016.2.3</td>
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-						<td>2016.2.3</td>
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-						<td>2016.2.3</td>
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-						<td>2016.2.3</td>
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-						<td>2016.2.3</td>
-					</tr>
+					<c:forEach items="${paymentPage.paymentList}" var="payment">
+						<tr>
+							<td>${payment.productName}</td>
+							<td>${payment.price }</td>
+							<td>${payment.productPrice}</td>
+							<td>${payment.pDay }</td>
+							<td></td>
+						</tr>			
+					</c:forEach>
 				</tbody>
 			</table>
 			<div class="paging">
-				<i class="fas fa-caret-left"></i> <span> <a href="#">1</a> <a
-					href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a>
-				</span> <i class="fas fa-caret-right"></i>
+				<c:if test="${paymentPage.hasProduct()}">
+						<div>
+							<c:if test="${paymentPage.startPage > 5 }">
+								<a href="userPaymentPopup.do?pageNum=${paymentPage.startPage - 5  }&userId=${userId}"
+									class="pageNum">이전</a>
+							</c:if>
+
+							<c:forEach var="pageNum" begin="${paymentPage.startPage}"
+								end="${paymentPage.endPage }">
+								<a href="userPaymentPopup.do?pageNum=${pageNum}&userId=${userId}" class="pageNum">${pageNum}</a>
+							</c:forEach>
+
+							<c:if test="${paymentPage.endPage < paymentPage.totalPages }">
+								<a href="userPaymentPopup.do?pageNum=${paymentPage.startPage + 5 }&userId=${userId}"
+									class="pageNum">다음</a>
+							</c:if>
+						</div>
+					</c:if>
+	
 			</div>
 		</div>
 		<div class='review'>
@@ -121,72 +88,34 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td>1000</td>
-						<td>2</td>
-
-					</tr>
+					<c:forEach items="${reviewPage.reviewList}" var="review">
+						<tr>
+							<td>${review.productId}</td>
+							<td>${review.content }</td>
+							<td>${review.wdate }</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 			<div class="paging">
-				<i class="fas fa-caret-left"></i> <span> <a href="#">1</a> <a
-					href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a>
-				</span> <i class="fas fa-caret-right"></i>
+				<c:if test="${reviewPage.hasProduct()}">
+						<div>
+							<c:if test="${reviewPage.startPage > 5 }">
+								<a href="userReviewPopup.do?pageNum=${reviewPage.startPage - 5  }&userId=${userId}"
+									class="pageNum">이전</a>
+							</c:if>
+
+							<c:forEach var="pageNum" begin="${reviewPage.startPage}"
+								end="${reviewPage.endPage }">
+								<a href="userReviewPopup.do?pageNum=${pageNum}&userId=${userId}" class="pageNum">${pageNum}</a>
+							</c:forEach>
+
+							<c:if test="${reviewPage.endPage < reviewPage.totalPages }">
+								<a href="userReviewPopupt.do?pageNum=${reviewPage.startPage + 5 }&userId=${userId}"
+									class="pageNum">다음</a>
+							</c:if>
+						</div>
+					</c:if>
 			</div>
 		</div>
 	</div>
