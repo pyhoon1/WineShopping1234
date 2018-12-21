@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<!-- MyPage에서 생기는 에러들을 처리하는 곳 -->
 	<c:if test="${errors.NotFoundUser }">
 		<script>
 			alert('로그인 해주세요.');
