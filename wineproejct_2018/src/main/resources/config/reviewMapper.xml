@@ -18,9 +18,8 @@
 		review where productId = #{productId}
 	</select>
 
-
-	<update id="reviewDelete" parameterType="int">
-		update from review set state = 'N' where
+	<update id="reviewUpdate" parameterType="java.util.Map">
+		update review set state = 'N' where
 		reviewId = #{reviewId} and userId = #{userId}
 	</update>
 

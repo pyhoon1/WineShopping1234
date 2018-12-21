@@ -231,7 +231,7 @@
 								<div class="review-header">
 									<span><strong>${review.loginId }</strong></span>
 									<c:if test="${user.loginId == review.loginId }">
-										<a href="reviewDelete.do?userId=${user.userId }&reviewId=${review.reviewId }">
+										<a href="reviewDelete.do?userId=${user.userId }&productId=${product.productId}&reviewId=${review.reviewId }&pageNum=1">
 											<i class="fas fa-edit"></i>
 										</a>
 									</c:if>
