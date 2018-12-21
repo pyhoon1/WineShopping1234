@@ -17,11 +17,23 @@ function SearchWine(){
 	var condition = $('#condition').val();
 	location.href="searchList.do?conditionType="+conditionType+"&condition="+condition+"&pageNum=1";	
 }
+
+$(function() {
+	$('#myPage').click(function() {
+		if($("#userId").val() == "") {
+			alert("로그인을 해주세요.")
+			return false;
+		} else {
+			return true;
+		}
+	})
+})
 </script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
 <title>Insert title here</title>
 </head>
 <body>
+	<input type="hidden" id="userId" value="${user.userId }">
 	<div class="header">
             <div class="logo">
                 <a href="main.do"><img src="${pageContext.request.contextPath }/resources/img/Logo.png"></a>
@@ -115,7 +127,7 @@ function SearchWine(){
                         </span>
                     </li>
                     <li><a href="signUpForm.do" class="border-right">Sign up</a> </li>
-                    <li><a href="myPage.do?userId=${user.userId }">MyPage</a></li>
+                    <li><a href="myPage.do?userId=${user.userId }" id="myPage">MyPage</a></li>
                     <li>
                         <div class="search-box">
                         	<input type="hidden" id="conditionType" name="conditionType" value="search">
