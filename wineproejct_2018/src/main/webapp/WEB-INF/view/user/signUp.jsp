@@ -8,14 +8,14 @@
     <link href="https://fonts.googleapis.com/css?family=Cardo" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath }/javascript/signUp.js"></script>
+  <script src="${pageContext.request.contextPath }/javascript/signUp.js"></script>
 <title>회원가입 페이지</title>
 </head>
 <body>
  <div class="wrapper">
         <div class="main">
             <h1>회원가입</h1>
-            <form id="myForm" action="signUp.do" method="post"  autocomplete=off>
+            <form id="myForm" action="signUp.do" method="post" autocomplete=off>
                 <table>
                     <tr>
                         <td class="title">이름</td>
