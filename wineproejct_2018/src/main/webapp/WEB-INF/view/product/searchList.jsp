@@ -6,7 +6,6 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Cardo"
 	rel="stylesheet">
@@ -103,7 +102,7 @@
                                 </div>
                                 <div class="right">
                                     <span><img src="${product.nationImg}"></span>
-                                    <span>${product.wineKinds }</span>
+                                    <span><img src="${pageContext.request.contextPath}/resources/img/miniWineImg/${product.wineKinds }.png"></span>
                                 </div>
                             </div>
                         </li>  
