@@ -92,7 +92,7 @@
 						<tr>
 							<td>${review.productId}</td>
 							<td>${review.content }</td>
-							<td>${review.wdate }</td>
+							<td>${review.wdate }</td> 
 						</tr>
 					</c:forEach>
 				</tbody>
