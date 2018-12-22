@@ -21,8 +21,7 @@
 	
 </script>
 <script>
-.
-	function warningReview(state, reviewId, userId) {
+	/* function warningReview(state, reviewId, userId) {
 		var information = {
 			'state' : state,
 			'reviewId' : reviewId,
@@ -42,23 +41,22 @@
 
 		})
 
-	}
-	function deleteReview(reviewId, userId) {
+	} */
+	function deleteReview(reviewId) {
 		if (confirm("이 리뷰를 삭제하겠습니까?")) {
 			var information = {
 				'reviewId' : reviewId,
-				'userId' : userId
+				'pageNum' : 1
 			}
 			$.ajax({
 				url : 'deleteReview.do',
 				type : 'POST',
-				dataType : 'text',
 				data : information,
 				error : function(error) {
 					console.log(error);
 				},
 				success : function() {
-					location.href = "adminReviewList.do"
+					location.href = "adminReview.do?pageNum=1"
 				}
 
 			})
@@ -93,18 +91,22 @@
 							<td>유저 아이디</td>
 							<td>내용</td>
 							<td>작성일</td>
+							<td>활성화 여부</td>
+							<td>리뷰 삭제</td>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="review" items="${reviewPage.reviewList}">
 							<tr>
 								<td>${review.reviewId}</td>
-								<td>${review.productId }</td>
-								<td>${review.productName }</td>
+								<td>${review.productId}</td>
+								<td>${review.productName}</td>
 								<td>${review.loginId }</td>
 								<td>${review.content}</td>
 								<td><fmt:parseDate value="${review.wdate }" var="noticePostDate" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
 								<fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd"/></td>
+								<td>${review.state }</td>
+								<td><input type="button" onclick="deleteReview('${review.reviewId}')" value="리뷰 삭제"></td>
 							</tr>
 
 						</c:forEach>
