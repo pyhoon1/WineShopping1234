@@ -52,7 +52,7 @@
 				<c:forEach items="${products }" var="products" >
 					<li>
 						<a href="productView.do?productId=${products.productId}&pageNum=1"><div class="wineImg">
-								<img src="${products.img }">
+								<img src="${products.img }"> 
 							</div>
 							<div class="left">
 								<span class="wineName">${products.productName }</span> <span class="winePrice">${products.price } 원</span>
@@ -61,6 +61,29 @@
 								<span class="wineType"><img src="${pageContext.request.contextPath}/resources/img/miniWineImg/${products.wineKinds}.png"></span> 
 								<span class="wineNation">
 								<img src="${products.nationImg}"></span>
+							</div> 
+						</a>
+					</li>
+				</c:forEach>
+				</ul>
+			</div>
+			<div class="mainList">
+				<h4>
+					<i class="fas fa-wine-glass-alt"></i> 최신 와인
+				</h4>
+				<ul class="wineList">
+				<c:forEach items="${products2}" var="products2" >
+					<li>
+						<a href="productView.do?productId=${products2.productId}&pageNum=1"><div class="wineImg">
+								<img src="${products2.img }">
+							</div>
+							<div class="left">
+								<span class="wineName">${products2.productName }</span> <span class="winePrice">${products2.price } 원</span>
+							</div>
+							<div class="right">
+								<span class="wineType"><img src="${pageContext.request.contextPath}/resources/img/miniWineImg/${products2.wineKinds}.png"></span> 
+								<span class="wineNation">
+								<img src="${products2.nationImg}"></span>
 							</div> 
 						</a>
 					</li>
