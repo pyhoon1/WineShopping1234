@@ -50,7 +50,7 @@
 					</thead>
 					<tbody>
 						<c:forEach var="payment" items="${paymentPage.paymentList}">
-							<tr>
+							<tr> 
 								<td>${payment.userId }</td>
 								<td>${payment.productName}</td>
 								<td>${payment.productCount }</td>
