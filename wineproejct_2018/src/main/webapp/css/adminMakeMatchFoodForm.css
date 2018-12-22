@@ -1,0 +1,109 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    background: #f1f3f5;
+    font-family: 'Cardo', serif;
+    font-family: 'Noto Serif KR', sans-serif;
+}
+
+.wrapper {
+    width: 95%;
+    height: 85%;
+    background: white;
+    box-shadow: 0 3px 6px rgb(0,0,0,0.16), 0 3px 6px rgb(0,0,0,0.23);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+table caption {
+    font-size: 50px;
+    padding: 30px;
+}
+
+table td {
+    border-bottom: 1px solid black;
+    padding: 15px;
+}
+
+table input {
+    padding: 5px;
+}
+
+table textarea {
+    width: 500px;
+}
+
+table td:first-child {
+    font-weight: 600;
+    padding: 15px 30px;
+    text-align: center;
+    border-right: 1px solid black;
+}
+
+table tr:first-child td{
+    border-top: 1px solid black;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px; 
+}
+
+.buttons input {
+    background: black;
+    color: white;
+    border: 1px solid black;
+    width: 790px;
+    padding: 20px;
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.buttons button {
+    background: white;
+    border: 1px solid black;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.buttons button a {
+    display: block;
+    text-decoration: none;
+    background: black;
+    color: white;
+    width: 750px;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.buttons button a:hover, .buttons input:hover {
+    background: white;
+    color: black;
+}
+
+.matchFoodImg {
+	position: absolute;
+    top: 25%;
+    left: 5%;
+}
+
+.matchFoodImg img {
+	width: 300px;
+}

@@ -1,0 +1,118 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    background: #f1f3f5;
+    font-family: 'Cardo', serif;
+    font-family: 'Noto Serif KR', sans-serif;
+}
+
+.wrapper {
+    width: 95%;
+    background: white;
+    box-shadow: 0 3px 6px rgb(0,0,0,0.16), 0 3px 6px rgb(0,0,0,0.23);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table caption {
+    margin: 30px 0;
+    font-size: 50px;
+}
+
+table td {
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+table tr:nth-child(odd) td {
+    font-weight: 600;
+    padding: 15px;
+}
+
+table tr:first-child td{
+    border-top: 1px solid black;
+}
+
+table input {
+    padding: 5px;
+}
+
+table textarea {
+    width: 200px;
+    height: 100px;
+}
+
+table input, table textarea {
+    border: 1px solid rgba(0,0,0,0.5);
+}
+
+#uploadFile {
+    border: 0;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px; 
+    margin-bottom: 30px;
+}
+
+.buttons input {
+    background: black;
+    color: white;
+    border: 1px solid black;
+    width: 1300px;
+    padding: 20px;
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.buttons button {
+    background: white;
+    border: 1px solid black;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.buttons button a {
+    display: block;
+    text-decoration: none;
+    background: black;
+    color: white;
+    width: 1260px;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.buttons button a:hover, .buttons input:hover {
+    background: white;
+    color: black;
+}
+
+.wineImg {
+	margin-top: 30px;
+}
+
+.wineImg img {
+	    width: 100px;
+    height: 230px;
+}
+

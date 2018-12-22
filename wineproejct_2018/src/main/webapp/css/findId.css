@@ -1,0 +1,55 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Cardo', serif;
+    font-family: 'Noto Serif KR', sans-serif;
+    background-color: #c92a2a;
+    font-size: 20px;
+}
+
+.wrapper{
+    margin: 0 auto;
+    width: 80%;
+    height: 100vh;
+    background: white;
+    text-align: center;
+}
+
+img {
+	margin-top: 60px;
+}
+
+table {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    box-shadow: 0 3px 6px rgb(0,0,0,0.16), 0 3px 6px rgb(0,0,0,0.23);
+    padding: 50px;
+}
+
+table tr td {
+    padding: 20px;
+}
+
+table tr td:last-child input {
+    padding: 10px;
+    border: 1px solid rgb(0, 0, 0, 0.3);
+}
+
+#submit {
+    cursor: pointer;
+    width: 100%;
+    background: #ff6b6b;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px;
+    color: white;
+    transition: 0.7s;
+}
+
+#submit:hover {
+    background: #f03e3e; 
+}

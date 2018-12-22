@@ -1,0 +1,35 @@
+.body{
+	background: gray;
+	font-family: 'Cardo', serif;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.wrapper {
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	height: 90vh;
+	background: white;
+	box-shadow: 0 3px 6px rgb(0, 0, 0, 0.16), 0 3px 6px rgb(0, 0, 0, 0.23);
+}
+
+.center {
+	position: relative;
+	top: 20%;
+	margin: 0 auto;
+	border: 1px solid black;
+	text-align: center;
+	width: 70%;
+}
+
+.category {
+	margin: 200px 10px
+}
+
+.category a {
+	font-size: 30px;
+	text-decoration: none;
+	color: rgba(0,0,0,0.7);
+	padding: 20px;
+}
