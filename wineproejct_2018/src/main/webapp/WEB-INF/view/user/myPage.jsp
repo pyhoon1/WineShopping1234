@@ -15,7 +15,7 @@
 			<div class="wrapper">
 				<h1 id="myP-title">My Page</h1>
 
-
+ 
 				<div class="myP-header">
 					<span id="myP-name">${user.userName } 님</span> 
 					<span class="myP-info">

@@ -13,5 +13,5 @@
 		<typeAlias type="payment.vo.Payment" alias="Payment" />
 		<typeAlias type="matchfood.vo.MatchFood" alias="MatchFood" />
 		<typeAlias type="basket.vo.Basket" alias="Basket" />
-	</typeAliases>
+	</typeAliases> 
 </configuration>

@@ -20,7 +20,7 @@
 		resultType="Basket">
 		select * from basket where userId = #{userId} order by
 		basketId desc
-	</select>
+	</select> 
 
 	<select id="basketTotal" parameterType="int" resultType="int">
 		select sum(total) from basket

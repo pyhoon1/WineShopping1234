@@ -8,7 +8,7 @@
  	<select id="getProductList" parameterType="java.util.Map"
 		resultType="Product">
 		select * from product order by productId desc limit #{startRow}, #{size};
-	</select>
+	</select> 
 	<select id="getProduct" parameterType="int" resultType="Product">
 		select *
 		from product where productId = #{productId}

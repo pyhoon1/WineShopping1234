@@ -13,7 +13,7 @@
 	</select>
 	<select id="getPaymentCount" resultType="int" parameterType="int">
 		select count(userId) from payment where userId = #{userId}
-	</select>
+	</select> 
 	<select id="paymentList" parameterType="int" resultType="Payment">
 		select *
 from payment where userId = #{userId}

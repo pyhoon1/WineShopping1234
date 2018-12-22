@@ -27,7 +27,7 @@ public class UserController {
 	public String loginErroPage() {
 		return "redirect:/main.do";
 	}
-
+ 
 	@RequestMapping("/logout.do")
 	public String logout(HttpServletRequest req) {
 		HttpSession session = req.getSession(false);

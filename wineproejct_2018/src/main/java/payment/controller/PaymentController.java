@@ -61,7 +61,7 @@ public class PaymentController {
 			userService.RatingUpdate(userId, "C");
 		} else {
 
-		}
+		} 
 		receipt.put("name", name);
 		receipt.put("method", method);
 		receipt.put("total", total);
