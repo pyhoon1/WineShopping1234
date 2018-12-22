@@ -60,25 +60,30 @@
 								<td colspan="2">배송 정보</td>
 							</tr>
 						</thead>
+
 						<tbody>
-							<tr>
-								<td>수령인*</td>
-								<td><input type="text"></td>
-							</tr>
-							<tr>
-								<td>휴대전화*</td>
-								<td><input type="text"></td>
-							</tr>
-							<tr>
-								<td>배송지 주소*</td>
-								<td><input type="text" id="post"><br> <input
-									type="text" id='addr1'><br> <input type="text"
-									id='addr2'></td>
-							</tr>
-							<tr>
-								<td>배송 메모</td>
-								<td><input type="text"></td>
-							</tr>
+							<form action="payment.do">
+								<input type="hidden" name="total" value="${total+3000}">
+								<input type="hidden" value="${user.userId }" name="userId">
+								<tr>
+									<td>수령인*</td>
+									<td><input type="text" value="${user.userName }"
+										name="name"></td>
+								</tr>
+								<tr>
+									<td>휴대전화*</td>
+									<td><input type="text" value="${user.phone }" name="phone"></td>
+								</tr>
+								<tr>
+									<td>배송지 주소*</td>
+									<td><input type="text" id="post" value="${user.address }"
+										name="address"><br> <input type="text" id='addr1'><br>
+										<input type="text" id='addr2'></td>
+								</tr>
+								<tr>
+									<td>배송 메모</td>
+									<td><input type="text"></td>
+								</tr>
 						</tbody>
 					</table>
 				</div>
@@ -92,33 +97,36 @@
 						<tbody>
 							<tr>
 								<td>일반 결제</td>
-								<td><label><input type="radio" name="paymentType">신용카드</label>
-									<label><input type="radio" name="paymentType">휴대폰</label>
+								<td><label><input type="radio" name="paymentType" value="신용카드">신용카드</label>
+									<label><input type="radio" name="paymentType" value="휴대폰">휴대폰</label>
 								</td>
 							</tr>
 							<tr>
 								<td>스마일페이 결제</td>
-								<td><label><input type="radio" name="paymentType">스마트
+								<td><label><input type="radio" name="paymentType" value="스마트페이">스마트
 										페이</label></td>
 							</tr>
 							<tr>
 								<td>네이버페이 결제</td>
-								<td><label><input type="radio" name="paymentType">네이버
+								<td><label><input type="radio" name="paymentType" value="네이버">네이버
 										페이</label></td>
 							</tr>
 							<tr>
 								<td>계좌 이체</td>
-								<td><label><input type="radio" name="paymentType">계좌
+								<td><label><input type="radio" name="paymentType" value="계좌이체">계좌
 										이체</label></td>
 							</tr>
+
 						</tbody>
+
 					</table>
+
 				</div>
 				<div class="billing-total">
 					<table>
 						<tr>
 							<td>상품 금액</td>
-							<td>69,000원</td>
+							<td>${total }</td>
 						</tr>
 						<tr>
 							<td>배송비</td>
@@ -127,15 +135,17 @@
 						<hr id="line">
 						<tr>
 							<td>상품 금액</td>
-							<td>72,000원</td>
+							<td>${total+3000 }</td>
 						</tr>
 					</table>
 				</div>
 				<div class="billing-buttons">
-					<button onClick="location.href='#'" id="first">구매하기</button>
+						<input type="submit" id="first" value="구매하기">
 					<button onClick="location.href='#'" id="last">취소</button>
 				</div>
+				</form>
 			</div>
+
 		</div>
 
 		<jsp:include page="../../footer/footer.jsp" />
