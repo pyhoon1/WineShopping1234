@@ -11,10 +11,15 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-									$(function(){
-									
-										
-									})
+	$(function() {
+				$("#first").click(
+					function() {
+						var total = $('#total').val();
+						var method = $('input[name=paymentType]:checked').val();
+						location.href = "detailPayment.do?userId=${user.userId}&productId=${basket.productId}&productName=${basket.productName}&productPrice=${basket.productPrice}&productCount=${basket.productCount}&productImg=${basket.productImg}&matchFoodIdList=${basket.matchFoodIdList}&matchFoodCount=${basket.matchFoodCount}&total="+${total+3000}+ "&paymentType="+ method+ "&name=${user.userName}";
+								})
+
+			})
 </script>
 </head>
 <body>
@@ -64,110 +69,94 @@
 						</tbody>
 					</table>
 				</div>
-				<form action="detailPayment.do">
-					<div class="client-info">
 
-						<table>
-							<thead>
-								<tr>
-									<td colspan="2">배송 정보</td>
-								</tr>
-							</thead>
-							<tbody>
+				<div class="client-info">
 
-								<input type="hidden" name="userId" value="${user.userId}">
-								<input type="hidden" name="productId" value="${param.productId}">
-								<input type="hidden" name="productName"
-									value="${param.productName}">
-								<input type="hidden" name="productPrice"
-									value="${param.productPrice}">
-								<input type="hidden" name="productCount"
-									value="${param.getProductCount}">
-								<input type="hidden" name="productImg"
-									value="${param.productImg}">
-								<input type="hidden" name="matchFoodIdList" id="matchFoodId"
-									value="">
-
-								<input type="hidden" name="matchFoodCount" id="matchFoodCount"
-									value="">
-
-								<tr>
-									<td>수령인*</td>
-									<td><input type="text" name="name"
-										value="${user.userName }"></td>
-								</tr>
-								<tr>
-									<td>휴대전화*</td>
-									<td><input type="text" value="${user.phone }"></td>
-								</tr>
-								<tr>
-									<td>배송지 주소*</td>
-									<td><input type="text" id="post" value="${user.address }"><br>
-										<input type="text" id='addr1'><br> <input
-										type="text" id='addr2'></td>
-								</tr>
-								<tr>
-									<td>배송 메모</td>
-									<td><input type="text"></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="billing-submit">
-						<table>
-							<thead>
-								<tr>
-									<td colspan="2">결제 수단</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>일반 결제</td>
-									<td><label><input type="radio" name="paymentType"
-											value="신용카드">신용카드</label> <label><input type="radio"
-											name="paymentType" value="휴대폰">휴대폰</label></td>
-								</tr>
-								<tr>
-									<td>스마일페이 결제</td>
-									<td><label><input type="radio" name="paymentType"
-											value="스마트페이">스마트 페이</label></td>
-								</tr>
-								<tr>
-									<td>네이버페이 결제</td>
-									<td><label><input type="radio" name="paymentType"
-											value="네이버페이">네이버 페이</label></td>
-								</tr>
-								<tr>
-									<td>계좌 이체</td>
-									<td><label><input type="radio" name="paymentType"
-											value="계좌이체">계좌 이체</label></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="billing-total">
-						<table>
+					<table>
+						<thead>
 							<tr>
-								<td>상품 금액</td>
-								<td>${total }</td>
+								<td colspan="2">배송 정보</td>
+							</tr>
+						</thead>
+						<tbody>
+
+
+
+							<tr>
+								<td>수령인*</td>
+								<td><input type="text" name="name"
+									value="${user.userName }"></td>
 							</tr>
 							<tr>
-								<td>배송비</td>
-								<td>3000</td>
+								<td>휴대전화*</td>
+								<td><input type="text" value="${user.phone }"></td>
 							</tr>
-							<hr id="line">
 							<tr>
-								<td>상품 금액</td>
-								<td><input type="hidden" name="total"
-									value="${total + 3000 }">${total + 3000 }</td>
+								<td>배송지 주소*</td>
+								<td><input type="text" id="post" value="${user.address }"><br>
+									<input type="text" id='addr1'><br> <input
+									type="text" id='addr2'></td>
 							</tr>
-						</table>
-					</div>
-					<div class="billing-buttons">
-						<button id="first">구매하기</button>
-						<button onClick="location.href='#'" id="last">취소</button>
-					</div>
-				</form>
+							<tr>
+								<td>배송 메모</td>
+								<td><input type="text"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="billing-submit">
+					<table>
+						<thead>
+							<tr>
+								<td colspan="2">결제 수단</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>일반 결제</td>
+								<td><label><input type="radio" name="paymentType"
+										value="신용카드">신용카드</label> <label><input type="radio"
+										name="paymentType" value="휴대폰">휴대폰</label></td>
+							</tr>
+							<tr>
+								<td>스마일페이 결제</td>
+								<td><label><input type="radio" name="paymentType"
+										value="스마트페이">스마트 페이</label></td>
+							</tr>
+							<tr>
+								<td>네이버페이 결제</td>
+								<td><label><input type="radio" name="paymentType"
+										value="네이버페이">네이버 페이</label></td>
+							</tr>
+							<tr>
+								<td>계좌 이체</td>
+								<td><label><input type="radio" name="paymentType"
+										value="계좌이체">계좌 이체</label></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="billing-total">
+					<table>
+						<tr>
+							<td>상품 금액</td>
+							<td>${total }</td>
+						</tr>
+						<tr>
+							<td>배송비</td>
+							<td>3000</td>
+						</tr>
+						<hr id="line">
+						<tr>
+							<td>상품 금액</td>
+							<td><input type="hidden" name="total" value="${total + 3000 }" id="total">${total + 3000 }"</td>
+						</tr>
+					</table>
+				</div>
+				<div class="billing-buttons">
+					<button id="first">구매하기</button>
+					<button onClick="location.href='#'" id="last">취소</button>
+				</div>
 			</div>
 		</div>
 

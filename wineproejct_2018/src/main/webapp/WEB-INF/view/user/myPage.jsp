@@ -49,7 +49,7 @@
 								<td>적립금</td>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody>          
 							<c:forEach items="${paymentPage.paymentList }" var="payment">
 
 
@@ -73,8 +73,8 @@
 											</c:forEach>
 										</div></td>
 									<td>${payment.pDay }</td>
-									<td>${total }</td>
-									<td>${total/100 }</td>
+									<td>${payment.total }</td>
+									<td>${payment.total/100 }</td>
 
 								</tr>
 							</c:forEach>
@@ -99,15 +99,12 @@
 								<a href="myPage.do?userId=${user.userId}&pageNum=${pageNum}"
 									class="pageNum">${pageNum}</a>
 							</c:forEach>
-
 							<c:if test="${paymentPage.endPage < paymentPage.totalPages }">
 								<a
 									href="myPage.do?userId=${user.userId}&pageNum=${paymentPage.startPage
 									+ 5 }"
 									class="pageNum">다음</a>
 							</c:if>
-
-
 						</div>
 					</c:if>
 				</div>
