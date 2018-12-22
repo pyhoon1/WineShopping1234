@@ -223,8 +223,7 @@
 					success : function(result) {
 						if (result == "Y") {
 							alert("상품 수정에 성공했습니다.");
-							location.href = "adminWineView.do?productId="
-									+ $('#productId').val();
+							location.href = "adminProduct.do?pageNum=1"
 						} else {
 							alert("제품 수정에 실패했습니다.");
 						}
