@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +21,6 @@ import payment.vo.PaymentPage;
 import product.service.ProductService;
 import product.vo.Product;
 import user.service.UserService;
-import user.vo.User;
 
 @Controller
 public class PaymentController {
@@ -129,39 +125,23 @@ public class PaymentController {
 	}
 
 	@RequestMapping("detailPayment.do")
-	public String detailPayment( @RequestParam("name") String name, @RequestParam("paymentType") String method, @RequestParam("userId") int userId,
-			@RequestParam("productId") int productId, @RequestParam("productName") String productName,
-			@RequestParam("productPrice") int productPrice, @RequestParam("productCount") int productCount,
-			@RequestParam("productImg") String productImg, @RequestParam("matchFoodIdList") String matchFoodIdList,
+	public String detailPayment(@RequestParam("name") String name, @RequestParam("paymentType") String method,
+			@RequestParam("userId") int userId, @RequestParam("productId") int productId,
+			@RequestParam("productName") String productName, @RequestParam("productPrice") int productPrice,
+			@RequestParam("productCount") int productCount, @RequestParam("productImg") String productImg,
+			@RequestParam("matchFoodIdList") String matchFoodIdList,
 			@RequestParam("matchFoodCount") String matchFoodCount, @RequestParam("total") int total) {
-		
 
-		paymentService.payment(new Payment(userId, productId,productName,
-				productPrice, productCount, productImg,matchFoodIdList,
-				matchFoodCount, method,total));
-		
+		paymentService.payment(new Payment(userId, productId, productName, productPrice, productCount, productImg,
+				matchFoodIdList, matchFoodCount, method, total));
+
 		return "redirect:/main.do";
 	}
 
 	@RequestMapping("/myPage.do")
 	public String paymentPage(Model model, @RequestParam("pageNum") int pageNum, @RequestParam("userId") int userId) {
-		User user = userService.selectByUserId(userId);
-
-		Map<String, Boolean> errors = new HashMap<String, Boolean>();
-		model.addAttribute("errors", errors);
-
-		if (user == null) {
-			errors.put("NotFoundUser", true);
-			return "error/myPageErrorPage";
-		}
-		if (!errors.isEmpty()) {
-			errors.put("badError", true);
-			return "error/myPageErrorPage";
-		}
 		PaymentPage paymentPage = paymentService.getPaymentList(pageNum, userId);
-		if (paymentPage.equals("") || paymentPage.equals(null)) {
-			return "user/paymentView";
-		}
+
 		for (int i = 0; i < paymentPage.getPaymentList().size(); i++) {
 			if (paymentPage.getPaymentList().get(i).getMatchFoodIdList() != null) {
 				String[] matchFoodId = paymentPage.getPaymentList().get(i).getMatchFoodIdList().split(",");

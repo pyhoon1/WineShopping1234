@@ -106,7 +106,7 @@
 				<div>
 					<span>결제예정금액</span> <span>${total + 3000 }</span>
 				</div>
-				<div><a href="billingPage.do?userId=${user.userId }">주문하기</a></div>
+				<div><a href="billingPage.do?userId=${user.userId}">주문하기</a></div>
 			</div>
 		</div>
 		<jsp:include page="../../footer/footer.jsp" />

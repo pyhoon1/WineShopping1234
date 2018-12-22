@@ -13,13 +13,7 @@
 <script>
 									$(function(){
 									
-									
-										var matchFoodList ='${basket.matchFoodIdList}'.replace("%2C",",");
-										var matchFoodCount ='${basket.matchFoodCount}'.replace("%2C",",");
-									
 										
-										$('#matchFoodId').val(matchFoodList)
-										$('#matchFoodCount').val(matchFoodCount)
 									})
 </script>
 </head>
@@ -170,7 +164,7 @@
 						</table>
 					</div>
 					<div class="billing-buttons">
-						<input type="submit" id="first" value="구매하기">
+						<button id="first">구매하기</button>
 						<button onClick="location.href='#'" id="last">취소</button>
 					</div>
 				</form>

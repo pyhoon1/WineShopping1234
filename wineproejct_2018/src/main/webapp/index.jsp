@@ -1,3 +1,1 @@
 <% response.sendRedirect("main.do"); %>
-	
-	

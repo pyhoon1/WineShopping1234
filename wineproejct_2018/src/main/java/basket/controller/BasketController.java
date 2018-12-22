@@ -39,9 +39,6 @@ public class BasketController {
 	@RequestMapping("/getBasketList.do")
 	public String getBasketList(Model model, @RequestParam("userId") int userId) {
 		List<Basket> basketList = basketService.getBasketList(userId);
-		if(basketList.isEmpty()) {
-			return "user/userBasket";
-		}
 		List<Product> productList = new ArrayList<Product>();
 		int total = basketService.basketTotal(userId);
 		for (int i = 0; i < basketList.size(); i++) {

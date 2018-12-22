@@ -6,8 +6,11 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Cardo"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR"
+	rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/searchList.css">
 <script>
 		function SearchFame(){
@@ -90,16 +93,16 @@
                     	<c:forEach items="${productPage.productList}" var="product">
                         <li>                   
                             <div class="search-img">
-                                <a href="#"><img src="${product.img}"></a>
+                                <a href="productView.do?productId=${product.productId}&pageNum=1"><img src="${product.img}"></a>
                             </div>
                             <div class="search-info">
                                 <div class="left">
-                                    <span><a href="#">${product.productName}</a></span>
-                                    <span><a href="#">${product.price}</a></span>
+                                    <span>${product.productName}</span>
+                                    <span>${product.price}</span>
                                 </div>
                                 <div class="right">
-                                    <span><a href="#">${product.nation }</a></span>
-                                    <span><a href="#">${product.wineKinds }</a></span>
+                                    <span><img src="${product.nationImg}"></span>
+                                    <span><img src="${pageContext.request.contextPath}/resources/img/miniWineImg/${product.wineKinds }.png"></span>
                                 </div>
                             </div>
                         </li>  

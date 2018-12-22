@@ -23,23 +23,10 @@ public class Payment {
 
 	}
 
-	public Payment(int userId, int productId, String productName, int productPrice, int productCount, String productImg,
-			String matchFoodIdList, String matchFoodCount, String method, int total) {
-		this.userId = userId;
-		this.productId = productId;
-		this.productName = productName;
-		this.productPrice = productPrice;
-		this.productCount = productCount;
-		this.productImg = productImg;
-		this.matchFoodIdList = matchFoodIdList;
-		this.matchFoodCount = matchFoodCount;
-		this.method = method;
-		this.total = total;
-	}
-
 	public Payment(int paymentId, int userId, int productId, String productName, int productPrice, int productCount,
 			String productImg, String matchFoodIdList, String matchFoodCount, String method, LocalDateTime pDay,
 			int total) {
+		super();
 		this.paymentId = paymentId;
 		this.userId = userId;
 		this.productId = productId;
@@ -51,6 +38,21 @@ public class Payment {
 		this.matchFoodCount = matchFoodCount;
 		this.method = method;
 		this.pDay = pDay;
+		this.total = total;
+	}
+
+	public Payment(int userId, int productId, String productName, int productPrice, int productCount, String productImg,
+			String matchFoodIdList, String matchFoodCount, String method, int total) {
+		super();
+		this.userId = userId;
+		this.productId = productId;
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.productCount = productCount;
+		this.productImg = productImg;
+		this.matchFoodIdList = matchFoodIdList;
+		this.matchFoodCount = matchFoodCount;
+		this.method = method;
 		this.total = total;
 	}
 

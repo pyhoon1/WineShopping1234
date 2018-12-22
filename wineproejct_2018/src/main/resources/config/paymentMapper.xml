@@ -12,20 +12,22 @@
 		paymentId desc limit #{startRow}, #{size}
 	</select>
 	<select id="getPaymentCount" resultType="int" parameterType="int">
-		select count(*) from payment where userId = #{userId}
+		select count(userId) from payment where userId = #{userId}
 	</select>
 	<select id="paymentList" parameterType="int" resultType="Payment">
 		select *
-		from payment where userId = #{userId}
+from payment where userId = #{userId}
 	</select>
-	<select id="getUserTotal" resultType="int" parameterType="int" >
+	<select id="getUserTotal" resultType="int" parameterType="int">
 		select
 		sum(totalAmount) from user where userId = #{userId}
 	</select>
 	<select id="payment">
-		insert into payment(userId, productId, productName, productPrice, productCount, productImg, matchFoodIdList, matchFoodCount, method, total)
-		values(#{userId},#{productId},#{productName},#{productPrice},#{productCount},#{productImg},#{matchFoodIdList},#{matchFoodCount},#{method},#{total})
+		insert into payment(userId, productId, productName,
+		productPrice,
+		productCount, productImg, matchFoodIdList, matchFoodCount,
+		method, total)
+		values(#{userId},#{productId},#{productName},#{productPrice},#{productCount},#{productImg},#{matchFoodIdList},#{matchFoodCount},#{method}, #{total})
 	</select>
-
 
 </mapper>
