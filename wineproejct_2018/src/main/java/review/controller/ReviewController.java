@@ -36,8 +36,8 @@ public class ReviewController {
 
 	@RequestMapping("/myReview.do")
 	public String reviewList(Model model, @RequestParam("userId") int userId, @RequestParam("pageNum") int pageNum) {
-		ReviewtPage reviewtPage = reviewService.reviewList(userId, pageNum);
-		model.addAttribute("reviewtPage", reviewtPage);
+		ReviewtPage reviewtPage = reviewService.userReviewList(userId, pageNum);
+		model.addAttribute("reviewPage", reviewtPage);
 		return "user/myReview";
 	}
 	

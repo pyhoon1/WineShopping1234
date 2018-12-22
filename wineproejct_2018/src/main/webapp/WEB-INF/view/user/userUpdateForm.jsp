@@ -4,49 +4,69 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/userUpdateForm.css">
+<script>
+	function goBack () {
+		window.history.back();
+	}
+</script>
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="updateUser.do" method="post">
-		<input type="hidden" value="${user.userId }" name="userId">
-		<table>
-			<tr>
-				<td>userName</td>
-				<td><input type="text" value="${user.userId }" name="userName"></td>
-			</tr>
+	<div class="main">
+		<jsp:include page="../../header/header.jsp" />
+		<div class="content">
+				<form action="updateUser.do" method="post">
+					<input type="hidden" value="${user.userId }" name="userId">
+				<div class="wrapper">
+					<table>
+						<tr>
+							<td>userName</td>
+							<td><input type="text" value="${user.userName }"
+								name="userName" readonly></td>
+						</tr>
 
-			<tr>
-				<td>loginId</td>
-				<td><input type="text" value="${user.loginId }"
-					name="loginId"></td>
-			</tr>
-			<tr>
-				<td>password</td>
-				<td><input type="text" value="${user.password }"
-					name="password"></td>
-			</tr>
-			<tr>
-				<td>email</td>
-				<td><input type="text" value="${user.email }" name="email"></td>
-			</tr>
-			<tr>
-				<td>address</td>
-				<td><input type="text" value="${user.address }"
-					name="address"></td>
-			</tr>
-			<tr>
-				<td>phone</td>
-				<td><input type="text" value="${user.phone }" name="phone"></td>
-			</tr>
-			<tr>
-				<td>birth</td>
-				<td><input type="text" value="${user.birth }" name="birth"></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="회원정보수정"></td>
-			</tr>
-
-		</table>
-	</form>
+						<tr>
+							<td>loginId</td>
+							<td><input type="text" value="${user.loginId }"
+								name="loginId" readonly></td>
+						</tr>
+						<tr>
+							<td>password*</td>
+							<td><input type="text" value="${user.password }"
+								name="password"></td>
+						</tr>
+						<tr>
+							<td>email</td>
+							<td><input type="text" value="${user.email }" name="email"
+								readonly></td>
+						</tr>
+						<tr>
+							<td>address*</td>
+							<td><input type="text" value="${user.address }"
+								name="address"></td>
+						</tr>
+						<tr>
+							<td>phone</td>
+							<td><input type="text" value="${user.phone }" name="phone"
+								readonly></td>
+						</tr>
+						<tr>
+							<td>birth</td>
+							<td><input type="text" value="${user.birth }" name="birth"
+								readonly></td>
+						</tr>
+						<tr>
+							<td colspan="2"><input type="submit" value="회원정보수정" id="submit"></td>
+						</tr>
+						<tr>
+							<td colspan="2"><input type="button" value="뒤로가기" id="back" onclick="goBack()"></td>
+						</tr>
+					</table>
+				</div>
+			</form>
+		</div>
+		<jsp:include page="../../footer/footer.jsp" />
+	</div>
 </body>
 </html>

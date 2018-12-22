@@ -12,7 +12,6 @@
 	href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
 	integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
 	crossorigin="anonymous">
-d
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -256,7 +255,7 @@ d
 										</a>
 									</c:if>
 								</div>
-								<textarea cols="55" rows="3" id="review-content" readonly>${review.content }</textarea>
+								<textarea cols="55" rows="2" id="review-content" readonly>${review.content }</textarea>
 								<span class="write-date"> ${fn:substring(wdate,0,10) } </span>
 							</div>
 						</c:if>

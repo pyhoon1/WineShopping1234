@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,54 +42,19 @@
 				<table class="reTable">
 					<thead>
 						<tr>
-							<td>주문번호</td>
-							<td>구매상품</td>
-							<td>리뷰</td>
-							<td>결제금액</td>
+							<td>상품 명</td>
+							<td>리뷰내역</td>
 							<td>등록일자</td>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>15</td>
-							<td><strong>[론 Rhone]</strong> <strong>베르나르 마그레즈
-									Bernard Magrez</strong> <span>외 2</span></td>
-							<td>실망시키지 않는 마그레즈네요 많이 파시고 번창하세요 감사합니다.</td>
-							<td>69,000 원</td>
-							<td>2018.10.23</td>
-						</tr>
-						<tr>
-							<td>15</td>
-							<td><strong>[론 Rhone]</strong> <strong>베르나르 마그레즈
-									Bernard Magrez</strong> <span>외 2</span></td>
-							<td>실망시키지 않는 마그레즈네요 많이 파시고 번창하세요 감사합니다.</td>
-							<td>69,000 원</td>
-							<td>2018.10.23</td>
-						</tr>
-						<tr>
-							<td>15</td>
-							<td><strong>[론 Rhone]</strong> <strong>베르나르 마그레즈
-									Bernard Magrez</strong> <span>외 2</span></td>
-							<td>실망시키지 않는 마그레즈네요 많이 파시고 번창하세요 감사합니다.</td>
-							<td>69,000 원</td>
-							<td>2018.10.23</td>
-						</tr>
-						<tr>
-							<td>15</td>
-							<td><strong>[론 Rhone]</strong> <strong>베르나르 마그레즈
-									Bernard Magrez</strong> <span>외 2</span></td>
-							<td>실망시키지 않는 마그레즈네요 많이 파시고 번창하세요 감사합니다.</td>
-							<td>69,000 원</td>
-							<td>2018.10.23</td>
-						</tr>
-						<tr>
-							<td>15</td>
-							<td><strong>[론 Rhone]</strong> <strong>베르나르 마그레즈
-									Bernard Magrez</strong> <span>외 2</span></td>
-							<td>실망시키지 않는 마그레즈네요 많이 파시고 번창하세요 감사합니다.</td>
-							<td>69,000 원</td>
-							<td>2018.10.23</td>
-						</tr>
+						<c:forEach items="${reviewPage.reviewList }" var="review">
+							<tr>
+								<td>${review.productName}</td>
+								<td>${review.content }</td>
+								<td>${review.wdate}</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 
 				</table>
@@ -98,9 +64,24 @@
 
 				<!--페이지 마마 공통적으로 겹치는 페이징 부분  -->
 				<div class="paging">
-					<i class="fas fa-caret-left"></i> <span> <a href="#">1</a> <a
-						href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a>
-					</span> <i class="fas fa-caret-right"></i>
+					<c:if test="${reviewPage.hasProduct()}">
+						<div>
+							<c:if test="${reviewPage.startPage > 5 }">
+								<a href="myReview.do?pageNum=${reviewPage.startPage - 5  }&userId=${user.userId}"
+									class="pageNum">이전</a>
+							</c:if>
+
+							<c:forEach var="pageNum" begin="${reviewPage.startPage}"
+								end="${reviewPage.endPage }">
+								<a href="myReview.do?pageNum=${pageNum}&userId=${user.userId}" class="pageNum">${pageNum}</a>
+							</c:forEach>
+
+							<c:if test="${reviewPage.endPage < reviewPage.totalPages }">
+								<a href="myReview.do?pageNum=${reviewPage.startPage + 5 }&userId=${user.userId}"
+									class="pageNum">다음</a>
+							</c:if>
+						</div>
+					</c:if>
 				</div>
 			</div>
 		</div>
