@@ -4,12 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/adminHome.css">
 <title>Insert title here</title>
 </head>
 <body>
-<h1>어드민</h1>
-	<a href="adminMakeMatchFoodForm.do">매치푸트 만드는 폼</a>
-	<a href="adminMakeWineForm.do">와인 만드는 폼</a>
-	<a href="adminUser.do?pageNum=1">어드민 화면</a>
+	<div class="wrapper">
+		<div class="center">
+			<h1>어드민</h1>
+			<div class="category">
+				<a href="adminMakeMatchFoodForm.do">매치푸트 만드는 폼</a> 
+				<a href="adminMakeWineForm.do">와인 만드는 폼</a> 
+				<a href="adminUser.do?pageNum=1">어드민 화면</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -247,6 +247,14 @@ body{
     border-right: 0;
 }
 
+.sort a {
+	cursor: pointer;
+}
+
+.sort a:hover {
+	text-decoration: underline;
+}
+
 .search-List li {
     border: 1px solid rgba(0,0,0,0.3);
     float: left;
@@ -296,6 +304,11 @@ body{
 
 .search-info .right span {
     margin: 6px;
+}
+
+.wineType img, .wineNation img{
+    width: 25px;
+    height: 25px;
 }
 
 .paging {

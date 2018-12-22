@@ -101,8 +101,8 @@
                                     <span>${product.price}</span>
                                 </div>
                                 <div class="right">
-                                    <span><img src="${product.nationImg}"></span>
-                                    <span><img src="${pageContext.request.contextPath}/resources/img/miniWineImg/${product.wineKinds }.png"></span>
+                                    <span class="wineType"><img src="${pageContext.request.contextPath}/resources/img/miniWineImg/${product.wineKinds }.png"></span>
+                                    <span class="wineNation"><img src="${product.nationImg}"></span>
                                 </div>
                             </div>
                         </li>  

@@ -6,7 +6,7 @@ body{
     height: 100%;
     background-image: linear-gradient(to bottom right, #ED213A, #93291E);
     font-family: 'Cardo', serif;
-    font-family: 'Noto Serif KR', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     user-select: none;
 }
 
