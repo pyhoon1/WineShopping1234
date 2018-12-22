@@ -144,7 +144,11 @@ public class PaymentController {
 	@RequestMapping("/myPage.do")
 	public String paymentPage(Model model, @RequestParam("pageNum") int pageNum, @RequestParam("userId") int userId) {
 		PaymentPage paymentPage = paymentService.getPaymentList(pageNum, userId);
-
+		if(paymentPage.getPaymentList().isEmpty()) {
+			return "user/myPage";
+		}
+		int total = paymentService.getUserTotal(userId);
+		
 		for (int i = 0; i < paymentPage.getPaymentList().size(); i++) {
 			if (paymentPage.getPaymentList().get(i).getMatchFoodIdList() != null) {
 				String[] matchFoodId = paymentPage.getPaymentList().get(i).getMatchFoodIdList().split(",");
@@ -158,6 +162,7 @@ public class PaymentController {
 				model.addAttribute("matchFoodList" + paymentPage.getPaymentList().get(i).getPaymentId(), matchFoodList);
 			}
 		}
+		model.addAttribute("total", total);
 		model.addAttribute("paymentPage", paymentPage);
 		return "user/myPage";
 	}

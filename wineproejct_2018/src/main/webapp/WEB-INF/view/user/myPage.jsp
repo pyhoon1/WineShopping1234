@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,18 +16,14 @@
 			<div class="wrapper">
 				<h1 id="myP-title">My Page</h1>
 
- 
+
 				<div class="myP-header">
-					<span id="myP-name">${user.userName } 님</span> 
-					<span class="myP-info">
-						<a href="">[회원정보변경]</a>
-					</span> 
-					<span class="myP-info">
-						<a href="">[삭제]</a>
-					</span>
-					<span id="myP-grade">${user.rating }</span> 
-					<span class="myP-guide"> 
-						고객님의 등급:<br> 다음 등급업까지 남은 구매금액은 ${200000 - user.totalAmount } 원입니다.
+					<span id="myP-name">${user.userName } 님</span> <span
+						class="myP-info"> <a href="">[회원정보변경]</a>
+					</span> <span class="myP-info"> <a href="">[삭제]</a>
+					</span> <span id="myP-grade">${user.rating }</span> <span
+						class="myP-guide"> 고객님의 등급:<br> 다음 등급업까지 남은 구매금액은
+						${200000 - user.totalAmount } 원입니다.
 					</span>
 				</div>
 
@@ -54,77 +51,34 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
-									<p>15</p>
-									<p class="detail">상세보기</p>
-								</td>
-								<td><img src="img/wineImage/pink-wine-1964457_640.jpg"
-									alt="">
-									<div>
-										<strong>[론 Rhone]</strong> <strong>베르나르 마그레즈 Bernard
-											Magrez</strong> <span>수량:1</span> <span>어울리는 음식:</span> <span>그라나
-											파다노 치즈 1</span> <span>한우채끝 1+ 스테이크 1</span>
-									</div></td>
-								<td>2018.10.23</td>
-								<td>69,000</td>
-								<td>690</td>
-							</tr>
-							<tr>
-								<td>
-									<p>15</p>
-									<p class="detail">상세보기</p>
-								</td>
-								<td><img src="img/wineImage/pink-wine-1964457_640.jpg"
-									alt="">
-									<div>
-										<strong>[론 Rhone]</strong> <strong>베르나르 마그레즈 Bernard
-											Magrez</strong> <span>수량:1</span> <span>어울리는 음식:</span> <span>그라나
-											파다노 치즈 1</span> <span>한우채끝 1+ 스테이크 1</span>
-									</div></td>
-								<td>2018.10.23</td>
-								<td>69,000</td>
-								<td>690</td>
+							<c:forEach items="${paymentPage.paymentList }" var="payment">
 
-							</tr>
-							<tr>
-								<td>
-									<p>15</p>
-									<p>
-										<a href="">상세보기</a>
-									</p>
-								</td>
-								<td><img src="img/wineImage/pink-wine-1964457_640.jpg"
-									alt="">
-									<div>
-										<strong>[론 Rhone]</strong> <strong>베르나르 마그레즈 Bernard
-											Magrez</strong> <span>수량:1</span> <span>어울리는 음식:</span> <span>그라나
-											파다노 치즈 1</span> <span>한우채끝 1+ 스테이크 1</span>
-									</div></td>
-								<td>2018.10.23</td>
-								<td>69,000</td>
-								<td>690</td>
 
-							</tr>
-							<tr>
-								<td>
-									<p>15</p>
-									<p>
-										<a href="">상세보기</a>
-									</p>
-								</td>
-								<td><img src="img/wineImage/pink-wine-1964457_640.jpg"
-									alt="">
-									<div>
-										<strong>[론 Rhone]</strong> <strong>베르나르 마그레즈 Bernard
-											Magrez</strong> <span>수량:1</span> <span>어울리는 음식:</span> <span>그라나
-											파다노 치즈 1</span> <span>한우채끝 1+ 스테이크 1</span>
-									</div></td>
-								<td>2018.10.23</td>
-								<td>69,000</td>
-								<td>690</td>
+								<tr>
+									<td>
+										<p>${payment.paymentId }</p>
+										<p>
+											<a href="">상세보기</a>
+										</p>
+									</td>
+									<td><img src="${payment.productImg }" alt="">
+										<div>
+											<strong>${payment.productName }</strong> <span>수량:
+												${payment.productCount }</span> <span>어울리는 음식:</span>
+											<c:set value="matchFoodList${payment.paymentId}"
+												var="matchFoodList" />
+											<c:forEach var="matchFood"
+												items="${requestScope[matchFoodList]}">
+												<span>${matchFood.matchFoodName }</span>
+												<span>${matchFood.ex }</span>
+											</c:forEach>
+										</div></td>
+									<td>${payment.pDay }</td>
+									<td>${total }</td>
+									<td>${total/100 }</td>
 
-							</tr>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
@@ -132,16 +86,30 @@
 
 				<!--페이지 마마 공통적으로 겹치는 페이징 부분  -->
 				<div class="paging">
-                <i class="fas fa-caret-left"></i>
-                <span>
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                </span>
-                <i class="fas fa-caret-right"></i>
-            </div>
+					<c:if test="${productPage.hasProduct()}">
+						<div>
+							<a href="productList.do?pageNum=1" class="pageNum">처음</a>
+
+							<c:if test="${productPage.startPage > 5 }">
+								<a href="productList.do?pageNum=${productPage.startPage - 5  }"
+									class="pageNum">이전</a>
+							</c:if>
+
+							<c:forEach var="pageNum" begin="${productPage.startPage}"
+								end="${productPage.endPage }">
+								<a href="productList.do?pageNum=${pageNum}" class="pageNum">${pageNum}</a>
+							</c:forEach>
+
+							<c:if test="${productPage.endPage < productPage.totalPages }">
+								<a href="productList.do?pageNum=${productPage.startPage + 5 }"
+									class="pageNum">다음</a>
+							</c:if>
+
+							<a href="productList.do?pageNum=${productPage.totalPages }"
+								class="pageNum">마지막</a>
+						</div>
+					</c:if>
+				</div>
 			</div>
 		</div>
 		<jsp:include page="../../footer/footer.jsp" />
