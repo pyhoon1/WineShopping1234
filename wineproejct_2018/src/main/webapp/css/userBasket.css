@@ -210,7 +210,7 @@ body {
     display: inline-block;
   }
   /* 마이페이지 가운데 네비 버튼의 테두리 속성을 조정 */
-  .middleBtn{  border-width: 1px 0px; }
+  /* .middleBtn{  border-width: 1px 0px; } */
   
   /* 버튼이 클릭되었을 떄 버튼의 바꾸게 될 속성 */
   .btnR{
@@ -236,10 +236,19 @@ body {
   
   /* 버튼을 감싸는 div태그의 폭을 지정해야 가운데 정렬을 할 수 있다, 버튼 3개의 넓이는 총 304px  */
   .btnWrap {
-    margin: 30px auto; width: 305px; }
+    margin: 30px auto; width: 320px; }
   
   
   /* 속성을 숨기는 태그 */
   .hidden{
     display: none;
+  }
+  
+   .js-nav li {
+  	transition: 0.5s;
+  }
+  
+  .js-nav li:hover {
+  	background: rgb(181, 23, 0);
+  	color: white;
   }

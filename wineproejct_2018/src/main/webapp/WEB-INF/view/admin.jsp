@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/adminHome.css">
-<title>Insert title here</title>
+<title>어드민</title>
 </head>
 <body>
 	<div class="wrapper">

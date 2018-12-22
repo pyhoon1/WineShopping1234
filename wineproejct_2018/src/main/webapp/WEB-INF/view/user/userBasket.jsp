@@ -36,78 +36,84 @@
 			</div>
 
 
-
-
-			<div class="basketT">
-				<table>
-					<thead>
-						<tr>
-							<td>
-								<!-- 여백을 주기 위해-->
-							</td>
-							<td>상품정보</td>
-							<td>상품수량</td>
-							<td>상품금액</td>
-							<td>
-								<!-- 삭제 버튼을 담을 여백을 주기 위해-->
-							</td>
-
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${basketList }" var="basket">
+			<c:if test="${basketList.isEmpty() }">
+				<span>바구니에 상품이 없습니다.</span>
+			</c:if>
+			<c:if test="${!basketList.isEmpty() }">
+				<div class="basketT">
+					<table>
+						<thead>
 							<tr>
-								<td></td>
-								<td><img src="img/wineImage/pink-wine-1964457_640.jpg"
-									alt="">
-									<div>
-										<strong>${basket.productName } </strong> <span>어울리는 음식:</span>
-										<c:set value="matchFoodList${basket.basketId}"
-											var="matchFoodList" />
-										<c:forEach var="matchFood"
-											items="${requestScope[matchFoodList]}">
-											<span>${matchFood.matchFoodName }</span>
-											<span>${matchFood.ex }</span>
-										</c:forEach>
-									</div></td>
-								<td>${basket.productCount }</td>
-								<td>${basket.total }</td>
 								<td>
-									<p>
-										<a
-											href="deleteOne.do?userId=${user.userId }&basketId=${basket.basketId}">삭제</a>
-									</p>
+									<!-- 여백을 주기 위해-->
 								</td>
+								<td>상품정보</td>
+								<td>상품수량</td>
+								<td>상품금액</td>
+								<td>
+									<!-- 삭제 버튼을 담을 여백을 주기 위해-->
+								</td>
+
 							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${basketList }" var="basket">
+								<tr>
+									<td></td>
+									<td><img src="img/wineImage/pink-wine-1964457_640.jpg"
+										alt="">
+										<div>
+											<strong>${basket.productName } </strong> <span>어울리는
+												음식:</span>
+											<c:set value="matchFoodList${basket.basketId}"
+												var="matchFoodList" />
+											<c:forEach var="matchFood"
+												items="${requestScope[matchFoodList]}">
+												<span>${matchFood.matchFoodName }</span>
+												<span>${matchFood.ex }</span>
+											</c:forEach>
+										</div></td>
+									<td>${basket.productCount }</td>
+									<td>${basket.total }</td>
+									<td>
+										<p>
+											<a
+												href="deleteOne.do?userId=${user.userId }&basketId=${basket.basketId}">삭제</a>
+										</p>
+									</td>
+								</tr>
 
-						</c:forEach>
-
-
- 
-
-					</tbody>
-				</table>
-			</div>
+							</c:forEach>
 
 
 
 
-
-
-			<div class="payGuide">
-				<div>
-					<span>상품금액</span> <span>${total }</span>
+						</tbody>
+					</table>
 				</div>
-				<span class="operator">+</span>
-				<div>
-					<span>배송비</span> <span>3,000</span>
+
+
+
+
+
+
+				<div class="payGuide">
+					<div>
+						<span>상품금액</span> <span>${total }</span>
+					</div>
+					<span class="operator">+</span>
+					<div>
+						<span>배송비</span> <span>3,000</span>
+					</div>
+					<span class="operator">=</span>
+					<div>
+						<span>결제예정금액</span> <span>${total + 3000 }</span>
+					</div>
+					<div>
+						<a href="billingPage.do?userId=${user.userId}">주문하기</a>
+					</div>
 				</div>
-				<span class="operator">=</span>
-				<div>
-					<span>결제예정금액</span> <span>${total + 3000 }</span>
-				</div>
-				<div><a href="billingPage.do?userId=${user.userId}">주문하기</a></div>
-			</div>
+			</c:if>
 		</div>
 		<jsp:include page="../../footer/footer.jsp" />
 	</div>
