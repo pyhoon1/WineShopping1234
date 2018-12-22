@@ -235,23 +235,16 @@ public class AdminController {
 
 	@RequestMapping("/deleteReview.do")
 	@ResponseBody
-	public ModelAndView deleteReview(@RequestParam("reviewId") String reviewId, @RequestParam("userId") String userId,
-			Model model, @RequestParam("pageNum") int pageNum) {
+	public String deleteReview(@RequestParam("reviewId") String reviewId,
+			Model model, @RequestParam("pageNum") String pageNum) {
 
 		int rId = Integer.parseInt(reviewId);
-
-		int uId = Integer.parseInt(userId);
-
-		System.out.println("deleteReivew 1" + rId);
-		System.out.println("deleteReview 2" + uId);
-
 		adminService.deleteReview(rId);
 
-		ReviewtPage review = adminService.getReviewUser(uId, pageNum);
+		ReviewtPage review = adminService.getReviewList(Integer.parseInt(pageNum));
+		model.addAttribute("reviewPage", review);
 
-		model.addAttribute("reviewList", review);
-
-		return new ModelAndView("/admin/adminUserReviewView");
+		return "admin/adminReview";
 	}
 
 	@RequestMapping(value = "/updateMatchFood.do")
@@ -491,6 +484,9 @@ public class AdminController {
 		adminService.deleteUser(userId);
 		return "/admin/adminUserList";
 	}
+	
+	
+	
 
 	/*
 	 * @RequestMapping("/adminProductList.do") public String
