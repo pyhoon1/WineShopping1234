@@ -66,7 +66,7 @@ public class PaymentController {
 		List<Basket> basketList = basketService.getBasketList(userId);
 		if (basketList.isEmpty()) {
 			return "product/billingPage";
-		}
+		} 
 		List<Product> productList = new ArrayList<Product>();
 		int total = basketService.basketTotal(userId);
 		for (int i = 0; i < basketList.size(); i++) {
