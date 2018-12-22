@@ -19,7 +19,7 @@
 
 				<div class="myP-header">
 					<span id="myP-name">${user.userName } 님</span> <span
-						class="myP-info"> <a href="">[회원정보변경]</a>
+						class="myP-info"> <a href="updateForm.do?userId=${user.userId }">[회원정보변경]</a>
 					</span> <span class="myP-info"> <a href="">[삭제]</a>
 					</span> <span id="myP-grade">${user.rating }</span> <span
 						class="myP-guide"> 고객님의 등급:<br> 다음 등급업까지 남은 구매금액은

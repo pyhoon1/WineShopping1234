@@ -101,16 +101,21 @@ public class UserController {
 		return "user/checkMail";
 	}
 
-	@RequestMapping(value = "/updateForm.do", method = RequestMethod.POST)
-	public String updateForm() {
-		return "updateForm";
+	@RequestMapping("/updateForm.do")
+	public String updateForm(Model model, @RequestParam("userId") int userId) {
+		User user = userService.selectByUserId(userId);
+		model.addAttribute("user", user);
+		return "user/userUpdateForm";
 	}
 
 	@RequestMapping(value = "/updateUser.do", method = RequestMethod.POST)
-	public void updateUser(@RequestParam("userId") int userId, @RequestParam("password") String password,
+	public String updateUser( @RequestParam("userId") int userId, @RequestParam("password") String password,
 			@RequestParam("address") String address) {
-		userService.updateUser(new User(userId, password, address));
 
+		userService.updateUser(new User(userId, password, address));
+		
+		return "redirect:/myPage.do?userId="+userId+"&pageNum=1";
+				
 	}
 
 	// 회원 탈퇴 수정해야됨!!!!!
