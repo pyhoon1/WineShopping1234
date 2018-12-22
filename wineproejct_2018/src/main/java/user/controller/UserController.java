@@ -1,9 +1,12 @@
 package user.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,11 +121,50 @@ public class UserController {
 				
 	}
 
+	@RequestMapping("/passwordCheck")
+	public String passwordCheck() {
+		return "user/passwordCheck";
+	}
+	
 	// 회원 탈퇴 수정해야됨!!!!!
 	@RequestMapping(value = "/deleteUser.do", method = RequestMethod.POST)
-	public String deleteUser(int userId) {
-		userService.deleteUser(userId);
-		return "redirect:main";
+	public String deleteUser(HttpServletResponse resp,HttpServletRequest req, Model model, @RequestParam("userId") int userId, @RequestParam("password") String password) throws IOException {
+		
+		Map<String, Boolean> errors = new HashMap<String, Boolean>();
+		model.addAttribute("errors", errors);
+		
+		User user = userService.selectByUserId(userId);
+		
+		if(!user.getPassword().equals(password)) {
+			errors.put("NotMatchPassword", true);
+			System.out.println(user.getPassword());
+			System.out.println(password);
+			model.addAttribute("user", user);
+			return "error/deleteUserErrorPage";
+		}
+		else if(!errors.isEmpty()) {
+			errors.put("badError", true);
+			return "error/deleteUserErrorPage";
+		}
+		else {
+			
+			PrintWriter out = resp.getWriter();
+			
+			resp.setContentType("text/html; charset=utf-8");
+			out.println("<script language='javascript'>");
+			out.println("alert('탈퇴 완료')");
+			out.println("</script>");
+			out.flush();
+			
+			userService.deleteUser(userId);
+			
+			HttpSession session = req.getSession(false);
+			if (session != null) {
+				session.invalidate();
+			}
+			
+			return "redirect:/main.do";
+		}
 		// 탈퇴하면 어디론가 감
 	}
 

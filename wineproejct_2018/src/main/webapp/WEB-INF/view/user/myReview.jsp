@@ -16,7 +16,7 @@
 			<div class="wrapper">
 				<!--페이지 마마 공통적으로 겹치는 헤더 부분  -->
 				<h1 id="myP-title">My Page</h1>
-
+				<h2 id="sub-title">내 리뷰 보기</h2>
 				<div class="myP-header">
 					<span id="myP-name">${user.userName }</span> <span class="myP-info"><a
 						href="">[회원정보변경]</a></span> <span class="myP-info"><a href="">[삭제]</a></span>

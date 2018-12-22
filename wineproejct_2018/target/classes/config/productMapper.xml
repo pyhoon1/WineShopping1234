@@ -8,7 +8,7 @@
  	<select id="getProductList" parameterType="java.util.Map"
 		resultType="Product">
 		select * from product order by productId desc limit #{startRow}, #{size};
-	</select>
+	</select> 
 	<select id="getProduct" parameterType="int" resultType="Product">
 		select *
 		from product where productId = #{productId}
@@ -19,8 +19,13 @@
 	</select>
 	<select id="manySaleProduct" resultType="Product">
 		select * from product
-		order by count desc limit 0, 5
+		order by count desc limit 0,5
 	</select>
+	<select id="newOpenProduct" resultType="Product">
+		select * from product
+		order by productId desc limit 0,5
+	</select>
+	
 	<select id="searchWine" parameterType="java.util.Map" resultType="Product">
 		select * from product
 		<if	test="condition != null and conditionType == 'nation' and startPrice == null and endPrice == null">

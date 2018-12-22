@@ -24,12 +24,12 @@
                     </tr>
                     <tr>
                         <td class="title">아이디</td>
-                        <td class="input"><input type="text" name="loginId" placeholder="아이디"></td>
+                        <td class="input"><input type="text" name="loginId" placeholder="아이디"><span class="alert">6~12자리로 입력해주세요</span></td>
 
                     </tr>
                     <tr>
                         <td class="title">비밀번호</td>
-                        <td class="input"><input type="password" name="password" placeholder="비밀번호"></td>
+                        <td class="input"><input type="password" name="password" placeholder="비밀번호"><span class="alert">소문자, 대문자, 특수기호 포함 7자 이상 써주세요</span></td>
 
                     </tr>
                     <tr>

@@ -6,28 +6,28 @@
 
 
 <mapper namespace="payment.dao.PaymentMapper">
- 	<select id="getPaymentList" parameterType="java.util.Map" resultType="Payment">
-		select * from payment where userId = #{userId} order by paymentId desc limit #{startRow}, #{size}
+	<select id="getPaymentList" parameterType="java.util.Map"
+		resultType="Payment">
+		select * from payment where userId = #{userId} order by
+		paymentId desc limit #{startRow}, #{size}
 	</select>
 	<select id="getPaymentCount" resultType="int" parameterType="int">
-		select * from payment where userId = #{userId}
-	</select>
-	<select id="paymentList" parameterType="int" resultType="Payment">
-		select * from payment where userId = #{userId}
-	</select>
-	<insert id="productPayment" parameterType="PaymentProductRequest">
-		insert into payment(userId, productId, productName,
-		productPrice, productCount, productImg, matchFoodList, matchFoodCount,
-		method)
-		values(#{userId},#{productId},#{productName},#{productPrice},#{productCount},#{productImg},#{matchFoodList},#{matchFoodCount},#{method})
-	</insert>
-	<insert id="foodPayment" parameterType="PaymentFoodRequest">
-		insert into payment(userId, matchFoodId, productName,
-		productPrice, productCount, productImg, method)
-		values(#{userId},#{matchFoodId},#{productName},#{productPrice},#{productCount},#{productImg},#{method})
-	</insert>
-
-	<select id="getUserTotal" resultType="int" parameterType="int">
-		select sum(total) from payment userId = #{userId}
+		select count(userId) from payment where userId = #{userId}
 	</select> 
+	<select id="paymentList" parameterType="int" resultType="Payment">
+		select *
+from payment where userId = #{userId}
+	</select>
+	<select id="getUserTotal" resultType="int" parameterType="int">
+		select
+		sum(totalAmount) from user where userId = #{userId}
+	</select>
+	<select id="payment">
+		insert into payment(userId, productId, productName,
+		productPrice,
+		productCount, productImg, matchFoodIdList, matchFoodCount,
+		method, total)
+		values(#{userId},#{productId},#{productName},#{productPrice},#{productCount},#{productImg},#{matchFoodIdList},#{matchFoodCount},#{method}, #{total})
+	</select>
+
 </mapper>

@@ -64,7 +64,7 @@ table td {
 }
 
 .input {
-    width: 400px;
+    width: 540px;
 }
 
 .input input {
@@ -91,6 +91,11 @@ table td {
 
 input[type="submit"], button {
     cursor: pointer;
+}
+
+.alert {
+	font-size: 15px;
+    margin-left: 5px;
 }
 
 *:focus {
