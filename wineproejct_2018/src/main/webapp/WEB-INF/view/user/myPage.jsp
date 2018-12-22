@@ -15,11 +15,10 @@
 		<div class="content">
 			<div class="wrapper">
 				<h1 id="myP-title">My Page</h1>
-
-
 				<div class="myP-header">
 					<span id="myP-name">${user.userName } 님</span> <span
-						class="myP-info"> <a href="updateForm.do?userId=${user.userId }">[회원정보변경]</a>
+						class="myP-info"> <a
+						href="updateForm.do?userId=${user.userId }">[회원정보변경]</a>
 					</span> <span class="myP-info"> <a href="">[삭제]</a>
 					</span> <span id="myP-grade">${user.rating }</span> <span
 						class="myP-guide"> 고객님의 등급:<br> 다음 등급업까지 남은 구매금액은
@@ -30,7 +29,7 @@
 				<div class="btnWrap">
 					<ul class="js-nav">
 						<li class="myP-btn order"><a
-							href="myPage.do?userId=${user.userId }">주문조회</a></li>
+							href="myPage.do?userId=${user.userId}&pageNum=1">주문조회</a></li>
 						<li class="myP-btn middleBtn" id="basket"><a
 							href="getBasketList.do?userId=${user.userId}">장바구니</a></li>
 						<li class="myP-btn" id="review"><a
@@ -86,27 +85,29 @@
 
 				<!--페이지 마마 공통적으로 겹치는 페이징 부분  -->
 				<div class="paging">
-					<c:if test="${productPage.hasProduct()}">
+					<c:if test="${paymentPage.hasProduct()}">
 						<div>
-							<a href="productList.do?pageNum=1" class="pageNum">처음</a>
 
-							<c:if test="${productPage.startPage > 5 }">
-								<a href="productList.do?pageNum=${productPage.startPage - 5  }"
+							<c:if test="${paymentPage.startPage > 5 }">
+								<a
+									href="myPage.do?userId=${user.userId}&pageNum=${paymentPage.startPage - 5  }"
 									class="pageNum">이전</a>
 							</c:if>
 
-							<c:forEach var="pageNum" begin="${productPage.startPage}"
-								end="${productPage.endPage }">
-								<a href="productList.do?pageNum=${pageNum}" class="pageNum">${pageNum}</a>
+							<c:forEach var="pageNum" begin="${paymentPage.startPage}"
+								end="${paymentPage.endPage }">
+								<a href="myPage.do?userId=${user.userId}&pageNum=${pageNum}"
+									class="pageNum">${pageNum}</a>
 							</c:forEach>
 
-							<c:if test="${productPage.endPage < productPage.totalPages }">
-								<a href="productList.do?pageNum=${productPage.startPage + 5 }"
+							<c:if test="${paymentPage.endPage < paymentPage.totalPages }">
+								<a
+									href="myPage.do?userId=${user.userId}&pageNum=${paymentPage.startPage
+									+ 5 }"
 									class="pageNum">다음</a>
 							</c:if>
 
-							<a href="productList.do?pageNum=${productPage.totalPages }"
-								class="pageNum">마지막</a>
+
 						</div>
 					</c:if>
 				</div>
