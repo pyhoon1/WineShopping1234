@@ -125,7 +125,7 @@ public class AdminController {
 	@RequestMapping("/adminReview.do")
 	public String adminReview(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
 		ReviewtPage review = adminService.getReviewList(pageNum);
-		model.addAttribute("reviewtPage", review);
+		model.addAttribute("reviewPage", review);
 
 		return "/admin/adminReview";
 	}

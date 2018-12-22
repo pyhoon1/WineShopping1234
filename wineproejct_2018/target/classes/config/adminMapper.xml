@@ -19,13 +19,13 @@
 		CONCAT('%',#{condition},'%') or email LIKE
 		CONCAT('%',#{condition},'%') limit #{startRow}, #{size}
 	</select>
-	<update id="updateUser" parameterType="User">
+	<!-- <update id="updateUser" parameterType="User">
 		update user set
 		loginId=#{loginId} , password=#{password}, userName=#{userName},
 		email=#{email}, address=#{address}, phone=#{phone}, birth=#{birth}
 		where
 		userId=#{userId}
-	</update>
+	</update> -->
 	<select id="getUserView" resultType="User" parameterType="int">
 		select
 		* from User where userId = #{userId}
