@@ -82,20 +82,10 @@
 										</p>
 									</td>
 								</tr>
-
 							</c:forEach>
-
-
-
-
 						</tbody>
 					</table>
 				</div>
-
-
-
-
-
 
 				<div class="payGuide">
 					<div>
