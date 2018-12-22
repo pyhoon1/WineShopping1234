@@ -51,7 +51,7 @@ public class BasketController {
 				String[] matchFoodCount = basketList.get(i).getMatchFoodCount().split(",");
 				List<MatchFood> matchFoodList = new ArrayList<MatchFood>();
 				for (int j = 0; j < matchFoodId.length; j++) {
-					if (!matchFoodId.equals("0")) {
+					if (!matchFoodCount.equals("0")) {
 						MatchFood matchFood = matchFoodService.getMatchFood(matchFoodId[j]);
 						matchFood.setCount(matchFoodCount[j]);
 						matchFoodList.add(matchFood);

@@ -27,7 +27,7 @@ public class UserController {
 	public String loginErroPage() {
 		return "redirect:/main.do";
 	}
- 
+
 	@RequestMapping("/logout.do")
 	public String logout(HttpServletRequest req) {
 		HttpSession session = req.getSession(false);
@@ -103,19 +103,26 @@ public class UserController {
 
 	@RequestMapping("/updateForm.do")
 	public String updateForm(Model model, @RequestParam("userId") int userId) {
+
 		User user = userService.selectByUserId(userId);
+
 		model.addAttribute("user", user);
 		return "user/userUpdateForm";
 	}
 
 	@RequestMapping(value = "/updateUser.do", method = RequestMethod.POST)
-	public String updateUser( @RequestParam("userId") int userId, @RequestParam("password") String password,
-			@RequestParam("address") String address) {
+	public String updateUser(@RequestParam("userId") int userId, @RequestParam("password") String password,
+			@RequestParam("address") String address, HttpServletRequest req) {
 
 		userService.updateUser(new User(userId, password, address));
-		
-		return "redirect:/myPage.do?userId="+userId+"&pageNum=1";
-				
+		User user = userService.selectByUserId(userId);
+		HttpSession session = req.getSession(false);
+		if (session != null) {
+			session.invalidate();
+		}
+		req.getSession().setAttribute("user", user);
+		return "redirect:/myPage.do?userId=" + userId + "&pageNum=1";
+
 	}
 
 	// 회원 탈퇴 수정해야됨!!!!!
@@ -126,10 +133,6 @@ public class UserController {
 		// 탈퇴하면 어디론가 감
 	}
 
-	
-
-	
-	
 	@RequestMapping("/userLoginIdFindForm.do")
 	public String userLoginIdFindForm() {
 		return "user/userLoginIdFindForm";

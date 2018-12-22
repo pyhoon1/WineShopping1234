@@ -35,17 +35,13 @@ public class PaymentController {
 	@Autowired
 	private ProductService productService;
 
-	// 이름 결제시간 수단 금액
+	// 결제
 	@RequestMapping("/payment.do")
 	public String payment(Model model, @RequestParam("name") String name, @RequestParam("paymentType") String method,
 			@RequestParam("total") int total, @RequestParam("userId") int userId) {
-		Map<String, Object> receipt = new HashMap<String, Object>();
-
-		model.addAttribute("receipt", receipt);
 		List<Basket> basketList = basketService.selectByUserId(userId);
 		for (int i = 0; i < basketList.size(); i++) {
-			paymentService
-					.payment(new Payment(userId, basketList.get(i).getProductId(), basketList.get(i).getProductName(),
+			paymentService.payment(new Payment(userId, basketList.get(i).getProductId(), basketList.get(i).getProductName(),
 							basketList.get(i).getProductPrice(), basketList.get(i).getProductCount(),
 							basketList.get(i).getProductImg(), basketList.get(i).getMatchFoodIdList(),
 							basketList.get(i).getMatchFoodCount(), method, basketList.get(i).getTotal()));
@@ -60,12 +56,7 @@ public class PaymentController {
 		} else if (userTotal > 200000) {
 			userService.RatingUpdate(userId, "C");
 		} else {
-
 		}
-		receipt.put("name", name);
-		receipt.put("method", method);
-		receipt.put("total", total);
-		model.addAttribute("receipt", receipt);
 		basketService.deleteAll(userId);
 		return "redirect:/main.do";
 	}
@@ -75,7 +66,7 @@ public class PaymentController {
 		List<Basket> basketList = basketService.getBasketList(userId);
 		if (basketList.isEmpty()) {
 			return "product/billingPage";
-		}
+		} 
 		List<Product> productList = new ArrayList<Product>();
 		int total = basketService.basketTotal(userId);
 		for (int i = 0; i < basketList.size(); i++) {
