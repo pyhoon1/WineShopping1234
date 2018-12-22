@@ -20,7 +20,6 @@ public class PaymentDaoImplJDBC implements PaymentDao {
 		page.put("startRow", startRow);
 		page.put("size", size);
 		page.put("userId", userId);
-		System.out.println("asdf");
 		List<Payment> paymentList = paymentMapper.getPaymentList(page);
 		return paymentList;
 	}
