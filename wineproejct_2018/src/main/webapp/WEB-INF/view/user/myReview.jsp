@@ -16,6 +16,7 @@
 			<div class="wrapper">
 				<!--페이지 마마 공통적으로 겹치는 헤더 부분  -->
 				<h1 id="myP-title">My Page</h1>
+				<h2 id="sub-title">주문조회</h2>
 
 				<div class="myP-header">
 					<span id="myP-name">${user.userName }</span> <span class="myP-info"><a

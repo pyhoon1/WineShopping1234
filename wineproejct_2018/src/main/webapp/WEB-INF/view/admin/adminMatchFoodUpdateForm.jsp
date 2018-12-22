@@ -88,8 +88,7 @@
 								success : function(result) {
 									if (result == "Y") {
 										alert("상품 수정에 성공했습니다.");
-										location.href = "adminmatchFoodView.do?matchFoodId="
-												+ $('#matchfoodId').val();
+										location.href = "adminMatchFood.do?pageNum=1";
 									} else {
 										alert("상품 수정에 실패했습니다.")
 										return false;
@@ -117,8 +116,7 @@
 							success : function(result) {
 								if (result == "Y") {
 									alert("상품 수정에 성공했습니다.");
-									location.href = "adminmatchFoodView.do?matchFoodId="
-											+ $('#matchfoodId').val();
+									location.href = "adminMatchFood.do?pageNum=1";
 								} else {
 									alert("상품 수정에 실패했습니다.")
 									return false;
@@ -186,7 +184,7 @@
 			id="matchFoodId" name="matchFoodId" value="${matchFood.matchFoodId }">
 		<div class="wrapper">
 			<table>
-				<caption>부가 상품 등록</caption>
+				<caption>부가 상품 수정</caption>
 				<tr>
 					<td>상품명</td>
 					<td><input type="text" id="matchFoodName" name="matchFoodName"

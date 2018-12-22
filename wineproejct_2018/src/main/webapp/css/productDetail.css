@@ -124,17 +124,19 @@ body{
 }
 
 .payment-submit {
-    display: flex;
+   	display: inline-block;
     margin-bottom: 100px;
 }
 
 .payment-submit #basket {
     border: 1px solid #f2534b;
+        width: 255px;
 }
 
 .payment-submit #buy {
     border: 1px solid #f2534b;
     background-color: #f2534b;
+    width: 255px;
 }
 
 .price {

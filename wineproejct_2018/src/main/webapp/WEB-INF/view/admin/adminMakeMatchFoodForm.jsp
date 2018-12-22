@@ -7,36 +7,36 @@
 <title>Insert title here</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	
 </script>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/adminMakeMatchFoodForm.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/adminMakeMatchFoodForm.css">
 <script>
+	$(function() {
+		function readURL(input) {
 
-$(function(){
-	function readURL(input) {
-		 
-	    if (input.files && input.files[0]) {
-	        var reader = new FileReader();
-	 
-	        reader.onload = function (e) {
-	            $('#img').attr('src', e.target.result);
-	        }
-	 
-	        reader.readAsDataURL(input.files[0]);
-	    }
-	}
-	 
-	$("#uploadFile").change(function(){
-		if(document.getElementById("uploadFile").files.length == 0){
-			
-			$('#img').removeAttr("src");
-				
-		}else{
-			 readURL(this);	
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+
+				reader.onload = function(e) {
+					$('#img').attr('src', e.target.result);
+				}
+
+				reader.readAsDataURL(input.files[0]);
+			}
 		}
-	});	
-	
-	
-})
+
+		$("#uploadFile").change(function() {
+			if (document.getElementById("uploadFile").files.length == 0) {
+
+				$('#img').removeAttr("src");
+
+			} else {
+				readURL(this);
+			}
+		});
+
+	})
 	function insertMatchFood() {
 		if (confirm("상품을 등록하시겠습니까?")) {
 			if ($('#matchFoodName').val() == "") {
@@ -125,8 +125,8 @@ $(function(){
 		$('.nation option[value=' + $('#search').val() + ']').attr('selected',
 				'selected');
 	};
-	
-	function goBack () {
+
+	function goBack() {
 		window.history.back();
 	}
 </script>
@@ -163,7 +163,6 @@ $(function(){
 					<td>상품 사진</td>
 					<td colspan="2"><input type="file" id="uploadFile"
 						name="uploadFile" accept="image/*"></td>
-						<td><img src="" id="img"></td>
 				</tr>
 				<tr>
 					<td>잘맞는 와인 타입</td>
@@ -188,6 +187,9 @@ $(function(){
 				<button>
 					<a href="#" onclick="goBack();">리스트로 돌아가기</a>
 				</button>
+			</div>
+			<div class="matchFoodImg">
+				<img src="" id="img">
 			</div>
 		</div>
 	</form>

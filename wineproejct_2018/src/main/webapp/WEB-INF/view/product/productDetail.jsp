@@ -205,7 +205,7 @@
 										console.log(matchFoodIdList)
 									</script>
 									<div class="items">
-										<img src="${match.img }">
+										<img src="${matchFood.img }">
 										<div class="item-info">
 											<span>${matchFood.matchFoodName}</span> <span
 												id="matchFoodPrice">${matchFood.price }</span>
@@ -213,7 +213,7 @@
 										<div class="match-food-amount">
 											<span id="item-amount"> <span>수량 : </span> <input
 												type="text" value=0 id="matchFoodId${matchFood.matchFoodId}"
-												class="amount">
+												class="amount" readonly>
 												<button class="plus">
 													<i class="far fa-plus-square"></i>
 												</button>
@@ -248,7 +248,7 @@
 							<div class="review-list">
 								<div class="review-header">
 									<span><strong>${review.loginId }</strong></span>
-									<c:if test="${user.loginId == review.loginId }">
+									<c:if test="${user.userId == review.userId }">
 										<a
 											href="reviewDelete.do?userId=${user.userId }&productId=${product.productId}&reviewId=${review.reviewId }&pageNum=1">
 											<i class="fas fa-edit"></i>
@@ -260,27 +260,29 @@
 							</div>
 						</c:if>
 					</c:forEach>
-					<div class="paging">
-						<c:if test="${reviewPage.startPage > 5 }">
-							<a
-								href="productView.do?productId=${product.productId}&pageNum=${reviewPage.startPage - 5  }"
-								class="pageNum">이전</a>
-						</c:if>
-						<c:forEach var="pageNum" begin="${reviewPage.startPage}"
-							end="${reviewPage.endPage}">
-							<a
-								href="productView.do?productId=${product.productId}&pageNum=${pageNum}"
-								class="pageNum">${pageNum}</a>
-						</c:forEach>
-						<c:if test="${productPage.endPage < productPage.totalPages }">
-							<a
-								href="productView.do?productId=${product.productId}&pageNum=${reviewPage.startPage + 5 }"
-								class="pageNum">다음</a>
-						</c:if>
-					</div>
+					<c:if test="${reviewPage.hasProduct() }">
+						<div class="paging">
+							<c:if test="${reviewPage.startPage > 5 }">
+								<a
+									href="productView.do?productId=${product.productId}&pageNum=${reviewPage.startPage - 5  }"
+									class="pageNum">이전</a>
+							</c:if>
+							<c:forEach var="pageNum" begin="${reviewPage.startPage}"
+								end="${reviewPage.endPage}">
+								<a
+									href="productView.do?productId=${product.productId}&pageNum=${pageNum}"
+									class="pageNum">${pageNum}</a>
+							</c:forEach>
+							<c:if test="${productPage.endPage < productPage.totalPages }">
+								<a
+									href="productView.do?productId=${product.productId}&pageNum=${reviewPage.startPage + 5 }"
+									class="pageNum">다음</a>
+							</c:if>
+						</div>
+					</c:if>
 				</div>
 			</div>
-		</div>  
+		</div>
 		<jsp:include page="../../footer/footer.jsp" />
 	</div>
 </body>
