@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,6 +21,7 @@
 	
 </script>
 <script>
+.
 	function warningReview(state, reviewId, userId) {
 		var information = {
 			'state' : state,
@@ -73,7 +75,7 @@
 		<h1>Welcome to admin page!</h1>
 		<div class="nav">
 			<ul>
-<li id="user"><a href="adminUser.do?pageNum=1">유저 관리</a></li>
+				<li id="user"><a href="adminUser.do?pageNum=1">유저 관리</a></li>
 				<li id="product"><a href="adminProduct.do?pageNum=1">상품 관리</a></li>
 				<li id="product"><a href="adminMatchFood.do?pageNum=1">잘 맞는 음식 관리</a></li>
 				<li id="review"><a href="adminReview.do?pageNum=1">리뷰 관리</a></li>
@@ -101,7 +103,8 @@
 								<td>${review.productName }</td>
 								<td>${review.loginId }</td>
 								<td>${review.content}</td>
-								<td>${review.wdate }</td>
+								<td><fmt:parseDate value="${review.wdate }" var="noticePostDate" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+								<fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd"/></td>
 							</tr>
 
 						</c:forEach>

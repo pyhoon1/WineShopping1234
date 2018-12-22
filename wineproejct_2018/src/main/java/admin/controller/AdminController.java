@@ -1,5 +1,6 @@
 package admin.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import admin.service.AdminService;
 import admin.upload.AdminUpload;
+import matchfood.service.MatchFoodService;
 import matchfood.vo.MatchFood;
 import matchfood.vo.MatchFoodPage;
 import payment.service.PaymentService;
@@ -42,7 +44,9 @@ public class AdminController {
 	private PaymentService paymentSevice;
 	@Autowired
 	private ReviewService reviewService;
-	
+	@Autowired
+	private MatchFoodService matchFoodService;
+
 	@RequestMapping("/adminHome.do")
 	public String adminHome() {
 		return "admin";
@@ -71,30 +75,28 @@ public class AdminController {
 
 		return "/admin/admin";
 	}
-	
+
 	@RequestMapping("/userPaymentPopup.do")
-	public String adminPaymentPopup (Model model, @RequestParam("userId") int userId,
-			@RequestParam("pageNum")int pageNum) {
-		
+	public String adminPaymentPopup(Model model, @RequestParam("userId") int userId,
+			@RequestParam("pageNum") int pageNum) {
+
 		PaymentPage payment = paymentSevice.getPaymentList(pageNum, userId);
-		    
-	    model.addAttribute("paymentPage", payment);
-	    model.addAttribute("userId" , userId);
-		
-		
+
+		model.addAttribute("paymentPage", payment);
+		model.addAttribute("userId", userId);
+
 		return "admin/userPopup";
 	}
-	
+
 	@RequestMapping("/userReviewPopup.do")
-	public String adminReviewPopup (Model model, @RequestParam("userId") int userId
-			,@RequestParam("pageNum")int pageNum) {
-		
+	public String adminReviewPopup(Model model, @RequestParam("userId") int userId,
+			@RequestParam("pageNum") int pageNum) {
+
 		ReviewtPage review = reviewService.userReviewList(userId, pageNum);
-		
-		
-		 model.addAttribute("reviewPage", review);
-		 model.addAttribute("userId" , userId);
-		
+
+		model.addAttribute("reviewPage", review);
+		model.addAttribute("userId", userId);
+
 		return "admin/userPopup";
 	}
 
@@ -133,6 +135,17 @@ public class AdminController {
 	@RequestMapping("/adminPayment.do")
 	public String adminPayment(Model model, @RequestParam(value = "pageNum", required = false) int pageNum) {
 		PaymentPage payment = adminService.getPaymentList(pageNum);
+		for (int i = 0; i < payment.getPaymentList().size(); i++) {
+			String[] matchFoodIdList = payment.getPaymentList().get(i).getMatchFoodIdList().split(",");
+			List<MatchFood> matchFoodList = new ArrayList<MatchFood>();
+			for (int j = 0; j < matchFoodIdList.length; j++) {
+
+				MatchFood matchFood = matchFoodService.getMatchFood(matchFoodIdList[j]);
+
+				matchFoodList.add(matchFood);
+			}
+			model.addAttribute("matchFoodList" + payment.getPaymentList().get(i).getPaymentId(), matchFoodList);
+		}
 		model.addAttribute("paymentPage", payment);
 
 		return "/admin/adminPayment";
@@ -478,7 +491,6 @@ public class AdminController {
 		adminService.deleteUser(userId);
 		return "/admin/adminUserList";
 	}
-	
 
 	/*
 	 * @RequestMapping("/adminProductList.do") public String

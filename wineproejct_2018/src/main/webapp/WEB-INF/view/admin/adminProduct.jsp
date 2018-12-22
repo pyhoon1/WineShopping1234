@@ -143,8 +143,6 @@
 
 					<c:if test="${productPage.hasProduct()}">
 						<div>
-							<a href="adminProduct.do?pageNum=1" class="pageNum">처음</a>
-
 							<c:if test="${productPage.startPage > 5 }">
 								<a href="adminProduct.do?pageNum=${productPage.startPage - 5  }"
 									class="pageNum">이전</a>
@@ -159,9 +157,6 @@
 								<a href="adminProduct.do?pageNum=${productPage.startPage + 5 }"
 									class="pageNum">다음</a>
 							</c:if>
-
-							<a href="adminProduct.do?pageNum=${productPage.totalPages }"
-								class="pageNum">마지막</a>
 						</div>
 					</c:if>
 				</div>
