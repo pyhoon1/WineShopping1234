@@ -35,7 +35,7 @@
 		select *
 		from User where loginId = #{loginId} AND password =
 		#{password}
-	</select>
+	</select> 
 	<!--아이디 찾기 -->
 	<select id="userLoginIdFind" parameterType="User" resultType="User">
 		select * from user where userName = #{userName} AND email = #{email}
@@ -50,11 +50,11 @@
 	</update>
 	<update id="RatingUpdate" parameterType="java.util.Map">
 		update User set rating =
-		${rating} where userId = #{userId}
+		#{rating} where userId = #{userId}
 	</update>
-	<update id="totalAmountUpdate" parameterType="User">
+	<update id="totalAmountUpdate" parameterType="java.util.Map">
 		update User set
-		totalAmount = #{totalAmount} where userId = #{userId}
+		totalAmount = totalAmount + #{total} where userId = #{userId}
 	</update>
 
 	<update id="userStateUpdate" parameterType="String">
