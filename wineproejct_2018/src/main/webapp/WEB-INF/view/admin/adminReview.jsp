@@ -91,6 +91,7 @@
 							<td>유저 아이디</td>
 							<td>내용</td>
 							<td>작성일</td>
+							<td>활성화 여부</td>
 							<td>리뷰 삭제</td>
 						</tr>
 					</thead>
@@ -104,6 +105,7 @@
 								<td>${review.content}</td>
 								<td><fmt:parseDate value="${review.wdate }" var="noticePostDate" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
 								<fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd"/></td>
+								<td>${review.state }</td>
 								<td><input type="button" onclick="deleteReview('${review.reviewId}')" value="리뷰 삭제"></td>
 							</tr>
 
