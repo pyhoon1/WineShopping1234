@@ -73,6 +73,9 @@ public class PaymentController {
 	@RequestMapping("/billingPage.do")
 	public String billingPage(Model model, @RequestParam("userId") int userId) {
 		List<Basket> basketList = basketService.getBasketList(userId);
+		if(basketList.isEmpty()) {
+			return "product/billingPage";
+		}
 		List<Product> productList = new ArrayList<Product>();
 		int total = basketService.basketTotal(userId);
 		for (int i = 0; i < basketList.size(); i++) {
@@ -102,7 +105,7 @@ public class PaymentController {
 			@RequestParam("productPrice") int productPrice, @RequestParam("productCount") int productCount,
 			@RequestParam("productImg") String productImg, @RequestParam("matchFoodIdList") String matchFoodIdList,
 			@RequestParam("matchFoodCount") String matchFoodCount, @RequestParam("total") int total) {
-
+		
 		Basket basket = new Basket(userId, productId, productName, productPrice, productCount, productImg,
 				matchFoodIdList, matchFoodCount, total);
 		if (basket.getMatchFoodIdList() != null) {
