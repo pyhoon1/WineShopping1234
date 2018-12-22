@@ -30,7 +30,7 @@ public class BasketController {
 	private ProductService productService;
 	@Autowired
 	private UserService userService;
-	
+
 	@RequestMapping("/userBasket.do")
 	public String goUserbasket() {
 		return "user/userBasket";
@@ -39,6 +39,9 @@ public class BasketController {
 	@RequestMapping("/getBasketList.do")
 	public String getBasketList(Model model, @RequestParam("userId") int userId) {
 		List<Basket> basketList = basketService.getBasketList(userId);
+		if (basketList.isEmpty()) {
+			return "user/userBasket";
+		}
 		List<Product> productList = new ArrayList<Product>();
 		int total = basketService.basketTotal(userId);
 		for (int i = 0; i < basketList.size(); i++) {
@@ -57,28 +60,25 @@ public class BasketController {
 				}
 			}
 		}
-		
+
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 		model.addAttribute("errors", errors);
-		
+
 		User userCheck = userService.selectByUserId(userId);
-		
-		if(userCheck == null) {
+
+		if (userCheck == null) {
 			errors.put("NotFoundUser", true);
 			return "error/myPageErrorPage";
 		}
-		if(!errors.isEmpty()) {
+		if (!errors.isEmpty()) {
 			errors.put("badError", true);
 			return "error/myPageErrorPage";
 		}
-		
+
 		model.addAttribute("total", total);
 		model.addAttribute("basketList", basketList);
 		return "user/userBasket";
 	}
-	
-
-
 
 	@RequestMapping("/insertProductMatchFood.do")
 	public String insertProductMatchFood(@RequestParam("userId") int userId, @RequestParam("productId") int productId,
@@ -94,7 +94,7 @@ public class BasketController {
 	@RequestMapping("/deleteOne")
 	public String deleteOne(@RequestParam("basketId") int basketId, @RequestParam("userId") int userId) {
 		basketService.deleteOne(basketId);
-		return "redirect:/getBasketList.do?userId="+userId;
+		return "redirect:/getBasketList.do?userId=" + userId;
 	}
 
 	@RequestMapping("/deleteAll.do")
