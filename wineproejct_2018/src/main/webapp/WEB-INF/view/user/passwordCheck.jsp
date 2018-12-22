@@ -18,7 +18,6 @@
 					<td>
 						<input type="password" name="password" placeholder="비밀번호 확인">
 						<input type="submit" value="확인">
-						
 					</td>
 				</tr>
 			</table>
