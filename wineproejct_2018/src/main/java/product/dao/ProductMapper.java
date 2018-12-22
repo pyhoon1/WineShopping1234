@@ -15,10 +15,13 @@ public interface ProductMapper {
 	public int getProductCount();
 
 	public List<Product> manySaleProduct();
+	
+	public List<Product> newOpenProduct();
 
 	public List<Product> searchWine(Map<String, Object> page);
 	
 	public int searchWineCount();
+
 
 	 
 	

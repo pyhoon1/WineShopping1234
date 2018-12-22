@@ -56,6 +56,11 @@ public class ProductDaoImplJDBC implements ProductDao {
 		return count;
 	}
 
+	public List<Product> newOpenProduct() {
+		List<Product> product = productMapper.newOpenProduct();
+		return product;
+	}
+
 
 
 }
