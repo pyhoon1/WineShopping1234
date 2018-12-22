@@ -52,8 +52,7 @@ public class ProductController {
 			for (int i = 0; i < matchFoodId.length; i++) {
 				matchFoodList.add(matchFoodservice.getMatchFood(matchFoodId[i]));
 			}
-
-			req.getSession().setAttribute("matchFoodList", matchFoodList);
+			model.addAttribute("matchFoodList", matchFoodList);
 		}
 		model.addAttribute("reviewPage", reviewtPage);
 		model.addAttribute("product", product);
