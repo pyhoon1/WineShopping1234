@@ -88,7 +88,6 @@
 							<td>리뷰 아이디</td>
 							<td>상품 코드</td>
 							<td>상품 명</td>
-							<td>유저 이름</td>
 							<td>유저 아이디</td>
 							<td>내용</td>
 							<td>작성일</td>
@@ -100,11 +99,9 @@
 								<td>${review.reviewId}</td>
 								<td>${review.productId }</td>
 								<td>${review.productName }</td>
-								<td>${review.userName}</td>
-								<td>${review.userId }</td>
+								<td>${review.loginId }</td>
 								<td>${review.content}</td>
-								<td>${review.wadte }</td>
-
+								<td>${review.wdate }</td>
 							</tr>
 
 						</c:forEach>
@@ -115,8 +112,6 @@
 
 					<c:if test="${reviewPage.hasProduct()}">
 						<div>
-							<a href="adminReview.do?pageNum=1" class="pageNum">처음</a>
-
 							<c:if test="${reviewPage.startPage > 5 }">
 								<a href="adminReview.do?pageNum=${reviewPage.startPage - 5  }"
 									class="pageNum">이전</a>
@@ -131,9 +126,6 @@
 								<a href="adminReview.do?pageNum=${reviewPage.startPage + 5 }"
 									class="pageNum">다음</a>
 							</c:if>
-
-							<a href="adminReview.do?pageNum=${reviewPage.totalPages }"
-								class="pageNum">마지막</a>
 						</div>
 					</c:if>
 
