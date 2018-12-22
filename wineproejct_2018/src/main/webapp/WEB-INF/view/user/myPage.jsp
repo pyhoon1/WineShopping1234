@@ -15,7 +15,6 @@
 		<div class="content">
 			<div class="wrapper">
 				<h1 id="myP-title">My Page</h1>
-				<h2 id="sub-title">주문 조회</h2>
 				<div class="myP-header">
 					<span id="myP-name">${user.userName } 님</span> <span
 						class="myP-info"> <a

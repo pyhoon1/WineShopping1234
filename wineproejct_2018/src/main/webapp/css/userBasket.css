@@ -131,9 +131,7 @@ body{
 
 }
 
-.wrapper {
-	margin: 100px auto;
-}
+
 
 
 /*  ((이 아래 위치한 코드는 겹치는 부분에 대한 공통적인 css 속성))  */
@@ -157,8 +155,7 @@ body {
     margin: 0px calc(10%);
   }
   /* 마이페이지 상단에 위치한 header 텍스트의 속성 */
-  #myP-title{ text-align: center; color: rgb(181, 23, 0);}
-  #sub-title{text-align: center; color: rgb(181, 23, 0);}
+  #myP-title{ margin-left: 30px; text-align: left; color: rgb(181, 23, 0);}
   
   /* 마이페이지 헤드 영역 이름의 속성 */
   #myP-name{ float: left; font-size: 2.5em; font-weight: bold; line-height: 80px; margin-left: 10px; }
