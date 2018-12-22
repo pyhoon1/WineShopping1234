@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -87,7 +88,8 @@
 								<td>${user1.birth }</td>
 								<td>${user1.rating}</td>
 								<td>${user1.totalAmount }</td>
-								<td>${user1.wdate }</td>
+								<td><fmt:parseDate value="${user1.wdate }" var="noticePostDate" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+								<fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd"/></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -95,8 +97,6 @@
 				<div class="paging">
 					<c:if test="${usertPage.hasProduct()}">
 						<div>
-							<a href="adminUser.do?pageNum=1" class="pageNum">처음</a>
-
 							<c:if test="${usertPage.startPage > 5 }">
 								<a href="adminUser.do?pageNum=${usertPage.startPage - 5  }"
 									class="pageNum">이전</a>
@@ -111,9 +111,6 @@
 								<a href="adminUser.do?pageNum=${usertPage.startPage + 5 }"
 									class="pageNum">다음</a>
 							</c:if>
-
-							<a href="adminUser.do?pageNum=${usertPage.totalPages }"
-								class="pageNum">마지막</a>
 						</div>
 					</c:if>
 				</div>
