@@ -61,7 +61,7 @@ public class PaymentController {
 			userService.RatingUpdate(userId, "C");
 		} else {
 
-		} 
+		}
 		receipt.put("name", name);
 		receipt.put("method", method);
 		receipt.put("total", total);
@@ -73,7 +73,7 @@ public class PaymentController {
 	@RequestMapping("/billingPage.do")
 	public String billingPage(Model model, @RequestParam("userId") int userId) {
 		List<Basket> basketList = basketService.getBasketList(userId);
-		if(basketList.isEmpty()) {
+		if (basketList.isEmpty()) {
 			return "product/billingPage";
 		}
 		List<Product> productList = new ArrayList<Product>();
@@ -105,7 +105,7 @@ public class PaymentController {
 			@RequestParam("productPrice") int productPrice, @RequestParam("productCount") int productCount,
 			@RequestParam("productImg") String productImg, @RequestParam("matchFoodIdList") String matchFoodIdList,
 			@RequestParam("matchFoodCount") String matchFoodCount, @RequestParam("total") int total) {
-		
+
 		Basket basket = new Basket(userId, productId, productName, productPrice, productCount, productImg,
 				matchFoodIdList, matchFoodCount, total);
 		if (basket.getMatchFoodIdList() != null) {
@@ -137,18 +137,29 @@ public class PaymentController {
 
 		paymentService.payment(new Payment(userId, productId, productName, productPrice, productCount, productImg,
 				matchFoodIdList, matchFoodCount, method, total));
+		userService.totalAmountUpdate(userId, total);
+		int userTotal = paymentService.getUserTotal(userId);
 
+		if (userTotal > 600000) {
+			userService.RatingUpdate(userId, "A");
+		} else if (userTotal > 400000) {
+			userService.RatingUpdate(userId, "B");
+		} else if (userTotal > 200000) {
+			userService.RatingUpdate(userId, "C");
+		} else {
+
+		}
 		return "redirect:/main.do";
 	}
 
 	@RequestMapping("/myPage.do")
 	public String paymentPage(Model model, @RequestParam("pageNum") int pageNum, @RequestParam("userId") int userId) {
 		PaymentPage paymentPage = paymentService.getPaymentList(pageNum, userId);
-		if(paymentPage.getPaymentList().isEmpty()) {
+		if (paymentPage.getPaymentList().isEmpty()) {
 			return "user/myPage";
 		}
 		int total = paymentService.getUserTotal(userId);
-		
+
 		for (int i = 0; i < paymentPage.getPaymentList().size(); i++) {
 			if (paymentPage.getPaymentList().get(i).getMatchFoodIdList() != null) {
 				String[] matchFoodId = paymentPage.getPaymentList().get(i).getMatchFoodIdList().split(",");

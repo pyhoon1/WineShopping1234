@@ -16,7 +16,6 @@ public interface ProductService {
 
 	public List<Product> newOpenProduct();
 	
-	
 	public ProductPage searchWine(int pageNum, ProductSearch search);
 	 
 

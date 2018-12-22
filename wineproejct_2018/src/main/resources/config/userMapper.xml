@@ -50,11 +50,11 @@
 	</update>
 	<update id="RatingUpdate" parameterType="java.util.Map">
 		update User set rating =
-		${rating} where userId = #{userId}
+		#{rating} where userId = #{userId}
 	</update>
 	<update id="totalAmountUpdate" parameterType="java.util.Map">
 		update User set
-		totalAmount = #{total} where userId = #{userId}
+		totalAmount = totalAmount + #{total} where userId = #{userId}
 	</update>
 
 	<update id="userStateUpdate" parameterType="String">
